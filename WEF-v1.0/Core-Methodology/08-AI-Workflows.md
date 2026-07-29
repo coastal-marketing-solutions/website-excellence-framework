@@ -108,6 +108,8 @@ Sections 3.1–3.3 describe *roles* ("Design Model," "Build Model") generically 
 
 **The Design Constraints Package is the handoff artifact between the two rows above.** It is what lets an AI design tool's output (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly) be implemented correctly by an AI coding agent (Claude Code, Codex, Manus, GitHub Copilot) regardless of which specific tools were used on either side, and regardless of which technology stack the Charter confirmed (Governance, Sec. 13.4.1) — including a non-WordPress build such as a custom PHP/HTML site. See Design, Appendix — Design Constraints Package Specification for full contents and the governance rule requiring it as context for every downstream AI task.
 
+**Before either row above does net-new work, check the firm-wide Component Library (`/Component-Library/`, Design Sec. 9.5).** A large share of what an AI design tool would otherwise invent from scratch, and what an AI coding agent would otherwise have to reverse-engineer how to build, is already specified there — component interface, design-token dependencies, platform implementation notes, and known working implementations — from prior engagements. Point any AI design or coding tool at the relevant Component Library entry by ID before asking it to design or build a component type this firm has already solved.
+
 **Tool roster currency:** This list is expected to change faster than any other part of this chapter. Update it via Change Request (Governance, Sec. 13.2) whenever a materially new AI design or build tool becomes relevant to engagement work, rather than letting the roster go stale.
 
 ---

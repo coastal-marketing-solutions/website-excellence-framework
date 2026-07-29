@@ -26,12 +26,12 @@ Produce a complete, GeneratePress/GenerateBlocks-buildable visual design system:
 
 ## 3. Inputs
 
-Sitemap & Navigation Model (SG4), UX Pattern Library & Conversion Flows (SG6), Positioning & Messaging Pillars (SG3), Trust Signal Placement Plan (SG6), Competitive Intelligence visual evidence (SG2), active Industry Module's Trust Signal Requirements (visual treatment) and visual conventions
+Sitemap & Navigation Model (SG4), UX Pattern Library & Conversion Flows (SG6), Positioning & Messaging Pillars (SG3), Trust Signal Placement Plan (SG6), Competitive Intelligence visual evidence (SG2), active Industry Module's Trust Signal Requirements (visual treatment) and visual conventions, **the firm-wide Component Library** (`/Component-Library/`, checked before any component is designed net-new — see Sec. 9.5 below)
 
 ## 4. Outputs
 
 - Design System Specification (typography, color, spacing, grid)
-- Component Library (buttons, cards, forms, calculators, navigation, footer)
+- This Engagement's Component Set (buttons, cards, forms, calculators, navigation, footer) — built by reusing/restyling firm-wide Component Library entries wherever a match exists (Sec. 9.5), with only genuinely novel components designed from scratch
 - Key Page Template Designs (home, offering pillar, persona hub, practitioner/staff profile, guide/blog, contact/application)
 - GeneratePress/GenerateBlocks Implementation Notes (or the Charter-confirmed alternative stack's equivalent — see the Design Constraints Package Appendix)
 - **Design Constraints Package** — the structured, tool-agnostic constraint set that any AI design tool (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly, or equivalent) must design *within*, and that any AI coding agent (Claude Code, Codex, Manus, GitHub Copilot, or equivalent) must be given as context before implementing or editing the site. See the Design Constraints Package Specification Appendix at the end of this chapter for full contents.
@@ -56,10 +56,15 @@ Design candidates produced in this gate are **not individually approved** — th
 
 > **Module Injection Point:** Load the active Industry Module's **Trust Signal Requirements** (for visual prominence/placement conventions) and any documented industry visual conventions (e.g., a professional, restrained palette is often expected in law and medicine; a warmer, more approachable palette often performs better in home services) before finalizing the design system foundation.
 
+## 9.5 Component Library Check (Required, Before Any Net-New Component)
+
+Before designing any component — a card, a form pattern, a trust bar, a CTA — check the firm-wide Component Library (`/Component-Library/00-Component-Library-Index.md`) for an existing match. Restyling an existing registry entry to this engagement's tokens is the expected default; designing a structurally new component when an equivalent one already exists in the registry is the exception, not the norm. This applies identically regardless of which AI design tool is doing the work (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly — AI Workflows, Sec. 3.4). Any component built net-new in this engagement is a candidate for the New Component Promotion Process (Component Library Index, "New Component Promotion Process") at Stage Gate 11.5 close-out.
+
 ## 10. Workflow
 
 ```
-[1] Establish design principles from positioning (mobile-first,
+[1] Check the firm-wide Component Library (Sec. 9.5) for existing
+    matches; establish design principles from positioning (mobile-first,
     accessibility-first, performance-first)
         │
         ▼
@@ -84,6 +89,7 @@ Design candidates produced in this gate are **not individually approved** — th
 
 ## 11. Checklist
 
+- [ ] Firm-wide Component Library (Sec. 9.5) checked for existing matches before any component was designed net-new
 - [ ] Active Industry Module's Trust Signal Requirements and visual conventions reviewed before drafting
 - [ ] Typography system defined (type scale, font pairing, line-height, responsive scaling)
 - [ ] Color system passes WCAG 2.1 AA contrast on all text/background combinations
@@ -155,6 +161,7 @@ See each Industry Module for vertical-specific visual convention notes (e.g., ty
 - Building every page from hand-duplicated markup instead of a reusable component/pattern — a single structural defect (e.g., an incorrect heading hierarchy) then has to be fixed page-by-page site-wide instead of once, at the source (Governance, Sec. 15.4, RETRO-004 — this happened in a real engagement).
 - Deferring the actual AI design-tool execution (not just the written spec) past launch under deadline pressure, then having to build a live site's design retrofit around copy and URLs that are already indexed and converting (Governance, Sec. 15.4, RETRO-001).
 - Letting Development begin on the pages that happen to be designed already while treating the rest of the sitemap as "come back to it later" — this quietly converts SG7.5 from a hard gate into a soft one (Governance, Sec. 15.4, RETRO-002).
+- Designing a structurally new card, form, or trust-signal component without first checking the firm-wide Component Library (Sec. 9.5) — re-solving a problem this firm has already solved, and missing an accumulated evidence trail (Known Implementations) of what's actually held up in production.
 
 ## 15. Best Practices
 
@@ -416,11 +423,13 @@ The Design Constraints Package is produced once, at Stage Gate 7 (before the des
 3. **Design Tokens, Machine-Readable** — typography, color, and spacing tokens exported in a format an AI coding agent can consume directly (CSS custom properties and/or a JSON token file), not only as swatches in a design tool's proprietary format. This is what lets Claude Code, Codex, Manus, or any other build tool implement pixel-accurate output without re-deriving values from a screenshot.
 4. **Accessibility & Compliance Visual Constraints** — the WCAG conformance level required (WCAG 2.1 AA minimum per this chapter's Sec. 10.2 default), plus any locked visual treatment the active Industry Module's Trust Signal Requirements mandate (disclosure prominence, required contrast ratios on compliance-critical elements).
 5. **The Do-Not-Break List** — the single highest-leverage section of this deliverable. An explicit, named list of elements that must never be altered by any downstream AI tool without a logged Change Request: locked brand colors/gradients, the compliance footer and its exact required text, NAP (name/address/phone) data, schema markup fields, and any other element where an unreviewed AI edit would create legal, compliance, or brand risk. Every item is named specifically — "the CTA button gradient" is not specific enough; "Primary CTA fill: `linear-gradient(135deg, [token-a] → [token-b])`, Navy text, mandatory Navy border — do not alter without a Change Request" is.
-6. **AI Tool Handoff Instructions** — an explicit, standing instruction, restated in every prompt or task given to an AI coding agent: *"This package is required context for any task that creates, edits, or reviews this site's design or markup. Do not paraphrase or regenerate copy that has already cleared compliance review (Sec. 06, SG9). Do not alter anything on the Do-Not-Break List without a logged Change Request. If the confirmed platform (Sec. 1 above) differs from what a prior session assumed, stop and confirm before proceeding."*
+6. **AI Tool Handoff Instructions** — an explicit, standing instruction, restated in every prompt or task given to an AI coding agent: *"This package is required context for any task that creates, edits, or reviews this site's design or markup. Do not paraphrase or regenerate copy that has already cleared compliance review (Sec. 06, SG9). Do not alter anything on the Do-Not-Break List without a logged Change Request. If the confirmed platform (Sec. 1 above) differs from what a prior session assumed, stop and confirm before proceeding. Push page-content changes through the Content-as-Files Sync Pipeline (Development, Sec. 10.5-Sync) at this engagement's confirmed Content & Code Access Tier (Governance, Sec. 13.4.1) — do not edit content directly through the platform's native GUI editor unless that Tier 3 fallback is the only mechanism confirmed available."*
 
 ### Governance Rule
 
 No AI design tool (Sec. 08, AI Workflows, Sec. 3.4) begins producing tournament candidates, and no AI coding agent begins implementation or post-launch editing work, without this package as loaded context. This applies at initial build (SG10/10.5) and to every subsequent AI-assisted change for the life of the site — it does not expire at launch.
+
+Wherever a component in this package corresponds to a firm-wide Component Library entry (`/Component-Library/`, Sec. 9.5), cite it by ID (e.g., `CL-MKTG-002`) rather than re-describing it from scratch — this keeps the Design Constraints Package short, keeps this engagement's implementation traceable to the registry's Known Implementations evidence trail, and means an AI coding agent implementing this component can pull its full spec (interface, token dependencies, platform implementation notes, Do-Not-Break sensitivity) directly from the registry instead of only from this package's own summary.
 
 ### Maintenance
 

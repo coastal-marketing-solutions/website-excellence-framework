@@ -550,6 +550,7 @@ None — this gate is purely platform-implementation and does not vary by Indust
 - [ ] Cloudflare DNS, CDN, and security rules configured
 - [ ] GA4, Search Console, GTM, and Clarity all verified firing correctly on staging
 - [ ] Staging environment access provided to QA Analyst
+- [ ] Content-as-Files Sync Pipeline (Sec. 10.5-Sync below) set up and tested end-to-end before this gate exits
 
 ### 10.5-Alt — Charter-Specified Alternative Stack Mapping
 
@@ -565,6 +566,28 @@ WEF's default recommendation is Hostinger/WordPress/GeneratePress/GenerateBlocks
 | Configure GA4/GSC/GTM/Clarity | Unchanged — these are platform-independent and apply regardless of the confirmed stack |
 
 The **Design Constraints Package is the deliverable that makes this mapping possible** — because it states platform constraints as an explicit, structured input rather than assuming GeneratePress/GenerateBlocks, any AI coding agent can implement correctly against whichever stack Sec. 1 of that package declares. Log the Platform/Vendor decisions made under this alternative path as Decision Register entries, same as any Sec. 13.4.1 stack confirmation.
+
+### 10.5-Sync — Content-as-Files Sync Pipeline (Required Default)
+
+This is the direct fix for the single most common source of AI-assisted-edit failure this framework has observed (Governance, Sec. 15.4, RETRO-005): a CMS's page content lives in a database, editable only through a browser GUI, while an AI coding agent works natively and reliably in git-tracked files. This pipeline closes that gap by treating **git as the source of truth for page content, and the live database as a build artifact synced from it** — the same relationship code already has to a deployed server, applied to content for the first time.
+
+**Purpose:** Make page-content edits a normal, reviewable git workflow (diff, commit, PR if desired) instead of a browser-automation task, for every engagement where the Content & Code Access Tier (Governance, Sec. 13.4.1) makes it possible.
+
+**Mechanism, by Tier (Governance, Sec. 13.4.1):**
+
+- **Tier 1 (SSH + WP-CLI available):** Export every page's content to a versioned file (one file per page, e.g., `/content-sync/pages/{slug}.html`, containing the raw block markup) via `wp post list --post_type=page --format=json` to enumerate and `wp post get {ID} --field=post_content` per page to export. Edit exported files as normal git-tracked files — this is where an AI coding agent (Claude Code, Codex, Manus, GitHub Copilot) does its actual work. Push changes back with `wp post update {ID} --post_content=- < /content-sync/pages/{slug}.html` (or an equivalent scripted import). Re-export immediately after import and diff against git to confirm the live site matches exactly what was committed — never assume the import succeeded without verifying.
+- **Tier 2 (REST API only, no SSH):** Use the platform's REST API with an application-scoped credential (e.g., WordPress Application Passwords) to `GET` and `PATCH`/`POST` page content programmatically from the same git-tracked files — no shell access required, works over HTTPS on nearly any host. Slower and slightly less scriptable than WP-CLI, but preserves the same "files are the source of truth, DB is synced from them" discipline.
+- **Tier 3 (GUI only):** Content-as-files still applies as the authoring discipline — draft and review the change as a file in git first — but the actual push is a manual or browser-automated edit through the native editor, with a fresh export/screenshot verification step afterward to confirm the live page matches the committed file. This tier is the least reliable and should trigger a note in the Risk Register (Governance, Sec. 14) if it's the only tier available for an engagement expected to need frequent post-launch content changes.
+
+**Required Documents:** `/10.5-wp-implementation/content-sync/README.md` (documents which Tier is in use and the exact export/import commands or scripts for this engagement's confirmed stack), `/10.5-wp-implementation/content-sync/pages/*.html` (one file per page, the actual source-of-truth content)
+
+**Checklist:**
+- [ ] Content & Code Access Tier confirmed at Governance Sec. 13.4.1 intake, before this pipeline is set up
+- [ ] Every sitemap page has a corresponding file in `/content-sync/pages/`
+- [ ] Import mechanism tested end-to-end at least once (export → edit → import → re-export → diff clean) before being relied on for real changes
+- [ ] Every subsequent AI-assisted content change follows this pipeline — a direct, unlogged database or GUI edit that bypasses git is a process defect, not a shortcut, and should be treated the same as any other undocumented Decision Register-worthy change (Governance, Sec. 4.4)
+
+**Common Mistakes:** Treating this pipeline as a one-time migration step instead of the standing workflow for all future content edits, which lets the database silently drift from git again exactly as it did before this pipeline existed. Skipping the post-import re-export/diff verification step and assuming the write succeeded. Building this pipeline once and never documenting which Tier it depends on, so a later session doesn't know why it's failing when host access changes.
 
 ## 12. Prompt(s)
 
@@ -604,6 +627,24 @@ specific about which LiteSpeed Cache settings (image optimization,
 critical CSS, JS delay) or Cloudflare settings (caching level, Rocket
 Loader, image resizing) to adjust, rather than giving generic performance
 advice.
+```
+
+**Prompt 10.5.3 — Content-as-Files Sync (Sec. 10.5-Sync)**
+
+```
+You are setting up (or executing a change through) the Content-as-Files
+Sync Pipeline for [Client Name]'s site on [confirmed platform, e.g.
+WordPress]. The confirmed Content & Code Access Tier for this engagement
+is [Tier 1: SSH+WP-CLI / Tier 2: REST API / Tier 3: GUI — see Governance
+Sec. 13.4.1]. Using that tier's mechanism:
+1. Export the current content of "[Page Name/URL]" into
+   /content-sync/pages/[slug].html if it is not already there
+2. Make the requested change to that file only — do not edit anything
+   through the platform's native editor directly
+3. Push the file back via the confirmed tier's import mechanism
+4. Re-export the live page and diff it against the file you just pushed;
+   report the diff (should be empty) as confirmation, not just "done"
+Do not proceed past step 4 without showing the verification diff.
 ```
 
 ## 13. Examples

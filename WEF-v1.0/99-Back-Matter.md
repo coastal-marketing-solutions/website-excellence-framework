@@ -20,6 +20,12 @@
 
 **Compliance/Standards Constraint Log** — The running record, seeded at Stage Gate 1 and expanded through later gates, of all regulatory and professional-standards requirements applicable to the client's content and advertising, drawn from the active Industry Module.
 
+**Component Library** — The firm-wide, cross-industry registry of reusable, already-built UI components (`/Component-Library/`), checked before any component is designed net-new (Design, Sec. 9.5). Distinct from an engagement's own component set, which is that engagement's *instance* of registry entries plus any genuinely novel components built for it.
+
+**Content & Code Access Tier** — The confirmed mechanism (SSH+WP-CLI, REST API, or browser-GUI automation, in descending order of reliability) an engagement uses to push content and code changes to the live site, confirmed at Project Initialization alongside the rest of the Technology Stack (Governance, Sec. 13.4.1).
+
+**Content-as-Files Sync Pipeline** — The required Development-discipline mechanism (Sec. 06, SG10.5-Sync) that treats git-tracked page-content files as the source of truth and the live CMS database as a synced build artifact, giving AI coding agents a reliable file-based workflow instead of relying on browser-GUI automation alone.
+
 **Compliance/Standards Liaison** — The client-side individual responsible for reviewing and approving all claims, disclosures, and regulated content per the active Industry Module. WEF firms and their consultants do not issue compliance sign-off themselves, in any industry.
 
 **AI Agent Services** — The optional, add-on Core Methodology chapter (file 10) covering Chat AI Agent-as-a-Service (Stage Gate 12A, delivered on the website) and Voice AI Agent-as-a-Service (Stage Gate 12B, delivered over telephony, outside the website Stage Gate spine). Only active when named as a Service Add-On Module in the Project Charter (Governance, Sec. 1.7).
@@ -142,6 +148,11 @@ Consult the relevant Industry Module for the full citation list applicable to th
 - Change Request process — Governance, Sec. 13.2; Reusable Templates, Sec. 3
 - Compliance/Standards Constraint Log — Research, SG1 Sec. 4
 - Compliance/Standards Liaison role — Governance, Sec. 2.2
+- Component Library (registry) — `/Component-Library/`, file 00; Design, Sec. 9.5
+- Component Library Check (Design workflow step) — Design, Sec. 9.5, Sec. 10
+- Content & Code Access Tier — Governance, Sec. 13.4.1
+- Content-as-Files Sync Pipeline — Development, SG10.5-Sync
+- Default technology stack, portability of — Governance, Sec. 13.4.2
 - Core Web Vitals targets — SEO & Architecture, SG5 Sec. 11; Design, SG7.5 Sec. 10.2
 - Decision Register — Governance, Sec. 4
 - Default technology stack — Governance, Sec. 13.4
@@ -207,11 +218,15 @@ See Governance, Section 13.4 for full detail and the Charter override process. I
 
 Compliance/Standards Liaison sign-off is **mandatory and non-waivable, wherever the active Industry Module flags the vertical as regulated,** at: Stage Gate 8 (Compliance Content Checklist), Stage Gate 9 (page-by-page Compliance Clearance Log), and Stage Gate 11 (final site-wide Compliance Sign-Off Record). No Decision Authority, client urgency, or schedule pressure overrides these three checkpoints. Consult the active Industry Module's Regulatory & Compliance Landscape section for which specific checkpoints apply with what intensity — Mortgage Lending, Law Firm, Medical/Healthcare, Financial Advisor, Cash Home Buyer / Real Estate Investor, Distressed Property Advocate, Probate Real Estate Investor, and Real Estate Development carry the highest intensity (several of these distinctively due to consumer-protection/predatory-practice enforcement history, foreclosure-consultant-statute and fiduciary-duty/court-process exposure, or — uniquely for Real Estate Development — federal securities-law general-solicitation exposure under Regulation D, rather than professional licensing alone); Real Estate, Home Services, Expired Listing Specialist, and Commercial Real Estate carry moderate intensity; SaaS carries the lowest baseline intensity but is not exempt.
 
-### Appendix D — Manual Change Control Summary
+### Appendix D — Component Library Quick Reference
+
+See `/Component-Library/00-Component-Library-Index.md` for the full registry schema and governance. Current categories and seed entries: **Core** (Button, Icon), **Feedback** (Badge, Tag), **Forms** (Input, Select, Checkbox, Radio, Switch), **Marketing & Trust** (TrustBar, ComplianceFooter, LeadCaptureForm), **Surfaces** (Card, LocationCard, OfferingCard, StaffBioCard). Design, Sec. 9.5 requires checking this registry before any component is designed net-new, on any engagement, in any industry.
+
+### Appendix E — Manual Change Control Summary
 
 To propose a change to the **Core Methodology**, submit a Change Request (Reusable Templates, Sec. 3) to the Methodology Governance Board per Governance, Section 13.2 — reviewed within 10 business days. To propose a change to, or addition of, an **Industry Module**, submit a Change Request scoped to that Module — reviewed within 5 business days given the narrower blast radius. Approved changes are logged in the Front Matter Revision Log (Core changes) or the Module's own Version History (Module changes) and released as a new version per Governance, Section 11.
 
-### Appendix E — Relationship to the Predecessor Manual
+### Appendix F — Relationship to the Predecessor Manual
 
 *Mortgage Website Excellence Framework (MWEF) v1.0*, the original single-industry manual, remains intact and unmodified at `/MWEF-v1.0/`. It is not a draft or a deprecated artifact — it is a complete, standalone reference that happens to also be the source material for this framework's Mortgage Lending Industry Module. Firms already running engagements under MWEF v1.0 may continue to reference it directly; new engagements, in any industry including mortgage lending, should be run under WEF v1.0's Core Methodology plus the relevant Industry Module.
 
