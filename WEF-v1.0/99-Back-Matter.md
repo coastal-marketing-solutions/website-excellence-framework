@@ -22,7 +22,11 @@
 
 **Compliance/Standards Liaison** — The client-side individual responsible for reviewing and approving all claims, disclosures, and regulated content per the active Industry Module. WEF firms and their consultants do not issue compliance sign-off themselves, in any industry.
 
-**Core Methodology** — The industry-agnostic portion of WEF: Governance, Research, SEO & Architecture, UX & Conversion, Design, Development, QA & Optimization, AI Workflows, and Reusable Templates. Applies unchanged to every engagement regardless of vertical.
+**AI Agent Services** — The optional, add-on Core Methodology chapter (file 10) covering Chat AI Agent-as-a-Service (Stage Gate 12A, delivered on the website) and Voice AI Agent-as-a-Service (Stage Gate 12B, delivered over telephony, outside the website Stage Gate spine). Only active when named as a Service Add-On Module in the Project Charter (Governance, Sec. 1.7).
+
+**Core Methodology** — The industry-agnostic portion of WEF: Governance, Research, SEO & Architecture, UX & Conversion, Design, Development, QA & Optimization, AI Workflows, Reusable Templates, and (optionally, per engagement) AI Agent Services. The first eight apply unchanged to every engagement regardless of vertical; AI Agent Services activates only when named as a Service Add-On Module.
+
+**Design Constraints Package** — The structured, tool-agnostic constraint set (platform target, buildability rules, machine-readable design tokens, accessibility/compliance visual constraints, and the Do-Not-Break List) produced at Stage Gate 7 and required as loaded context for every AI design tool and AI coding agent that touches the site's design or code, at initial build and for the life of the site (Design, Appendix; Governance, Sec. 15.4 RETRO-005).
 
 **Core Web Vitals (CWV)** — Google's user-experience performance metrics: Largest Contentful Paint (LCP), Interaction to Next Paint (INP), and Cumulative Layout Shift (CLS), used throughout this manual as binding performance targets.
 
@@ -65,6 +69,8 @@
 **Project Memory** — The rolling summary of current engagement status, distinct from the full Decision Register and the current-state Blueprint (Governance, Sec. 10).
 
 **Rank Math** — The default SEO plugin used in the WEF technology stack for metadata, schema, and technical SEO management.
+
+**Service Add-On Module** — An optional engagement capability, orthogonal to Industry Modules, named in the Project Charter per Governance Sec. 1.7 (e.g., Chat AI Agent-as-a-Service, Voice AI Agent-as-a-Service). Unlike an Industry Module, zero, one, or several may be active, and none is required.
 
 **Stage Gate** — A defined phase of the WEF Core Methodology with fixed inputs, outputs, roles, and exit criteria; the fundamental unit of engagement structure, identical across every Industry Module.
 
@@ -123,8 +129,13 @@ Consult the relevant Industry Module for the full citation list applicable to th
 
 *(Selective index; references point to chapter/section rather than fixed page numbers, since this manual is distributed as versioned digital files.)*
 
+- AI Agent Services chapter — Core Methodology file 10
 - AI Build Package — Development, SG10
 - AI Workflows chapter — Core Methodology file 08
+- Chat AI Agent-as-a-Service — AI Agent Services, SG12A
+- Design Constraints Package — Design, Appendix; Governance Sec. 15.4 (RETRO-005)
+- Do-Not-Break List — Design, Appendix (Design Constraints Package Specification)
+- Engagement Retrospective Register — Governance, Sec. 15
 - Benchmark Validation — Design, SG7.5 Sec. 10.2
 - Blended-Module engagements — Governance, Sec. 1.5, 9.4
 - Blueprint, Master Website — Governance, Sec. 6
@@ -156,9 +167,11 @@ Consult the relevant Industry Module for the full citation list applicable to th
 - Project Charter — Governance, Sec. 3
 - Risk Register — Governance, Sec. 14
 - Schema Markup Plan — SEO & Architecture, SG5 Sec. 13; Reusable Templates, Sec. 10
+- Service Add-On Module — Governance, Sec. 1.7
 - Sitemap — SEO & Architecture, SG4
 - Stage Gate template (19-part) — Research, Chapter Introduction
 - Topical Cluster Model — SEO & Architecture, SG5 Sec. 10
+- Voice AI Agent-as-a-Service — AI Agent Services, SG12B
 - Voice & Tone Guide — Development, SG9
 
 ---
@@ -183,6 +196,8 @@ Consult the relevant Industry Module for the full citation list applicable to th
 | 10.5 | WordPress Implementation Blueprint | 06-Development.md |
 | 11 | Quality Assurance | 07-QA-Optimization.md |
 | 11.5 | Post-Launch Growth Program | 07-QA-Optimization.md |
+| 12A | Chat AI Agent-as-a-Service *(optional — Service Add-On Module)* | 10-AI-Agent-Services.md |
+| 12B | Voice AI Agent-as-a-Service *(optional — Service Add-On Module; not part of the website Stage Gate spine)* | 10-AI-Agent-Services.md |
 
 ### Appendix B — Default Technology Stack Quick Reference
 

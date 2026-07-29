@@ -33,11 +33,12 @@ Sitemap & Navigation Model (SG4), UX Pattern Library & Conversion Flows (SG6), P
 - Design System Specification (typography, color, spacing, grid)
 - Component Library (buttons, cards, forms, calculators, navigation, footer)
 - Key Page Template Designs (home, offering pillar, persona hub, practitioner/staff profile, guide/blog, contact/application)
-- GeneratePress/GenerateBlocks Implementation Notes
+- GeneratePress/GenerateBlocks Implementation Notes (or the Charter-confirmed alternative stack's equivalent — see the Design Constraints Package Appendix)
+- **Design Constraints Package** — the structured, tool-agnostic constraint set that any AI design tool (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly, or equivalent) must design *within*, and that any AI coding agent (Claude Code, Codex, Manus, GitHub Copilot, or equivalent) must be given as context before implementing or editing the site. See the Design Constraints Package Specification Appendix at the end of this chapter for full contents.
 
 ## 5. Required Documents
 
-`/07-design-system/design-system-spec-v1.md`, `/07-design-system/component-library-v1.md`, `/07-design-system/page-templates-v1.md`, `/07-design-system/generatepress-generateblocks-notes-v1.md`
+`/07-design-system/design-system-spec-v1.md`, `/07-design-system/component-library-v1.md`, `/07-design-system/page-templates-v1.md`, `/07-design-system/generatepress-generateblocks-notes-v1.md` (or platform-equivalent), `/07-design-system/design-constraints-package-v1.md`
 
 ## 6. Responsible Roles
 
@@ -151,6 +152,9 @@ See each Industry Module for vertical-specific visual convention notes (e.g., ty
 - Choosing decorative fonts or low-contrast color combinations that fail accessibility standards on a site where legal risk from inaccessibility is elevated, as it is in most regulated verticals this framework serves.
 - Presenting only one design direction, collapsing the Stage Gate 7.5 tournament into a rubber-stamp approval rather than a genuine comparative decision.
 - Ignoring the active Industry Module's visual conventions and defaulting to house style regardless of what actually builds trust in that vertical.
+- Building every page from hand-duplicated markup instead of a reusable component/pattern — a single structural defect (e.g., an incorrect heading hierarchy) then has to be fixed page-by-page site-wide instead of once, at the source (Governance, Sec. 15.4, RETRO-004 — this happened in a real engagement).
+- Deferring the actual AI design-tool execution (not just the written spec) past launch under deadline pressure, then having to build a live site's design retrofit around copy and URLs that are already indexed and converting (Governance, Sec. 15.4, RETRO-001).
+- Letting Development begin on the pages that happen to be designed already while treating the rest of the sitemap as "come back to it later" — this quietly converts SG7.5 from a hard gate into a soft one (Governance, Sec. 15.4, RETRO-002).
 
 ## 15. Best Practices
 
@@ -372,6 +376,8 @@ All Eight Dimensions (Governance, Sec. 12.2) are formally scored in this gate �
 - [ ] Benchmark Validation Report shows passing status or documented remediation plan
 - [ ] Future-Proofing Review Memo completed with no unresolved red flags
 - [ ] Executive Approval Record signed by named Decision Authority
+- [ ] Approved design (System, Component Library, Page Templates) covers **100% of the Stage Gate 4-approved sitemap** — not a representative subset. Any page left undesigned at this point requires a `GOVERNANCE-EXCEPTION` Decision Register entry naming the page(s) and rationale before Development may begin on the rest of the site (Governance, Sec. 15.4, RETRO-002)
+- [ ] The AI design-tool pass itself (Prompts 7.1/7.2, tournament candidates) has actually been executed against real deliverables — not deferred to "after launch" for schedule reasons (Governance, Sec. 15.4, RETRO-001)
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
@@ -391,6 +397,34 @@ The approved design system is the binding input to Development (AI Build Package
 - Confirm **Typography** settings use `clamp()`-based fluid type scaling where GeneratePress supports it, to satisfy the mobile-first requirement without a proliferation of breakpoint-specific overrides.
 
 This appendix applies identically regardless of the active Industry Module — it is a platform-implementation detail of the default technology stack (Governance, Sec. 13.4), not a vertical-specific concern.
+
+## Appendix — Design Constraints Package Specification
+
+### Why This Deliverable Exists
+
+Every prior appendix in this chapter assumes the default stack (WordPress/GeneratePress/GenerateBlocks). This deliverable is what makes Design's output usable *no matter which stack is confirmed* (Governance, Sec. 13.4.1) — including a future engagement built as a custom PHP/HTML site, or on any other stack a client or the framework's own operator later chooses. It is also the deliverable that solves a specific, real problem this framework was built to prevent: an AI design tool (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly, or equivalent) produces a design candidate that looks right, but the AI coding agent that later implements or edits it (Claude Code, Codex, Manus, GitHub Copilot, or equivalent) has no shared source of truth for what it may and may not change — leading exactly to the kind of already-decided-copy overwrite and structural drift documented in Governance, Sec. 15.4 (RETRO-001, RETRO-004).
+
+The Design Constraints Package is produced once, at Stage Gate 7 (before the design tournament, and revised only if the tournament's outcome changes a constraint), and is then the **required context package** for every downstream AI tool touching the site's design or code — at initial build (SG10/10.5) and at every post-launch AI-assisted edit for the life of the site.
+
+### Required Contents
+
+1. **Platform Target Declaration** — the exact, Charter-confirmed technology stack (Governance, Sec. 13.4.1), stated explicitly and unambiguously. Example: "WordPress + GeneratePress Premium + GenerateBlocks Pro" or "Custom PHP/HTML, no CMS, static asset pipeline via [tool]." Every downstream tool reads this first — nothing in the package should be interpreted against an assumed default.
+2. **Structural/Buildability Constraints** — what the target platform can and cannot render, stated as hard rules, not suggestions:
+   - Default stack: Gutenberg-native blocks only (Group, Heading, Paragraph, Buttons, Columns, Query Loop), built as GenerateBlocks patterns consuming GeneratePress Global Styles — no arbitrary raw HTML/JS the block editor can't represent.
+   - Alternative stack (e.g., Custom PHP/HTML): the equivalent hard rules for that stack — component/template file structure, templating approach, CSS methodology (e.g., a defined utility-class or BEM convention), build/deploy pipeline constraints (e.g., must pass through the confirmed GitHub → hosting deploy path).
+   - Container widths, breakpoints, and grid/spacing units, stated as fixed values.
+3. **Design Tokens, Machine-Readable** — typography, color, and spacing tokens exported in a format an AI coding agent can consume directly (CSS custom properties and/or a JSON token file), not only as swatches in a design tool's proprietary format. This is what lets Claude Code, Codex, Manus, or any other build tool implement pixel-accurate output without re-deriving values from a screenshot.
+4. **Accessibility & Compliance Visual Constraints** — the WCAG conformance level required (WCAG 2.1 AA minimum per this chapter's Sec. 10.2 default), plus any locked visual treatment the active Industry Module's Trust Signal Requirements mandate (disclosure prominence, required contrast ratios on compliance-critical elements).
+5. **The Do-Not-Break List** — the single highest-leverage section of this deliverable. An explicit, named list of elements that must never be altered by any downstream AI tool without a logged Change Request: locked brand colors/gradients, the compliance footer and its exact required text, NAP (name/address/phone) data, schema markup fields, and any other element where an unreviewed AI edit would create legal, compliance, or brand risk. Every item is named specifically — "the CTA button gradient" is not specific enough; "Primary CTA fill: `linear-gradient(135deg, [token-a] → [token-b])`, Navy text, mandatory Navy border — do not alter without a Change Request" is.
+6. **AI Tool Handoff Instructions** — an explicit, standing instruction, restated in every prompt or task given to an AI coding agent: *"This package is required context for any task that creates, edits, or reviews this site's design or markup. Do not paraphrase or regenerate copy that has already cleared compliance review (Sec. 06, SG9). Do not alter anything on the Do-Not-Break List without a logged Change Request. If the confirmed platform (Sec. 1 above) differs from what a prior session assumed, stop and confirm before proceeding."*
+
+### Governance Rule
+
+No AI design tool (Sec. 08, AI Workflows, Sec. 3.4) begins producing tournament candidates, and no AI coding agent begins implementation or post-launch editing work, without this package as loaded context. This applies at initial build (SG10/10.5) and to every subsequent AI-assisted change for the life of the site — it does not expire at launch.
+
+### Maintenance
+
+The Design Constraints Package is a living document. Any approved design change (a new component, a token change, an addition to the Do-Not-Break List) updates it via the same Change Request/Decision Register discipline as any other approved deliverable (Governance, Sec. 4, Sec. 13.2) — it is never allowed to silently drift from what the live site actually reflects, for the same reason Governance Sec. 13.4.1 requires the technology stack itself to stay in sync with the Charter.
 
 ## Appendix — GenerateBlocks Implementation Guidance
 

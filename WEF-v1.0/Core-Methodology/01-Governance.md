@@ -81,6 +81,17 @@ Some clients span two verticals (e.g., a real estate brokerage that also origina
 - Failing to identify a compliance contact at initialization for a regulated vertical — this routinely causes rework in Development (Copywriting) and QA & Optimization.
 - Force-fitting a client into the nearest existing module instead of triggering the New Module Development Process when the fit is genuinely poor.
 
+### 1.7 Service Add-On Modules (Optional, Orthogonal to Industry Modules)
+
+An **Industry Module** (Sec. 1.4) selects which vertical's rules apply — exactly one is required per engagement. A **Service Add-On Module** is a different, optional axis entirely: an additional capability the firm delivers on top of the website build, independent of vertical. Zero, one, or several may be active on a single engagement, in any combination, alongside any Industry Module.
+
+The current Service Add-On library lives in AI Agent Services (Core Methodology, file 10):
+
+- **Stage Gate 12A — Chat AI Agent-as-a-Service**: an AI chat agent embedded on the client's website itself.
+- **Stage Gate 12B — Voice AI Agent-as-a-Service**: an AI voice agent operating over telephony, delivered independent of the website.
+
+Unlike Industry Modules, Service Add-On Modules do not gate or get gated by the mandatory Stage Gate spine (SG1–SG11.5) — an engagement can complete its website Stage Gates and launch with a Service Add-On still in progress, not yet scoped, or never scoped at all. Name active Service Add-On(s) explicitly in the Project Charter (Sec. 3.2) the same way an Industry Module is named — an add-on delivered without a Charter entry is scope no one formally agreed to.
+
 ---
 
 ## 2. Consulting Organization
@@ -139,6 +150,7 @@ The Project Charter is the foundational governance document of the engagement. I
 |---|---|
 | Engagement Overview | Client name, industry classification, business model, service area/licensing footprint |
 | **Active Industry Module(s)** | Named module(s) selected per Section 1.4–1.5; if blended, the boundary between primary and secondary module |
+| **Active Service Add-On(s)** (optional) | Named per Section 1.7 (e.g., Chat AI Agent-as-a-Service, Voice AI Agent-as-a-Service), or explicitly "None" — never left blank |
 | Business Objectives | Quantified goals (e.g., "increase qualified lead submissions by 35% within 6 months of launch") |
 | Scope Boundaries | In-scope pages/features; explicitly out-of-scope items (e.g., CRM/practice-management system integration) |
 | Technology Stack | Default WEF stack (Governance, Sec. 13.4) or client-specified alternative, with rationale if alternative |
@@ -491,6 +503,10 @@ Unless the Project Charter specifies an alternative, this stack applies regardle
 
 Any deviation must be documented in the Project Charter with rationale and logged as a Decision Register entry at initialization.
 
+### 13.4.1 Active Intake Confirmation (not a silent default)
+
+This stack is a **starting recommendation**, not an assumption the client is deemed to have accepted by not objecting. At Project Initialization (Sec. 1.2, step 5), the Engagement Lead must walk the client through the stack **layer by layer** and obtain an explicit choice for each — "use the WEF default" is a valid, first-class answer, but it must be *selected*, not defaulted into. Record the confirmed choice for every layer (Hosting, CMS, Theme Framework, Page Building, SEO Plugin, Caching, CDN, Analytics, etc.) in the Charter's Technology Stack section, even where every answer is "WEF default." This closes the gap where a stack choice made mid-engagement (a hosting-tier change, a plugin swap) drifts from what the Charter says without anyone treating it as a decision worth logging (see Retrospective RETRO-003, Sec. 15.4). Any change to a previously confirmed layer, at any point in the engagement, is logged as a Decision Register entry at the moment it happens — not reconstructed later from what actually shipped.
+
 ### 13.5 Compliance & Professional Standards Governance
 
 WEF consultants and AI models never issue final compliance, legal, medical, or financial sign-off in any industry. Every piece of content touching claims, disclosures, licensing statements, or advertising language subject to the active Industry Module's Regulatory & Compliance Landscape must pass through the client's named Compliance/Standards Liaison before publication, formalized as a mandatory review step in Development (Stage Gates 8–9) and QA & Optimization (Stage Gate 11).
@@ -541,6 +557,67 @@ Provides a standard mechanism for identifying, tracking, and mitigating risks to
 ### 14.4 Escalation Policy
 
 Any risk rated High/High is escalated to the Engagement Lead within 24 hours of identification and reviewed at the next standing engagement meeting regardless of normal cadence.
+
+---
+
+## 15. Engagement Retrospective Register
+
+### 15.1 Purpose
+
+Distinct from the Risk Register (forward-looking, engagement-specific) and the per-engagement SG11.5.2 Retrospective & Methodology Learnings prompt (AI Workflows, Sec. 4), the Engagement Retrospective Register is the **firm-level, cross-engagement** ledger of generalized lessons extracted from completed or in-flight engagements. It exists so that a mistake made once, in one industry, becomes a permanent methodology safeguard rather than a private lesson known only to the consultants who lived through it. Entries here are written industry-agnostically even when the triggering engagement was vertical-specific — the whole point is that a lesson learned on a mortgage engagement must protect a law firm or SaaS engagement that comes after it.
+
+### 15.2 Retrospective Register Schema
+
+| Field | Description |
+|---|---|
+| Retro ID | Format `RETRO-{sequence}` |
+| Source Engagement | Which engagement surfaced this (may be anonymized in client-facing copies) |
+| What Happened | Factual description of the pitfall, stripped of vertical-specific detail |
+| Generalized Risk | Why this is a risk in *any* industry, not just the one it was discovered in |
+| Methodology Fix | The specific Core Methodology or Governance change made in response (cite chapter/section) |
+| Status | Proposed / Adopted (with Change Request ID) / Rejected (with rationale) |
+
+### 15.3 Governance Rule
+
+A Retrospective entry is not optional documentation — it is the required input to any Change Request that claims to be "informed by engagement experience" (Section 13.2). A Change Request citing a lesson learned without a corresponding Retrospective Register entry is returned to the submitter for that entry to be filed first. This keeps the methodology's evolution evidence-based and auditable rather than anecdotal.
+
+### 15.4 Adopted Retrospective Entries
+
+The following entries were extracted from the framework's first full engagement (mortgage lending vertical, run substantially before this Core + Modules architecture existed) and generalized here so every future engagement — regardless of industry — inherits the fix rather than rediscovering the pitfall.
+
+**RETRO-001 — AI-Assisted Visual Design Deferred Past Launch Under Schedule Pressure**
+- **What Happened:** Facing a compressed pre-launch timeline, the team formally deferred the AI design-tool step (the actual rendered mockup pass, as opposed to a written visual spec) to a "Phase 6, post-launch" workstream, reasoning that pre-launch effort should stay focused on QA and cutover. The site shipped on written specs and hand-authored theme code alone; the AI-generated design pass happened days after go-live, against an already-live, already-indexed site.
+- **Generalized Risk:** In any industry, treating the AI design-tool pass as a "nice to have" that can slip past launch inverts Stage Gate 7/7.5's entire purpose — design is supposed to *shape* the build, not be reverse-engineered onto one that already shipped. A post-launch design retrofit also has to work around already-live, already-crawled, sometimes already-converting copy and URLs, creating exactly the kind of conflict-resolution overhead ("don't let the redesign overwrite copy that's already been decided") that a pre-build design pass never has to solve.
+- **Methodology Fix:** Design (Sec. 05, SG7/SG7.5) and Development (Sec. 06) already sequence design before content spec/copy/build by input dependency. This entry hardens that into an explicit rule: **schedule pressure is resolved by narrowing scope within a Stage Gate (fewer template variants, a smaller tournament), never by reordering Stage Gates.** Deferring SG7/7.5's actual AI-tool execution past SG7.5's Executive Approval is now a `GOVERNANCE-EXCEPTION`-tagged decision (Sec. 13.3), not a routine scope call.
+- **Status:** Adopted — CR-014.
+
+**RETRO-002 — Development Authorized to Begin on a Partially-Designed Sitemap**
+- **What Happened:** With design complete for only a subset of the approved sitemap, the team authorized the build phase to proceed on the pages that *were* designed, deferring the remainder "until absolutely necessary." The gap was closed later, but only after build had already started — meaning the site was live-in-progress with some templates never having passed a real design gate at all.
+- **Generalized Risk:** Any engagement under deadline pressure will be tempted to treat "design most of the site" as good enough to start building. This silently converts a hard Stage Gate into a soft one and is how a client ends up with pages that were never actually design-reviewed, in any industry.
+- **Methodology Fix:** Design, SG7.5 Sec. 18 Exit Criteria and Development, SG8 Sec. 3 Inputs now explicitly require that the approved Design System & Page Templates (SG7.5) cover **100% of the SG4-approved sitemap**, not a representative sample, before Stage Gate 8 may begin. A partial-coverage exception requires a `GOVERNANCE-EXCEPTION` Decision Register entry naming exactly which pages are deferred and why.
+- **Status:** Adopted — CR-014.
+
+**RETRO-003 — Technology Stack Drifted From the Charter Without a Formal Amendment**
+- **What Happened:** The engagement's actual hosting configuration diverged from what the Project Charter originally documented (a plan-tier change made operationally, not as a Charter amendment). The drift was only reconciled later, informally, in the Decision Register — not caught at the time it happened.
+- **Generalized Risk:** A Charter's Technology Stack section (Sec. 3.2) is only useful if it reflects reality. In any industry, a stack decision made outside the Charter process (a hosting downgrade, a plugin swap, a theme change) that isn't immediately logged creates a silent gap between what the governing document says and what's actually running — which then has to be discovered and reconciled after the fact, at higher cost than logging it in the moment would have been.
+- **Methodology Fix:** Sec. 13.4 (Default Technology Stack Policy) is strengthened below (Sec. 13.4.1) to require the stack be confirmed layer-by-layer as an active intake decision, and any mid-engagement change to any layer — not just the initial choice — triggers an immediate Decision Register entry, not a retroactive one.
+- **Status:** Adopted — CR-014.
+
+**RETRO-004 — A Duplicated Structural Defect Recurred Site-Wide Because Templates Weren't Built as Reusable Patterns**
+- **What Happened:** A single structural defect (an accessibility-relevant heading-hierarchy error) was introduced once and then propagated across most of the site's pages, because those pages were built from copy-pasted, hand-edited markup rather than a single reusable template/pattern. Fixing it required a page-by-page sweep rather than a one-place correction.
+- **Generalized Risk:** This is a direct, real-world confirmation of why Design's "component-based system, not one-off page designs" principle (Sec. 05, Sec. 2) and the Query Loop/Element-hooks guidance (Sec. 05 Appendices) exist. In any industry, hand-duplicated markup means every defect is a site-wide defect waiting to be discovered, and every fix is a full-site sweep instead of a single-source edit.
+- **Methodology Fix:** No new rule required — the existing Design chapter guidance already prevents this when followed. This entry is preserved as evidence for *why* that guidance is non-negotiable, referenced from Design Sec. 14 (Common Mistakes).
+- **Status:** Adopted — CR-014 (evidentiary entry, no new rule).
+
+**RETRO-005 — Multiple AI Tools Edited the Same Site Without a Shared Constraint Contract**
+- **What Happened:** Across the engagement, different AI tools and sessions made design and code changes to the live site without a single, standing document declaring what could and couldn't be changed. This produced repeated drift between what was live and what was tracked in version control, and required ad hoc rules invented mid-engagement (e.g., "don't let a design update overwrite copy that's already been decided") to contain damage after the fact rather than preventing it.
+- **Generalized Risk:** In any industry, once more than one AI tool (or more than one session of the same tool) can touch a live site's design or code, the absence of one shared, explicit constraint document is what turns routine AI-assisted edits into drift risk. This is not specific to WordPress or to any one platform — it recurs on any stack where design output and code-generation output come from different tools or sessions.
+- **Methodology Fix:** The **Design Constraints Package** (Design, Appendix — Design Constraints Package Specification) is now a required SG7 output and a required loaded-context input for every AI design tool and every AI coding agent used on the engagement, at initial build and for the life of the site post-launch (AI Workflows, Sec. 3.4). It is explicitly built to be stack-agnostic, so the same discipline holds whether the confirmed platform (Governance, Sec. 13.4.1) is the WordPress/GeneratePress default or a Charter-specified alternative such as a custom PHP/HTML build.
+- **Status:** Adopted — CR-015.
+
+### 15.5 Filing New Entries
+
+Any team member may propose a new Retrospective entry at any point in an engagement, not only at SG11.5 close-out. Proposed entries are reviewed by the Methodology Governance Board on the same cadence as Change Requests (Sec. 13.2) and, once adopted, are cited by ID in whichever Core Methodology or Industry Module section they informed.
 
 ---
 

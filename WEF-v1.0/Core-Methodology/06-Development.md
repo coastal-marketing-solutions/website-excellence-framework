@@ -80,6 +80,7 @@ Engagement Lead approves; no client sign-off required at this gate (client sees 
 
 ## 11. Checklist
 
+- [ ] Approved Design System & Page Templates (SG7.5) confirmed to cover 100% of the SG4-approved sitemap before any brief is drafted — if any page lacks an approved design, stop and resolve that gap first rather than drafting its content brief anyway (Governance, Sec. 15.4, RETRO-002; Design, Sec. 18)
 - [ ] Active Industry Module's Content Model & Page Types reviewed before drafting briefs
 - [ ] Every sitemap page has a completed content brief
 - [ ] Every brief references its Stage Gate 5 primary keyword and search intent
@@ -460,11 +461,11 @@ The Build Package is the direct input to Stage Gate 10.5, where it is executed i
 
 ---
 
-# STAGE GATE 10.5 — WORDPRESS IMPLEMENTATION BLUEPRINT
+# STAGE GATE 10.5 — WORDPRESS IMPLEMENTATION BLUEPRINT (OR CHARTER-SPECIFIED ALTERNATIVE STACK)
 
 ## 1. Purpose
 
-Execute the AI Build Package into an actual, functioning WordPress/GeneratePress Premium/GenerateBlocks Pro site on the default (or Charter-specified) technology stack, with performance, caching, and security layers correctly configured. This gate is identical in process across every industry — it is purely a platform-implementation activity.
+Execute the AI Build Package into an actual, functioning site on the Charter-confirmed technology stack (Governance, Sec. 13.4.1), with performance, caching, and security layers correctly configured. This gate is identical in process across every industry — it is purely a platform-implementation activity. The workflow, checklist, and prompts below are written against the **default stack** (WordPress/GeneratePress Premium/GenerateBlocks Pro), since that is what most engagements confirm; Sec. 10.5-Alt below maps the same steps onto a Charter-specified alternative (e.g., a custom PHP/HTML build) for engagements that confirm a different stack. No AI coding agent begins work at this gate without the Design Constraints Package (Design, Appendix) loaded as context.
 
 ## 2. Business Objectives
 
@@ -550,19 +551,46 @@ None — this gate is purely platform-implementation and does not vary by Indust
 - [ ] GA4, Search Console, GTM, and Clarity all verified firing correctly on staging
 - [ ] Staging environment access provided to QA Analyst
 
+### 10.5-Alt — Charter-Specified Alternative Stack Mapping
+
+WEF's default recommendation is Hostinger/WordPress/GeneratePress/GenerateBlocks/GitHub, and most engagements are expected to confirm it (Governance, Sec. 13.4.1). Where the Charter confirms a different stack instead — most commonly a **Custom PHP/HTML** build with no CMS — the same Workflow (Sec. 10) and Checklist (Sec. 11) structure still applies; only the platform-specific mechanics change:
+
+| Default-Stack Step | Custom PHP/HTML (or other alternative) Equivalent |
+|---|---|
+| Provision Hostinger VPS, install WordPress/GeneratePress/GenerateBlocks | Provision the Charter-confirmed host/server; establish the confirmed deploy pipeline (e.g., GitHub Actions or equivalent CI to the confirmed host) |
+| Configure Rank Math SEO | Implement the SG5 Schema Markup Plan and meta-tag requirements directly in template/head markup, or via the Charter-confirmed alternative SEO tooling |
+| Build Global Styles (GeneratePress Customizer) | Implement the Design Constraints Package's machine-readable design tokens (Design, Appendix) as CSS custom properties or an equivalent token file — the single source of truth either way |
+| Build GenerateBlocks patterns | Build reusable template partials/components per the Design Constraints Package's structural constraints (Design, Appendix, Sec. 2) — same reusability discipline, different mechanism |
+| Configure LiteSpeed Cache / Cloudflare | Configure the Charter-confirmed caching/CDN layer against the same Core Web Vitals targets (SG5) |
+| Configure GA4/GSC/GTM/Clarity | Unchanged — these are platform-independent and apply regardless of the confirmed stack |
+
+The **Design Constraints Package is the deliverable that makes this mapping possible** — because it states platform constraints as an explicit, structured input rather than assuming GeneratePress/GenerateBlocks, any AI coding agent can implement correctly against whichever stack Sec. 1 of that package declares. Log the Platform/Vendor decisions made under this alternative path as Decision Register entries, same as any Sec. 13.4.1 stack confirmation.
+
 ## 12. Prompt(s)
 
-**Prompt 10.5.1 — Build Execution (Code-Generation Model)**
+**Prompt 10.5.1 — Build Execution (AI Coding Agent)**
 
 ```
-You are implementing a WordPress page using GenerateBlocks Pro for
-[Client Name]'s website. Using the Build Manifest entry for "[Page URL]"
-and the Component-to-Pattern Mapping, generate the GenerateBlocks pattern
-structure (as block markup/JSON per GenerateBlocks' format) for this page.
-Use only Global Style token references (no hardcoded hex colors or font
-sizes). Insert the approved copy from "[copy file reference]" exactly as
-written — do not paraphrase or regenerate copy that has already cleared
-compliance review.
+You are implementing a page for [Client Name]'s website using [Claude
+Code / Codex / Manus / GitHub Copilot / equivalent AI coding agent].
+Before making any change, load and follow the Design Constraints Package
+(Design, Appendix) in full — it declares the confirmed platform target,
+the structural/buildability constraints for that platform, the
+machine-readable design tokens, and the Do-Not-Break List. Do not assume
+GeneratePress/GenerateBlocks if the Design Constraints Package's Platform
+Target Declaration says otherwise.
+
+Using the Build Manifest entry for "[Page URL]" and the Component-to-
+Pattern Mapping, generate the page structure in the format the confirmed
+platform requires (GenerateBlocks pattern markup/JSON for the default
+stack; the equivalent template/component format for a Charter-confirmed
+alternative stack). Use only the Design Constraints Package's token
+references — no hardcoded hex colors, font sizes, or spacing values.
+Insert the approved copy from "[copy file reference]" exactly as written
+— do not paraphrase or regenerate copy that has already cleared
+compliance review. Do not alter anything on the Do-Not-Break List. If
+anything in this prompt conflicts with the Design Constraints Package,
+stop and flag the conflict rather than guessing which instruction wins.
 ```
 
 **Prompt 10.5.2 — Performance Configuration Review**
