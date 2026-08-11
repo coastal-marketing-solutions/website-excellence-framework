@@ -543,4 +543,150 @@ Constraints:
 
 ---
 
+## 21. Context Navigation Templates
+
+Templates for the CLAUDE.md/CONTEXT.md navigation layer defined in Governance Sec. 5.2.1. Adopted from the ICM context-management methodology (external reference material; see Governance Sec. 13.2 Change Proposal history for provenance).
+
+### 21.1 Knowledge Base Root — CLAUDE.md Template
+
+Keep this under ~800 tokens (roughly one screen). If it grows longer, move content into `CONTEXT.md` or a stage's own `CONTEXT.md` instead — this file is a map, not a manual.
+
+```markdown
+# [Client Name] Website Blueprint
+
+## What This Is
+[One to two sentences: who the client is, what this engagement is, which Industry Module(s) govern it.]
+
+## Current State
+**Active stage: [NN-stage-name] ([WEF Stage Gate name]).** [One sentence on where things stand.] See `CONTEXT.md` for the full stage map.
+
+## Structure
+```
+[Client Name] Website Blueprint/
+  CLAUDE.md              # You are here.
+  CONTEXT.md              # Full WEF Stage Gate map.
+  [NN-stage-name]/         # Created only once this stage begins — see CONTEXT.md
+    CONTEXT.md
+    output/
+  _config/                # Charter, Decision Register, and other cross-stage governance docs
+  _references/            # Pointers to the WEF framework and active Industry Module(s)
+```
+
+## How to Use
+1. Read this file first, then `CONTEXT.md` for the full stage map.
+2. Go to the active stage's `CONTEXT.md` before touching its `output/`.
+3. Read `_config/project-charter.md` and `_config/decision-register.md` before starting any new stage's work.
+4. Only create the next stage folder when that stage actually begins.
+5. Every new decision goes in `_config/decision-register.md`.
+
+## Layer Annotations (ICM)
+- `CLAUDE.md`: L0 (always loaded, orientation)
+- `CONTEXT.md`: L1 (stage-gate routing)
+- Stage `CONTEXT.md` files: L2 (stage contracts)
+- `_config/` files: L3 (engagement-specific reference)
+- `_references/` files: L3 (domain reference — the WEF framework itself)
+- Stage `output/` and client-supplied source material: L4 (working artifacts)
+```
+
+### 21.2 Knowledge Base Root — CONTEXT.md Template
+
+```markdown
+# Workflow: [Client Name] Website Blueprint
+
+## Overview
+[One to two sentences on which WEF Stage Gates apply and which Industry Module(s) govern them — reference Governance Sec. 1.4/1.5 for module selection/blend, if applicable.]
+
+## Stage Map
+
+| Folder | WEF Stage Gate | Purpose | Status |
+|---|---|---|---|
+| 01-research | SG1 — Discovery & Market Research | Personas, regulatory footprint, current-state audit | [Not started / Active / Complete] |
+| 02-competitive | SG2 — Competitive Intelligence | Competitor scoring, White Space map | ... |
+| 03-strategy | SG3 — Strategic Direction | Positioning, messaging pillars (client sign-off) | ... |
+| 04-architecture | SG4 — Information Architecture | Sitemap, URL structure, taxonomy | ... |
+| 05-seo-blueprint | SG5 — SEO Blueprint | Keyword map, topical clusters, schema plan | ... |
+| 06-ux-conversion | SG6 — UX & Conversion | User flows, conversion paths, wireframes | ... |
+| 07-design-system | SG7 — Design System | Visual identity, component library | ... |
+| 07.5-prototype-validation | SG7.5 — Prototype Validation | Design tournament, executive approval | ... |
+| 08-content-spec | SG8 — Content Spec | Page-by-page content briefs | ... |
+| 09-copywriting | SG9 — Copywriting | Approved on-page copy | ... |
+| 10-ai-build-package | SG10 — AI Build Package | Build-ready implementation spec | ... |
+| 10.5-wp-implementation | SG10.5 — WP Implementation | Build record | ... |
+| 11-qa | SG11 — QA & Optimization | Sign-off | ... |
+| 11.5-post-launch | SG11.5 — Post-Launch Growth | KPIs, experiment log | ... |
+
+## How Stages Connect
+[Note any engagement-specific sequencing detail beyond the standard WEF spine — most engagements need none.]
+
+## Reference Material
+- `_config/project-charter.md`, `decision-register.md`, and siblings — see Sec. 5.2.1.
+- `_references/`: pointers to the WEF framework and active Industry Module(s).
+
+## When to Add Stages
+[Name any Service Add-On Modules in scope, per Governance Sec. 1.7 — these get their own folder outside the numbered spine, since they don't gate SG1–SG11.5.]
+```
+
+### 21.3 Stage Folder — CONTEXT.md Template (Stage Contract)
+
+One per active Stage Gate folder. A trimmed, engagement-specific instance of that gate's 19-part Core Methodology template — link to the full chapter rather than restating it.
+
+```markdown
+# Stage Contract: [NN-stage-name] (WEF Stage Gate [N] — [Stage Gate Name])
+
+**Status:** [Not started / Active / Complete]
+
+## Purpose
+[One to two sentences, from the Stage Gate chapter's Sec. 1.]
+
+## Inputs
+[This stage's actual inputs — prior stage output, specific Module sections, specific client-supplied material — not a restatement of the chapter's generic input list.]
+
+## Outputs (this stage's `output/`)
+[List the actual files this stage will/did produce.]
+
+## Exit Criteria
+[Copy the relevant checklist items from the Stage Gate chapter's Exit Criteria section, checked off as completed.]
+
+## What the Next Stage Should Read From Here
+[Point the next stage at the specific sections/findings that matter most — don't make it re-read everything.]
+```
+
+### 21.4 Naming Convention Standard
+
+Applies alongside the Documentation Standard (Governance Sec. 8.3). Choose one consistent pattern per engagement and state it in the root `CLAUDE.md`; the specific format matters less than consistency, since it's what lets an AI model find and name files correctly without a database.
+
+**WEF default pattern:** `descriptive-name-v{N}.md` (already used throughout this framework's own Required Documents naming, e.g. `discovery-report-v1.md`).
+
+**Alternative status-suffix pattern**, useful for content mid-review: `descriptive-name_draft.md` → `descriptive-name_final.md`. Do not mix both patterns within one engagement's KB.
+
+### 21.5 Practice-Level (Multi-Client) Root
+
+Section 5.2 defines one client's KB. A consulting practice running several WEF engagements at once benefits from the same L0/L1 layering **one level up**, at the practice root — this is a firm-operations convenience, not a per-engagement requirement.
+
+```markdown
+# [Firm/Practice Name]
+
+[One sentence: what the practice does.]
+
+## Active Engagements
+- /clients/[client-1]/wef — [Industry Module]. Phase: [current Stage Gate].
+- /clients/[client-2]/wef — [Industry Module]. Phase: [current Stage Gate].
+
+## Framework
+- /wef — the WEF Core Methodology + Industry Module library itself (read-only reference, not engagement-specific).
+
+## Routing
+| Task | Go to | Read |
+|---|---|---|
+| Work for [Client 1] | /clients/[client-1]/wef | CLAUDE.md, CONTEXT.md |
+| Work for [Client 2] | /clients/[client-2]/wef | CLAUDE.md, CONTEXT.md |
+| Add/revise an Industry Module | /wef/WEF-v1.0/Industry-Modules | 00-Module-Template-and-Index.md |
+
+## Critical Rules
+- Never reference one client's Decision Register, Charter, or compliance findings in another client's workspace.
+- A new engagement copies the KB structure (Governance Sec. 5.2) and gets its own `_config/`, not a shared one.
+```
+
+---
+
 *End of Core Methodology. Continue to Industry Modules.*

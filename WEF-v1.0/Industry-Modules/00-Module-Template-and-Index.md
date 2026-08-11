@@ -40,6 +40,7 @@ Every Industry Module in this library is authored to the same fixed template, fo
 | [Probate Real Estate Investor](Module-Probate-Real-Estate-Investor.md) | Cash investors specializing entirely in probate/inherited-property acquisition | High (state wholesaling disclosure laws, probate court-confirmation/overbid process, executor fiduciary-duty exposure, TCPA, Fair Housing Act, predatory-practice enforcement history) |
 | [Real Estate Development](Module-Real-Estate-Development.md) | Developers taking entitlement, construction, and capital-formation risk (residential, multifamily, commercial, mixed-use) — broad/foundational, niche sub-modules anticipated | High (SEC Regulation D general solicitation, Interstate Land Sales Full Disclosure Act, Fair Housing Act, entitlement/environmental review accuracy) |
 | [Commercial Real Estate (Investment Sales, Owner Rep/Leasing & Property Management)](Module-Commercial-Real-Estate.md) | Full-service commercial brokerages across retail, office, multifamily, industrial, and land | Medium-High (property management broker licensing/trust accounting, dual/designated agency disclosure, Fair Housing Act for multifamily, FCRA) |
+| [Real Estate: Luxury Agent](Module-Real-Estate-Luxury-Agent.md) | Individual luxury/move-up-focused agents or small teams competing on owned hyperlocal content and editorial design rather than portal dependence | Medium (state real estate commission rules, Fair Housing Act, MLS/IDX board rules, ranking/production-claim substantiation) |
 
 ## Blended-Module Notes
 
@@ -55,6 +56,7 @@ Several common blends are worth anticipating (Core Methodology, Governance, Sect
 - **Cash Home Buyer / Real Estate Investor (primary) + Probate Real Estate Investor (secondary)** — a general investor who wants dedicated probate content without probate being their sole focus (see the Probate Module's own Section 1 for when to use it standalone instead)
 - **Real Estate Development (primary) + Commercial Real Estate (secondary)** — a developer with an in-house leasing and/or property-management arm handling its own completed, retained ("build-to-hold") projects
 - **Commercial Real Estate (primary) + Expired Listing Specialist (secondary)** — a full-service commercial brokerage that also runs a dedicated expired-listing lead-generation program
+- **Real Estate: Luxury Agent (primary) + Mortgage Lending (secondary)** — a luxury agent or small team with an in-house or closely affiliated lending relationship requiring Affiliated Business Arrangement disclosure
 
 ## New Module Development
 

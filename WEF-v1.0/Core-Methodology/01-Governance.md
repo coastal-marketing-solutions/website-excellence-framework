@@ -219,11 +219,14 @@ The Knowledge Base (KB) is the single persistent store of every artifact, resear
 
 ```
 /clients/{client-name}/wef/
-├── 00-charter/
-│   ├── project-charter.md            (names active Industry Module(s))
-│   └── decision-register.md
+├── CLAUDE.md                     (L0 — always-loaded orientation, Sec. 5.2.1)
+├── CONTEXT.md                    (L1 — full Stage Gate map, Sec. 5.2.1)
 ├── 01-research/                  (Stage Gate 1)
+│   ├── CONTEXT.md                (L2 — stage contract)
+│   └── output/                   (L4 — this stage's deliverables)
 ├── 02-competitive/               (Stage Gate 2)
+│   ├── CONTEXT.md
+│   └── output/
 ├── 03-strategy/                  (Stage Gate 3)
 ├── 04-architecture/              (Stage Gate 4)
 ├── 05-seo-blueprint/             (Stage Gate 5)
@@ -236,26 +239,58 @@ The Knowledge Base (KB) is the single persistent store of every artifact, resear
 ├── 10.5-wp-implementation/       (Stage Gate 10.5)
 ├── 11-qa/                        (Stage Gate 11)
 ├── 11.5-post-launch/             (Stage Gate 11.5)
-├── blueprint/
-│   └── master-website-blueprint.md
-├── backlog/
+│                                  (each Stage Gate folder above follows the same
+│                                   CONTEXT.md + output/ pattern shown for 01/02;
+│                                   create a stage's folder only when that stage
+│                                   actually begins — do not scaffold ahead, Sec. 5.2.1)
+├── _config/                      (L3 — engagement-specific, stable across every stage)
+│   ├── project-charter.md            (names active Industry Module(s))
+│   ├── decision-register.md
+│   ├── compliance-constraints-log.md
+│   ├── open-questions.md
+│   ├── assumptions-log.md
 │   └── project-backlog.md
-└── memory/
-    └── project-memory.md
+├── _references/                  (L3 — domain reference, shared across engagements)
+│   └── README.md                     (pointers to the WEF framework + active Industry Module(s))
+└── blueprint/
+    └── master-website-blueprint.md
 ```
 
-Note that this per-client structure is unchanged from a single-industry framework — the industry-specific knowledge lives in the framework-level `/Industry-Modules/` library, referenced from the Charter, not duplicated into every client's KB folder.
+Note that this per-client structure is unchanged in *intent* from a single-industry framework — the industry-specific knowledge lives in the framework-level `/Industry-Modules/` library, referenced from the Charter, not duplicated into every client's KB folder. What changed in this revision (Sec. 5.2.1) is the addition of an explicit navigation layer on top of the folder structure itself, and the consolidation of the engagement's cross-stage governance documents (Charter, Decision Register, and their siblings) into a single `_config/` location instead of a lone `00-charter/`.
+
+### 5.2.1 The Context Navigation Layer (CLAUDE.md / CONTEXT.md)
+
+The folder structure in Sec. 5.2 organizes *where* things live. It does not, on its own, tell an AI model *when* to load them or *what order* to read them in — and a large, multi-stage engagement KB left without that navigation layer tends to be read either exhaustively (wasting context budget on stages that aren't relevant to the current task) or incompletely (a model guesses which files matter and guesses wrong). This subsection formalizes a five-layer navigation discipline, adopted from the ICM ("context management") methodology (external reference material, first applied to a live WEF engagement 2026-07-30; see Change Proposal history, Sec. 13.2) and merged with the WEF-native Five-Layer Context Package already defined in AI Workflows Sec. 2.1, which it does not replace.
+
+| Layer | File(s) | Loads | Answers |
+|---|---|---|---|
+| L0 | `CLAUDE.md` (KB root) | Always, every session | "Where am I? What is this engagement?" |
+| L1 | `CONTEXT.md` (KB root) | On entry to the KB | "Where do I go? What's the full Stage Gate map and current stage?" |
+| L2 | `CONTEXT.md` (each stage folder) | Only when working in that stage | "What does this specific Stage Gate do — purpose, inputs, outputs, exit criteria?" |
+| L3 | `_config/*`, `_references/*` | Loaded selectively, per task | "What rules/decisions/framework content apply?" |
+| L4 | Stage `output/*`, client-supplied source material | Loaded selectively, per task | "What am I actually working with or producing right now?" |
+
+**Rules:**
+
+1. `CLAUDE.md` stays under roughly one screen (WEF Best Practice: under ~800 tokens). If it grows longer, content belongs in `CONTEXT.md` or a stage's own `CONTEXT.md` instead.
+2. A stage folder (and its `CONTEXT.md` + `output/`) is created **only when that Stage Gate actually begins** — per Sec. 5.2's inline note. Scaffolding all 14 stage folders in advance defeats the purpose of the layer (nothing to route to yet) and clutters the KB root.
+3. `_config/` holds what's stable **across every stage** of this specific engagement (Charter, Decision Register, Compliance Constraints Log, Open Questions, Assumptions Log, Project Backlog). `_references/` holds what's stable **across engagements** (pointers into the framework-level `/Industry-Modules/` and Core Methodology, not copies of them). Do not duplicate framework content into `_references/` — link to it.
+4. Every stage's `CONTEXT.md` is a trimmed, engagement-specific instance of that Stage Gate's 19-part Core Methodology template (Research Sec. "The Fixed Stage Gate Template"), not a restatement of the whole chapter — link back to the chapter for full detail rather than copying it.
+5. When a stage completes, its `CONTEXT.md` status updates to reflect completion (see the template in Reusable Templates, Sec. 21.3) and the root `CONTEXT.md`'s Stage Map table updates to name the new active stage — this is a Knowledge Base Governance Rule (Sec. 5.3), not optional housekeeping.
+
+**Rationale for adoption:** the same context-window-degradation failure mode this layer prevents — a model given too much undifferentiated context blending reference material with source material, or re-deriving decisions already settled — is exactly what AI Workflows Sec. 5 (Verification Standards) and Sec. 3.3 (Common Mistakes) already warn against from the opposite direction (verifying bad output after the fact, rather than structuring the KB to make bad output less likely in the first place). This is a structural, not incremental, complement to that existing discipline.
 
 ### 5.3 Knowledge Base Governance Rules
 
-1. Every Stage Gate deliverable is saved to its numbered folder — never to a personal drive, chat log, or email attachment only.
-2. File naming follows the Documentation Standard (Section 8.3).
+1. Every Stage Gate deliverable is saved to its stage's `output/` folder — never to a personal drive, chat log, or email attachment only.
+2. File naming follows the Documentation Standard (Section 8.3) and the Naming Convention Standard (Reusable Templates, Sec. 21.4).
 3. The Knowledge Base is read-access for the full team and client sponsor; write-access is role-gated per the RACI in Section 2.3.
 4. No deliverable is considered final until it exists in the Knowledge Base in its approved form — a Slack message or verbal approval is not sufficient.
+5. The root `CLAUDE.md` and `CONTEXT.md` are living documents (Sec. 5.2.1) — update them at every Stage Gate transition, not just at KB creation. A navigation layer that describes a stale state is worse than no navigation layer, because it actively misdirects.
 
 ### 5.4 AI Access Pattern
 
-When briefing an AI model for a Stage Gate task, the standard context package is: (1) Project Charter, (2) Decision Register (filtered to relevant Stage Gates), (3) Master Website Blueprint (current state), (4) the specific Core Methodology Stage Gate chapter, (5) the relevant section(s) of the **active Industry Module**, (6) any Stage Gate inputs listed in that chapter. This is formalized in the LLM Handoff Protocol (AI Workflows chapter).
+When briefing an AI model for a Stage Gate task, the standard context package is: (1) Project Charter, (2) Decision Register (filtered to relevant Stage Gates), (3) Master Website Blueprint (current state), (4) the specific Core Methodology Stage Gate chapter, (5) the relevant section(s) of the **active Industry Module**, (6) any Stage Gate inputs listed in that chapter. This is formalized in the LLM Handoff Protocol (AI Workflows chapter), and — as of Sec. 5.2.1 — routed through the KB's own CLAUDE.md/CONTEXT.md navigation layer rather than assembled from scratch by a human at every handoff.
 
 ---
 
@@ -520,6 +555,19 @@ Confirm and record the available tier(s) for the confirmed host at Project Initi
 ### 13.4.2 Portability — the Default Stack Does Not Create Lock-In
 
 Recommending GeneratePress/GenerateBlocks as the default (Sec. 13.4) is a starting-point convenience, not a commitment that locks every future engagement to this theme framework. The durable, reusable asset this methodology builds is the **Component Library**'s token system and component interfaces (`/Component-Library/`, Design Sec. 9.5) — colors, spacing, typography scales, and component contracts (props/variants/behavior), all defined independent of any theme. GeneratePress Global Styles and GenerateBlocks patterns are **one implementation of those tokens**, not the tokens themselves. Each Component Library entry's "Platform Implementation Note" field is explicitly designed to hold more than one stack's implementation over time — a GeneratePress note today does not preclude adding a Shopify, Webflow, or custom-PHP/HTML implementation note for the same component later, once an engagement actually builds one. Switching a future engagement to a different theme or stack means writing a new Platform Implementation Note against the existing token/interface spec — it does not mean redesigning the Component Library or the Design Constraints Package's token layer from scratch. This is the same portability discipline Sec. 13.4.1's Content & Code Access Tier and Development's Sec. 10.5-Alt (WordPress Implementation Blueprint) already assume — the default stack is a recommendation with a documented off-ramp, not a dependency.
+
+### 13.4.3 Maximize a Selected Plugin's Advanced/Licensed Capabilities — Once Chosen, Use It Fully
+
+The Default Technology Stack (Sec. 13.4) and the standing "native functionality preferred, plugin dependencies minimized" discipline remain the baseline: don't add a plugin to solve something native WordPress/GeneratePress/GenerateBlocks already does cleanly. But once a plugin has cleared that bar and been licensed as part of the confirmed stack — GeneratePress Premium, GenerateBlocks Pro, Rank Math (SEO Plugin default, Sec. 13.4), or any Charter-approved alternative — the engagement should use that plugin's advanced/paid-tier capabilities as fully as its stated goals allow, not just the minimum feature needed for the immediate task. The licensing cost is already sunk once the plugin is selected; configuring it at half-capacity leaves paid value on the table and produces a shallower implementation than what's actually available.
+
+This mirrors the precedent already set for GeneratePress: engagements are expected to explore GeneratePress Premium's advanced modules (Elements, Hooks, Sections, etc.) rather than hand-building custom equivalents in a child theme when the licensed module already covers it, and to document which specific advanced features were actually exercised so the pattern is reusable on the next GeneratePress engagement rather than re-discovered from scratch each time. The same discipline now applies explicitly to Rank Math and to any future default-stack plugin:
+
+- **Before configuring a plugin's basic settings, check whether a licensed advanced/PRO tier is already active** (Plugins → Installed Plugins shows this directly) and consult its documented feature set before assuming only the free-tier feature set is available — free-tier assumptions made without checking are a real, observed failure mode, not a hypothetical one.
+- **Prefer the plugin's native advanced feature over a custom-code equivalent** when both exist and the plugin's advanced tier is already licensed — e.g., a PRO-tier Schema Templates feature over a hand-rolled JSON-LD block, a plugin's native Search Console/Analytics integration over a separate reporting dashboard, a plugin's built-in content/SEO analyzer over a manual audit pass — once the client has confirmed the feature is wanted and it doesn't route around Sec. 13.5's compliance gate.
+- **Document which advanced features were actually turned on and why** in the engagement's Decision Register, the same discipline already required for the base plugin choice — this is what makes the usage pattern reusable across future engagements rather than a one-off. A brief "Advanced Features Enabled" note, cross-referenced from the plugin's stack-selection Decision Register entry, is sufficient; it does not need its own Stage Gate document.
+- **This does not relax Sec. 13.5 (Compliance & Professional Standards Governance).** An advanced feature that changes what's published live — AI-generated schema/content suggestions, auto-populated business data, bulk title/description rewrites — still requires the same compliance review any other published content requires before going live.
+
+Applies at Governance Board level to the Default Technology Stack (Sec. 13.4) and at Engagement Lead level to any Charter-approved alternative plugin — the principle is "use what's already been paid for, fully, and record what was used," not a mandate to enable every feature regardless of relevance to the engagement.
 
 ### 13.5 Compliance & Professional Standards Governance
 
