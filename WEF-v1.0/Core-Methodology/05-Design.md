@@ -305,6 +305,7 @@ Formal session with the named Decision Authority. The Executive Approval Record 
 - [ ] Benchmark Validation Report shows all four benchmarks (Sec. 10.2) at passing status, or documents a specific remediation plan for any that fail
 - [ ] Future-Proofing Review Memo completed, informed by the active Industry Module's growth pattern, and no unresolved scalability red flags remain
 - [ ] Executive Approval Record signed by the named Decision Authority
+- [ ] Design Export Validation Gate (Appendix) passed for the winning direction's actual export — fidelity, copy integrity, and component reusability all checked, not assumed from the Constraints Package prompt alone
 
 ## 12. Prompt(s)
 
@@ -434,6 +435,28 @@ Wherever a component in this package corresponds to a firm-wide Component Librar
 ### Maintenance
 
 The Design Constraints Package is a living document. Any approved design change (a new component, a token change, an addition to the Do-Not-Break List) updates it via the same Change Request/Decision Register discipline as any other approved deliverable (Governance, Sec. 4, Sec. 13.2) — it is never allowed to silently drift from what the live site actually reflects, for the same reason Governance Sec. 13.4.1 requires the technology stack itself to stay in sync with the Charter.
+
+## Appendix — Design Export Validation Gate
+
+### Why This Deliverable Exists
+
+The Design Constraints Package (above) tells an AI design tool what rules to follow. It does not, on its own, verify the tool actually followed them — and in practice it doesn't always. A confirmed, first-party failure pattern from an actual engagement: an AI design tool's export required substantially more manual rework than expected, across three specific, recurring failure modes, none of which the Constraints Package alone caught before the export was accepted:
+
+1. **Visual/spacing fidelity drift** — the exported build didn't match the approved design comp closely enough (spacing, alignment, or proportions off from what was actually signed off at SG7.5).
+2. **Copy silently overwritten or regenerated** — the same failure mode already documented in this chapter's copy-preservation-on-redesign rule (Sec. 14, RETRO-008), but occurring at the design-tool export stage itself, not only during later AI-assisted CMS editing.
+3. **Non-reusable, bespoke one-off components** — the export produced structurally unique markup per instance of what should be a single, registry-worthy component, rather than a genuinely reusable pattern (the same failure mode documented in the Component Library's own evidence trail as CSS-selector-smeared, non-instanced styling).
+
+**Standing rule: no AI design tool's export is accepted as SG7.5-approved, or handed forward into the AI Build Package (SG10), without passing an explicit Design Export Validation pass against the Design Constraints Package — this is a checkpoint, not an assumption that following the Constraints Package as a prompt was sufficient.**
+
+### The Three-Part Validation
+
+Run against every export, by a human reviewer (Visual Designer or Developer) before Stage Gate 7.5 sign-off, or immediately upon receiving a design-tool export at any later stage:
+
+1. **Fidelity check** — compare the export directly against the approved comp and the Design Tokens (Sec. 3 above): spacing values, color tokens, and typography must match exactly, not "closely." Flag anything off by more than a rounding tolerance the team has explicitly agreed on, not by eye.
+2. **Copy integrity check** — diff the export's copy against the last approved copy source (Stage Gate 9's Final Copy, or, pre-SG9, whatever copy was locked at the time). Any deviation is either a legitimate, logged Change Request or a rejection — never a silent acceptance because the replacement text "reads fine."
+3. **Component reusability check** — for every visually repeating element in the export, confirm it corresponds to exactly one Component Library entry (or a new candidate for the New Component Promotion Process, Component Library Index) rather than shipping as independently-styled, structurally unique markup per instance. An export that produces five visually identical cards as five different DOM structures fails this check even if it looks correct.
+
+A failed check is a rejection and a re-generation with a sharper prompt (citing the specific Do-Not-Break List item or Component Library entry that was violated), not a manual patch-up accepted to save time — patching around a bad export is exactly the "more modifications than expected" failure mode this gate exists to prevent.
 
 ## Appendix — GenerateBlocks Implementation Guidance
 

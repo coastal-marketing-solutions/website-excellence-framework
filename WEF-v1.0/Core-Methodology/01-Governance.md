@@ -117,6 +117,9 @@ Defines the standing roles used across every WEF engagement, their responsibilit
 | **QA Analyst** | Functional, performance, accessibility, SEO, and compliance QA | SG11 |
 | **Compliance/Standards Liaison (client-side)** | Reviews all claims, disclosures, and regulated content per the active Industry Module | SG8, SG9, SG11 (mandatory wherever the Industry Module flags the vertical as regulated) |
 | **AI Orchestrator (human)** | Manages LLM Handoff Protocol, prompt quality, output verification, Module context injection | All gates |
+| **Knowledge Librarian** *(optional, recommended at engagement scale — added from cross-engagement evidence)* | Files and cross-references every accepted deliverable into the Knowledge Base; audits for duplicate or contradictory entries; **performs no content judgment whatsoever** — cannot resolve a genuine contradiction, only surface it to the Engagement Lead | All gates (filing/audit only, not decision-making) |
+
+**On the Knowledge Librarian role:** this separates *deciding what's accepted* (Engagement Lead/Project Manager, a judgment call) from *filing and auditing it correctly* (Knowledge Librarian, zero judgment authority) — two independent real-world sources converged on this same separation-of-duties pattern without coordinating: a live WEF engagement's own governance system, and an external AI-driven marketing agency's independently designed team roster. On engagements below a size threshold set in the Project Charter, this role may be folded into the Project Manager's Section 2.2 duties, but the *function* (duplicate/contradiction audits, catching e.g. the same Open Question filed twice under different IDs) should not be skipped just because it isn't staffed as a separate person.
 
 ### 2.3 RACI Summary (Engagement-Level)
 
@@ -206,6 +209,14 @@ Decisions are never deleted, only superseded. If a design decision is later reve
 ### 4.4 When to Log a Decision
 
 Log a Decision Register entry any time: a strategic direction is chosen among alternatives; a scope boundary is set or changed; a compliance or professional-standards interpretation is applied; a design or architecture pattern is selected over competing options; an Industry Module is selected or blended; or an AI model's recommendation is accepted, modified, or rejected by a human reviewer.
+
+### 4.5 Bias-Scan Step for Irreversible Decisions
+
+Any decision logged with **Reversibility: Irreversible** carries a mandatory one-line bias-scan note before it's marked final: does this decision look right because the evidence supports it, or because it's the option that was easiest to reach, confirms an existing assumption, or matches what every prior similar decision on this engagement already concluded? This is not a philosophical exercise — a real, repeated pattern in this framework's own retrospective findings is every self-generated "lessons learned" entry being marked generalizable to other industries, which is itself a plausible artifact of who's doing the generalizing rather than a property of the findings. The AI Orchestrator or Engagement Lead performs this scan; it does not require a separate named role, but it does require a written note, not a mental check.
+
+### 4.6 Named Trigger Condition for Deferred Tradeoffs
+
+Where a decision explicitly accepts a limitation now in exchange for a cheaper/faster path (a free-tier vendor, a launch-only workaround, a deferred feature), log the **specific future condition** that should trigger revisiting it — not just "revisit later." "Upgrade once monthly traffic exceeds the free API tier's call limit" is checkable; "revisit if it becomes a problem" is not. This is what makes a Costly-to-Reverse decision genuinely reversible in practice rather than reversible in theory but never actually reconsidered.
 
 ---
 
@@ -585,6 +596,13 @@ When an engagement requires an industry not yet covered by an existing Industry 
 ### 13.7 Module Currency Review
 
 Because regulatory and professional-standards requirements change over time (and faster in some industries — e.g., mortgage lending, medical/healthcare, financial advisory — than others), every Industry Module's Regulatory & Compliance Landscape section is reviewed at minimum annually, and immediately upon any team member flagging a known regulatory change, regardless of the semiannual Core Methodology review cycle.
+
+### 13.8 Candidate Structural Extensions — Flagged, Not Adopted
+
+Two structural ideas surfaced from external sources (a live engagement's evolved governance and an independently designed AI-driven agency's own team structure) are documented here deliberately as **candidates requiring a real decision, not silently adopted rules** — consistent with the discipline in Sec. 13.6/9.5 that a genuine structural change gets evaluated on its own merits, not folded in because it appeared somewhere plausible-sounding:
+
+- **Pre-execution doctrine audit.** Every review mechanism currently in this framework (the Stage Gate Review Process, the Four-Question Review Standard referenced from prior engagement evidence, Stage Gate 11 QA) runs *after* a deliverable is produced. A pre-execution check — auditing a plan or draft against the Charter/Design Constraints/Compliance Constraint Log *before* work is executed, not only reviewing the finished output — could catch a doctrine violation before time is spent producing something that fails review anyway. Whether this becomes a formal, separately staffed checkpoint or stays an informal habit of the existing Engagement Lead/AI Orchestrator roles is an open question, not a default answer.
+- **A formal "New Role Development Process," parallel to Sec. 13.6's New Module Development Process.** As specialist role-splitting deepens (see the Consulting Organization's optional Knowledge Librarian addition above, and the broader pattern of one generalist role splitting into several deep specialists as an engagement scales), a standing process for proposing, trialing, and promoting a new specialist role — rather than each engagement inventing its own role list ad hoc — has real appeal. It also has a real cost: more named roles means more coordination overhead for a small engagement. Do not adopt a larger role roster than a given engagement's scale actually warrants (Sec. 2.1's existing consolidation guidance still governs) without a specific decision that the added rigor is worth it for that engagement.
 
 ---
 
