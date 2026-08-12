@@ -1,8 +1,28 @@
-# Website Excellence Framework (WEF)
+<p align="center">
+  <img src="assets/banner.svg" alt="Website Excellence Framework — an open, AI-assisted methodology for regulated and specialized industries" width="100%">
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%204.0-2A6F97.svg?style=flat-square" alt="License: CC BY-NC 4.0"></a>
+  <img src="https://img.shields.io/badge/version-1.0-D4A254.svg?style=flat-square" alt="Version 1.0">
+  <img src="https://img.shields.io/badge/status-public%20draft-D4A254.svg?style=flat-square" alt="Status: public draft">
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-2A6F97.svg?style=flat-square" alt="Contributions welcome"></a>
+</p>
 
 **An open, AI-assisted consulting methodology for designing, building, optimizing, and scaling high-performing websites across regulated and specialized industries.**
 
 This repository publishes the full framework so working practitioners — consultants, agents, brokers, developers, SEO specialists, and compliance professionals across the industries it covers — can review it, challenge it, and improve it.
+
+---
+
+## Framework at a glance
+
+| | |
+|---|---|
+| **9** Core Stage Gates | Governance → Research → SEO Architecture → UX/Conversion → Design → Development → QA → AI Workflows → Templates |
+| **13** Industry Modules | Mortgage, Real Estate, Law Firm, Healthcare, Home Services, Financial Advisor, SaaS, and 6 more |
+| **1** Component Library | Cross-engagement UI registry (Core, Feedback, Forms, Marketing & Trust, Surfaces) |
+| **∞** Module Injection Points | The fixed seams where vertical knowledge plugs into the universal process |
 
 ## What's here
 
@@ -10,7 +30,7 @@ This repository publishes the full framework so working practitioners — consul
 WEF-v1.0/
 ├── 00-Front-Matter.md          Title page, purpose, architecture overview, how to use this
 ├── 99-Back-Matter.md           Glossary, references, index, appendices
-├── Core-Methodology/           Industry-agnostic: the same 9 files apply to every engagement
+├── Core-Methodology/           Industry-agnostic: the same stages apply to every engagement
 │   ├── 01-Governance.md
 │   ├── 02-Research.md
 │   ├── 03-SEO-Architecture.md
@@ -19,11 +39,21 @@ WEF-v1.0/
 │   ├── 06-Development.md
 │   ├── 07-QA-Optimization.md
 │   ├── 08-AI-Workflows.md
-│   └── 09-Reusable-Templates.md
+│   ├── 09-Reusable-Templates.md
+│   └── 10-AI-Agent-Services.md
+├── Component-Library/          Firm-wide registry of reusable, already-built UI components
+│   ├── 00-Component-Library-Index.md
+│   ├── Category-Core.md
+│   ├── Category-Feedback.md
+│   ├── Category-Forms.md
+│   ├── Category-Marketing-Trust.md
+│   └── Category-Surfaces.md
 └── Industry-Modules/           Vertical-specific: pick one (or blend two) per engagement
     ├── 00-Module-Template-and-Index.md
     ├── Module-Mortgage-Lending.md
     ├── Module-Real-Estate.md
+    ├── Module-Real-Estate-Development.md
+    ├── Module-Commercial-Real-Estate.md
     ├── Module-Law-Firm.md
     ├── Module-Medical-Healthcare.md
     ├── Module-Home-Services.md
@@ -32,13 +62,7 @@ WEF-v1.0/
     ├── Module-Cash-Home-Buyer.md
     ├── Module-Distressed-Property-Advocate.md
     ├── Module-Expired-Listings-Commercial.md
-    ├── Module-Probate-Real-Estate-Investor.md
-    ├── Module-Real-Estate-Development.md
-    └── Module-Commercial-Real-Estate.md
-
-MWEF-v1.0/                      Historical reference: the original single-industry
-                                 (mortgage-only) manual this framework grew out of.
-                                 Preserved unmodified; superseded in scope by WEF-v1.0.
+    └── Module-Probate-Real-Estate-Investor.md
 ```
 
 **Start here:** [`WEF-v1.0/00-Front-Matter.md`](WEF-v1.0/00-Front-Matter.md) — it explains the Core + Modules architecture, the consulting philosophy, and how the two parts fit together.
@@ -71,6 +95,10 @@ Pull requests are welcome too, especially for well-scoped corrections to a singl
 ## What this is not
 
 This framework — including every Industry Module's Regulatory & Compliance Landscape section — does not constitute legal, financial, medical, or regulatory compliance advice. It identifies the regulatory frameworks *typically* applicable to a vertical as a starting orientation for a consulting team; it is not a substitute for a client's own qualified counsel, and every engagement run under this methodology treats it that way (see the Governance chapter's mandatory Compliance/Standards Liaison checkpoints).
+
+## Credits
+
+The Core + Modules architecture — fixed Stage Gates run in sequence, plain markdown carrying the process and context, vertical knowledge injected only at explicit, marked seams — draws on the **Interpretable Context Methodology (ICM)**, described by Van Clief & McDermott in [arXiv:2603.16021](https://arxiv.org/abs/2603.16021). The specific Stage Gates, Module Injection Points, and industry content in this framework were developed independently for real consulting engagements; the shared premise is that for sequential, human-reviewed work, structure — not a code-based orchestrator — is the framework.
 
 ## License
 

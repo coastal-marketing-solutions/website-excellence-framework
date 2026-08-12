@@ -46,6 +46,22 @@ When a second AI model picks up work from a first (e.g., a build-oriented model 
 
 No AI-produced deliverable exits a Stage Gate without human review against that gate's exit criteria. The LLM Handoff Protocol accelerates production; it does not remove the human quality gate defined in each Stage Gate's "Review Process" subsection.
 
+### 2.5 Context Window Loading Discipline
+
+Sections 2.1–2.4 define *what* the Five-Layer Context Package contains. This subsection defines *when* each layer should actually be loaded into a working context window — a distinct question the Package's contents alone don't answer, and the most common way a technically-correct handoff still degrades in practice. Adopted from the ICM context-management methodology (external reference material; see Governance Sec. 5.2.1 for the parallel Knowledge Base folder-layer adoption, and Sec. 13.2 for the Change Proposal record).
+
+**Not every layer loads at the same time.** The Charter Layer and a filtered slice of the History Layer are near-constant (comparable to Governance Sec. 5.2.1's L0/L1). The Module Layer and Task Layer are loaded per Stage Gate, not once for the whole engagement (comparable to L2). Reference material *within* the Module or Task layers that doesn't change across an engagement (a Module's Regulatory Landscape section, a locked Design Constraints Package) behaves like L3; State-Layer material specific to the current run (the live Master Website Blueprint, the specific deliverable being produced) behaves like L4.
+
+**Practical rules:**
+
+1. **Separate reference from source explicitly.** When a handoff package mixes stable reference material (an Industry Module section, a locked brand guideline) with source material meant to be transformed (a client's raw interview notes, a draft to be revised), label them: "REFERENCE (constraints, do not transform):" vs. "SOURCE (transform this into the output):". A model given both undifferentiated sometimes treats reference material as content to rewrite, or source content as a rule to follow — this is the single most common Groundedness/Module-Consistency failure this labeling prevents (see Sec. 5.1).
+2. **Front-load what matters most.** Attention degrades toward the middle of a long context window. Put the Charter Layer's non-negotiable constraints and the current Task Layer instruction at the beginning of a handoff, not buried after several attached documents.
+3. **Filter the History Layer deliberately, every time — never omit it, never load it whole.** Sec. 2.2 already requires filtering History to relevant Decision Register entries; the rule here is the failure mode on the *other* side — a filtered-to-nothing History Layer is as dangerous as an unfiltered one, since it re-opens settled decisions as if for the first time.
+4. **Use the Knowledge Base as external memory, not the conversation.** Per Governance Sec. 5.2.1, a well-structured KB lets a model read what it needs, when it needs it, rather than everything being pasted into one long-running conversation. If a single working session has accumulated more than roughly 10–15 exchanges of unrelated back-and-forth, and the next task is a genuinely new Stage Gate or a new client, start a fresh session pointed at that stage's `CONTEXT.md` rather than continuing in an increasingly noisy one.
+5. **A rough token budget**, useful as a sanity check rather than a hard rule: routing layers (Charter + filtered History + Task) ≈10–15% of the context budget; stable reference (Module sections, Design Constraints Package, brand/voice guidelines) ≈20–30%; source/state material specific to this run (Blueprint, draft content, client-supplied files) ≈30–40%; the remainder reserved for the model's own output and reasoning. If reference material alone is consuming the majority of a handoff's budget, split it or point the model at only the specific Module section this Stage Gate's Module Injection Point actually calls for (AI Workflows Sec. 2.1 Item 4), not the Module's full text.
+
+**Session-to-session consistency:** because a new session has no memory of a prior one, any consistency an engagement has achieved (a settled voice, a settled set of constraints) exists only in what's written down — the Charter, the Decision Register, a Module section, a locked Design Constraints Package — not in the model's memory of having produced it before. Treat "the model got this right last time" as a reason to *write the rule down* in the appropriate L2/L3 file, not as a reason to skip writing it down.
+
 ---
 
 ## 3. Multi-Model Collaboration Patterns
@@ -93,6 +109,8 @@ While any single capable model can run the entire methodology, engagements at sc
 - Treating AI output as final without the human review step required in every Stage Gate chapter.
 - Allowing context window pressure to justify dropping the Charter or Module Layer — regulatory/professional-standards constraints must never be summarized away.
 - Switching Industry Modules mid-engagement (e.g., correcting an initial misclassification) without re-running every Module Injection Point already executed under the wrong Module.
+- Automating a working handoff pattern before it scales — automation (a task running without human involvement) and scaling (capacity increasing without proportional effort) are not the same thing, and an automated handoff that skips Sec. 2.4's human-in-the-loop requirement to move faster is a compliance/quality risk, not an efficiency gain.
+- Building a KB structure or handoff pattern that only the person who built it can navigate — Sec. 5.2.1's CLAUDE.md/CONTEXT.md layer exists specifically so a different consultant, a client, or a future AI session can pick up an engagement without the departed team member's undocumented mental model.
 
 ### 3.4 Named AI Tool Roster by Discipline
 

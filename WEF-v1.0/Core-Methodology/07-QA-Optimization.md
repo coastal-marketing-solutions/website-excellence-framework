@@ -97,6 +97,8 @@ Compliance/Standards Liaison (**mandatory final sign-off wherever the active Ind
 - [ ] Design fidelity spot-checked against approved templates for every page type
 - [ ] Compliance/Standards Liaison has completed final site-wide Compliance Sign-Off Record against the active Industry Module's full Regulatory & Compliance Landscape
 - [ ] All P0/P1 Issue Log items remediated and re-tested; any open P2 items documented with client-accepted risk
+- [ ] Analytics/tag/plugin-integration connected accounts verified as correct **for this specific client site**, not assumed correct because the plugin/tool is configured correctly in general — mandatory wherever the operator manages more than one active client site through any shared tool connection
+- [ ] A representative sample of pages actually Published (not just staged in Draft) and re-tested post-Publish before the full go-live moment, specifically to surface Publish-only defects (see Sec. 14 addendum) while there's still time to fix them
 
 ## 12. Prompt(s)
 
@@ -146,6 +148,8 @@ See each Industry Module's Regulatory & Compliance Landscape for the specific id
 - Run accessibility and compliance QA as dedicated passes, not folded into general functional testing, since they require different expertise and a different failure tolerance (zero for compliance).
 - Re-test every remediated P0/P1 issue explicitly rather than assuming a fix worked — regression risk is real, especially with caching layers involved.
 - Present the Go-Live Recommendation with the full Issue Log attached, including any client-accepted P2 risk, so the launch decision is fully informed and documented.
+
+**Draft status hides real build gaps that only surface at Publish — plan a Publish rehearsal, don't rely on Draft-status QA alone.** Where a compliance strategy deliberately holds every page in Draft until a single bulk pre-launch review (a legitimate, confirmed real-world pattern — batching sign-off rather than clearing pages one at a time), be aware of its real cost: defects that only manifest on Publish — slug collisions, a missing static-front-page configuration, an unbuilt navigation menu that was never exercised while pages were invisible — stay completely undetected throughout the entire build and QA phase and surface for the first time at the exact moment of go-live, when there's the least slack to fix them. This happened multiple times, independently, on a single real engagement. Mitigate it with a **Publish rehearsal**: actually Publish a representative subset of pages (then optionally revert to Draft if the compliance strategy requires it) before the real go-live moment, specifically to exercise the Publish-only code paths early, rather than trusting Draft-status QA to have caught everything.
 
 ## 16. Review Process
 
