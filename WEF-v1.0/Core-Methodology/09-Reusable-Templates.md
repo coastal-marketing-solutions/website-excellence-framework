@@ -424,45 +424,274 @@ Constraints:
 
 ## 16. Client Intake Templates
 
-### 16.1 Client Intake Questionnaire
+### 16.1 Client Intake Worksheet — Purpose and Design Principles
+
+This worksheet is designed to be sent to a prospective or newly-signed client directly — by email, or pasted field-by-field into an online form tool (Google Forms, Typeform, JotForm) so responses arrive ready to save as a `.md`/`.csv` and drop into the engagement's `01-research/` folder. It serves three purposes simultaneously, and every question below is written to satisfy all three at once rather than being asked three separate times:
+
+1. **Populates the Project Charter and Decision Register** directly (Governance, Sec. 3.2) — Industry Module selection, scope, Decision Authority, and the seed facts for `DEC-INIT-001` onward.
+2. **Grounds the Stage Gate 5.5 Perplexity Deep Research Brief** (Sec. 16.3 below) in the client's own confirmed facts — service area, licensing, office location, named competitors — so the research pass doesn't drift into inventing or omitting a market the client never confirmed. This is not a hypothetical risk: a real engagement's Perplexity-generated brief omitted the client's own office county from its service-area list and included a neighboring county the client had never actually confirmed serving, both undetected until a later Stage Gate caught them. **This worksheet exists specifically to supply those ground-truth facts before research begins, not after.**
+3. **Reduces re-litigation.** Every fact gathered here once should never need to be re-asked in a later Stage Gate — if a later gate needs to confirm something, it confirms *against* what's written here, it doesn't re-derive it from scratch.
+
+**Field-type tags** (`[Short text]`, `[Paragraph]`, `[Multiple choice]`, `[Checkboxes]`, `[Dropdown]`, `[File upload]`) are included so this can be copied directly into a form-building tool without redesigning the field structure. Required fields are marked **(Required)**; everything else may be answered "Not sure yet" or left blank without blocking intake — unanswered fields become Open Questions or Project Backlog items (Governance, Sec. 4.4/7), never guessed.
+
+### 16.2 Client Intake Worksheet — Full Content
 
 ```markdown
-# Client Intake Questionnaire — [Client Name]
+# New Website Intake Worksheet
 
-**Company/Industry Overview:**
-- Industry classification (select or propose Industry Module):
-- Business model:
-- Service area / jurisdiction(s):
-- Offerings:
-- Niche specializations:
-- Credentials/licenses/registrations held:
+Thanks for taking the time to fill this out. The more specific and concrete
+your answers — especially factual details like your licensed service area,
+credentials, and current online presence — the faster and more accurate your
+new website's foundation will be. If you don't know an answer yet, write
+"not sure" rather than guessing; we'll follow up on it rather than assume.
 
-**Business Objectives:**
-- Primary goal for this engagement:
-- Quantified success metrics (if known):
+---
 
-**Current Digital Presence:**
-- Current website URL (if any):
-- Analytics access available (GA4/Search Console)?
-- Known pain points with current site:
+## Section 1 — About Your Business
 
-**Team & Stakeholders:**
-- Marketing lead:
-- Compliance/standards contact (if applicable):
-- Practitioners/staff available for interview:
-- Decision Authority for approvals:
+1. Business/company name **(Required)** — [Short text]
+2. What industry or type of business is this? **(Required)** — [Short text]
+   *(e.g., mortgage lending, real estate brokerage, law firm, medical practice,
+   home services, financial advisory, SaaS, real estate investing/cash home
+   buying, real estate development — if none of these fit, just describe it)*
+3. In one or two sentences, what does your business actually do for a
+   customer? **(Required)** — [Paragraph]
+4. What's your business model? — [Multiple choice: Direct-to-consumer service
+   / B2B service / Product sales / Referral or brokerage / Investment or
+   acquisition / Other (describe)]
+5. What specific offerings, products, programs, or service lines should the
+   site cover? **(Required)** — [Paragraph]
+6. Do you have a niche specialization or focus that sets you apart within
+   your industry? — [Paragraph]
 
-**Compliance/Standards Notes:**
-- Known advertising or professional-conduct restrictions:
-- Jurisdiction-specific disclosure requirements known to client:
+## Section 2 — Service Area & Licensing (the facts we'll research around)
 
-**Competitors (client-nominated):**
-1.
-2.
-3.
+*This section matters more than it might look — everything in Section 6
+(competitor and market research) gets built around exactly what you write
+here, so please be specific rather than general.*
+
+7. What is your **actual, physical business address** (or the address your
+   license/registration is tied to, if different from where you work day to
+   day)? **(Required)** — [Short text]
+8. What cities, counties, states, or regions do you actually serve?
+   **(Required)** — [Paragraph] *(List every one — don't assume "greater
+   [metro area]" communicates what you mean. If you serve some areas for one
+   service and a wider area for another — e.g., local for one product line,
+   nationwide for another — say which is which.)*
+9. Are there any nearby areas people might assume you serve that you
+   **do not** actually serve? — [Paragraph] *(This prevents us from
+   accidentally researching or building content for a market you don't
+   actually cover.)*
+10. What professional licenses, registrations, or certifications does your
+    business or its principals hold? **(Required)** — [Paragraph] *(Include
+    license numbers and issuing body/state if you have them handy — e.g., a
+    real estate license number and state, an NMLS ID, a bar number, a medical
+    board registration. If you're not sure of the exact number right now,
+    say "will provide" rather than guessing.)*
+11. Is your business a DBA, subsidiary, or otherwise operating under a
+    different legal entity name than the brand name customers see? —
+    [Short text] *(If yes, name both.)*
+
+## Section 3 — Goals for This Website
+
+12. Is this a brand-new website, a redesign of an existing site, or a full
+    rebuild/replatform? **(Required)** — [Multiple choice]
+13. What's the single most important outcome you want this website to
+    produce? **(Required)** — [Paragraph] *(e.g., more qualified phone
+    calls, more form submissions, more listing appointments, more investor
+    referrals — be specific about the action, not just "more traffic.")*
+14. Do you have any target numbers in mind (e.g., leads per month), or is
+    this the first time you'll have a real baseline to measure against? —
+    [Paragraph]
+15. Is there a deadline or timing consideration we should know about
+    (a launch event, a licensing date, a seasonal push)? — [Short text]
+
+## Section 4 — Current Digital Presence
+
+16. Do you currently have a website? — [Multiple choice: Yes / No]
+17. If yes, what's the URL? — [Short text]
+18. If yes, do you have (or can you get us) access to Google Analytics
+    and/or Google Search Console for the current site? — [Multiple choice:
+    Yes, I have access / Yes, but I'll need to find/reset it / No / Not
+    applicable]
+19. What do you like about your current site, if anything? — [Paragraph]
+20. What frustrates you about your current site, or what's it missing? —
+    [Paragraph]
+
+## Section 5 — Brand & Design
+
+21. Do you have existing brand guidelines, a logo file, or a color
+    palette we should use? — [Multiple choice: Yes, I'll upload/send them /
+    I have a logo but no formal guidelines / No, we're starting fresh]
+22. Logo and brand asset upload (if available) — [File upload]
+23. Are there any websites — in your industry or outside it — whose design
+    or feel you like? Link them if you can. — [Paragraph]
+24. Are there any websites whose design you specifically **don't** want to
+    resemble, or any style/tone you want to avoid? — [Paragraph]
+25. In a few words, how do you want your site to feel to a visitor? —
+    [Short text] *(e.g., "premium and calm," "friendly and approachable,"
+    "no-nonsense and fast")*
+
+## Section 6 — Competitors
+
+26. Name at least 2-3 businesses you consider your direct competitors —
+    ideally ones you actually compete against for the same customers, not
+    just the biggest national names in your industry. **(Required)** —
+    [Paragraph, one per line, with a URL if you know it]
+27. Is there anything specific you know a competitor does well (or poorly)
+    that we should know about? — [Paragraph]
+
+## Section 7 — Team & Decision-Making
+
+28. Who is the main point of contact for this project? **(Required)** —
+    [Short text] + email/phone
+29. Who has final sign-off authority on the site's strategy and design? —
+    [Short text] *(If more than one person, or if a compliance/licensing
+    officer holds separate mandatory sign-off on regulated content
+    independent of the business-strategy decision-maker, name both roles
+    separately — this is common and expected in regulated industries.)*
+30. Is there a compliance officer, broker of record, attorney, or other
+    professional-standards contact who needs to review site content before
+    it's published? — [Short text] *(If yes, name and contact info.)*
+31. Are there other staff or practitioners (e.g., agents, loan officers,
+    physicians) who should be featured on the site or interviewed for
+    content? — [Paragraph]
+
+## Section 8 — Compliance & Advertising Notes
+
+32. Are you aware of any advertising rules, professional-conduct
+    restrictions, or required disclosures that apply to your business? —
+    [Paragraph] *(You don't need to know the exact legal language — just
+    flag anything you're aware of, like "we can't guarantee outcomes" or
+    "we have to display our license number.")*
+33. Is there any claim, statistic, or statement you've been told NOT to use
+    in your marketing, or that a past marketer got wrong? — [Paragraph]
+
+## Section 9 — Technology
+
+*You don't need to know anything technical to answer this section — just
+tell us what you already have, if anything.*
+
+34. Do you have an existing hosting provider for your site? — [Multiple
+    choice: Yes (please name it) / No / Not sure]
+35. Do you already own a domain name, or does one need to be
+    purchased/transferred? — [Short text]
+36. Do you use any existing business software you'd want the new site to
+    connect to (a CRM, a scheduling tool, an application/intake system, an
+    IDX/MLS feed, etc.)? — [Paragraph]
+
+*A note on technology, so this section is easy to answer: unless you have a
+specific reason to need something different, we build on our standard
+technology stack (WordPress, GeneratePress, GenerateBlocks, and the
+supporting tools that go with them) — it's what we know best, it keeps your
+costs predictable, and it's proven across every site we've built. If you
+have an existing hosting provider or software you need to keep, that's
+completely fine — just tell us above and we'll work with it. If you'd
+prefer a different platform entirely (e.g., a page builder other than ours,
+a different CMS) for a specific reason, let us know in Section 10 below —
+that's a real option, it's just treated as a custom request with its own
+scope and fee rather than our default included approach.*
+
+## Section 10 — Anything Else
+
+37. Is there anything else about your business, your customers, or this
+    project that would help us understand what you need? — [Paragraph]
+38. Do you have a specific request for a non-standard technology choice
+    (see the note above)? If so, what and why? — [Paragraph]
 ```
 
-### 16.2 Project Charter Template
+### 16.3 Perplexity Deep Research Brief — Prompting Framework
+
+**Purpose.** This is the bridge between the completed Intake Worksheet (Sec. 16.2) and Stage Gate 1 (Discovery & Market Research). Rather than starting Discovery from a blank page, a structured research pass — run in Perplexity or an equivalent deep-research tool — produces a first-draft market/competitor/architecture brief the engagement team reviews, corrects, and formally carries into Stage Gate 1 as a cited input, not as an assumed-correct starting point.
+
+**Where this sits in the sequence, and why.** Generate this prompt only *after* Industry Module selection (New Engagement skill, Step 2) — not before, and not instead of it. The prompt below is deliberately built to inject the *selected* Module's Competitive Landscape Notes and SEO & Keyword Strategy sections as context, so the research pass is scoped by what the framework already knows about this vertical rather than starting from zero. Running this before Module selection produces a generic, unscoped brief; running it after produces one that already speaks the Module's language.
+
+**Why this exists as a formal template.** A real engagement's Perplexity-generated brief both omitted the client's own office county from the recommended service area and included a neighboring county the client had never confirmed — both traceable to the prompt not being explicitly anchored to the Intake Worksheet's confirmed facts. The template below fixes this by structurally requiring every fact in the Worksheet's Section 2 (Service Area & Licensing) to be treated as fixed, non-negotiable input, not a hypothesis for the research tool to revise.
+
+**The Prompt:**
+
+```
+You are producing a structured research brief to hand to a website build
+team. This brief will be used as a factual, architectural, and competitive
+starting point — treat accuracy and sourcing as more important than
+breadth or persuasive writing.
+
+## Fixed facts — do not contradict or omit these
+[Paste verbatim from the completed Intake Worksheet, Section 2:]
+- Business name: [from Worksheet Q1]
+- Industry/vertical: [from Worksheet Q2] — operating under the
+  [Industry Module name] methodology
+- Physical/licensed business address: [from Worksheet Q7]
+- Confirmed service area (cities/counties/states): [from Worksheet Q8]
+- Explicitly NOT served (if any): [from Worksheet Q9]
+- Licenses/registrations held: [from Worksheet Q10]
+- Legal entity/DBA structure: [from Worksheet Q11]
+
+Every one of the above facts is confirmed by the client directly. Do not
+propose expanding, narrowing, or substituting the service area, and do not
+omit the confirmed office location from any geographic recommendation, even
+if your own research suggests a neighboring or larger market might be
+attractive — if you believe there's a genuine opportunity beyond what's
+listed above, note it separately as a suggestion for the team to confirm
+with the client, clearly separated from the confirmed facts.
+
+## Business context
+[Paste Worksheet Q3, Q5, Q6, Q12-15]
+
+## Named competitors (client-supplied, treat as mandatory research targets)
+[Paste Worksheet Q26-27]
+
+## Active Industry Module context
+[Paste the selected Industry Module's Competitive Landscape Notes and SEO &
+Keyword Strategy sections in full, from the WEF Industry-Modules file]
+
+## What to produce
+
+1. **Objective** — one paragraph restating the business, its confirmed
+   service area, and the target outcome (from the Business Objectives
+   section above), in your own words, to confirm your own understanding
+   before proceeding.
+2. **Competitor references** — research each named competitor above, plus
+   up to 4 additional real, currently-operating competitors serving the
+   *same confirmed geographic area* (not the industry nationally). For each,
+   give: URL, what specifically to study (site architecture, content depth,
+   local SEO structure, conversion flow, design quality), and cite your
+   source for every factual claim about them.
+3. **Required site architecture** — propose a pillar-and-cluster sitemap:
+   core pages, topic/problem hub pages (informed by the Industry Module's
+   typical page types above), location pages for the *confirmed* service
+   area only (Section 2's fixed facts), and supporting guide/article topics.
+   Every location page proposed must map to a city or county explicitly
+   listed in the confirmed service area — flag, don't silently include, any
+   location you believe should be added beyond what was confirmed.
+4. **SEO content priorities** — a keyword/topic priority model specific to
+   this business's actual offerings and confirmed geography, citing the
+   reasoning (search intent categories, not just a volume guess).
+5. **On-page and content-model guidance** — a reusable outline for each
+   major page type identified in #3, and on-page SEO requirements (title/
+   meta/schema guidance) consistent with the Industry Module's SEO & Keyword
+   Strategy section above.
+6. **Trust and conversion requirements** — informed directly by the
+   Industry Module's Trust Signal Requirements section above, not generic
+   "add testimonials" advice.
+7. **Explicit "do not do this" list** — claim risks, design anti-patterns,
+   and content mistakes specific to this vertical and this competitive set.
+
+## Sourcing discipline
+Cite a source for every competitor fact, market statistic, or claim about
+the industry. If you cannot verify something, say so explicitly rather than
+presenting an estimate as fact — mark it "[unverified estimate]." Do not
+fabricate statistics, review counts, or competitor claims.
+
+## Output format
+Return this as a single, well-structured Markdown document, ready to save
+as a `.md` file and read directly by the build team — headings, tables, and
+bullet lists, not prose paragraphs describing tabular data.
+```
+
+**After the research runs.** The returned `.md` file is saved into the engagement's `01-research/` folder as a client-supplied research input — *not* accepted as Stage Gate 1's Discovery Report itself. Per Governance's no-fabrication discipline and the Module Injection Point convention, the Research Consultant (human or AI) reconciles every geographic and factual claim in the returned brief against the Intake Worksheet's Section 2 answers before Stage Gate 1 proceeds — any location, competitor, or claim present in the brief but absent from (or contradicting) the confirmed Worksheet facts is logged as an Open Question or a Decision Register entry requiring client confirmation, never silently carried forward into the Sitemap at Stage Gate 4.
+
+### 16.4 Project Charter Template
 
 *(See Governance, Section 3.2 for required contents; use the following structure)*
 

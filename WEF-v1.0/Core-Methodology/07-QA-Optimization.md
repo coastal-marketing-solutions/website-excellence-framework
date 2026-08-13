@@ -98,6 +98,7 @@ Compliance/Standards Liaison (**mandatory final sign-off wherever the active Ind
 - [ ] Compliance/Standards Liaison has completed final site-wide Compliance Sign-Off Record against the active Industry Module's full Regulatory & Compliance Landscape
 - [ ] All P0/P1 Issue Log items remediated and re-tested; any open P2 items documented with client-accepted risk
 - [ ] Analytics/tag/plugin-integration connected accounts verified as correct **for this specific client site**, not assumed correct because the plugin/tool is configured correctly in general — mandatory wherever the operator manages more than one active client site through any shared tool connection
+- [ ] Analytics/marketing/remarketing tags verified as **consent-gated, not merely firing correctly** (Governance, Sec. 15.4, RETRO-008) — load the site pre-consent and directly confirm no tracking cookies are set and no analytics network request fires; then confirm both the decline path (tags stay off) and the accept path (tags fire, cookies appear) work correctly. "Verified firing" alone is not sufficient QA sign-off for any tag capable of setting a tracking cookie.
 - [ ] A representative sample of pages actually Published (not just staged in Draft) and re-tested post-Publish before the full go-live moment, specifically to surface Publish-only defects (see Sec. 14 addendum) while there's still time to fix them
 
 ## 12. Prompt(s)
@@ -142,6 +143,7 @@ See each Industry Module's Regulatory & Compliance Landscape for the specific id
 - Testing only on desktop, missing mobile-specific defects (a majority of research/discovery traffic across most of these verticals is mobile).
 - Allowing "it looks done" to substitute for the structured test plan — undocumented QA is not defensible if a defect surfaces post-launch.
 - Running compliance QA against a generic checklist instead of the active Industry Module's actual, current Regulatory & Compliance Landscape.
+- Signing off analytics/tag QA as soon as the tag is confirmed to fire, without separately confirming it only fires with consent — a real-world engagement ran unconsented tracking in production for days because "firing correctly" was treated as equivalent to "compliant," when it is not (Governance, Sec. 15.4, RETRO-008).
 
 ## 15. Best Practices
 
