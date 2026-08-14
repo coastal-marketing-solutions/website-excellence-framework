@@ -192,6 +192,12 @@ The AI Orchestrator performs all three checks before handing output to the Stage
 - Skipping the Module Consistency Check on the assumption that "the prompt named the right Module, so the output must be correct" — models can and do default to more common patterns even when correctly instructed.
 - Treating AI-flagged compliance language as already resolved rather than as a flag for actual human compliance review.
 
+### 5.4 Verification Packet Standard
+
+Any AI task that changes files, CMS records, configuration, analytics, or other external state must return a compact **Verification Packet** with the deliverable. At minimum it states: target environment/property; files, records, or capabilities changed; source/commit or input artifact; exact validation performed; result of a fresh independent read-back; reviewer/status; unresolved risks or decisions; and rollback or recovery reference. A model must not report “complete,” “published,” “synced,” or “verified” based only on an editor view, a tool success message, a stale in-memory page, or its own generated output.
+
+For research or copy-only output, the packet instead identifies the sources used, unsupported claims removed or flagged, Module/Charter constraints checked, and the human review still required. This keeps speed-oriented AI handoffs auditable without requiring a single vendor, CMS, browser, or automation layer.
+
 ---
 
 *End of AI Workflows. Continue to Core Methodology — Reusable Templates.*

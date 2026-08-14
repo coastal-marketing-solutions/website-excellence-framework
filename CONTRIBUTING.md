@@ -44,6 +44,10 @@ Please keep PRs scoped to one Module or one Core Methodology file at a time — 
 
 **Do not restructure the fixed templates** (the 19-part Stage Gate template in the Core, or the 12-part Module template) without opening an Issue first — these structures are what let every Module and every Stage Gate stay mutually consistent, and a structural change has ripple effects across the whole library.
 
+### Reconciling multiple engagements or AI contexts
+
+When several engagements or AI contexts independently propose WEF changes, designate one canonical integrator and have every other context submit a read-only reconciliation packet. Do not allow multiple contexts to edit version history, revision logs, or the same canon files concurrently. Use [`assets/WEF-Multi-Context-Reconciliation-Protocol.md`](assets/WEF-Multi-Context-Reconciliation-Protocol.md) for the contributor prompt, conflict classifications, decision rules, and final integration checklist.
+
 ## What not to submit
 
 - Legal, tax, or regulatory conclusions stated as fact without a citable source. Flag uncertainty explicitly (this framework's own convention, seen throughout, is `[COMPLIANCE REVIEW NEEDED]` or `[unverified estimate]`) rather than asserting a claim confidently.

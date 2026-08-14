@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC%204.0-2A6F97.svg?style=flat-square" alt="License: CC BY-NC 4.0"></a>
-  <img src="https://img.shields.io/badge/version-1.0-D4A254.svg?style=flat-square" alt="Version 1.0">
+  <img src="https://img.shields.io/badge/version-1.4%20working%20draft-D4A254.svg?style=flat-square" alt="Version 1.4 working draft">
   <img src="https://img.shields.io/badge/status-public%20draft-D4A254.svg?style=flat-square" alt="Status: public draft">
   <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/contributions-welcome-2A6F97.svg?style=flat-square" alt="Contributions welcome"></a>
 </p>

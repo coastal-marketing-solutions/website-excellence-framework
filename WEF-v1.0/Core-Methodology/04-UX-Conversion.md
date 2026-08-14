@@ -32,10 +32,11 @@ Sitemap & Navigation Model (Stage Gate 4), Keyword-to-Page Map (Stage Gate 5), C
 - Calculator & Interactive Tool Specifications
 - Page-Level UX Pattern Library (wireframe-level, pre-visual-design)
 - Trust Signal Placement Plan
+- Conversion Measurement & Operational Handoff Contract (events, consent, destination, owner, response expectation, and failure fallback)
 
 ## 5. Required Documents
 
-`/06-ux-conversion/conversion-flows-v1.md`, `/06-ux-conversion/calculator-specs-v1.md`, `/06-ux-conversion/ux-pattern-library-v1.md`, `/06-ux-conversion/trust-signal-plan-v1.md`
+`/06-ux-conversion/conversion-flows-v1.md`, `/06-ux-conversion/calculator-specs-v1.md`, `/06-ux-conversion/ux-pattern-library-v1.md`, `/06-ux-conversion/trust-signal-plan-v1.md`, `/06-ux-conversion/conversion-measurement-contract-v1.md`
 
 ## 6. Responsible Roles
 
@@ -80,10 +81,14 @@ Developer (feasibility check on calculator logic and any practice-management/CRM
 [5] Compliance/Standards review of calculator outputs and flow copy
         │
         ▼
-[6] Client review and sign-off on conversion flows
+[6] Define measurement, consent, routing, response expectation, and
+    failure fallback for each meaningful action
         │
         ▼
-[7] Exit Criteria → Design discipline scheduled
+[7] Client review and sign-off on conversion flows
+        │
+        ▼
+[8] Exit Criteria → Design discipline scheduled
 ```
 
 ## 11. Checklist
@@ -93,6 +98,8 @@ Developer (feasibility check on calculator logic and any practice-management/CRM
 - [ ] Every calculator/tool has a fully specified input/output/disclaimer set, reviewed by the Compliance/Standards Liaison
 - [ ] UX Pattern Library covers, at minimum: hero, primary CTA, lead capture form, FAQ accordion, practitioner/staff bio card, trust signal bar, comparison/data table
 - [ ] Trust Signal Placement Plan specifies exact template locations, not just "include trust signals somewhere," and matches the Module's Trust Signal Requirements
+- [ ] Every primary conversion action has a named event, trigger, destination/owner, consent category, no-PII parameter rule, user-facing success/failure state, and operational response expectation
+- [ ] Lead-routing, booking, notification, and fallback paths have been tested or explicitly marked as a build dependency; the site never promises a response time the operating team has not confirmed
 - [ ] Client has formally signed off on conversion flows
 
 ## 12. Prompt(s)
@@ -148,12 +155,14 @@ See each Industry Module for fully worked, vertical-specific conversion flows an
 - Designing calculators/tools that function as disguised lead-gen forms with no genuine value — audiences detect this and it damages trust.
 - Skipping compliance review of calculator/tool disclaimer placement, creating rework at QA & Optimization.
 - Ignoring the active Industry Module's known high-converting tool pattern and defaulting to a generic contact form when the vertical supports something far more effective.
+- Treating a successful form submission as the business outcome without verifying that the lead reaches the right owner, that the user sees a clear next step, and that a failure path exists when email, CRM, scheduling, or telephony is unavailable.
 
 ## 15. Best Practices
 
 - Give genuine value (a real estimate/result) before asking for contact information wherever compliance and business model allow it — this is consistently one of the highest-leverage trust and conversion levers available, across every industry this framework serves.
 - Reuse a small number of well-designed UX patterns across many pages rather than one-off page designs — this both improves usability consistency and reduces Development-phase build complexity.
 - Design save-and-resume for any multi-step flow; high-consideration decisions (a loan, a legal engagement, a medical relationship, a major purchase) are rarely completed in a single session.
+- Treat the Conversion Measurement & Operational Handoff Contract as part of the UX, not a tag-manager afterthought. The visitor's confirmation state, response expectation, privacy/consent choice, and fallback contact path are part of the experience.
 
 ## 16. Review Process
 
@@ -165,13 +174,13 @@ Primary Eight-Dimension focus: **Conversion**, **Accessibility** (flow must be f
 
 ## 18. Exit Criteria
 
-- [ ] All four Required Documents approved
+- [ ] All five Required Documents approved
 - [ ] Compliance/Standards Liaison has signed off on calculator/tool logic and disclaimer placement
 - [ ] Client has formally approved Primary Conversion Flow Diagrams
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: all four Required Documents saved v1.0
+- KB: all five Required Documents saved v1.0
 - Blueprint: "UX Flows" section populated with flow references and pattern library
 - Decision Register: log client-approved conversion flow decisions as `DEC-SG6-00x` (rated Costly to Reverse — changes after Design begins trigger a Change Request)
 

@@ -34,6 +34,29 @@ Every Stage Gate in the Core Methodology follows the same 19-part structure, def
 
 Each Stage Gate additionally names any **Future Enhancements** — where its output is revisited later in the engagement — inline in its Workflow or Exit Criteria discussion rather than as a rigid 20th section, since this varies more naturally by gate.
 
+### Research Evidence, Provenance, and Freshness Standard
+
+Research is reusable only when a later consultant can tell **what was observed, when it was observed, and how much confidence to place in it**. For every material external fact, statistic, competitor observation, regulatory reference, market statement, or recommendation, preserve an Evidence & Source Register entry with:
+
+- source title, publisher/owner, URL or file path, and source class (`authoritative/regulatory`, `client/first-party`, `neutral secondary`, `competitor`, or `inference`);
+- publication date, access/extraction date, geography, population or sample definition, metric definition, and any stated limitations;
+- the exact claim or observation used, whether it is a quotation, paraphrase, calculation, or inference, and the deliverables that consume it;
+- confidence/status (`verified`, `client-confirmed`, `needs human verification`, `stale`, or `superseded`), a review/expiry date for time-sensitive material, and the responsible owner; and
+- licensing or permitted-use notes for screenshots, datasets, photographs, maps, or third-party copy.
+
+Use the strongest practical source for the decision. Prefer a regulator, official registry, professional association, client-owned record, or neutral public dataset for facts; use competitors for observable architecture and UX patterns, not as proof of the client's claims. Date market and platform information. If a source blocks automated access, returns an error, or exposes an ambiguous definition, do not silently substitute an estimate: mark the item as unverified, seek a second method or source, and record the limitation.
+
+The Evidence & Source Register is a cross-gate working record. It does not replace a Stage Gate deliverable, a compliance sign-off, or client fact confirmation. A source that was adequate at discovery can become stale before launch; later gates must re-check any fact that appears in public copy, schema, pricing, licensing, availability, or comparison content.
+
+Assign every public artifact containing decision-relevant facts a freshness class in the Content Freshness Register:
+
+- **Evergreen:** principles unlikely to change; review on material business, legal, or product change.
+- **Periodic:** statistics, rankings, staff, pricing, inventory, or service details; review on a fixed cadence.
+- **Event-bound:** grants, programs, promotions, application windows, events, temporary rules, or campaigns; review at the named event/date and expire or qualify automatically when it passes.
+- **Volatile:** rates, availability, emergency guidance, regulatory status, live inventory, or other facts capable of changing rapidly; show an “as of” date where useful and assign a short review interval or authoritative live source.
+
+Each entry names the factual dependency, source, owner, last-verified date, next review or expiry trigger, and the disposition if it is no longer current: refresh, qualify, archive, redirect, consolidate, or noindex. A page does not become evergreen merely because its URL has no year in it.
+
 ---
 
 # STAGE GATE 1 — DISCOVERY & MARKET RESEARCH
@@ -61,11 +84,12 @@ Establish a factual, evidence-based understanding of the client organization's b
 - Discovery Report
 - Client-Specific Persona Set (adapted from the Industry Module's Persona Library, minimum 2, typically 3–5)
 - Current-State Digital Audit (if a prior website exists)
+- Digital Estate & Access Map (domains, DNS, hosting, CMS, repositories/deployments, environments, backups, analytics/search properties, forms/CRM, ownership, and access status; never secret values)
 - Compliance/Standards Constraint Log (seed version, expanded in later gates)
 
 ## 5. Required Documents
 
-`/01-research/discovery-report-v1.md`, `/01-research/client-personas-v1.md`, `/01-research/current-state-audit-v1.md`, `/01-research/compliance-constraints-v1.md`
+`/01-research/discovery-report-v1.md`, `/01-research/client-personas-v1.md`, `/01-research/current-state-audit-v1.md`, `/01-research/digital-estate-map-v1.md`, `/01-research/compliance-constraints-v1.md`
 
 ## 6. Responsible Roles
 
@@ -121,8 +145,13 @@ Engagement Lead approves the Discovery Report as sufficient to proceed; no clien
 - [ ] Active Industry Module's Persona Library and Regulatory Landscape loaded before interviews began
 - [ ] Minimum 3 stakeholder interviews completed (marketing lead, at least one practitioner/frontline staff member, compliance contact if applicable)
 - [ ] Current-state audit completed if a legacy site exists (traffic, rankings, CWV, conversion funnel)
+- [ ] Digital Estate & Access Map identifies the registrar, authoritative DNS, hosting account and document root, production/staging URLs, custom domains and their external origins, CMS, source repository and deploy target, backup schedule and restore-test status, analytics/search properties, form/CRM destinations, named business owner, operational custodian, and access status for each system
+- [ ] No passwords, API secrets, recovery codes, private keys, or full credentials copied into the Knowledge Base; the map points to the approved credential manager and records only ownership/access status
+- [ ] Legacy-site preservation plan records the authoritative URL inventory, search/analytics baseline, content/media export, redirect requirements, and shutdown authority before migration work begins
 - [ ] Client-specific personas drafted with named decision drivers and objections, not generic demographics only, and explicitly reconciled against the Module's starting archetypes
 - [ ] Client's regulatory/licensing footprint confirmed against an authoritative source (not assumed from the client's own marketing material) and checked against the Module's Regulatory Landscape
+- [ ] Material facts and external research are recorded in an Evidence & Source Register with source class, access date, definitions/limitations, confidence, and review date where time-sensitive
+- [ ] Public artifacts with time-sensitive claims are entered in the Content Freshness Register with a class, owner, last-verified date, next review/expiry trigger, and stale-content disposition
 - [ ] Compliance/Standards Constraint Log seeded
 - [ ] Discovery Report reviewed by Engagement Lead
 
@@ -172,6 +201,25 @@ Digital Audit covering:
 
 Flag any metric you cannot verify from the provided exports rather than
 estimating it.
+```
+
+**Prompt 1.3 — Digital Estate & Access Map**
+
+```text
+Create a Digital Estate & Access Map for [Client Name]. Inventory, without
+recording secret values: domain registrar and renewal owner; authoritative
+DNS and current records; hosting account, environment, document root, and
+backup/restore status; CMS and administrative owner; source repository,
+branch, deployment integration, and exact deploy target; production and
+staging URLs; analytics, search, tag-management, consent, form, CRM, email,
+CDN/security, and translation systems; and each system's business owner,
+operational custodian, access status, and recovery path.
+
+Mark every item Verified / Client-reported / Unknown. Flag split ownership,
+personal accounts, cross-client connected properties, unknown billing or
+renewal authority, absent tested backups, and any system where the live
+state has no documented source of truth. Never include a password, token,
+private key, recovery code, or other secret in the output.
 ```
 
 ## 13. Examples
@@ -296,6 +344,7 @@ Engagement Lead approves the report; competitor list itself should be confirmed 
 - [ ] Every competitor scored on the full rubric, not a subset
 - [ ] At least 3 white-space opportunities identified with supporting evidence
 - [ ] Screenshots or captured references archived in Knowledge Base for each competitor (design/UX evidence, not just written description)
+- [ ] Competitor observations are separated from claims about the client, and every material observation has a URL/file reference and capture/access date
 
 ## 12. Prompt(s)
 
@@ -352,6 +401,7 @@ See each Industry Module's Competitive Landscape Notes for vertical-specific wor
 
 - Include at least one competitor who is clearly winning on SEO (organic visibility) even if their design is dated — the goal is pattern extraction, not aesthetic imitation.
 - Capture competitor conversion flows (calculators, forms, booking tools) step-by-step (screenshot each step) — friction points are usually invisible from the homepage alone.
+- Preserve the source and access date for every market or platform fact, and record whether a source is authoritative, first-party, neutral secondary, competitor, or inference. This prevents a dated third-party metric from becoming an undated site claim.
 
 ## 16. Review Process
 

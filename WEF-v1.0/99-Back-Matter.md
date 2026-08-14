@@ -30,6 +30,8 @@
 
 **AI Agent Services** — The optional, add-on Core Methodology chapter (file 10) covering Chat AI Agent-as-a-Service (Stage Gate 12A, delivered on the website) and Voice AI Agent-as-a-Service (Stage Gate 12B, delivered over telephony, outside the website Stage Gate spine). Only active when named as a Service Add-On Module in the Project Charter (Governance, Sec. 1.7).
 
+**AI Verification Packet** — The compact evidence returned with an AI-assisted change: target, source/input, changed state, validation, fresh independent read-back, reviewer/status, unresolved risks, and rollback/recovery reference (AI Workflows, Sec. 5.4; Reusable Templates, Sec. 12.1).
+
 **Core Methodology** — The industry-agnostic portion of WEF: Governance, Research, SEO & Architecture, UX & Conversion, Design, Development, QA & Optimization, AI Workflows, Reusable Templates, and (optionally, per engagement) AI Agent Services. The first eight apply unchanged to every engagement regardless of vertical; AI Agent Services activates only when named as a Service Add-On Module.
 
 **Design Constraints Package** — The structured, tool-agnostic constraint set (platform target, buildability rules, machine-readable design tokens, accessibility/compliance visual constraints, and the Do-Not-Break List) produced at Stage Gate 7 and required as loaded context for every AI design tool and AI coding agent that touches the site's design or code, at initial build and for the life of the site (Design, Appendix; Governance, Sec. 15.4 RETRO-005).
@@ -47,6 +49,28 @@
 **Entity SEO** — An SEO approach focused on establishing unambiguous, machine-readable identity for an organization, its people, and its offerings — the foundation of both classic knowledge-panel visibility and AI-mediated search citation.
 
 **Exit Criteria** — The pass/fail conditions that must be met before an engagement can move from one Stage Gate to the next.
+
+**Digital Estate & Access Map** — The secret-free Discovery inventory of domains, DNS, hosting, environments, CMS, repositories/deployments, backups, measurement systems, form/CRM destinations, ownership, access status, and recovery paths (Research, SG1; Reusable Templates, Sec. 16.5).
+
+**Evidence & Source Register** — The cross-gate record preserving each material claim or observation's source class, provenance, date, definition, limitation, confidence, reuse, freshness, and rights status (Research, Evidence Standard; Reusable Templates, Sec. 7.8).
+
+**Capability Ownership Matrix** — The one-writer governance record assigning exactly one production owner, readers, fallback behavior, verification method, data location, and migration path for each generated website capability (Governance, Sec. 13.4.4; Reusable Templates, Sec. 15.3).
+
+**Access & Environment Matrix** — The secret-free record of who owns and operates each system, which environment/property is targeted, whether access was verified, how recovery/export works, and who revokes temporary access (Governance, Sec. 13.4.5; Reusable Templates, Sec. 15.5).
+
+**Content Release & Rollback Record** — The release evidence for a CMS/API/CLI/import change: source artifact, stable identifiers, field map, scope, validation, destination read-back, cache/indexation impact, and bounded recovery path (Development, SG10.5; Reusable Templates, Sec. 15.4).
+
+**Content Freshness Register** — The lifecycle record classifying decision-relevant public content as evergreen, periodic, event-bound, or volatile and assigning its evidence, owner, last verification, next review/expiry trigger, and stale-content disposition (Research, Evidence Standard; Reusable Templates, Sec. 7.9).
+
+**Post-Release Indexing Verification Record** — The sampled release record connecting sitemap membership, final HTTP status, rendered canonical, robots directive, search-engine inspection result, and follow-up across each materially new template, hierarchy, locale, and risk class. Submission or inspection is diagnostic and does not guarantee indexing or ranking (QA & Optimization, SG11.5; Reusable Templates, Sec. 7.10).
+
+**Conversion Measurement & Operational Handoff Contract** — The UX record connecting a meaningful visitor action to its event definition, consent category, no-PII rule, destination/owner, user-facing success/failure state, response expectation, and fallback path (UX & Conversion, SG6; Reusable Templates, Sec. 22.1).
+
+**Localization & Language QA Matrix** — The per-locale verification record for human review, metadata, canonical/hreflang, consent/legal copy, forms, imagery, indexation, and last-verified status (Reusable Templates, Sec. 15.6).
+
+**Third-Party Custom Domain & Access-Control Record** — The request-path, DNS/TLS cutover, identity-enforcement, fallback, callback/cookie/canonical, and alternate-route bypass evidence for an externally hosted application connected to a client hostname (Governance, Sec. 13.4.6; Reusable Templates, Sec. 15.7).
+
+**Search Visibility Operations Plan** — The living SG5/SG11.5 plan connecting search and analytics baselines, query-page opportunities, meaningful events, rank tracking, link-audit triage, change annotations, and review cadence. Plugin scores are diagnostic inputs, not its KPIs.
 
 **Future-Proofing Review** — The Stage Gate 7.5 activity evaluating whether the approved design system will scale cleanly to a defined future growth scenario, informed by the active Industry Module's typical growth pattern.
 
@@ -84,6 +108,8 @@
 
 **Trust Signal Requirements** — The Industry Module section specifying what a vertical's audience needs to see to trust a provider, and where it typically must appear.
 
+**Video-to-Website Deployment Brief** — The optional governed content brief connecting a video to its mapped website page/query, evidence and freshness, claims clearance, locale review, captions/transcript, CTA, embed/supporting content, internal links, metadata/schema, approved revision, ownership, and retirement trigger (Reusable Templates, Sec. 8.3).
+
 **White Space Opportunity Map** — The Stage Gate 2 output identifying audience needs no competitor currently serves well.
 
 ---
@@ -96,6 +122,12 @@ This manual's methodology draws on, and assumes practitioner familiarity with, t
 - Web Content Accessibility Guidelines (WCAG) 2.1, Level AA
 - Schema.org vocabulary and structured data guidelines
 - Google Search Central documentation (Core Web Vitals, structured data, indexing)
+- [Google Search SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide) (people-first usefulness, logical architecture, canonicalization, internal links, titles/descriptions, and measurement expectations)
+- [Google Search spam policies](https://developers.google.com/search/docs/essentials/spam-policies) (doorway abuse and scaled-content abuse constraints relevant to locality and keyword-variant page programs)
+- [Google Search guidance on page dates](https://developers.google.com/search/blog/2019/03/help-google-search-know-best-date-for) (visible published/modified dates, structured-data consistency, and no artificial freshness)
+- [Google Analytics guidance on avoiding PII](https://support.google.com/analytics/answer/6366371) (event, URL, custom-dimension, and campaign-parameter implementation controls)
+- [Cloudflare Access web-application guidance](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) and [custom-hostname Access guidance](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/secure-with-access/) (identity-aware proxy placement, public-hostname routing, and custom-hostname prerequisites/limitations)
+- [Rank Math PRO activation guidance](https://rankmath.com/kb/how-to-upgrade-to-rank-math-pro/) and [site connection guidance](https://rankmath.com/kb/how-to-connect-or-disconnect-rank-math/) (base/add-on activation, connected account, license selection, and per-site confirmation)
 - FTC advertising and substantiation guidance (general, cross-industry)
 
 **Regulatory Frameworks Referenced by Specific Industry Modules**
@@ -137,6 +169,7 @@ Consult the relevant Industry Module for the full citation list applicable to th
 
 - AI Agent Services chapter — Core Methodology file 10
 - AI Build Package — Development, SG10
+- AI Verification Packet — AI Workflows, Sec. 5.4; Reusable Templates, Sec. 12.1
 - AI Workflows chapter — Core Methodology file 08
 - Chat AI Agent-as-a-Service — AI Agent Services, SG12A
 - Design Constraints Package — Design, Appendix; Governance Sec. 15.4 (RETRO-005)
@@ -146,15 +179,20 @@ Consult the relevant Industry Module for the full citation list applicable to th
 - Blended-Module engagements — Governance, Sec. 1.5, 9.4
 - Blueprint, Master Website — Governance, Sec. 6
 - Change Request process — Governance, Sec. 13.2; Reusable Templates, Sec. 3
+- Capability Ownership Matrix — Governance, Sec. 13.4.4; Reusable Templates, Sec. 15.3
 - Compliance/Standards Constraint Log — Research, SG1 Sec. 4
 - Compliance/Standards Liaison role — Governance, Sec. 2.2
 - Component Library (registry) — `/Component-Library/`, file 00; Design, Sec. 9.5
 - Component Library Check (Design workflow step) — Design, Sec. 9.5, Sec. 10
 - Content & Code Access Tier — Governance, Sec. 13.4.1
 - Content-as-Files Sync Pipeline — Development, SG10.5-Sync
+- Content Freshness Register — Research, Evidence Standard; Reusable Templates, Sec. 7.9
+- Conversion Measurement & Operational Handoff Contract — UX & Conversion, SG6; Reusable Templates, Sec. 22.1
 - Default technology stack, portability of — Governance, Sec. 13.4.2
 - Core Web Vitals targets — SEO & Architecture, SG5 Sec. 11; Design, SG7.5 Sec. 10.2
 - Decision Register — Governance, Sec. 4
+- Digital Estate & Access Map — Research, SG1; Reusable Templates, Sec. 16.5
+- Evidence & Source Register — Research, Evidence Standard; Reusable Templates, Sec. 7.8
 - Default technology stack — Governance, Sec. 13.4
 - Design Tournament — Design, SG7.5 Sec. 10.1
 - Eight-Dimension Quality Standard — Governance, Sec. 12.2
@@ -175,14 +213,18 @@ Consult the relevant Industry Module for the full citation list applicable to th
 - Module Gap escalation — Governance, Sec. 9.5
 - New Module Development Process — Governance, Sec. 13.6
 - Positioning Statement — Research, SG3
+- Post-Release Indexing Verification Record — QA & Optimization, SG11.5; Reusable Templates, Sec. 7.10
 - Project Charter — Governance, Sec. 3
 - Risk Register — Governance, Sec. 14
 - Schema Markup Plan — SEO & Architecture, SG5 Sec. 13; Reusable Templates, Sec. 10
+- Search Visibility Operations Plan — SEO & Architecture, SG5 Sec. 10.1-10.3; QA & Optimization, SG11.5; Reusable Templates, Sec. 7.4-7.7
 - Service Add-On Module — Governance, Sec. 1.7
 - Sitemap — SEO & Architecture, SG4
 - Stage Gate template (19-part) — Research, Chapter Introduction
+- Third-Party Custom Domain & Access-Control Record — Governance, Sec. 13.4.6; Reusable Templates, Sec. 15.7
 - Topical Cluster Model — SEO & Architecture, SG5 Sec. 10
 - Voice AI Agent-as-a-Service — AI Agent Services, SG12B
+- Video-to-Website Deployment Brief — Reusable Templates, Sec. 8.3
 - Voice & Tone Guide — Development, SG9
 
 ---

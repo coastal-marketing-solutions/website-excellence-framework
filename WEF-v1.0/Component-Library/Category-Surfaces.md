@@ -39,12 +39,14 @@
 
 **Interface:**
 ```
-<LocationCard name="City or Area" region="State/County" image={optional} />
+<LocationCard name="City or Area" region="State/County" href="[canonical detail URL]" image={optional} />
 ```
+
+**Interaction Contract:** When the card is an entry point to a location detail page, the whole non-interactive card surface activates one semantic link to the approved canonical `href`. Provide visible hover and keyboard-focus states and a minimum 44×44 CSS-pixel target. Do not nest buttons, secondary links, or other interactive controls inside the enclosing link; if secondary actions are required, use a non-enclosing card structure with separately labeled controls. Verify keyboard traversal, single-column mobile behavior, variable location-name length, and the final destination after redirects.
 
 **Design Token Dependencies:** Extends Card (CL-SURF-001); typography tokens for the location name/region.
 
-**Platform Implementation Note(s) — GeneratePress/GenerateBlocks:** Build the coverage-area grid as a **Query Loop** (or platform-equivalent repeating-content mechanism), not hand-duplicated per-city markup — this directly satisfies the Scalability dimension and avoids the defect-propagation failure mode in Governance RETRO-004, especially important here since this is exactly the component type most likely to be duplicated many times (one per city/area).
+**Platform Implementation Note(s) — GeneratePress/GenerateBlocks:** Build the coverage-area grid as a **Query Loop** (or platform-equivalent repeating-content mechanism), not hand-duplicated per-city markup — this directly satisfies the Scalability dimension and avoids the defect-propagation failure mode in Governance RETRO-004, especially important here since this is exactly the component type most likely to be duplicated many times (one per city/area). Implement a whole-card link without invalid nested interactive markup; the exact wrapper technique may vary by block/plugin version, but the rendered DOM and keyboard behavior must satisfy the Interaction Contract.
 
 **Compliance Sensitivity:** Low, unless area-specific claims (e.g., licensing coverage) are implied — confirm against the Module's Regulatory & Compliance Landscape if the card asserts anything beyond "we serve this area."
 
@@ -52,7 +54,7 @@
 
 **Industry Module Fit:** High-value for any Module with a multi-location footprint (real estate, home services, medical/healthcare with multiple clinic locations, mortgage lending with multi-state/multi-county coverage).
 
-**Status:** Active. **Version:** v1.0.
+**Status:** Active. **Version:** v1.1.
 
 ---
 

@@ -489,10 +489,11 @@ AI Build Package, Build Manifest, Component-to-Pattern Mapping, Integration Requ
 - Server/Hosting Configuration Record
 - Plugin & Integration Configuration Record
 - Performance Configuration Record (LiteSpeed Cache, Cloudflare settings)
+- Content Release & Rollback Record (source artifacts, batch scope, verification, and recovery path)
 
 ## 5. Required Documents
 
-`/10.5-wp-implementation/server-config-record-v1.md`, `/10.5-wp-implementation/plugin-config-record-v1.md`, `/10.5-wp-implementation/performance-config-record-v1.md`, staging site URL logged in Project Memory
+`/10.5-wp-implementation/server-config-record-v1.md`, `/10.5-wp-implementation/plugin-config-record-v1.md`, `/10.5-wp-implementation/performance-config-record-v1.md`, `/10.5-wp-implementation/content-release-record-v1.md`, staging site URL logged in Project Memory
 
 ## 6. Responsible Roles
 
@@ -543,21 +544,33 @@ None — this gate is purely platform-implementation and does not vary by Indust
     Manager, Microsoft Clarity per Integration Requirements Spec
         │
         ▼
-[9] Internal smoke test → Exit Criteria → QA & Optimization scheduled
+[9] Record content-release scope, validation evidence, and rollback path;
+    run a representative import/publish rehearsal where applicable
+        │
+        ▼
+[10] Internal smoke test → Exit Criteria → QA & Optimization scheduled
 ```
 
 ## 11. Checklist
 
 - [ ] **Before the first push through any newly connected or newly reconnected git deploy integration, the configured deploy target directory is verified directly in the hosting/deploy platform's own control panel** — not inferred from the repository's README or from assumption (Governance, Sec. 15.4, RETRO-006). A misconfigured target can wipe an entire live site on the first deploy with no prior symptom.
-- [ ] WordPress + GeneratePress Premium + GenerateBlocks Pro + GenerateCloud provisioned and licensed correctly
+- [ ] WordPress + GeneratePress Premium + GenerateBlocks Pro + GenerateCloud provisioned correctly; for every paid dependency, installed/active state, current subscription, connected account, exact site/property assignment, premium badge/capability, and authenticated update channel are verified separately
 - [ ] Global Styles match Design System Specification exactly (spot-check color/type tokens)
 - [ ] Every page in the Build Manifest exists on staging with correct copy, schema, and internal links
 - [ ] Rank Math configuration matches Schema Markup Plan (spot-check structured data via a validator)
+- [ ] Capability Ownership Matrix completed per Governance Sec. 13.4.4; exactly one production owner is assigned for metadata, canonical URLs, sitemaps, robots directives, schema, redirects, translation/`hreflang`, tag injection, consent, forms, caching, image optimization, and security
+- [ ] Public rendered output checked after an uncached reload: one title, one canonical, intended robots directive, one coherent schema graph, one analytics/tag path, and no duplicate SEO or translation output from theme/plugin fallbacks
+- [ ] Schema defaults are mapped by page type; generic Article, FAQ, LocalBusiness, or other types are not applied indiscriminately to every page
 - [ ] LiteSpeed Cache configured; Core Web Vitals targets tested on staging
 - [ ] Cloudflare DNS, CDN, and security rules configured
 - [ ] GA4, Search Console, GTM, and Clarity all verified firing correctly on staging
 - [ ] Staging environment access provided to QA Analyst
 - [ ] Content-as-Files Sync Pipeline (Sec. 10.5-Sync below) set up and tested end-to-end before this gate exits
+- [ ] Content Release & Rollback Record names every batch/source artifact, stable identifier, intended status, validation result, affected URLs, rollback artifact, and owner
+- [ ] Any XML/CSV/API import was parsed and validated before upload; duplicate identifiers, missing titles/slugs, internal URLs, HTML, metadata fields, and item count were checked
+- [ ] A one-record smoke test and small pilot were verified on the public/staging result before a larger batch; deletion of records absent from an import was disabled unless separately authorized
+- [ ] Every third-party application using a custom domain has a completed request-path/cutover record: authoritative DNS and conflicts, TLS owner, application origin, identity-enforcement layer, callback/cookie/canonical behavior, fallback/rollback, and alternate provider/preview URL bypass test
+- [ ] Time-sensitive public content has a Content Freshness Register entry with owner, last-verified date, next review/expiry trigger, and stale-content disposition
 
 ### 10.5-Alt — Charter-Specified Alternative Stack Mapping
 
@@ -576,25 +589,41 @@ The **Design Constraints Package is the deliverable that makes this mapping poss
 
 ### 10.5-Sync — Content-as-Files Sync Pipeline (Required Default)
 
-This is the direct fix for the single most common source of AI-assisted-edit failure this framework has observed (Governance, Sec. 15.4, RETRO-005): a CMS's page content lives in a database, editable only through a browser GUI, while an AI coding agent works natively and reliably in git-tracked files. This pipeline closes that gap by treating **git as the source of truth for page content, and the live database as a build artifact synced from it** — the same relationship code already has to a deployed server, applied to content for the first time.
+This is the direct fix for the single most common source of AI-assisted-edit failure this framework has observed (Governance, Sec. 15.4, RETRO-005): CMS content lives in a database, editable only through a browser GUI, while an AI coding agent works natively and reliably in git-tracked files. This pipeline closes that gap by treating **git as the source of truth for governed CMS content, and the live database as a build artifact synced from it** — the same relationship code already has to a deployed server, applied to content for the first time. “Content” includes every in-scope mutable public record, not only objects named Pages: posts/articles, landing pages, custom post types, reusable blocks/patterns, navigation structures where exportable, and associated SEO/compliance metadata.
 
-**Purpose:** Make page-content edits a normal, reviewable git workflow (diff, commit, PR if desired) instead of a browser-automation task, for every engagement where the Content & Code Access Tier (Governance, Sec. 13.4.1) makes it possible.
+**Purpose:** Make CMS-content edits a normal, reviewable git workflow (diff, commit, PR if desired) instead of a browser-automation task, for every engagement where the Content & Code Access Tier (Governance, Sec. 13.4.1) makes it possible.
 
 **Mechanism, by Tier (Governance, Sec. 13.4.1):**
 
-- **Tier 1 (SSH + WP-CLI available):** Export every page's content to a versioned file (one file per page, e.g., `/content-sync/pages/{slug}.html`, containing the raw block markup) via `wp post list --post_type=page --format=json` to enumerate and `wp post get {ID} --field=post_content` per page to export. Edit exported files as normal git-tracked files — this is where an AI coding agent (Claude Code, Codex, Manus, GitHub Copilot) does its actual work. Push changes back with `wp post update {ID} --post_content=- < /content-sync/pages/{slug}.html` (or an equivalent scripted import). Re-export immediately after import and diff against git to confirm the live site matches exactly what was committed — never assume the import succeeded without verifying.
+- **Tier 1 (SSH + WP-CLI available):** Enumerate every in-scope public post type and reusable content object, then export each record to a versioned file using a type-aware path such as `/content-sync/{post-type}/{stable-id}-{slug}.html`, with a manifest carrying CMS ID, type, slug, language, status, parent, template, approval revision, freshness class, and metadata references. Do not hard-code `--post_type=page` when posts or custom types are in scope. Edit exported files as normal git-tracked files — this is where an AI coding agent (Claude Code, Codex, Manus, GitHub Copilot) does its actual work. Push changes back with a stable-ID-aware update command or equivalent scripted import. Re-export immediately after import and diff against git to confirm the live site matches exactly what was committed — never assume the import succeeded without verifying.
 - **Tier 2 (REST API only, no SSH):** Use the platform's REST API with an application-scoped credential (e.g., WordPress Application Passwords) to `GET` and `PATCH`/`POST` page content programmatically from the same git-tracked files — no shell access required, works over HTTPS on nearly any host. Slower and slightly less scriptable than WP-CLI, but preserves the same "files are the source of truth, DB is synced from them" discipline.
-- **Tier 3 (GUI only):** Content-as-files still applies as the authoring discipline — draft and review the change as a file in git first — but the actual push is a manual or browser-automated edit through the native editor, with a fresh export/screenshot verification step afterward to confirm the live page matches the committed file. This tier is the least reliable and should trigger a note in the Risk Register (Governance, Sec. 14) if it's the only tier available for an engagement expected to need frequent post-launch content changes. **Large full-file changes must never be pushed by simulating keystrokes/paste into a browser-based virtualized code editor** (a real-world engagement confirmed this causes silent content duplication that both the editor's own on-screen state and any same-technique DOM-text verification will fail to catch — Governance, Sec. 15.4, RETRO-007). Where the target editor exposes a genuine state-management API (e.g., an editor instance's own `getValue()`/`setValue()` methods), use that API directly. Where the platform instead offers a native file-upload/replace flow, prefer that over any inline-editor path entirely. Either way, verify the result by exact character/byte count and by confirming a structurally-unique marker string occurs exactly once — never by visual inspection or a partial-text spot-check.
+- **Tier 3 (GUI only):** Use one of two explicitly named modes. **Authoring-source mode (compliant default)** drafts and reviews the governed file in git before the manual/native-editor write; the file governs the CMS change. **Verified-mirror mode (temporary exception)** is permitted only when no reliable export/import or other deterministic round trip exists: perform the bounded GUI edit, verify persistence through a fresh independent read path, then capture the exact as-built record immediately. Label that record an *as-built mirror*, log the exception and drift risk in the Risk Register, and migrate to authoring-source mode when a verified round trip becomes available. Never call an after-the-fact mirror the source of truth. This tier is the least reliable and should trigger a Risk Register note if it is the only tier available for an engagement expected to need frequent post-launch changes. **Large full-file changes must never be pushed by simulating keystrokes/paste into a browser-based virtualized code editor** (Governance, Sec. 15.4, RETRO-007). Use an editor's genuine state API or native upload/replace flow where available, and verify exact length plus a structurally unique marker occurring exactly once—never only visual inspection or a partial-text spot-check.
 
-**Required Documents:** `/10.5-wp-implementation/content-sync/README.md` (documents which Tier is in use and the exact export/import commands or scripts for this engagement's confirmed stack), `/10.5-wp-implementation/content-sync/pages/*.html` (one file per page, the actual source-of-truth content)
+**Required Documents:** `/10.5-wp-implementation/content-sync/README.md` (documents which Tier is in use, covered content types, and exact export/import commands or scripts for this engagement's confirmed stack), `/10.5-wp-implementation/content-sync/manifest.*` (stable IDs, type, URL/language/status/parent/template, source file, approval and freshness references), and type-aware content folders such as `/content-sync/pages/`, `/content-sync/posts/`, and `/content-sync/{custom-type}/`.
 
 **Checklist:**
 - [ ] Content & Code Access Tier confirmed at Governance Sec. 13.4.1 intake, before this pipeline is set up
-- [ ] Every sitemap page has a corresponding file in `/content-sync/pages/`
+- [ ] Every in-scope public page, post/article, landing page, custom post type, and reusable content object has a corresponding source file and manifest row; excluded types are named with rationale
 - [ ] Import mechanism tested end-to-end at least once (export → edit → import → re-export → diff clean) before being relied on for real changes
+- [ ] Tier 3 mode named explicitly as `authoring-source` or `verified-mirror`; any verified-mirror use has a Risk Register exception, fresh read-back evidence, capture timestamp, drift owner, and migration trigger
 - [ ] Every subsequent AI-assisted content change follows this pipeline — a direct, unlogged database or GUI edit that bypasses git is a process defect, not a shortcut, and should be treated the same as any other undocumented Decision Register-worthy change (Governance, Sec. 4.4)
 
 **Common Mistakes:** Treating this pipeline as a one-time migration step instead of the standing workflow for all future content edits, which lets the database silently drift from git again exactly as it did before this pipeline existed. Skipping the post-import re-export/diff verification step and assuming the write succeeded. Building this pipeline once and never documenting which Tier it depends on, so a later session doesn't know why it's failing when host access changes.
+
+### Publication, Batch-Import, and Rollback Safety Standard
+
+When the confirmed stack uses a CMS importer, REST endpoint, CLI script, or other repeatable publication mechanism, treat the import artifact as a release—not as an ad hoc upload. The minimum release record contains: timestamp, source commit/file, target environment, post type/content type, stable unique identifier, intended status, field map, affected IDs/slugs, operator, reviewer, validation result, cache/indexation impact, and rollback artifact.
+
+Use this sequence for deterministic repeated changes:
+
+1. Generate a timestamped XML/CSV/JSON/API payload without overwriting the prior artifact. Keep page content, metadata, navigation, redirects, and publication status in separate batches when possible.
+2. Parse and validate before opening the importer: required fields, item count, duplicate identifiers/slugs, malformed markup, internal URLs, language routes, canonical values, and intended status. Namespaced XML must be written with namespace-aware APIs.
+3. Map fields explicitly and choose update-versus-create behavior deliberately. Match on an approved stable identifier (existing ID or locked slug), not a mutable title. Do not enable “remove records not present” unless deletion is the explicit approved scope.
+4. Run one record, then a small pilot, then the full batch. Verify the actual destination type (for example, Pages rather than Posts), title, slug, body, metadata, status, links, schema, and front-end rendering after a fresh load—not only the importer’s success message.
+5. Re-export or read back the affected records and compare them with the source artifact. Record exceptions and duplicates before scaling. Purge or warm caches only after the content has passed verification.
+6. Preserve the previous export and define a bounded rollback: restore prior content/status/metadata, remove only records created by the batch if removal is authorized, and re-test representative URLs. Never use a blanket homepage redirect or a broad delete as a substitute for rollback planning.
+
+Use page-by-page editing when judgment is required—unique claims, local evidence, authentic imagery/alt text, legal or regulated copy, testimonials, or a plugin panel that cannot be safely mapped. A batch improves efficiency only when the transformation is deterministic and the verification evidence remains inspectable.
 
 ## 12. Prompt(s)
 
@@ -670,6 +699,9 @@ Do not proceed past step 4 without showing the verification diff.
 - Enabling aggressive caching/minification defaults without testing calculator and form functionality, which can silently break interactive tools.
 - Deploying without verifying Rank Math schema output against a structured data validator, shipping malformed schema that fails to earn rich results.
 - Skipping GA4/GTM/Clarity verification, discovering at Post-Launch Growth Program that months of traffic went unmeasured.
+- Treating an importer’s “completed” notice as proof that the correct post type, records, metadata, links, and public status were created.
+- Mixing content generation, URL migration, mass publication, and unrelated metadata changes in one blind batch, making rollback and root-cause analysis impossible.
+- Configuring overlapping plugins, theme fallbacks, or custom snippets to emit the same metadata, schema, sitemap, redirect, translation, or analytics output, then trusting the admin settings instead of inspecting public output.
 - Connecting (or reconnecting) a git deploy integration without verifying the deploy target directory in the hosting panel itself — a real-world engagement had this wrong for weeks with zero symptoms until a routine push wiped the entire live site (Governance, Sec. 15.4, RETRO-006).
 - Pushing a large full-file change through a browser-based code editor's simulated-keystroke/paste path and trusting either the editor's on-screen state or a same-technique DOM-text read as verification — both can report success on a document that was actually silently duplicated (Governance, Sec. 15.4, RETRO-007).
 
@@ -677,15 +709,19 @@ Do not proceed past step 4 without showing the verification diff.
 
 - Always test LiteSpeed Cache and Cloudflare optimization settings against every interactive element (calculators, multi-step forms) before finalizing — performance settings and JavaScript-dependent UX are a common conflict point.
 - Document every non-default configuration decision (like the Rocket Loader example above) in the Performance Configuration Record so a future maintainer understands why a setting deviates from platform defaults.
+- Treat SEO and analytics plugins as execution and observation layers, not as the strategy or system of record. Preserve keyword maps, hypotheses, baselines, event definitions, and change logs in the engagement Knowledge Base so they survive plugin replacement.
 - Use GenerateCloud to sync the Global Styles and pattern library, so future multi-site or template reuse across engagements — even across different Industry Modules — is possible.
+- Keep the source artifact and release record with the engagement files, even when the CMS or importer is the operational publishing interface. This makes a future page-by-page correction, rollback, migration, or platform replacement faster and safer.
 
 **During an active production incident, verify each recovery step before taking the next one — don't compound a mistake by moving faster once things have already gone wrong.** A real-world engagement's outage recovery included two separate detours that made the incident worse before it got better: a hosting provider's automated "AI Troubleshooter" tool was run a second time hoping for a different result after the first run didn't help (it took further destructive action instead), and a backup was restored without first confirming it actually contained files (it was empty, and restoring it wiped the site a third time). Treat automated repair tools as unpredictable mid-incident — don't re-run one that already failed, pause and investigate manually instead — and never restore any backup without a contents check first. The same discipline applies to a corrupted-file recovery: confirm the *diagnosis* (e.g., byte size, marker-occurrence count) before attempting the *fix*, and confirm the fix against the same objective measures afterward, not by visual inspection alone.
 
-**WordPress's Parent-page picker only searches Published pages — plan nested URLs accordingly if pages stay in Draft pending compliance sign-off.** A confirmed, reproducible finding: if the engagement's compliance strategy holds every page in Draft status until a single bulk pre-launch review (a legitimate strategy — see QA & Optimization Stage Gate 11's Best Practices addendum), any child page built during that window (e.g., a city or persona-hub page meant to nest under a Buy/Sell/Neighborhoods pillar) cannot have its Parent set correctly, because WordPress's admin UI only lists Published pages as parent-picker candidates. The page ships with a flat top-level slug instead of its intended nested URL. This is not a build error — it's a structural consequence of the Draft-until-bulk-review strategy, and must be fixed by re-parenting every affected child page once its intended parent is finally published, immediately before go-live, not discovered as a surprise at that moment.
+**Preflight WordPress hierarchy behavior before building a Draft-only nested page set.** Parent, menu, and hierarchy selectors can differ by editor, role capability, plugin/theme configuration, import path, and WordPress version. A live engagement could not reliably select intended Draft parents and required re-parenting later, but that observation is not a universal WordPress rule. Test the planned editor, Quick Edit, API/CLI, or importer path against representative Draft parents. If the intended hierarchy cannot be assigned, record the temporary flat state and complete a pre-publication reconciliation covering parent ID, slug/permalink, breadcrumbs, menus, canonicals, redirects, sitemap state, and internal links.
 
 **Verify every AI-driven CMS/plugin edit via a genuine fresh page reload, not by reading the in-session DOM state.** Two distinct, confirmed failure patterns: (1) a scripted edit (native-setter + dispatched input event, per this chapter's own recommended technique) can *look* successful in the same browser session while silently failing to persist — only a fresh navigation/reload reveals whether it actually saved; (2) some plugin fields carry a deliberate anti-tampering guard against scripted editing altogether (observed with an SEO plugin's title field specifically resisting the standard technique) — when the standard technique doesn't persist after a genuine reload, check whether a different, underlying WordPress-native field feeds the same displayed value via a template token (e.g., editing the post's actual title, which a plugin's "%title%" token then inherits), and edit that instead of continuing to fight the plugin's own UI layer.
 
 **Watch for cross-client tool-connection leakage on any operation managing multiple client sites through shared plugin-level integrations.** A confirmed, serious real-world finding: one client's site was found sending live analytics traffic to a *different* client's Analytics property, traced to an SEO plugin's built-in Analytics module being connected to the wrong Google account — a direct consequence of the same operator configuring the same plugin across multiple client sites via a shared connected account. Any agency or operator managing multiple WordPress sites through shared plugin-level tool connections (an SEO plugin's Analytics integration, a shared API key, a shared connected account) must explicitly re-verify the connected account/property is correct *per site*, not assume the plugin defaulted correctly — add this as an explicit QA checklist item (QA & Optimization Stage Gate 11's Checklist, Sec. 11) for any operator running more than one active client engagement concurrently.
+
+**Treat routine WordPress maintenance as a proportional controlled change.** Before core, theme, or plugin updates/removals, capture a recoverable backup/export and record exact versions, active state, entitlement/update channel, capability owner, and dependency/fallback role. Update a small compatible group during a named change window, then smoke-test public pages, admin access, forms, metadata/schema, analytics ownership, caching, and affected integrations. Remove inactive software only after confirming it is not a fallback, migration dependency, pending implementation choice, or rollback requirement; retain one maintained fallback theme unless an equivalent tested recovery path exists.
 
 ## 16. Review Process
 
@@ -703,7 +739,7 @@ Primary Eight-Dimension focus: **Performance**, **WordPress/GeneratePress/Genera
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: all Required Documents saved v1.0; staging URL logged in Project Memory
+- KB: all Required Documents saved v1.0; staging URL and Content Release & Rollback Record logged in Project Memory
 - Blueprint: "Technical Build Spec" section finalized with actual configuration record
 - Decision Register: log any deviation from default stack configuration (e.g., the Rocket Loader example) as `DEC-SG10.5-00x`
 

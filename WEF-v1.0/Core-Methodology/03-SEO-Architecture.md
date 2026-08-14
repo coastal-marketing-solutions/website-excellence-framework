@@ -202,10 +202,11 @@ Sitemap & Content Taxonomy (Stage Gate 4), Competitive Intelligence Report (Stag
 - Technical SEO Requirements Spec
 - Schema Markup Plan
 - Entity SEO & AI Search Optimization Brief
+- Search Visibility Operations Plan (measurement baseline, opportunity model, rank-tracking portfolio, link-audit protocol, and review cadence)
 
 ## 5. Required Documents
 
-`/05-seo-blueprint/keyword-map-v1.md`, `/05-seo-blueprint/topical-cluster-model-v1.md`, `/05-seo-blueprint/technical-seo-spec-v1.md`, `/05-seo-blueprint/schema-plan-v1.md`, `/05-seo-blueprint/entity-ai-search-brief-v1.md`
+`/05-seo-blueprint/keyword-map-v1.md`, `/05-seo-blueprint/topical-cluster-model-v1.md`, `/05-seo-blueprint/technical-seo-spec-v1.md`, `/05-seo-blueprint/schema-plan-v1.md`, `/05-seo-blueprint/entity-ai-search-brief-v1.md`, `/05-seo-blueprint/search-visibility-operations-plan-v1.md`
 
 ## 6. Responsible Roles
 
@@ -251,8 +252,56 @@ Engagement Lead approves; this Blueprint becomes binding input to Development (C
     for both classic and AI-mediated search
         │
         ▼
-[7] Internal review → Exit Criteria → Stage Gate 6 scheduled
+[7] Build the Search Visibility Operations Plan: preserve/define the
+    baseline, opportunity model, rank portfolio, meaningful events,
+    link-audit protocol, and review cadence
+        │
+        ▼
+[8] Internal review → Exit Criteria → Stage Gate 6 scheduled
 ```
+
+### 10.1 Evidence-Led Search Opportunity Model
+
+For an existing site, export and preserve a dated baseline from the available first-party search-performance and analytics systems before changing titles, URLs, content, internal links, or tracking configuration. For a new site, define the same baseline schema so launch data can populate it without redesigning the reporting model. Tool names may vary; the required evidence does not.
+
+Prioritize work by **query-page evidence and business value**, not by a plugin's content score alone:
+
+1. Queries averaging positions 4-20 with meaningful impressions and a relevant page are usually the fastest visibility opportunities.
+2. High-impression pages with weak click-through rate are candidates for title/description and intent-alignment testing, after checking brand/query mix and SERP features.
+3. Queries in positions 21-40 may justify a content-depth, internal-link, or authority plan when business value is high.
+4. Pages with traffic but weak meaningful-action rate need conversion/intent diagnosis, not automatically more SEO copy.
+5. Queries mapped to the wrong page, or multiple pages competing for the same intent, require a cannibalization decision before expansion.
+
+Each proposed change must record: evidence window; query and URL; observed problem; hypothesis; change; expected leading indicator; meaningful business outcome; owner; review date; and result. Search-performance clicks/impressions/position, analytics engagement/conversions, and validated technical data are outcome evidence. A CMS or SEO-plugin score is a diagnostic checklist only and is never a ranking KPI, acceptance criterion, or reason by itself to add awkward copy, duplicate headings, irrelevant media, or accessibility-hostile alt text.
+
+### 10.2 Page-Creation and Local-Landing-Page Quality Gate
+
+Do not automatically create one page for every city, neighborhood, ZIP/postal code, service variant, product attribute, or keyword permutation. A proposed page enters the sitemap only when it passes all of these tests:
+
+- the organization genuinely serves or supports the subject represented by the page;
+- research shows distinct audience intent or a clear navigation/conversion role;
+- the page has a specific primary query and does not cannibalize an existing page;
+- the team can provide materially unique, useful content, proof, FAQs, examples, constraints, or local/service detail rather than token substitution;
+- the page has a defined parent/hub, contextual inbound links, useful onward links, and a maintenance owner;
+- compliance, accuracy, and operational-capacity claims can be substantiated; and
+- inclusion improves the user's decision path even if the page never ranks.
+
+For location-led sites, prefer a hierarchy of market/service-area hub -> selected high-value locality pages -> useful neighborhood or ZIP references *within* those pages where relevant. A ZIP is data, not automatically a page. Label geographic entities accurately (city, district, neighborhood, county, region) and avoid implying a staffed office where only a service area exists. Pages that fail the gate belong in a research backlog, not the live index.
+
+### 10.3 Link-Audit Classification Protocol
+
+A crawler label is a lead, not a verdict. Preserve the raw export, deduplicate destinations, sample the report, and classify before editing:
+
+| Result | Default classification | Required action |
+|---|---|---|
+| 2xx | Healthy | No change unless content relevance is wrong |
+| 3xx | Redirecting | Update internal links to the final canonical URL; assess external redirects for stability before changing |
+| 401/403/429 | Access-controlled, rate-limited, or bot-blocked | Verify in a normal browser and against an authoritative source; do not remove solely because the crawler was denied |
+| 404/410 | Missing or intentionally gone | Replace, remove, restore, or deliberately leave gone; never mass-redirect unrelated URLs to the homepage |
+| 5xx/timeout/DNS/TLS | Server or transport failure | Retry, validate from a second method, then repair or replace according to importance |
+| Unchecked/unsupported | Unknown | Manually verify; do not count as broken until classified |
+
+Separate internal from external links, compliance/evidence citations from navigational links, and real historical URLs from vulnerability-probe noise. Suspicious probe paths in a 404 monitor should normally remain 404/410 and be handled through security controls, not redirected into the site. Record final URL, source pages, classification, decision, and re-test result in the Link Audit Log.
 
 ## 11. Checklist
 
@@ -260,9 +309,12 @@ Engagement Lead approves; this Blueprint becomes binding input to Development (C
 - [ ] Every sitemap page has a mapped primary keyword and defined search intent
 - [ ] Topical Cluster Model shows explicit pillar → cluster → internal link relationships
 - [ ] Technical SEO Requirements Spec includes Core Web Vitals targets (LCP < 2.5s, INP < 200ms, CLS < 0.1) as binding requirements for Development
-- [ ] Schema Markup Plan covers all schema types the Module recommends for this vertical, plus Organization, FAQPage, and BreadcrumbList as universal baseline
+- [ ] Schema Markup Plan covers all schema types the Module recommends for this vertical, plus Organization and BreadcrumbList where appropriate; FAQPage is used only for visible FAQ content when it adds machine-readable value and current search-engine eligibility/limitations are documented
 - [ ] Entity SEO Brief addresses how credentials/licensing/registration establish machine-readable trust signals per the Module's Trust Signal Requirements
 - [ ] No keyword target implies a claim requiring compliance substantiation without a flag for Development (Copywriting) review
+- [ ] Existing-site search and analytics baseline exported before destructive cleanup or optimization; new-site baseline schema and launch annotations defined
+- [ ] Search Visibility Operations Plan includes query-to-page prioritization, meaningful conversion events, a bounded rank-tracking portfolio, link-audit classification, and weekly/monthly/quarterly review ownership
+- [ ] Every proposed templated, locality, or long-tail landing page passes the Page-Creation Quality Gate; no page exists solely because a list or keyword permutation exists
 
 ## 12. Prompt(s)
 
@@ -300,13 +352,15 @@ business priority.
 Produce a schema.org markup plan for [Client Name]'s website in the
 [Industry Module name] vertical, using the [Industry Module]'s recommended
 schema types as your starting checklist. Cover, at minimum: Organization
-schema for the homepage, LocalBusiness schema for each location/service
-area, Person schema for practitioner/staff profile pages (include any
-Module-specified professional identifier property), FAQPage schema for
-guide/FAQ content, BreadcrumbList for all deep pages, and Article schema
-for blog/guide content. For each schema type, list the required and
-recommended properties and note any properties requiring data the client
-has not yet provided.
+schema for the homepage; LocalBusiness only for genuine staffed business
+locations represented accurately on the site; Service with `areaServed`
+for service-area coverage that is not an office; Person for practitioner/
+staff profile pages (include any Module-specified professional identifier
+property); FAQPage only where visible FAQ content and current eligibility
+make it appropriate; BreadcrumbList for deep pages; and Article for actual
+article/guide content, not every generic Page. For each schema type, list
+the required and recommended properties and note any properties requiring
+data the client has not yet provided.
 ```
 
 ## 13. Examples
@@ -316,7 +370,8 @@ has not yet provided.
 | Page Type | Schema Type | Key Properties | Notes |
 |---|---|---|---|
 | Practitioner/Staff Profile | Person + [industry service schema] (employee of) | name, jobTitle, telephone, identifier (per Module), worksFor | Any Module-required professional ID must be displayed as visible text per compliance, in addition to schema |
-| Location/Service-Area Page | Service + LocalBusiness (areaServed) | areaServed, provider, serviceType | Pair with FAQPage schema for location-specific Q&A |
+| Genuine staffed location | LocalBusiness subtype + Organization relationship | name, address, geo, telephone, parentOrganization | Must correspond to a real location represented accurately on the page |
+| Service-area page (no staffed office) | Service (`areaServed`) | areaServed, provider, serviceType | Do not imply a LocalBusiness location; add FAQPage only when visible FAQ content and current eligibility make it appropriate |
 
 See each Industry Module's SEO & Keyword Strategy section for fully worked, vertical-specific schema plans (e.g., FinancialService + Person/NMLS for mortgage lending; MedicalOrganization + Physician for healthcare; Attorney + LegalService for law firms).
 
@@ -326,12 +381,18 @@ See each Industry Module's SEO & Keyword Strategy section for fully worked, vert
 - Treating schema markup as a technical afterthought for Development rather than specifying it here, where it should influence content structure decisions at the Content Specification gate.
 - Omitting the Entity SEO Brief, leaving the site with no deliberate strategy for AI-mediated search visibility.
 - Ignoring the active Industry Module's SEO & Keyword Strategy and re-deriving vertical keyword patterns the firm has already validated on prior engagements.
+- Chasing a plugin score as if it were a search outcome, then degrading readability, accessibility, or intent fit to satisfy generic checks.
+- Creating every possible locality or keyword-variant page without demand, unique value, internal-link purpose, or maintenance ownership.
+- Treating every crawler denial as a broken link and deleting authoritative citations that merely block bots or rate-limit automated checks.
 
 ## 15. Best Practices
 
 - Prioritize topical depth in the client's specific service area and specialty offerings over broad national keyword coverage the client cannot substantiate operationally.
 - Build the Entity SEO Brief around making the organization, its credentials, and its practitioners unambiguously machine-readable — this is what allows AI search systems to cite the site confidently as a source.
 - Cross-check every keyword target against the Compliance/Standards Constraint Log and the Module's flagged claim-risk patterns before finalizing.
+- Keep a deliberately bounded rank-tracking portfolio organized by business-critical, near-win, local/segment, brand/entity, and discovery terms. Export before pruning; add terms only when they have a mapped page, owner, and decision use.
+- Build contextual internal links into the content brief: hub-to-detail, detail-to-hub, related-detail, and next-action links with descriptive, varied anchor text. Navigation and footer links do not replace contextual links.
+- Preserve a change log and annotate launches, migrations, bulk metadata changes, and major content releases so later performance shifts can be interpreted rather than guessed.
 
 ## 16. Review Process
 
@@ -343,13 +404,13 @@ Primary Eight-Dimension focus: **SEO** (this gate's core output), **Scalability*
 
 ## 18. Exit Criteria
 
-- [ ] All five Required Documents approved by Engagement Lead
+- [ ] All six Required Documents approved by Engagement Lead
 - [ ] Compliance/Standards Liaison has cleared keyword targets for claim risk
 - [ ] Developer has confirmed Technical SEO Requirements are buildable on the default stack (or alternative per Charter)
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: all five Required Documents saved v1.0
+- KB: all six Required Documents saved v1.0
 - Blueprint: "SEO Architecture" section populated in full
 - Decision Register: log cluster prioritization decisions (which clusters are Phase 1 vs. Phase 2) as `DEC-SG5-00x`
 

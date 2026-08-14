@@ -58,6 +58,7 @@ Project Initialization converts a signed Statement of Work (SOW) into a running 
 - [ ] Kickoff meeting scheduled within 5 business days of SOW signature
 - [ ] Compliance/regulatory contact identified, if the active Industry Module flags the client's vertical as regulated
 - [ ] Technology stack confirmed or default stack (Governance, Sec. 13.4) accepted
+- [ ] Digital Estate & Access Map identifies the owner, operational custodian, access tier, recovery path, and environment boundary for every production system; no secret values are stored in the Knowledge Base
 - [ ] Billing/scope guardrails communicated to full team
 
 ### 1.4 Industry Module Selection
@@ -574,15 +575,66 @@ The Default Technology Stack (Sec. 13.4) and the standing "native functionality 
 This mirrors the precedent already set for GeneratePress: engagements are expected to explore GeneratePress Premium's advanced modules (Elements, Hooks, Sections, etc.) rather than hand-building custom equivalents in a child theme when the licensed module already covers it, and to document which specific advanced features were actually exercised so the pattern is reusable on the next GeneratePress engagement rather than re-discovered from scratch each time. The same discipline now applies explicitly to Rank Math and to any future default-stack plugin:
 
 - **Before configuring a plugin's basic settings, check whether a licensed advanced/PRO tier is already active** (Plugins → Installed Plugins shows this directly) and consult its documented feature set before assuming only the free-tier feature set is available — free-tier assumptions made without checking are a real, observed failure mode, not a hypothetical one.
+- **Treat installation, activation, subscription entitlement, account connection, and site/property assignment as five separate states.** A premium add-on can be installed and active while the base plugin is connected to a free account or while the paid subscription is assigned to a different site. Verify the subscription in the vendor account, the exact connected account in the site, the site's license badge/assignment in the vendor portal, and the premium update channel. The plugin name or presence of premium menu items is not entitlement evidence.
 - **Prefer the plugin's native advanced feature over a custom-code equivalent** when both exist and the plugin's advanced tier is already licensed — e.g., a PRO-tier Schema Templates feature over a hand-rolled JSON-LD block, a plugin's native Search Console/Analytics integration over a separate reporting dashboard, a plugin's built-in content/SEO analyzer over a manual audit pass — once the client has confirmed the feature is wanted and it doesn't route around Sec. 13.5's compliance gate.
 - **Document which advanced features were actually turned on and why** in the engagement's Decision Register, the same discipline already required for the base plugin choice — this is what makes the usage pattern reusable across future engagements rather than a one-off. A brief "Advanced Features Enabled" note, cross-referenced from the plugin's stack-selection Decision Register entry, is sufficient; it does not need its own Stage Gate document.
 - **This does not relax Sec. 13.5 (Compliance & Professional Standards Governance).** An advanced feature that changes what's published live — AI-generated schema/content suggestions, auto-populated business data, bulk title/description rewrites — still requires the same compliance review any other published content requires before going live.
 
 Applies at Governance Board level to the Default Technology Stack (Sec. 13.4) and at Engagement Lead level to any Charter-approved alternative plugin — the principle is "use what's already been paid for, fully, and record what was used," not a mandate to enable every feature regardless of relevance to the engagement.
 
+**Capability Ownership takes precedence over capability maximization.** “Use it fully” means use all relevant, non-conflicting value—not activate every available writer. A licensed feature may operate in read-only, monitor-only, or reporting mode, or remain disabled, when another approved system owns the production output. The Capability Ownership Matrix (Sec. 13.4.4) records that boundary.
+
+### 13.4.4 Capability Ownership, Collision Prevention, and Tool Portability
+
+Using a selected tool fully does not mean allowing multiple tools to publish the same output. Every engagement must maintain a **Capability Ownership Matrix** in the Plugin & Integration Configuration Record. For each externally visible or data-bearing capability, name exactly one production owner, any monitor-only consumers, the fallback behavior if the owner is disabled, and the export/migration path.
+
+At minimum, assign ownership for: page titles and meta descriptions; canonical URLs; XML sitemaps; robots directives; structured data; redirects; translations and `hreflang`; analytics/tag injection; consent management; forms and lead storage; caching/minification; image optimization; and security/firewall rules. A theme fallback may remain available only when it is programmatically suppressed while the designated plugin is active and has been verified not to emit duplicate output.
+
+The following rules are binding:
+
+- **One writer, many readers.** Reporting tools may read the same Search Console, analytics, or SEO data, but only one configured owner may write each class of metadata, schema, tag, redirect, translation, or optimization output.
+- **Rendered output is the truth.** An admin-screen setting is not proof. Verify the public HTML, headers, network requests, cookies, sitemap, and structured-data graph after a fresh uncached load.
+- **No overlapping plugins by convenience.** Do not run two SEO, translation, analytics-injection, schema, redirect, consent, cache, or form systems with overlapping production responsibility unless a documented boundary makes their outputs mutually exclusive.
+- **Fallbacks require a failure test.** If custom code or a theme supplies a fallback when a plugin is inactive, test both states and confirm there is exactly one output in each state.
+- **Portability is documented before dependency.** Record where the tool stores its data, what survives deactivation, how to export it, what licensed features cease to function, and the replacement path. Never let a proprietary score or dashboard become the only record of page strategy.
+- **Client/account isolation is explicit.** Connected properties, credentials, API keys, and destination accounts are verified per site; shared agency accounts never justify assuming the current property is correct.
+
+Any collision discovered after launch is treated as a production defect, not a cosmetic configuration preference, and is entered in the Issue Log with the affected URLs and generated outputs.
+
+### 13.4.5 Access, Credential, and Environment Boundary
+
+Every engagement must distinguish **who owns a system**, **who operates it**, and **how a tool is authorized to reach it**. The Digital Estate & Access Map records the provider, property/site identifier, business owner, operational custodian, access status, environment (local, staging, production), recovery path, and next action; it never stores passwords, API tokens, application-password values, recovery codes, private keys, or session cookies.
+
+The following controls apply across every stack and industry:
+
+- Use the least-privileged account that can complete the task. Prefer a named client or service account with a scoped role over a shared administrator login.
+- Record whether access is reported, verified, expired, or revoked. “The client said it works” is not the same as a verified connection to the correct property, repository, domain, analytics view, CRM, or production site.
+- Separate local/development, staging, and production credentials and destinations. A staging credential must not silently point at production, and a production deploy must not target a broad document root unless that exact scope is approved and backed up.
+- Store secrets only in the approved credential manager. Never paste them into chat, prompts, source files, XML/CSV imports, screenshots, issue logs, or commit messages. When a temporary application password or token is used, record its purpose and revocation owner—not its value—and revoke it when the task or engagement requires.
+- Before an AI tool or browser session makes a state-changing edit, verify the visible domain/property and the intended environment. After the edit, verify persistence from a fresh read path; an in-session success message or stale DOM is not sufficient.
+- Before irreversible or bulk production work, verify a recoverable backup/export, define the rollback trigger, and perform a small reversible smoke test. If the access boundary or destination cannot be verified, stop the state-changing action and escalate it as a P0/P1 risk rather than guessing.
+
+This is an operational control, not a request to expose credentials to the consulting team. The goal is auditable authorization and correct targeting while keeping secrets out of the framework and engagement records.
+
+### 13.4.6 Third-Party Custom Domains, Origin Boundaries, and Access Control
+
+A custom domain connected to a hosted application is a routing layer, not proof that the application is hosted in the DNS provider's account or protected by that provider's directory controls. Before connecting any portal, studio, dashboard, booking app, knowledge base, or other third-party service to a client subdomain, document the full request path: registrar → authoritative DNS → edge/proxy → hosted application/origin → identity provider. Name which layer terminates TLS, which layer enforces authentication, and which URLs can reach the same application.
+
+The following controls are binding:
+
+- **Confirm authoritative DNS and record compatibility before cutover.** A hosting-panel “create subdomain” action may create an A, AAAA, ALIAS, or local document root that conflicts with the CNAME or verification record required by the hosted service. Inventory and resolve conflicts deliberately; do not stack records until one happens to work.
+- **Preserve a tested fallback until DNS and TLS are verified.** Keep the provider URL available during cutover unless the security model requires otherwise, record TTL and validation records, and define rollback before changing the public hostname.
+- **Apply access control at a layer every route actually traverses.** Host-level directory password protection cannot protect a CNAME that routes directly to an external SaaS origin. Use the application's identity controls or a verified edge/access layer in front of the application.
+- **Test alternate-route bypass.** If the provider's original hostname, preview URL, deployment URL, or another custom hostname remains reachable, verify that it enforces equivalent authorization or intentionally document it as public. Protecting only the vanity hostname is not effective access control.
+- **Verify cookie, callback, canonical, and redirect behavior on the final hostname.** Authentication callbacks, cross-site cookies, CSP/CORS, canonical URLs, analytics properties, and logout/return URLs must use the intended production domain without loops or leakage to another client property.
+
+Record the cutover and bypass test in the Third-Party Custom Domain & Access-Control Record (Reusable Templates, Sec. 15.7). A DNS “success” badge alone is not acceptance evidence.
+
 ### 13.5 Compliance & Professional Standards Governance
 
 WEF consultants and AI models never issue final compliance, legal, medical, or financial sign-off in any industry. Every piece of content touching claims, disclosures, licensing statements, or advertising language subject to the active Industry Module's Regulatory & Compliance Landscape must pass through the client's named Compliance/Standards Liaison before publication, formalized as a mandatory review step in Development (Stage Gates 8–9) and QA & Optimization (Stage Gate 11).
+
+**Approval is bound to a defined artifact and revision, not to a topic, page family, campaign, or website forever.** Every clearance entry must identify the exact page/record, language, version or content hash/date, approval scope, approver, and decision. Later pages, translations, videos, posts, material claim changes, changed disclosures, new data, or substantive revisions do not inherit an earlier blanket approval unless the approver explicitly names that future scope. Define which edits are non-substantive (for example typo correction without meaning change) and which invalidate clearance. When in doubt, return the changed artifact for review; never infer that “the site was approved” clears advertising content created afterward.
 
 ### 13.6 New Module Development Process
 
@@ -712,6 +764,30 @@ The following entries were extracted from the framework's first full engagement 
 - **Generalized Risk:** In any industry, "verified firing correctly" is a materially different (and much weaker) claim than "verified firing only with appropriate consent." A QA checklist item that only confirms a tag *works* will pass even when the tag is a live, undisclosed privacy/compliance defect — and unlike most QA defects, every day this one goes undetected compounds real regulatory exposure (CCPA/CPRA, GDPR, and equivalent frameworks depending on the site's traffic mix) that cannot be retroactively cured for visitors already tracked before the fix ships.
 - **Methodology Fix:** QA & Optimization, Sec. 11 Checklist now includes an explicit, separate line item: analytics/marketing/remarketing tags must be verified as **consent-gated**, not merely firing — confirmed by loading the site pre-consent and directly checking that no tracking cookies are set and no analytics network request fires, then confirming both a decline path (tags stay off) and an accept path (tags fire, cookies appear) work correctly. This is a compliance-category check per Sec. 14's existing rule that compliance issues are categorically P0, regardless of how minor the "just add a banner" request that surfaced it may have originally seemed.
 - **Status:** Adopted — CR-019.
+
+**RETRO-009 — A Premium Plugin Was Installed and Active While the Site Remained Assigned to the Vendor's Free Tier**
+- **What Happened:** Both the base SEO plugin and its premium add-on were installed, active, and exposing premium-looking menus. Repeated attempts to “activate PRO” appeared to succeed, but the site's dashboard still identified the connected account as free. The vendor account had an active paid subscription, yet the site's connected-websites record lacked the paid-plan badge. Disconnecting the site, confirming the paid account and subscription, and explicitly reassigning the exact site to that subscription resolved the mismatch.
+- **Generalized Risk:** Installation state, code activation, paid entitlement, connected identity, and per-site assignment are different control planes for many plugins and SaaS integrations. Treating any one of them as proof of the others can leave paid capability unavailable, updates unauthenticated, or the wrong client property connected while the interface looks substantially correct.
+- **Methodology Fix:** Governance Sec. 13.4.3 and the Plugin & Integration Configuration Record now require separate evidence for installed/active code, subscription entitlement, connected account, site/property assignment, and premium update channel. QA verifies the vendor-side site record as well as the application-side badge.
+- **Status:** Proposed — CR-020 (Working Draft).
+
+**RETRO-010 — Earlier Page Approval Was Mistaken for Clearance of Later Advertising Content**
+- **What Happened:** A regulated-industry website received page-by-page approval for a defined batch. New posts and locality pages were produced afterward; an earlier overall approval could easily have been read as permission to publish them, even though the named reviewer had never seen those exact artifacts. The engagement corrected this by keeping later posts in Draft and adding separate clearance-log rows.
+- **Generalized Risk:** In any regulated or reputation-sensitive industry, approval language becomes unsafe when it is not bound to a version and scope. “Website approved” can be misapplied to later pages, translations, videos, changed claims, refreshed statistics, or imports that the approver never reviewed.
+- **Methodology Fix:** Governance Sec. 13.5 and the Compliance Sign-Off Record now bind approval to an exact artifact/revision/language, define what invalidates clearance, and prohibit inherited or blanket approval unless its future scope is explicit.
+- **Status:** Proposed — CR-020 (Working Draft).
+
+**RETRO-011 — A Custom Subdomain Was Treated as Hosting and Access Control Even Though It Only Routed to an External Application**
+- **What Happened:** A hosted web application was connected to a branded subdomain. Hosting-panel password protection was considered for that subdomain, but the DNS record routed directly to the external application, bypassing the host's document root entirely. The provider's original application URL also remained reachable, so protection applied only to the branded hostname would have been bypassable.
+- **Generalized Risk:** DNS, hosting, TLS, application origin, and identity enforcement are independent layers. Confusing them can create conflicting DNS records, failed certificates, callback loops, or a false sense of privacy while an alternate provider URL remains public.
+- **Methodology Fix:** Governance Sec. 13.4.6, Development, QA, and Reusable Templates Sec. 15.7 now require a request-path map, DNS conflict check, fallback/rollback plan, origin-level or edge-level enforcement, and alternate-route bypass testing.
+- **Status:** Proposed — CR-020 (Working Draft).
+
+**RETRO-012 — Time-Sensitive Public Guidance Was Accurate at Publication but Had No Built-In Revalidation Trigger**
+- **What Happened:** Public-facing guidance relied on program availability, eligibility limits, school data, market figures, association rules, and other facts that can change. Strong pages recorded sources and a reviewed date, but without a framework-level freshness class and owner, the same content could remain indexed after its decision-useful facts expired.
+- **Generalized Risk:** Accurate content becomes misleading through age, especially when search traffic continues after programs close, prices change, personnel move, laws update, or vendor terms change. A publication date alone does not assign responsibility or define when the claim must be checked again.
+- **Methodology Fix:** Research's Evidence Standard, Development, QA/Post-Launch, and the Content Freshness Register now classify content as evergreen, periodic, event-bound, or volatile; assign an owner and next review/expiry trigger; and define refresh, qualify, archive, redirect, or noindex actions.
+- **Status:** Proposed — CR-020 (Working Draft).
 
 ### 15.5 Filing New Entries
 

@@ -89,16 +89,26 @@ Compliance/Standards Liaison (**mandatory final sign-off wherever the active Ind
 
 ## 11. Checklist
 
-- [ ] Every form and calculator tested for correct function, validation, and error states
+- [ ] Every form and calculator tested for correct function, validation, accessibility, spam/abuse handling, success and failure states, duplicate prevention, and end-to-end receipt in the intended CRM/email/scheduling destination by the named operational owner
 - [ ] Core Web Vitals pass targets on representative templates, mobile and desktop
 - [ ] Automated accessibility scan shows no critical/serious WCAG 2.1 AA violations; manual keyboard navigation confirmed functional site-wide
 - [ ] Schema markup validated (no errors) via structured data testing tool
 - [ ] XML sitemap submitted-ready, robots.txt correct, no unintended noindex tags
+- [ ] After a material publication, migration, or new page-cluster release, sitemap membership and a bounded representative URL sample are verified in the applicable search-engine property across each new template, hierarchy, locale, and risk class; final status, canonical, robots directive, discovered/indexed state, and alternate-page selection are recorded. Submission/inspection is evidence of discovery processing, not a guarantee of indexing or ranking.
+- [ ] Representative rendered pages have one intended title, meta description, canonical, robots directive, and coherent schema graph; Capability Ownership Matrix outputs show no theme/plugin/custom-code collisions
+- [ ] Link-audit findings classified by actual response and link purpose before remediation; bot-blocked 401/403/429 results and unchecked URLs are not mislabeled as broken without secondary verification
 - [ ] Design fidelity spot-checked against approved templates for every page type
 - [ ] Compliance/Standards Liaison has completed final site-wide Compliance Sign-Off Record against the active Industry Module's full Regulatory & Compliance Landscape
 - [ ] All P0/P1 Issue Log items remediated and re-tested; any open P2 items documented with client-accepted risk
 - [ ] Analytics/tag/plugin-integration connected accounts verified as correct **for this specific client site**, not assumed correct because the plugin/tool is configured correctly in general — mandatory wherever the operator manages more than one active client site through any shared tool connection
+- [ ] Paid plugins/integrations verified across all five states: code installed, code active, subscription current, intended account connected, and exact site/property assigned to the paid entitlement; premium badge/capability and authenticated update path confirmed from both site and vendor account where available
 - [ ] Analytics/marketing/remarketing tags verified as **consent-gated, not merely firing correctly** (Governance, Sec. 15.4, RETRO-008) — load the site pre-consent and directly confirm no tracking cookies are set and no analytics network request fires; then confirm both the decline path (tags stay off) and the accept path (tags fire, cookies appear) work correctly. "Verified firing" alone is not sufficient QA sign-off for any tag capable of setting a tracking cookie.
+- [ ] Meaningful business events (for example qualified form completion, booked appointment, completed checkout, or verified phone/email interaction) tested in debug/realtime reporting with documented names and parameters; no personally identifiable information is sent in analytics event names, URLs, or parameters
+- [ ] Representative imported/bulk-edited pages are re-read from the public or authenticated destination after a fresh load; titles, slugs, status, body sections, links, metadata, schema, and language routes match the approved source record
+- [ ] Every templated or cloned locality page sample has its map, geographic embed/query, coordinates, local imagery, captions/alt text, and named geography checked against that page; no inherited locality data remains from the source template
+- [ ] Launch monitoring owner, first 24-hour/72-hour checks, alert thresholds, and rollback triggers are documented for uptime, forms/lead routing, analytics consent, indexation, redirects, and critical templates
+- [ ] Every third-party custom domain passes DNS/TLS/callback/cookie/canonical checks and an alternate-route bypass test; the provider/preview/origin URL cannot evade required authentication
+- [ ] Content Freshness Register reviewed for launch: overdue or event-expired claims are refreshed, qualified, archived, redirected, consolidated, or noindexed before sign-off
 - [ ] A representative sample of pages actually Published (not just staged in Draft) and re-tested post-Publish before the full go-live moment, specifically to surface Publish-only defects (see Sec. 14 addendum) while there's still time to fix them
 
 ## 12. Prompt(s)
@@ -143,6 +153,12 @@ See each Industry Module's Regulatory & Compliance Landscape for the specific id
 - Testing only on desktop, missing mobile-specific defects (a majority of research/discovery traffic across most of these verticals is mobile).
 - Allowing "it looks done" to substitute for the structured test plan — undocumented QA is not defensible if a defect surfaces post-launch.
 - Running compliance QA against a generic checklist instead of the active Industry Module's actual, current Regulatory & Compliance Landscape.
+- Treating a CMS/import log, cached admin table, or same-session editor view as the public truth without a fresh read-path check.
+- Launching without an owner for the first post-release monitoring window, so a broken form, misrouted lead, accidental noindex, redirect loop, or analytics/privacy defect remains undetected.
+- Treating a form's on-screen success message as proof of conversion while the notification, CRM record, booking, or assigned-owner receipt silently fails.
+- Treating “PRO installed” as proof of a paid entitlement without checking the connected vendor account and exact site assignment.
+- Protecting only a branded custom hostname while an unprotected provider or preview URL reaches the same private application.
+- Leaving a time-sensitive guide live indefinitely because it was accurate on its original publication date.
 - Signing off analytics/tag QA as soon as the tag is confirmed to fire, without separately confirming it only fires with consent — a real-world engagement ran unconsented tracking in production for days because "firing correctly" was treated as equivalent to "compliant," when it is not (Governance, Sec. 15.4, RETRO-008).
 
 ## 15. Best Practices
@@ -150,6 +166,9 @@ See each Industry Module's Regulatory & Compliance Landscape for the specific id
 - Run accessibility and compliance QA as dedicated passes, not folded into general functional testing, since they require different expertise and a different failure tolerance (zero for compliance).
 - Re-test every remediated P0/P1 issue explicitly rather than assuming a fix worked — regression risk is real, especially with caching layers involved.
 - Present the Go-Live Recommendation with the full Issue Log attached, including any client-accepted P2 risk, so the launch decision is fully informed and documented.
+- Treat release verification as a separate evidence pass: check the source artifact, destination record, rendered page, headers/schema, and meaningful-action path. A green plugin score or successful import is not a substitute for this chain.
+- Schedule a short post-release observation window (at minimum first-day and third-day checks) with named owners and explicit rollback criteria. Convert recurring alerts into a monitored-control decision rather than relying on memory.
+- Use a real test lead routed to a controlled destination for final form QA, then confirm receipt with the operational owner and remove or label the test record according to the client's data-handling procedure.
 
 **Draft status hides real build gaps that only surface at Publish — plan a Publish rehearsal, don't rely on Draft-status QA alone.** Where a compliance strategy deliberately holds every page in Draft until a single bulk pre-launch review (a legitimate, confirmed real-world pattern — batching sign-off rather than clearing pages one at a time), be aware of its real cost: defects that only manifest on Publish — slug collisions, a missing static-front-page configuration, an unbuilt navigation menu that was never exercised while pages were invisible — stay completely undetected throughout the entire build and QA phase and surface for the first time at the exact moment of go-live, when there's the least slack to fix them. This happened multiple times, independently, on a single real engagement. Mitigate it with a **Publish rehearsal**: actually Publish a representative subset of pages (then optionally revert to Draft if the compliance strategy requires it) before the real go-live moment, specifically to exercise the Publish-only code paths early, rather than trusting Draft-status QA to have caught everything.
 
@@ -258,6 +277,8 @@ Engagement Lead approves the Growth Program Plan; ongoing experiment decisions f
 - [ ] Baseline production data captured before first experiment begins
 - [ ] Every experiment logged with a clear hypothesis and success criterion before it starts, not just a result after the fact
 - [ ] Any new content follows Stage Gate 8/9 discipline (brief → compliance-cleared copy), not ad hoc publishing
+- [ ] Compliance clearance for new or changed content is bound to the exact artifact/revision/language; later content does not inherit an earlier site or batch approval unless its scope explicitly says so
+- [ ] Content Freshness Register reviewed on its assigned cadence; event-bound and volatile content has no overdue unhandled entries
 - [ ] Retrospective Memo completed and submitted to the firm's Knowledge Base for cross-engagement reuse, with any Module refinement proposed via Change Request
 
 ## 12. Prompt(s)
@@ -305,11 +326,17 @@ vertical benefit.
 - Running experiments without a predefined success metric, leading to post-hoc rationalization of whatever happened.
 - Treating the Retrospective Memo as optional paperwork rather than the mechanism that makes the next WEF engagement — in this vertical or any other — better than this one.
 - Discovering a genuine Module gap or persona refinement and never proposing it back into the Industry Module, forcing the next engagement in that vertical to rediscover it from scratch.
+- Reporting plugin content scores as SEO outcomes, or optimizing them in bulk without query-level evidence, a mapped page purpose, and a post-change review window.
+- Comparing a short post-change period with an arbitrary prior period without accounting for seasonality, brand campaigns, migrations, launch annotations, or data latency.
+- Expanding a rank tracker until it mirrors every keyword idea instead of maintaining a bounded decision portfolio with a mapped URL and owner for each term.
 
 ## 15. Best Practices
 
 - Treat every post-launch content addition as a miniature Stage Gate 8→9 cycle — brief, compliance clearance, then publish — never skip steps because the site is already live.
 - Feed every validated learning (both confirmations and surprises) back to the firm's cross-engagement Knowledge Base and, where genuinely generalizable to the vertical, into the active Industry Module via Change Request — this is the mechanism by which the Module library compounds in value over time (Governance, Sec. 9.5, 13.2).
+- Run the visibility operating cadence at three resolutions: weekly anomaly/coverage checks; monthly query-page, conversion, internal-link, and content-opportunity review; quarterly portfolio, cannibalization, technical health, and strategy review. Use a consistent comparison window and annotate material site or campaign changes.
+- Review near-win queries (commonly positions 4-20) and high-impression/low-click pages before inventing net-new content. Strengthen the best existing page when intent is already represented; create a new page only when the Stage Gate 5 Page-Creation Quality Gate passes.
+- Separate leading indicators (indexation, impressions, rank movement, click-through rate, engagement) from meaningful outcomes (qualified leads, booked meetings, purchases, applications, or the Charter-defined equivalent). A change can improve one while harming the other.
 
 ## 16. Review Process
 
@@ -324,6 +351,7 @@ All Eight Dimensions remain in force for any new work produced during this gate;
 This gate does not "close" in the same sense as prior gates — it establishes an ongoing program. Its formal completion checkpoint (typically at 90 days or the Charter-defined interval) requires:
 
 - [ ] KPI Dashboard operating and reviewed at agreed cadence
+- [ ] Search Visibility Operations Plan operating with baseline, opportunity backlog, rank-tracking portfolio, link-audit log, measurement plan, and change annotations current
 - [ ] At minimum 3 experiments logged with documented results
 - [ ] Retrospective & Methodology Learnings Memo submitted
 

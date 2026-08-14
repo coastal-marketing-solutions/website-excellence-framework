@@ -218,7 +218,113 @@ See AI Workflows, Section 4, for the full Prompt Library master index. Prompt te
 | Canonicalization | Self-referencing canonical on all pages | Manual/crawler audit |
 ```
 
----
+### 7.4 Search Visibility Operations Plan Template
+
+```markdown
+# Search Visibility Operations Plan — [Client Name]
+
+## 1. Measurement Sources and Ownership
+| Evidence Source | Property/View | Account Owner | Data Window | Decision Use | Last Verified |
+|---|---|---|---|---|---|
+| First-party search performance | | | | Queries, pages, indexation | |
+| Web analytics | | | | Engagement and meaningful actions | |
+| Rank tracker | | | | Bounded monitoring portfolio | |
+| Technical crawler/link monitor | | | | Crawl and link diagnostics | |
+| Performance field/lab data | | | | Template-level performance | |
+
+## 2. Preserved Baseline
+- Baseline export location:
+- Date range and comparison range:
+- Launch/migration/change annotations:
+- Known seasonality or campaign effects:
+- Data limitations and latency:
+
+## 3. Meaningful-Action Measurement Plan
+| Event | Business Meaning | Trigger | Parameters (no PII) | Consent Category | Debug Test | Reporting Owner |
+|---|---|---|---|---|---|---|
+
+## 4. Opportunity Prioritization
+Score each candidate 0-3 for business value, evidence strength, near-term attainability, page/intent fit, and implementation confidence. Subtract 0-3 each for compliance risk, cannibalization risk, and maintenance burden. Record the evidence; do not use the total as an unexplained black box.
+
+## 5. Rank-Tracking Portfolio
+| Bucket | Query | Mapped URL | Intent | Business Reason | Baseline | Owner | Keep/Replace Review |
+|---|---|---|---|---|---|---|---|
+Buckets: business-critical; near-win; local/segment; brand/entity; discovery/experimental.
+
+## 6. Operating Cadence
+- Weekly: anomalies, outages, coverage/indexation changes, conversion-event health, critical 404/5xx changes.
+- Monthly: query-page opportunities, CTR, conversions, internal links, content refresh/creation decisions, change-log results.
+- Quarterly: portfolio rationalization, cannibalization, technical crawl, schema/metadata ownership, performance, content consolidation, strategy review.
+
+## 7. Reporting Rules
+- Separate leading search indicators from meaningful business outcomes.
+- Compare consistent windows and note seasonality, campaigns, migrations, and data latency.
+- Treat plugin scores as diagnostics, never outcome KPIs.
+- Attach the query and URL evidence to every recommendation.
+```
+
+### 7.5 SEO Opportunity and Change Log Template
+
+```markdown
+| ID | Evidence Window | Query + URL | Observed Problem | Hypothesis | Planned Change | Leading Indicator | Meaningful Outcome | Risk/Review | Owner | Publish Date | Review Date | Result/Decision |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+```
+
+### 7.6 Link Audit Log Template
+
+```markdown
+| Source URL(s) | Destination | Internal/External | Purpose (navigation/context/evidence/compliance) | Observed Result | Browser/Second-Method Result | Final URL | Classification | Decision | Owner | Re-test |
+|---|---|---|---|---|---|---|---|---|---|---|
+```
+
+Classification rules: `2xx healthy`; `3xx update internal / assess external`; `401/403/429 verify before editing`; `404/410 replace, remove, restore, or deliberately leave gone`; `5xx/timeout/DNS/TLS retry and investigate`; `unchecked unknown`. Do not redirect vulnerability-probe noise to the homepage.
+
+### 7.7 Page-Creation Quality Gate Template
+
+```markdown
+# Proposed Page — [Topic/Location/Variant]
+
+| Test | Evidence | Pass/Fail |
+|---|---|---|
+| Genuine service/product/topic coverage | | |
+| Distinct user intent or navigation role | | |
+| Primary query and non-cannibalizing mapped URL | | |
+| Materially unique helpful content/proof available | | |
+| Parent hub + contextual inbound/outbound links defined | | |
+| Claims and operational capacity substantiated | | |
+| Maintenance owner and review trigger assigned | | |
+| Useful to visitors even without rankings | | |
+
+**Decision:** Create / strengthen existing page / consolidate / research backlog / reject
+**Decision Register ID:**
+```
+
+### 7.8 Evidence & Source Register Template
+
+```markdown
+| Evidence ID | Claim/Observation Used | Source Title/Publisher | URL/File | Source Class | Geography/Population/Metric Definition | Published Date | Accessed/Extracted | Quotation/Paraphrase/Calculation/Inference | Limitations | Confidence/Status | Review/Expiry | Consuming Deliverables | Owner | Rights/Permitted Use |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+```
+
+Source classes: `authoritative/regulatory`, `client/first-party`, `neutral secondary`, `competitor`, `inference`. Status values: `verified`, `client-confirmed`, `needs human verification`, `stale`, `superseded`. A competitor is evidence of what that competitor publishes or does, not independent proof that its claims are true. Do not publish a time-sensitive fact without its observation date, limitations, and review owner.
+
+### 7.9 Content Freshness Register Template
+
+```markdown
+| Artifact/URL | Factual Dependency | Freshness Class (Evergreen/Periodic/Event-Bound/Volatile) | Evidence IDs / Authoritative Source | Public “As Of” Date | Owner | Last Verified | Next Review or Expiry Trigger | Stale Disposition (Refresh/Qualify/Archive/Redirect/Consolidate/Noindex) | Status |
+|---|---|---|---|---|---|---|---|---|---|
+```
+
+Event-bound entries name the actual event or date, not “review later.” Volatile entries use the shortest practical review interval or point users to an authoritative live source. Closing an entry requires the public artifact and its structured data, metadata, internal links, sitemap/indexation state, and any translations to be handled consistently.
+
+### 7.10 Post-Release Indexing Verification Record
+
+```markdown
+| Release/Cluster | Sitemap | Representative URL | Template/Hierarchy/Locale/Risk Class | Final HTTP Status | Rendered Canonical | Robots Directive | Sitemap Membership | Search-Engine Inspection Result | Request Date (if used) | Follow-up Date | Owner |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+```
+
+Sample each materially new template, hierarchy, locale, and risk class rather than requesting every URL individually. Record alternate/canonical selection and follow-up work. Sitemap submission and URL inspection are discovery/diagnostic actions; neither guarantees indexing or ranking.
 
 ## 8. Content Templates
 
@@ -260,6 +366,39 @@ See AI Workflows, Section 4, for the full Prompt Library master index. Prompt te
 | Compliance Page | | |
 ```
 
+### 8.3 Video-to-Website Deployment Brief (Optional)
+
+Use when an engagement plans a recurring video series or when a video must function as a governed website, search, localization, accessibility, or compliance asset rather than an isolated social upload.
+
+```markdown
+# Video-to-Website Deployment Brief — [Series / Episode]
+
+| Field | Value |
+|---|---|
+| Episode ID / working title | |
+| Audience and question answered | |
+| Primary website page / mapped query | |
+| Recording format and target duration | |
+| Word-for-word script | |
+| Presenter bullet version | |
+| Local facts/input still required | |
+| Evidence IDs and freshness class | |
+| Language/locale and human reviewer | |
+| Claims/disclosures requiring clearance | |
+| On-camera CTA and verified destination | |
+| Platform title/description/chapters | |
+| Transcript/captions status | |
+| Website embed and supporting text/article | |
+| Internal links in/out | |
+| Thumbnail and descriptive-alt decision | |
+| Schema/metadata decision | |
+| Exact approval revision | |
+| Publication dates and owners | |
+| Refresh/retirement trigger | |
+```
+
+A translated video is a separate governed artifact and does not inherit source-language clearance. Captions and a useful text equivalent are accessibility and reuse requirements, not SEO padding.
+
 ---
 
 ## 9. Metadata Templates
@@ -282,8 +421,10 @@ See AI Workflows, Section 4, for the full Prompt Library master index. Prompt te
 |---|---|---|---|---|
 | Homepage | Organization + [Module-specific type] | name, url, logo, telephone, address, identifier | sameAs (social profiles) | Marketing |
 | Practitioner/Staff Profile | Person | name, jobTitle, telephone, identifier (per Module) | image, sameAs | HR/Compliance |
-| Location Page | LocalBusiness, Service | areaServed, provider | | SEO Specialist |
-| Guide/FAQ | FAQPage, Article | mainEntity (Q&A pairs), author, datePublished | | Copywriter |
+| Genuine staffed location | LocalBusiness subtype | name, address, geo, telephone | parentOrganization | SEO Specialist / Operations |
+| Service area without a staffed office | Service | areaServed, provider, serviceType | | SEO Specialist |
+| Guide/article | Article where the page is actually an article/guide | author, datePublished, headline | dateModified | Copywriter |
+| Visible FAQ content | FAQPage only when current eligibility and content purpose make it appropriate | mainEntity (visible Q&A pairs) | | Copywriter / SEO Specialist |
 ```
 
 See each Industry Module's SEO & Keyword Strategy section for the specific recommended schema types for that vertical.
@@ -315,9 +456,11 @@ See each Industry Module's SEO & Keyword Strategy section for the specific recom
 ```markdown
 # Compliance Sign-Off Record — [Client Name] — [Active Industry Module]
 
-| Page/Section | Reviewed By | Date | Status (Cleared/Cleared with Changes/Rejected) | Notes |
-|---|---|---|---|---|
+| Artifact ID / URL | Content Type | Language | Exact Revision (version/hash/date) | Approval Scope | Reviewed By | Date | Status (Cleared/Cleared with Changes/Rejected) | Changes That Invalidate Clearance | Notes / Evidence |
+|---|---|---|---|---|---|---|---|---|---|
 ```
+
+An approval applies only to the exact artifact, revision, language, and scope recorded. New pages, posts, videos, translations, changed claims/data/disclosures, or substantive edits require a new row unless the approver explicitly included them. Define whether typo-only or formatting-only edits remain cleared; never infer future clearance from “site approved” or “batch approved.”
 
 ---
 
@@ -344,6 +487,28 @@ Constraints:
 - Ground every recommendation in the attached source material; label
   inferences explicitly
 - Output format: [specify table/markdown structure expected]
+```
+
+### 12.1 AI Verification Packet Template
+
+```markdown
+# AI Verification Packet — [Client Name] — [Task/Stage Gate]
+
+| Field | Value |
+|---|---|
+| Agent/model and date | |
+| Target environment/property | |
+| Source/commit/input artifact | |
+| Files/records/capabilities changed | |
+| Validation commands or checks | |
+| Fresh independent read-back | |
+| Reviewer and status | |
+| Unresolved risks/decisions | |
+| Rollback/recovery reference | |
+
+**Completion statement:** [State only what the evidence supports. Do not
+claim published, synced, verified, or complete from a tool success message
+or same-session editor view alone.]
 ```
 
 ---
@@ -412,13 +577,125 @@ Constraints:
 ### 15.2 Plugin & Integration Configuration Record
 
 ```markdown
-| Plugin/Integration | Version | Purpose | Configuration Notes |
-|---|---|---|---|
-| GeneratePress Premium | | Theme framework | |
-| GenerateBlocks Pro | | Page building | |
-| Rank Math SEO | | SEO/schema | |
-| LiteSpeed Cache | | Performance | |
+| Plugin/Integration | Base/Add-on Version | Purpose | Installed & Active | Subscription/Plan + Renewal Owner | Connected Account | Exact Site/Property Assignment | Paid Capability/Badge Verified | Authenticated Update Channel | Configuration Notes |
+|---|---|---|---|---|---|---|---|---|---|
+| GeneratePress Premium | | Theme framework | | | | | | | |
+| GenerateBlocks Pro | | Page building | | | | | | | |
+| Rank Math SEO | | SEO/schema | | | | | | | |
+| LiteSpeed Cache | | Performance | | | | | | | | |
 ```
+
+Installation, activation, subscription entitlement, connected identity, and per-site assignment are separate checks. Verify paid state from both the site and vendor account where available; a premium file name, menu item, or installed add-on is not sufficient evidence.
+
+### 15.3 Capability Ownership Matrix
+
+```markdown
+| Capability | Production Owner (one writer) | Monitor/Reader(s) | Theme/Code Fallback | Active-State Verification | Disabled-State Verification | Data Location | Export/Migration Path | Account/Property Verified |
+|---|---|---|---|---|---|---|---|---|
+| Titles/meta descriptions | | | | | | | | |
+| Canonicals/robots directives | | | | | | | | |
+| XML sitemap | | | | | | | | |
+| Structured data | | | | | | | | |
+| Redirects/404 monitoring | | | | | | | | |
+| Translation/`hreflang` | | | | | | | | |
+| Analytics/tag injection | | | | | | | | |
+| Consent management | | | | | | | | |
+| Forms/lead storage | | | | | | | | |
+| Caching/minification/images | | | | | | | | |
+| Security/firewall | | | | | | | | |
+```
+
+Rendered public output, response headers, cookies, and network requests are the verification source. Admin settings alone are not acceptance evidence.
+
+### 15.4 Content Release & Rollback Record
+
+```markdown
+# Content Release & Rollback Record — [Client Name]
+
+## Release
+| Field | Value |
+|---|---|
+| Release ID / timestamp | |
+| Environment and destination | |
+| Source commit / artifact path | |
+| Content type/post type | |
+| Operator / reviewer | |
+| Intended status | |
+| Cache/indexation impact | |
+
+## Scope and Mapping
+| Source Record | Stable Identifier | Existing ID/Slug | Action (create/update/status) | Fields Changed | Intended URL/Language | Rollback Artifact |
+|---|---|---|---|---|---|---|
+
+## Validation
+- Parser/format validation:
+- Item count and duplicate check:
+- One-record smoke test:
+- Pilot batch result:
+- Destination type confirmed:
+- Fresh public/authenticated read-path result:
+- Re-export/source diff:
+- Representative links/schema/forms/mobile checks:
+
+## Rollback
+- Trigger threshold:
+- Rollback owner:
+- Exact prior export/backup:
+- Recovery steps:
+- Re-test and closure evidence:
+```
+
+### 15.5 Access & Environment Matrix
+
+```markdown
+| System/Property | Environment | Business Owner | Operational Custodian | Account/Role | Access Status | Correct Property Verified | Recovery/Export Path | Last Review | Revocation/Rotation Owner | Secret Location (manager reference only) |
+|---|---|---|---|---|---|---|---|---|---|
+```
+
+Never write secret values into this matrix. Record a credential-manager reference or ticket ID only. Reconfirm the visible domain/property before state-changing work and record temporary credential revocation when applicable.
+
+### 15.6 Localization & Language QA Matrix
+
+```markdown
+| Source URL | Locale URL | Translation Owner/Reviewer | Independent Copy Review | Title/Description | Canonical | Reciprocal hreflang | Consent/Legal Copy | Form/CTA Routing | Images/Alt Text | Indexation Decision | Last Verified |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+```
+
+Do not treat machine translation as final for regulated, contractual, medical, financial, safety, compensation, consent, or legal language. Every locale must have an explicit indexation decision and a tested user path, not merely translated visible text.
+
+### 15.7 Third-Party Custom Domain & Access-Control Record
+
+```markdown
+# Third-Party Custom Domain & Access-Control Record — [Client Name / Application]
+
+## Request Path and Ownership
+| Layer | Provider / Identifier | Owner | Verified State | Evidence / Last Checked |
+|---|---|---|---|---|
+| Registrar | | | | |
+| Authoritative DNS | | | | |
+| Edge/proxy | | | | |
+| TLS termination/certificate | | | | |
+| Hosted application/origin | | | | |
+| Identity/access-control layer | | | | |
+
+## DNS and Cutover
+| Production Hostname | Required Record/Target | Conflicting A/AAAA/ALIAS/CNAME/Local Subdomain Removed | Verification TXT | TTL | Provider Fallback URL | Rollback Trigger/Steps | Status |
+|---|---|---|---|---|---|---|---|
+
+## Security and Behavior Tests
+| Test | Production Hostname | Provider/Preview/Origin URL | Expected | Result | Evidence |
+|---|---|---|---|---|---|
+| Anonymous access | | | Denied or intentionally public | | |
+| Allowed identity access | | | Authorized | | |
+| Disallowed identity access | | | Denied | | |
+| Login callback/logout/return URL | | | Final hostname, no loop | | |
+| Cookie domain/SameSite/Secure | | | Intended scope | | |
+| Canonical/robots/sitemap | | | Intended hostname/indexation | | |
+| CSP/CORS/embedded resources | | | No blocked or overbroad origin | | |
+| Analytics/client-property isolation | | | Correct property only | | |
+```
+
+Do not mark this record complete solely because DNS resolves or the vendor displays “connected.” Access control must be enforced on every reachable route to the same application, or the alternate route must be intentionally documented as public.
 
 ---
 
@@ -718,6 +995,42 @@ bullet lists, not prose paragraphs describing tabular data.
 
 ---
 
+### 16.5 Digital Estate & Access Map Template
+
+```markdown
+# Digital Estate & Access Map — [Client Name]
+
+> Record ownership, identifiers, and access status only. Store secrets in the approved credential manager, never in this document.
+
+| System/Asset | Provider/Property/URL | Business Owner | Operational Custodian | Billing/Renewal Owner | Access Status (Verified/Reported/Unknown) | Source of Truth | Recovery/Export Path | Risk/Next Action |
+|---|---|---|---|---|---|---|---|---|
+| Domain registrar | | | | | | | | |
+| Authoritative DNS | | | | | | | | |
+| Hosting + exact document root | | | | | | | | |
+| Production environment | | | | | | | | |
+| Staging environment | | | | | | | | |
+| Third-party custom domain(s) + application origin(s) | | | | | | | | |
+| CMS | | | | | | | | |
+| Source repository + branch | | | | | | | | |
+| Deployment integration + exact target | | | | | | | | |
+| Backups + last restore test | | | | | | | | |
+| Search performance property | | | | | | | | |
+| Analytics/tag manager | | | | | | | | |
+| Consent manager | | | | | | | | |
+| Forms/CRM/email destination | | | | | | | | |
+| CDN/security | | | | | | | | |
+| Translation/localization | | | | | | | | |
+
+## Legacy Preservation and Cutover
+- Authoritative URL inventory/export:
+- Content and media export:
+- Search/analytics baseline export:
+- Redirect map and validation owner:
+- DNS TTL/cutover plan:
+- Rollback trigger and tested restore point:
+- Old-provider shutdown authority and date (never cancel before verified cutover):
+```
+
 ## 17. Meeting Templates
 
 ### 17.1 Kickoff Meeting Agenda
@@ -914,6 +1227,31 @@ Section 5.2 defines one client's KB. A consulting practice running several WEF e
 ## Critical Rules
 - Never reference one client's Decision Register, Charter, or compliance findings in another client's workspace.
 - A new engagement copies the KB structure (Governance Sec. 5.2) and gets its own `_config/`, not a shared one.
+```
+
+## 22. Conversion and Operational Handoff Template
+
+### 22.1 Conversion Measurement & Operational Handoff Contract
+
+```markdown
+# Conversion Measurement & Operational Handoff Contract — [Client Name]
+
+| Meaningful Action | User Trigger | Success State | Failure/Fallback State | Analytics Event | Parameters (No PII) | Consent Category | Destination/System | Operational Owner | Notification | Confirmed Response Expectation | Test Evidence | Failure Escalation |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+
+## Destination and Routing Verification
+- Correct client property/account verified:
+- Test submission/transaction ID (non-sensitive):
+- Destination receipt confirmed by:
+- Duplicate/spam handling:
+- Outage/manual fallback:
+- Data retention/deletion owner:
+
+## Visitor Promise Check
+- Confirmation message accurately states what happens next:
+- Response-time promise confirmed by the operating team:
+- Alternate contact path is visible and functional:
+- Privacy/consent language matches actual routing and tracking:
 ```
 
 ---

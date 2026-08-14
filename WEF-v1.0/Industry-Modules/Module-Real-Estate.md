@@ -1,6 +1,6 @@
 # INDUSTRY MODULE — REAL ESTATE
 
-*Website Excellence Framework (WEF) v1.0 — Module Version 1.0*
+*Website Excellence Framework (WEF) v1.0 — Module Version 1.1 (Working Draft)*
 
 ---
 
@@ -61,6 +61,8 @@ Agent/broker license number visible on every agent bio and in the footer. Broker
 | Buy/Sell Process Page | Step-by-step process guide, embedded valuation or search tool, FAQ block |
 | Individual Listing Page | MLS-sourced data, photos/video, virtual tour if available, agent contact, Fair Housing-compliant description |
 
+**School-information boundary:** Treat school content as factual, attributed decision-support information—not as a proxy for neighborhood desirability or demographic composition. Name the publisher, metric, scale, reporting period, and access or observation date. Distinguish broad district context from address-specific attendance assignment; do not infer that a property is assigned to a school from proximity, a map pin, an aggregator, or a postal boundary. Direct users to the responsible district or other authoritative enrollment source for current address verification, and route school-related framing through Fair Housing review before publication.
+
 ## 10. Stage Gate Injection Map
 
 | Core Stage Gate | What This Module Supplies |
@@ -92,11 +94,26 @@ replacement language yourself as final — route to Compliance/Standards
 Liaison.
 ```
 
+**Prompt RE.2 — School Information Accuracy & Fair Housing Scan**
+
+```
+Review the attached neighborhood/community or listing-page school content for
+[Client Name]. For every school-related statement, identify the publisher,
+metric, scale, reporting period, and access/observation date. Separate district-
+level context from address-specific attendance assignment. Flag any assignment
+claim not verified through the responsible district or other authoritative
+enrollment source, and flag subjective school-quality or neighborhood-
+desirability framing that may create Fair Housing risk. Recommend neutral,
+attributed wording and a direct verification path; route final language to the
+Compliance/Standards Liaison.
+```
+
 ## 12. Module Version History
 
 | Version | Date | Change |
 |---|---|---|
 | 1.0 | 2026-07-23 | Initial module authored as part of the WEF Core + Modules re-architecture |
+| 1.1 (Working Draft) | 2026-08-13 | Added a school-information accuracy and Fair Housing boundary: attributed metrics and dates, district context separated from address-specific attendance assignment, direct authoritative verification, and a reusable review prompt. Pending formal Governance Board approval. |
 
 ---
 
