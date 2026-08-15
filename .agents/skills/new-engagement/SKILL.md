@@ -183,7 +183,8 @@ Gate folder in advance; only Stage Gate 1's folder exists at initialization):
 │   ├── Compliance-Constraints-Log.md
 │   ├── Open-Questions.md
 │   ├── Assumptions-Log.md
-│   └── Project-Backlog.md
+│   ├── Project-Backlog.md
+│   └── WEF-Candidate-Findings.md
 ├── _references/
 │   └── README.md
 └── blueprint/
@@ -207,6 +208,12 @@ Specifics:
 - **`Compliance-Constraints-Log.md` / `Open-Questions.md` / `Assumptions-Log.md` /
   `Project-Backlog.md`**: seed each with whatever real gaps surfaced in intake (e.g. no GA4
   baseline yet, compliance contact TBD) — empty is fine if nothing surfaced, don't invent filler.
+- **`WEF-Candidate-Findings.md`**: create from the template (`09-Reusable-Templates.md` Sec.
+  23.1), header row only — this engagement hasn't produced any findings yet at initialization.
+  Per Governance Sec. 15.6 (Cross-Engagement Contribution Pipeline), append a row here any time
+  something discovered live on this engagement looks like a reusable Core Methodology or
+  Industry Module improvement, so a periodic `wef-sync` pass picks it up alongside whatever
+  other engagements are running concurrently.
 - **`blueprint/Master-Website-Blueprint.md`**: a skeleton only (section headers from Governance
   Sec. 6) — this fills in as Stage Gates complete, not at initialization.
 - **`01-research/CONTEXT.md`**: the Stage 1 contract (Reusable Templates Sec. 21.3), linking
