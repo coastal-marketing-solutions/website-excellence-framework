@@ -80,13 +80,14 @@ Engagement Lead approves; no client sign-off required at this gate (client sees 
 
 ## 11. Checklist
 
-- [ ] Approved Design System & Page Templates (SG7.5) confirmed to cover 100% of the SG4-approved sitemap before any brief is drafted — if any page lacks an approved design, stop and resolve that gap first rather than drafting its content brief anyway (Governance, Sec. 15.4, RETRO-002; Design, Sec. 18)
+- [ ] Approved Design System & Page Templates (SG7.5) confirmed to cover 100% of the SG4-approved sitemap before any brief is drafted — if any page lacks an approved design, stop and resolve that gap first rather than drafting its content brief anyway (Governance, Sec. 15.4, RETRO-002; Design, Sec. 18). **That "100% coverage" claim must be checked against the Sitemap's own enumerated page-type categories — including compliance/legal and other non-revenue-generating categories — not against the Page Templates document's own internal category list, which can silently omit a category the coverage check never flags as missing (Governance, Sec. 15.4, RETRO-014).**
 - [ ] Active Industry Module's Content Model & Page Types reviewed before drafting briefs
 - [ ] Every sitemap page has a completed content brief
 - [ ] Every brief references its Stage Gate 5 primary keyword and search intent
 - [ ] Every brief specifies internal linking targets consistent with the topical cluster model
 - [ ] Content Depth Standard defined and applied consistently by page type
 - [ ] Compliance Content Checklist completed and signed off by Compliance/Standards Liaison (where applicable)
+- [ ] Any total page count cited in this stage's documents is shown as an enumerated breakdown by category, not a bare number (SEO-Architecture, Sec. 15; Governance, Sec. 15.4, RETRO-013)
 
 ## 12. Prompt(s)
 
@@ -242,6 +243,8 @@ Client review of copy is recommended (particularly homepage, offering pillar pag
 - [ ] Every page has an SEO Specialist on-page review completed (meta title/description, heading/keyword usage, internal links executed)
 - [ ] Every page has a Compliance Clearance Log entry — no exceptions, including low-traffic or "boilerplate" pages, wherever the Module flags the vertical as regulated
 - [ ] No superlative, guarantee, or unsubstantiated claim language remains without compliance-approved qualifying language, per the Module's known claim-risk patterns
+- [ ] Any sensitive identifying information (office address, license-linked location, practitioner personal details) has a Decision Register entry for fact-verification **and** a separate entry for publish-authorization before it appears on any live page — do not treat verification alone as clearance to publish (Governance, Sec. 13.5, RETRO-015)
+- [ ] Where a Compliance/Standards Liaison's approval reply does not explicitly address items the Clearance Log itself named as requiring their specific confirmation, that ambiguity was resolved by asking directly, not assumed — and the resulting log records both the approval granted and which specifically-flagged items were not demonstrably individually verified (Governance, Sec. 13.5, RETRO-016)
 
 ## 12. Prompt(s)
 
@@ -389,7 +392,7 @@ Engagement Lead approves the package as complete and unambiguous before build be
 
 ## 11. Checklist
 
-- [ ] Every sitemap page appears in the Build Manifest with its template, copy, schema, and URL
+- [ ] Every sitemap page appears in the Build Manifest with its template, copy, schema, and URL — **verified by re-deriving the sitemap's total page count as an enumerated breakdown at this stage, not by trusting a total cited in an earlier document** (Governance, Sec. 15.4, RETRO-013). This is the last stage before build begins; a page-count or category-coverage gap caught here is cheap, the same gap caught after 10.5 is not.
 - [ ] Every component in the Stage Gate 7 library has a corresponding entry in the Component-to-Pattern Mapping
 - [ ] Integration Requirements Spec covers all calculators, forms, analytics, and any Module-flagged third-party touchpoints in scope
 - [ ] Package is structured so an AI build model, given this document plus the LLM Handoff Protocol context package, could implement a page correctly without additional clarification

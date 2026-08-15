@@ -148,12 +148,16 @@ See each Industry Module's Information Architecture Patterns for fully worked, v
 - Forgetting jurisdiction-specific or credential-specific disclosure pages the active Industry Module flags as required.
 - URL structures mixing patterns inconsistently.
 - Ignoring the Module's Information Architecture Patterns and rebuilding a generic sitemap that misses vertical-standard page types (e.g., forgetting a "meet the team/practitioners" hub in a professional-services vertical).
+- Stating the sitemap's total page count as a bare number that later documents copy forward without recomputing — the figure silently goes stale the moment a page is added, removed, or promoted between tiers, and a later "correction" recount is just as failure-prone as the original if it isn't itself an exhaustive re-enumeration (RETRO-013, Governance Sec. 15.4).
+- Letting a downstream stage's "100% sitemap coverage" claim (design templates, URL structure, content specs) verify itself against its own internally-maintained category list rather than the Sitemap's actual category set — low-marketing-priority categories like compliance/legal pages are the ones most likely to be silently absent from that internal list and therefore invisible to the check (RETRO-014, Governance Sec. 15.4).
 
 ## 15. Best Practices
 
 - Apply a 7±2 item limit to primary navigation; push depth into mega-menus or hub pages rather than a flat wide navbar.
 - Design the taxonomy before the sitemap is finalized — taxonomy-first prevents orphaned pages.
 - Validate the "3-click rule" explicitly for every persona's priority conversion path, not just structurally for all pages.
+- **State the sitemap's total page count as an enumerated breakdown, not a bare number** — e.g., "10 core + 14 situation + 4 county + 48 city + 6 compliance/legal = 82," not just "82 pages." Any later correction to that total must restate the full breakdown, not just a new figure, so the next reader can verify it independently rather than inheriting a second unverifiable number (RETRO-013).
+- **When any later stage claims "100% sitemap coverage," check that claim directly against the Sitemap document's own enumerated page-type categories** (including compliance/legal and other non-revenue-generating categories), not against the claiming document's own internally-maintained list of what it believes those categories to be (RETRO-014).
 
 ## 16. Review Process
 
