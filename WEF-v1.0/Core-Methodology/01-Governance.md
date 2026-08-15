@@ -789,9 +789,31 @@ The following entries were extracted from the framework's first full engagement 
 - **Methodology Fix:** Research's Evidence Standard, Development, QA/Post-Launch, and the Content Freshness Register now classify content as evergreen, periodic, event-bound, or volatile; assign an owner and next review/expiry trigger; and define refresh, qualify, archive, redirect, or noindex actions.
 - **Status:** Proposed — CR-020 (Working Draft).
 
+**RETRO-013 — Independent Concurrent Sessions Authored Overlapping Branches for the Same Methodology Finding Because No Shared Intake Registry Existed**
+- **What Happened:** With multiple live engagements running concurrently (mortgage lending, real estate), methodology findings from the same underlying incident were staged into the framework's GitHub repository independently, in different working environments, without either session checking whether the other had already reserved or begun the same Change Request. The result was three branches carrying substantially overlapping content for what was ultimately a single Change Request (CR-019): two branches whose tree content was byte-for-byte identical despite different commit hashes (so a standard `git branch -d` merge check couldn't recognize them as safe to delete), and a third, earlier branch (an intake skill authored at a different file path) superseded by, but never merged into, the consolidated version. Reconciling required a manual tree-diff comparison across all three branches before any could be safely closed, rather than a mechanical check catching the collision before it happened.
+- **Generalized Risk:** In any methodology-as-code practice running more than one active engagement at a time, a finding worth porting back to the shared framework is discoverable independently, more than once, in more than one session or environment. Without a single place to check "has this already been staged," and without a naming/numbering convention that reserves a Change Request before work on it begins, duplicate branches are not an edge case — they are the expected outcome of normal concurrent operation, not a one-off mistake.
+- **Methodology Fix:** New Sec. 15.6 (Cross-Engagement Contribution Pipeline) establishes a three-layer discipline — per-engagement candidate capture, a mandatory dedup check against the Revision Log and open branches/PRs before any branch is created, and CR-number reservation before work begins — plus the `wef-sync` skill, which automates the dedup check and batches concurrent findings into one branch/PR per sync cycle instead of one per discovery.
+- **Status:** Adopted — CR-021.
+
 ### 15.5 Filing New Entries
 
 Any team member may propose a new Retrospective entry at any point in an engagement, not only at SG11.5 close-out. Proposed entries are reviewed by the Methodology Governance Board on the same cadence as Change Requests (Sec. 13.2) and, once adopted, are cited by ID in whichever Core Methodology or Industry Module section they informed.
+
+### 15.6 Cross-Engagement Contribution Pipeline
+
+**Purpose.** RETRO-013 documented the failure mode directly: independent, concurrently-running engagements each produce candidate methodology findings, and without shared visibility, two sessions can stage the same finding twice — or a genuinely new finding can collide with one already in flight. This section defines the standing discipline that prevents that structurally, rather than relying on any one session remembering to check by habit.
+
+**Layer 1 — Capture at the source.** Every engagement Knowledge Base includes a `WEF-Candidate-Findings.md` file (Reusable Templates, Sec. 23.1) — in `_config/` for KBs using the Sec. 5.2.1 folder structure, or at the KB root for engagements predating that structure. Anything discovered live that looks like a reusable Core Methodology or Industry Module improvement gets logged there immediately, with a status of `Flagged`. This costs nothing to write and does not require the finding to be fully formed, verified, or even correct yet — that triage happens in Layer 2.
+
+**Layer 2 — Dedup before branching.** Before any new `wef-cr-*` branch is created in this repository, two checks are mandatory:
+1. Search the Front Matter Revision Log (`00-Front-Matter.md`) for an existing Change Request already covering the same Core Methodology/Module section or the same underlying pattern.
+2. Check this repository's open pull requests and branches (`git fetch origin --prune && git branch -a`, plus the PR list) for anything already in flight against the same target.
+
+If either check finds a match, the new finding is reconciled into the existing Change Request (as an additional Retrospective entry or an amendment) rather than staged as an independent branch. This is the specific check RETRO-013's incident skipped.
+
+**Layer 3 — Reserve, then batch.** A Change Request number is reserved in the Revision Log — a row added with status "Reserved" or "Working Draft," per the table's existing convention — *before* work begins, not after. This is what lets a second concurrent session recognize the CR is already claimed instead of independently starting the same one. Findings need not be branched the moment they're discovered; they may accumulate in Layer 1's per-engagement logs and be batched into a single Change Request at a periodic sync pass, producing one branch and one PR per batch rather than one per discovery.
+
+**Sync cadence.** A cross-engagement sync pass runs at two trigger points: (1) whenever an active engagement reaches SG11.5 (Post-Launch), since that stage's Retrospective & Methodology Learnings prompt (AI Workflows, Sec. 4) already surfaces candidates as a matter of course; and (2) on a standing cadence — weekly by default while more than one engagement is active concurrently — so findings don't sit un-triaged for an entire engagement's duration. The `wef-sync` skill automates the mechanical parts of a sync pass: scanning every known engagement's `WEF-Candidate-Findings.md` for `Flagged` entries, running the Layer 2 dedup check against each, reserving CR numbers for genuinely new findings, and staging one batched branch/PR — flipping each source entry to `Staged` (and, once merged, `Merged`) with its assigned CR ID so nothing is silently lost or duplicated on the next pass.
 
 ---
 

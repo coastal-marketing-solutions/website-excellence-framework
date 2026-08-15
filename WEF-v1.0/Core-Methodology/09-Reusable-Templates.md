@@ -1256,4 +1256,41 @@ Section 5.2 defines one client's KB. A consulting practice running several WEF e
 
 ---
 
+## 23. Cross-Engagement Contribution Templates
+
+### 23.1 WEF-Candidate-Findings.md Template
+
+Per Governance Sec. 15.6 (Cross-Engagement Contribution Pipeline). Every engagement Knowledge
+Base gets one of these — created at initialization (New Engagement skill, Step 6) and appended
+to live, whenever this engagement is active. It is the Layer 1 capture point that lets a
+periodic `wef-sync` pass find every candidate finding across every concurrently-running
+engagement without depending on anyone remembering to raise it separately.
+
+```markdown
+# WEF Candidate Findings — [Client/Engagement Name]
+
+Log anything discovered live on this engagement that looks like a reusable Core Methodology or
+Industry Module improvement — confirmed lessons and partial "might be nothing yet" observations
+are both worth a row; triage happens at sync, not at write time. See the framework repository's
+Governance Sec. 15.6 for how these get deduplicated and merged back.
+
+| Date | Stage Gate | Description | Target Section (if known) | Status | CR ID |
+|---|---|---|---|---|---|
+```
+
+**Status values:**
+- `Flagged` — default on creation; not yet reviewed against the Revision Log.
+- `Staged` — claimed by a reserved Change Request; a branch/PR is in flight (CR ID filled in).
+- `Merged` — landed in the framework's `main`; safe to treat as adopted.
+- `Rejected` — reviewed and not generalizable, or a duplicate of an existing CR (note which one,
+  and why, in the Description column rather than deleting the row — the row itself is the record
+  that this was considered).
+
+Never delete a row on this log, even once `Merged` or `Rejected` — it's the audit trail that
+makes the Layer 2 dedup check in Governance Sec. 15.6 actually trustworthy across sessions and
+across time, the same way the Engagement Retrospective Register (Governance, Sec. 15.2) never
+deletes an entry once filed.
+
+---
+
 *End of Core Methodology. Continue to Industry Modules.*
