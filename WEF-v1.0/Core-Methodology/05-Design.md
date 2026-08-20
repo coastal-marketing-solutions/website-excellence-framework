@@ -32,7 +32,7 @@ Sitemap & Navigation Model (SG4), UX Pattern Library & Conversion Flows (SG6), P
 
 - Design System Specification (typography, color, spacing, grid)
 - This Engagement's Component Set (buttons, cards, forms, calculators, navigation, footer) — built by reusing/restyling firm-wide Component Library entries wherever a match exists (Sec. 9.5), with only genuinely novel components designed from scratch
-- Key Page Template Designs (home, offering pillar, persona hub, practitioner/staff profile, guide/blog, contact/application)
+- Key Page Template Designs (home, offering pillar, persona hub, practitioner/staff profile, guide/blog, contact/application). **A written specification of these templates (layout description, component placement in prose) is necessary but not sufficient — at minimum the Homepage and one representative Persona/Situation Hub template must also exist as an actual rendered visual output** (an image or interactive file produced by a named AI design tool — Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly, or equivalent — or a human designer), before this Stage Gate is treated as complete. A text description of a template is not a substitute for this artifact (Governance Sec. 15.4, `RETRO-018`).
 - GeneratePress/GenerateBlocks Implementation Notes (or the Charter-confirmed alternative stack's equivalent — see the Design Constraints Package Appendix)
 - **Design Constraints Package** — the structured, tool-agnostic constraint set that any AI design tool (Claude Design, OpenAI Design, Figma, Canva, Adobe Express/Firefly, or equivalent) must design *within*, and that any AI coding agent (Claude Code, Codex, Manus, GitHub Copilot, or equivalent) must be given as context before implementing or editing the site. See the Design Constraints Package Specification Appendix at the end of this chapter for full contents.
 
@@ -97,6 +97,7 @@ Before designing any component — a card, a form pattern, a trust bar, a CTA �
 - [ ] All key page templates designed using only components in the library (no bespoke one-off elements)
 - [ ] GeneratePress/GenerateBlocks Implementation Notes specify exact patterns, global styles, and site library structure
 - [ ] At least 2 genuinely distinct design directions prepared for the Stage Gate 7.5 tournament
+- [ ] **For each direction, the Homepage and at least one representative Persona/Situation Hub template exist as an actual rendered visual output — an image or interactive file, not a written description alone.** Name the specific AI design tool or human designer used and where the rendered file is stored. If this checklist item is being satisfied by a specification document instead of a render, stop and produce the render before proceeding — this is the exact failure mode `RETRO-001`/`RETRO-018` (Governance Sec. 15.4) exist to prevent, and it has recurred once already despite `RETRO-001`'s prior fix.
 
 ## 12. Prompt(s)
 
@@ -300,7 +301,7 @@ Formal session with the named Decision Authority. The Executive Approval Record 
 
 ## 11. Checklist
 
-- [ ] Minimum 2 fully realized design directions presented (not concepts/sketches)
+- [ ] Minimum 2 fully realized design directions presented (not concepts/sketches). **"Fully realized" means an actual rendered image or interactive file produced by a named AI design tool or human designer for the Homepage and at least one representative key-page template per direction — a Design System Specification, Page Template Designs document, or any other written description is explicitly not sufficient on its own, regardless of how detailed.** If no such render exists for either direction, this stage cannot exit — producing one is not optional scope, and skipping it requires a `GOVERNANCE-EXCEPTION` Decision Register entry (Governance Sec. 13.3), not a default continuation (Governance Sec. 15.4, `RETRO-001`/`RETRO-018`).
 - [ ] Design Tournament Scorecard completed by both firm and client reviewers independently before reconciliation
 - [ ] Benchmark Validation Report shows all four benchmarks (Sec. 10.2) at passing status, or documents a specific remediation plan for any that fail
 - [ ] Future-Proofing Review Memo completed, informed by the active Industry Module's growth pattern, and no unresolved scalability red flags remain
