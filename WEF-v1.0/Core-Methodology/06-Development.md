@@ -31,10 +31,13 @@ Sitemap (SG4), Keyword-to-Page Map & Schema Plan (SG5), UX Pattern Library & Cal
 - Page-by-Page Content Specification (one brief per sitemap page)
 - Content Depth Standard (minimum word count/structural requirements by page type)
 - Compliance Content Checklist (per page type)
+- Master Content Workbook — enriched (Content Plan word-count targets now real; per-category detail sheets' SEO Title/Meta Description/Hero Copy columns populated; see `master-content-workbook` skill, Sec. 9.2)
 
 ## 5. Required Documents
 
-`/08-content-spec/content-specifications-v1.md`, `/08-content-spec/content-depth-standard-v1.md`, `/08-content-spec/compliance-content-checklist-v1.md`
+`/08-content-spec/output/Per-Page-Content-Specifications.md`, `/08-content-spec/output/Content-Depth-Standard.md`, `/08-content-spec/output/Compliance-Content-Checklist.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (enriched — extend in place, see Sec. 9.2)
+
+*(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 
 ## 6. Responsible Roles
 
@@ -154,13 +157,13 @@ Primary Eight-Dimension focus: **SEO**, **Scalability** (consistent brief qualit
 
 ## 18. Exit Criteria
 
-- [ ] All Required Documents approved
+- [ ] All Required Documents approved, including the enriched Master Content Workbook
 - [ ] Compliance/Standards Liaison has signed off on the Compliance Content Checklist (where applicable)
 - [ ] Copywriter confirms briefs are actionable without further clarification
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: all three Required Documents saved v1.0
+- KB: all Required Documents saved, including the enriched Master Content Workbook
 - Blueprint: "Content Inventory" section seeded with brief references (full content added at SG9)
 - Decision Register: log Content Depth Standard thresholds as `DEC-SG8-001`
 
@@ -189,10 +192,13 @@ Page-by-Page Content Specifications (SG8), Positioning & Messaging Pillars (SG3)
 - Final Approved Copy (per page, in Knowledge Base)
 - Voice & Tone Guide
 - Compliance Clearance Log (per page)
+- Master Content Workbook — finalized (all copy columns locked; Blog Posts sheet populated; Vlog Scripts and YouTube SEO & Publishing modules added if the client has a video budget — see `master-content-workbook` skill, Sec. 9.3)
 
 ## 5. Required Documents
 
-`/09-copywriting/final-copy/{page-slug}.md` (one file per page), `/09-copywriting/voice-tone-guide-v1.md`, `/09-copywriting/compliance-clearance-log-v1.md`
+`/09-copywriting/output/final-copy/{page-slug}.md` (one file per page), `/09-copywriting/output/Voice-Tone-Guide.md`, `/09-copywriting/output/Compliance-Clearance-Log.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (finalized — extend in place, see Sec. 9.3)
+
+*(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 
 ## 6. Responsible Roles
 
@@ -312,10 +318,11 @@ Primary Eight-Dimension focus: **Conversion**, **Brand**, **SEO**. Compliance is
 - [ ] All pages have final copy with Compliance Clearance Log entries (where applicable)
 - [ ] Voice & Tone consistency confirmed
 - [ ] SEO on-page review complete for all pages
+- [ ] Master Content Workbook finalized and reopened once to confirm Excel Tables/dropdowns survive (per the `xlsx` skill convention)
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: final copy files saved v1.0 per page; Voice & Tone Guide and Compliance Clearance Log saved v1.0
+- KB: final copy files saved per page; Voice & Tone Guide, Compliance Clearance Log, and finalized Master Content Workbook saved
 - Blueprint: "Content Inventory" section finalized with approved copy references
 - Decision Register: log any compliance-driven claim modifications as `DEC-SG9-00x` for future reference (protects against re-litigating the same claim question in future content additions, and is a candidate learning to propose back into the active Industry Module)
 
@@ -504,7 +511,7 @@ Developer (lead)
 
 ## 7. Required Specialists
 
-SEO Specialist (verify Rank Math configuration matches Stage Gate 5 schema plan), AI Orchestrator (verify build output matches Build Manifest, if AI-assisted code generation was used)
+SEO Specialist (verify Rank Math configuration matches Stage Gate 5 schema plan), AI Orchestrator (verify build output matches Build Manifest, if AI-assisted code generation was used), Design Fidelity Reviewer (Governance, Sec. 2.2 — recurring spot-checks against the Design Constraints Package at intervals throughout build/content-expansion work, not only once at initial construction, with authority to remediate found drift directly rather than only flag it; Governance, Sec. 15.4, RETRO-021)
 
 ## 8. Decision Authority
 
@@ -560,6 +567,7 @@ None — this gate is purely platform-implementation and does not vary by Indust
 - [ ] **Before the first push through any newly connected or newly reconnected git deploy integration, the configured deploy target directory is verified directly in the hosting/deploy platform's own control panel** — not inferred from the repository's README or from assumption (Governance, Sec. 15.4, RETRO-006). A misconfigured target can wipe an entire live site on the first deploy with no prior symptom.
 - [ ] WordPress + GeneratePress Premium + GenerateBlocks Pro + GenerateCloud provisioned correctly; for every paid dependency, installed/active state, current subscription, connected account, exact site/property assignment, premium badge/capability, and authenticated update channel are verified separately
 - [ ] Global Styles match Design System Specification exactly (spot-check color/type tokens)
+- [ ] **Recurring, not one-time, and remediated on the spot:** the Design Fidelity Reviewer (Governance, Sec. 2.2) re-runs this spot-check against the Design Constraints Package at defined intervals for the duration of any build/content-expansion work that extends past initial construction — this line's one-time pass does not satisfy that requirement (Governance, Sec. 15.4, RETRO-021). Any drift found against already-approved spec is corrected directly, not merely logged for a later session to maybe pick up; anything the spec doesn't already answer is escalated to the Visual Designer instead of resolved as a judgment call. Any design document superseded by the SG7.5-approved direction carries an explicit, prominent superseded notice pointing to the current one, checked as part of this pass.
 - [ ] Every page in the Build Manifest exists on staging with correct copy, schema, and internal links
 - [ ] Rank Math configuration matches Schema Markup Plan (spot-check structured data via a validator)
 - [ ] Capability Ownership Matrix completed per Governance Sec. 13.4.4; exactly one production owner is assigned for metadata, canonical URLs, sitemaps, robots directives, schema, redirects, translation/`hreflang`, tag injection, consent, forms, caching, image optimization, and security

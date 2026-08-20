@@ -451,7 +451,7 @@ The Design Constraints Package (above) tells an AI design tool what rules to fol
 
 ### The Three-Part Validation
 
-Run against every export, by a human reviewer (Visual Designer or Developer) before Stage Gate 7.5 sign-off, or immediately upon receiving a design-tool export at any later stage:
+Run against every export, by a human reviewer (Visual Designer or Developer) before Stage Gate 7.5 sign-off, or immediately upon receiving a design-tool export at any later stage. From SG10.5 onward, the **Design Fidelity Reviewer** (Governance, Sec. 2.2) runs this same three-part validation on a recurring cadence against the live build itself, not only against fresh design-tool exports — see Governance, Sec. 15.4, RETRO-021, for why a one-time pass at handoff is not sufficient once a build continues past initial construction. Unlike the SG7.5 pass (reject-and-regenerate only), the Design Fidelity Reviewer's recurring checks carry direct remediation authority: a failed check against already-approved spec is corrected in the live build/code on the spot, not only logged as a rejection for someone else to act on later:
 
 1. **Fidelity check** — compare the export directly against the approved comp and the Design Tokens (Sec. 3 above): spacing values, color tokens, and typography must match exactly, not "closely." Flag anything off by more than a rounding tolerance the team has explicitly agreed on, not by eye.
 2. **Copy integrity check** — diff the export's copy against the last approved copy source (Stage Gate 9's Final Copy, or, pre-SG9, whatever copy was locked at the time). Any deviation is either a legitimate, logged Change Request or a rejection — never a silent acceptance because the replacement text "reads fine."
