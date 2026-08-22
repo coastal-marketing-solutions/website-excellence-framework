@@ -35,7 +35,9 @@ Strategic Direction Brief, Positioning Statement, Persona/Offering Priority Matr
 
 ## 5. Required Documents
 
-`/04-architecture/sitemap-v1.md`, `/04-architecture/url-structure-standard-v1.md`, `/04-architecture/navigation-model-v1.md`, `/04-architecture/content-taxonomy-v1.md`
+`/04-architecture/output/Sitemap.md`, `/04-architecture/output/URL-Structure-Standard.md`, `/04-architecture/output/Navigation-Model.md`, `/04-architecture/output/Content-Taxonomy.md`
+
+*(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 
 ## 6. Responsible Roles
 
@@ -207,10 +209,13 @@ Sitemap & Content Taxonomy (Stage Gate 4), Competitive Intelligence Report (Stag
 - Schema Markup Plan
 - Entity SEO & AI Search Optimization Brief
 - Search Visibility Operations Plan (measurement baseline, opportunity model, rank-tracking portfolio, link-audit protocol, and review cadence)
+- Master Content Workbook — skeleton state (Overview, Content Plan row-per-sitemap-page, Keyword Map, Local SEO Keyword Bank, Compliance Checklist; see `master-content-workbook` skill, Sec. 9.1)
 
 ## 5. Required Documents
 
-`/05-seo-blueprint/keyword-map-v1.md`, `/05-seo-blueprint/topical-cluster-model-v1.md`, `/05-seo-blueprint/technical-seo-spec-v1.md`, `/05-seo-blueprint/schema-plan-v1.md`, `/05-seo-blueprint/entity-ai-search-brief-v1.md`, `/05-seo-blueprint/search-visibility-operations-plan-v1.md`
+`/05-seo-blueprint/output/Keyword-to-Page-Map.md`, `/05-seo-blueprint/output/Topical-Cluster-Model.md`, `/05-seo-blueprint/output/Technical-SEO-Requirements.md`, `/05-seo-blueprint/output/Schema-Markup-Plan.md`, `/05-seo-blueprint/output/Entity-AI-Search-Brief.md`, `/05-seo-blueprint/output/Search-Visibility-Operations-Plan.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (skeleton state — see Sec. 9.1)
+
+*(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 
 ## 6. Responsible Roles
 
@@ -408,13 +413,13 @@ Primary Eight-Dimension focus: **SEO** (this gate's core output), **Scalability*
 
 ## 18. Exit Criteria
 
-- [ ] All six Required Documents approved by Engagement Lead
+- [ ] All Required Documents approved by Engagement Lead, including the Master Content Workbook skeleton
 - [ ] Compliance/Standards Liaison has cleared keyword targets for claim risk
 - [ ] Developer has confirmed Technical SEO Requirements are buildable on the default stack (or alternative per Charter)
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
-- KB: all six Required Documents saved v1.0
+- KB: all Required Documents saved, including the Master Content Workbook skeleton
 - Blueprint: "SEO Architecture" section populated in full
 - Decision Register: log cluster prioritization decisions (which clusters are Phase 1 vs. Phase 2) as `DEC-SG5-00x`
 
