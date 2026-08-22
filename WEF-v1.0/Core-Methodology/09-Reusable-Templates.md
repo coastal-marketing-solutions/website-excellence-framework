@@ -399,6 +399,12 @@ Use when an engagement plans a recurring video series or when a video must funct
 
 A translated video is a separate governed artifact and does not inherit source-language clearance. Captions and a useful text equivalent are accessibility and reuse requirements, not SEO padding.
 
+### 8.4 Master Content Workbook (Stage Gates 5 / 8 / 9)
+
+A single `{ClientName}_Master_Content_Workbook.xlsx`, built and extended (never regenerated from scratch) across three gates, that consolidates the Content Plan, per-category page detail, Keyword Map, Local SEO Keyword Bank, and Compliance Checklist into one spreadsheet a non-technical stakeholder can review without opening the Knowledge Base's markdown files. Full procedure, module definitions, and the exact build/extend prompt: `.agents/skills/master-content-workbook/SKILL.md`.
+
+Before this skill existed, the workbook was produced in only 1 of 3 audited engagements — every other engagement completed SG5/SG8/SG9 without it, because it was never a documented Required Document. It now is (see 03-SEO-Architecture.md Sec. 5, 06-Development.md Sec. 5 at SG8 and SG9) specifically so it stops being silently skippable.
+
 ---
 
 ## 9. Metadata Templates
@@ -1197,9 +1203,11 @@ One per active Stage Gate folder. A trimmed, engagement-specific instance of tha
 
 Applies alongside the Documentation Standard (Governance Sec. 8.3). Choose one consistent pattern per engagement and state it in the root `CLAUDE.md`; the specific format matters less than consistency, since it's what lets an AI model find and name files correctly without a database.
 
-**WEF default pattern:** `descriptive-name-v{N}.md` (already used throughout this framework's own Required Documents naming, e.g. `discovery-report-v1.md`).
+**Actual pattern in use (canonical as of this revision):** `Title-Case-No-Version.md`, saved inside each stage folder's `output/` subdirectory — e.g. `04-architecture/output/Sitemap.md`, `05-seo-blueprint/output/Keyword-to-Page-Map.md`, `08-content-spec/output/Per-Page-Content-Specifications.md`, `_config/Compliance-Constraints-Log.md`. Every audited engagement (Discover the Alamo, So Cal Realty Investment Group, Itzel Gonzalez) independently converged on this pattern rather than the one below, so it is now the documented default. This document's own Required Documents lines (Sec. 4-10 above, and the SG4/5/8/9 chapters in 03-SEO-Architecture.md/06-Development.md) have been updated to match.
 
-**Alternative status-suffix pattern**, useful for content mid-review: `descriptive-name_draft.md` → `descriptive-name_final.md`. Do not mix both patterns within one engagement's KB.
+**Superseded pattern, do not use for new files:** `descriptive-name-v{N}.md` (e.g. `discovery-report-v1.md`). Still appears in older chapters that haven't been reconciled yet (Governance, Design, QA & Optimization) — treat any remaining `-v1.md` Required Document name in those chapters as needing the same real-name substitution the moment that chapter is next touched, not as a live instruction to create a literal `-v1.md` file.
+
+**Alternative status-suffix pattern**, useful for content mid-review: `descriptive-name_draft.md` → `descriptive-name_final.md`. Do not mix multiple patterns within one engagement's KB.
 
 ### 21.5 Practice-Level (Multi-Client) Root
 
