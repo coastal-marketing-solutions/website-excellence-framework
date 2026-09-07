@@ -2,8 +2,9 @@
 
 **Written:** 2026-09-07
 **Repo:** `website-excellence-framework` (remote: `coastal-marketing-solutions/website-excellence-framework`)
-**Branch:** `wef-cr-027-intake-and-icm-alignment` (commit `ab09350`, pushed)
-**This file is a working note, not canon — it is not committed. Delete or move it once you've resumed.**
+**Branch:** `wef-cr-027-intake-and-icm-alignment` (pushed)
+**PR:** [#13](https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/13) — open, pending review + Governance Board approval
+**This file is a working note, not canon — it is committed on the `wef-cr-027-*` branch so a new session can find it. Delete it before merge, or leave it for the follow-up CRs.**
 
 ---
 
@@ -25,11 +26,7 @@ An `icm-architect` audit of the framework produced `assets/WEF-ICM-Architecture-
 
 ### Not done — next actions
 
-1. **Open the PR** (this is the immediate next step):
-   - URL: `https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/new/wef-cr-027-intake-and-icm-alignment`
-   - Title: `CR-027: Systematize client intake + close ICM architecture gaps (F-1–F-7)`
-   - Body: the PR description is in the previous session's scratchpad as `PR-body-CR-027.md`; if lost, regenerate from `assets/CR-027-DRAFT-Intake-Skill-and-ICM-Alignment.md` + the "Done" table above.
-   - `gh` CLI was **not installed** in the last session — install it (`winget install GitHub.cli`) or open the PR in the browser.
+1. **PR [#13](https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/13) is open.** Address any review feedback on the same branch (`git push` updates the PR automatically). Merge only after Governance Board approval (Governance Sec. 13.2–13.3). `gh` CLI was not installed last session — `winget install GitHub.cli` + `gh auth login` if you want CLI review/merge.
 
 2. **F-4 → CR-028** (`assets/CR-028-DRAFT-Revision-Log-Migration.md`): create `WEF-v1.0/_change-requests/CR-0NN.md` (one per CR-005…CR-027), thin the Revision Log table to `ID · Date · Sections · one-line · Status · Link`, add `_change-requests/CONTEXT.md`, update `wef-sync` Step 4 + the Multi-Context Reconciliation Protocol to read the next free CR number from frontmatter. **Its own branch/PR** — do not fold into CR-027.
 
