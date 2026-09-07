@@ -16,8 +16,10 @@ claimed before staging against it.
 
 Read as needed, don't front-load: `../WEF-v1.0/Core-Methodology/01-Governance.md` Sec. 15.4
 (RETRO-017), Sec. 15.6 (the pipeline this skill automates); `09-Reusable-Templates.md` Sec. 23.1
-(the `WEF-Candidate-Findings.md` template/status schema); `00-Front-Matter.md`'s Revision Log
-(source of truth for existing/reserved CR numbers).
+(the `WEF-Candidate-Findings.md` template/status schema); `WEF-v1.0/_change-requests/` (one
+`CR-0NN.md` per Change Request — the source of truth for existing/reserved CR numbers; its
+`CONTEXT.md` has the frontmatter schema). `00-Front-Matter.md`'s Revision Log is now only a thin
+index over those files.
 
 ## Step 1 — Discover active engagements
 
@@ -43,9 +45,10 @@ an error condition — don't manufacture a batch just to have something to repor
 
 For each Flagged finding, check both:
 
-1. **Revision Log** (`WEF-v1.0/00-Front-Matter.md`) — does an existing CR already cover this
+1. **Change Request history** (`WEF-v1.0/_change-requests/*.md`, with the thin Revision Log in
+   `00-Front-Matter.md` as the at-a-glance index) — does an existing CR already cover this
    Core/Module section or the same underlying pattern? Read the target section's actual content
-   and CR history; don't just keyword-match the table.
+   and the relevant `CR-0NN.md` bodies; don't just keyword-match the index.
 2. **Open branches/PRs** — `git fetch origin --prune && git branch -a`, and `gh pr list` — is
    another finding already in flight against the same target?
 
@@ -60,16 +63,17 @@ Sort each finding into one of three buckets:
 
 ## Step 4 — Reserve and batch
 
-Find the highest existing CR number in the Revision Log, including "Working Draft"/"Reserved"
-rows (reserve the next number — never reuse one that's merely pending). All genuinely-new
-findings from this sync pass share **one** CR number and **one** branch
-(`wef-cr-{NNN}-{slug}`), not one each — default to batching per Sec. 15.6 Layer 3's intent.
-Split out a separate CR only when a finding is large or contested enough that bundling it would
-make the PR hard to review or approve independently; use judgment, and say why if you split.
+The next free CR number is `max(id) + 1` across every file in `WEF-v1.0/_change-requests/`,
+counting `Working Draft`/`Reserved` files (reserve the next number — never reuse one that's
+merely pending). All genuinely-new findings from this sync pass share **one** CR number and
+**one** branch (`wef-cr-{NNN}-{slug}`), not one each — default to batching per Sec. 15.6 Layer
+3's intent. Split out a separate CR only when a finding is large or contested enough that
+bundling it would make the PR hard to review or approve independently; use judgment, and say why
+if you split.
 
-Add a Revision Log row for the reserved CR (status: "Working Draft" or "Reserved," matching the
-table's existing convention) before writing any content, so a concurrent session sees the CR is
-already claimed if it checks Layer 2 mid-sync. **Re-check the reservation immediately before
+Reserve by creating `WEF-v1.0/_change-requests/CR-{NNN}.md` (frontmatter `status: Reserved`, per
+`_change-requests/CONTEXT.md`) **and** its thin Revision Log row before writing any content, so a
+concurrent session sees the CR is already claimed if it checks Layer 2 mid-sync. **Re-check the reservation immediately before
 merge, not just at the start** — reserving early reduces collision risk but does not eliminate
 it, since a second concurrent session that reserves before fetching your reservation can still
 claim the same number. This is exactly how this pipeline's own CR-021/RETRO-013 had to be
@@ -83,6 +87,8 @@ For each finding in the batch, write it up the way RETRO-001 through RETRO-017 a
 client-identifying detail per Sec. 15.2's schema (a client name never needs to appear; "a live
 engagement in the [X] vertical" is enough). Apply the actual Core Methodology/Module edits the
 fix calls for. Cite the new RETRO ID(s) and this sync's CR number from every section touched.
+Fill in the reserved `_change-requests/CR-{NNN}.md` body — frontmatter `sections`, `retros`, and
+the full prose — and set the thin Revision Log row's one-line summary and Status.
 
 ## Step 6 — PR and merge
 

@@ -38,7 +38,7 @@ A contributor:
 3. compares each item with current canon rather than assuming it is still absent;
 4. classifies each item as already covered, complementary, conflicting, obsolete, or genuinely new;
 5. supplies evidence and proposed placement; and
-6. does not edit canon, version history, revision logs, README badges, or Git history.
+6. does not edit canon, version history, the Revision Log, `_change-requests/`, README badges, or Git history.
 
 ## Required Change Packet
 
@@ -130,7 +130,7 @@ The integrator applies these rules in order:
 6. **Prefer outcomes and evidence over proxy scores.** Search visibility, meaningful actions, accessibility, compliance, reliability, and maintainability outrank plugin scores or arbitrary quantity targets.
 7. **Prefer current primary evidence.** When recommendations genuinely conflict, prioritize applicable law/compliance, current authoritative documentation, verified first-party behavior, repeatable production evidence, then informed professional judgment—in that order.
 8. **No silent policy decisions.** If two defensible rules imply materially different cost, risk, scope, or client outcomes, log the conflict and request a user/Governance Board decision.
-9. **Version once.** Only the integrator assigns the Change Request number, working-draft version, affected-sections list, approval status, README badge, and final revision-log wording.
+9. **Version once.** Only the integrator assigns the Change Request number — the next free number is `max(id) + 1` across `WEF-v1.0/_change-requests/*.md` (counting `Reserved`/`Working Draft` files), reserved by adding both the `CR-0NN.md` body file and its thin Revision Log row before work begins — plus the working-draft version, affected-sections list, approval status, README badge, and final revision-log wording.
 10. **Verify the public/generated result.** A clean document diff is necessary but not sufficient when a rule changes generated output, analytics, publishing, or deployment behavior.
 
 ## Copy/Paste Prompt for Each Contributor Context
@@ -142,7 +142,7 @@ You are one of three contributor contexts helping reconcile independent website-
 
 Engagement represented by this context: [WEBSITE / PROJECT NAME]
 
-The WEF repository may be shared with other active contexts and may already contain uncommitted work. Effective immediately, do not edit any canonical WEF file, README, version history, revision log, Git branch, commit, or remote. Do not run git reset, checkout, restore, clean, pull/rebase, commit, or push. Preserve all unattributed changes.
+The WEF repository may be shared with other active contexts and may already contain uncommitted work. Effective immediately, do not edit any canonical WEF file, README, version history, the Revision Log, `_change-requests/`, Git branch, commit, or remote. Do not run git reset, checkout, restore, clean, pull/rebase, commit, or push. Preserve all unattributed changes.
 
 Your job is an audit and handoff, not a merge:
 

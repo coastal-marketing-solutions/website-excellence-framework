@@ -1308,7 +1308,7 @@ Governance Sec. 15.6 for how these get deduplicated and merged back.
 ```
 
 **Status values:**
-- `Flagged` — default on creation; not yet reviewed against the Revision Log.
+- `Flagged` — default on creation; not yet reviewed against the Change Request history (`_change-requests/`).
 - `Staged` — claimed by a reserved Change Request; a branch/PR is in flight (CR ID filled in).
 - `Merged` — landed in the framework's `main`; safe to treat as adopted.
 - `Rejected` — reviewed and not generalizable, or a duplicate of an existing CR (note which one,
