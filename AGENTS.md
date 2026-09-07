@@ -9,7 +9,8 @@ routes; it holds no methodology content.
 
 | Path | What it is |
 |---|---|
-| `WEF-v1.0/00-Front-Matter.md` | Intro, Core + Modules architecture, Version History, Revision Log. Read once. |
+| `WEF-v1.0/00-Front-Matter.md` | Intro, Core + Modules architecture, Version History, thin Revision Log index. Read once. |
+| `WEF-v1.0/_change-requests/` | One `CR-0NN.md` per Change Request (full prose + frontmatter); source of the next free CR number. `CONTEXT.md` first. |
 | `WEF-v1.0/Core-Methodology/01…10` | The Stage Gate spine, in order (Governance → … → AI Agent Services). |
 | `WEF-v1.0/Industry-Modules/` | Vertical packs; start at `00-Module-Template-and-Index.md`. |
 | `WEF-v1.0/Component-Library/` | Cross-industry registry of reusable UI components; `00-Component-Library-Index.md` first. |
@@ -35,7 +36,8 @@ routes; it holds no methodology content.
 ## Rules
 
 - Core Methodology changes go through a Change Request + Methodology Governance
-  Board (Governance Sec. 13.1–13.2), logged in the Front-Matter Revision Log.
+  Board (Governance Sec. 13.1–13.2), written up in `WEF-v1.0/_change-requests/CR-0NN.md` and
+  indexed in the Front-Matter Revision Log.
   Never edit canon silently. When several contexts have changes, only one
   integrator edits canon — see the Multi-Context Reconciliation Protocol.
 - Industry-specific facts (regulations, personas, page patterns) live in Industry

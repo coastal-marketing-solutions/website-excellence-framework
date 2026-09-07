@@ -28,7 +28,7 @@ An `icm-architect` audit of the framework produced `assets/WEF-ICM-Architecture-
 
 1. **PR [#13](https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/13) is open.** Address any review feedback on the same branch (`git push` updates the PR automatically). Merge only after Governance Board approval (Governance Sec. 13.2–13.3). `gh` CLI was not installed last session — `winget install GitHub.cli` + `gh auth login` if you want CLI review/merge.
 
-2. **F-4 → CR-028** (`assets/CR-028-DRAFT-Revision-Log-Migration.md`): create `WEF-v1.0/_change-requests/CR-0NN.md` (one per CR-005…CR-027), thin the Revision Log table to `ID · Date · Sections · one-line · Status · Link`, add `_change-requests/CONTEXT.md`, update `wef-sync` Step 4 + the Multi-Context Reconciliation Protocol to read the next free CR number from frontmatter. **Its own branch/PR** — do not fold into CR-027.
+2. **F-4 → CR-028** — **IMPLEMENTED** on branch `wef-cr-028-revision-log-migration` (branched from `main` after CR-027 merged). Created `WEF-v1.0/_change-requests/` (CR-005…CR-028 + `CONTEXT.md`), thinned the Revision Log to an index, repointed `wef-sync` Steps 3–5 + Governance Sec. 15.6 + the Multi-Context Reconciliation Protocol at `_change-requests/` frontmatter for the next-free-number rule, added the folder to `AGENTS.md`. Canonical write-up: `WEF-v1.0/_change-requests/CR-028.md`. Pending PR + Governance Board approval.
 
 3. **F-8 → CR-029** (`assets/CR-029-DRAFT-Governance-Chapter-Split.md`): split `01-Governance.md` into `01-governance/` with a `CONTEXT.md` router. **Needs a Governance Board design decision first** (single file + generated ToC vs. full split) — don't implement unilaterally. Take the draft's "Open questions for the Board" to them.
 
