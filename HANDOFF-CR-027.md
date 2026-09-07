@@ -4,7 +4,7 @@
 **Repo:** `website-excellence-framework` (remote: `coastal-marketing-solutions/website-excellence-framework`)
 **Branch:** `wef-cr-027-intake-and-icm-alignment` (pushed)
 **PR:** [#13](https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/13) — open, pending review + Governance Board approval
-**This file is a working note, not canon — it is not committed. Delete or move it once you've resumed.**
+**This file is a working note, not canon — it is committed on the `wef-cr-027-*` branch so a new session can find it. Delete it before merge, or leave it for the follow-up CRs.**
 
 ---
 
