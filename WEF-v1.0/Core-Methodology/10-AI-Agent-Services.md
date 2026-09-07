@@ -44,7 +44,7 @@ Approved Content Specification & Copy (SG8/SG9), Design Constraints Package (Des
 
 ## 5. Required Documents
 
-`/12a-chat-agent/agent-scope-guardrails-v1.md`, `/12a-chat-agent/knowledge-source-map-v1.md`, `/12a-chat-agent/escalation-protocol-v1.md`, `/12a-chat-agent/disclosure-script-v1.md`, `/12a-chat-agent/conversation-retention-policy-v1.md`, `/12a-chat-agent/platform-decision-record-v1.md`
+`12a-chat-agent/output/Agent-Scope-Guardrails.md`, `12a-chat-agent/output/Knowledge-Source-Map.md`, `12a-chat-agent/output/Escalation-Protocol.md`, `12a-chat-agent/output/Disclosure-Script.md`, `12a-chat-agent/output/Conversation-Retention-Policy.md`, `12a-chat-agent/output/Platform-Decision-Record.md`
 
 ## 6. Responsible Roles
 
@@ -214,7 +214,7 @@ Active Industry Module's Regulatory & Compliance Landscape (voice/telemarketing-
 
 ## 6. Required Documents
 
-`/12b-voice-agent/call-flow-script-v1.md`, `/12b-voice-agent/consent-disclosure-script-v1.md`, `/12b-voice-agent/regulatory-compliance-memo-v1.md`, `/12b-voice-agent/crm-integration-spec-v1.md`, `/12b-voice-agent/escalation-protocol-v1.md`
+`12b-voice-agent/output/Call-Flow-Script.md`, `12b-voice-agent/output/Consent-Disclosure-Script.md`, `12b-voice-agent/output/Regulatory-Compliance-Memo.md`, `12b-voice-agent/output/CRM-Integration-Spec.md`, `12b-voice-agent/output/Escalation-Protocol.md`
 
 ## 7. Responsible Roles
 

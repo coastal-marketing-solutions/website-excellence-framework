@@ -401,7 +401,15 @@ A translated video is a separate governed artifact and does not inherit source-l
 
 ### 8.4 Master Content Workbook (Stage Gates 5 / 8 / 9)
 
-A single `{ClientName}_Master_Content_Workbook.xlsx`, built and extended (never regenerated from scratch) across three gates, that consolidates the Content Plan, per-category page detail, Keyword Map, Local SEO Keyword Bank, and Compliance Checklist into one spreadsheet a non-technical stakeholder can review without opening the Knowledge Base's markdown files. Full procedure, module definitions, and the exact build/extend prompt: `.agents/skills/master-content-workbook/SKILL.md`.
+A single `{ClientName}_Master_Content_Workbook.xlsx`, built and extended (never regenerated from scratch) across three gates, that consolidates the Content Plan, per-category page detail, Keyword Map, Local SEO Keyword Bank, and Compliance Checklist into one spreadsheet a non-technical stakeholder can review without opening the Knowledge Base's markdown files.
+
+A dedicated `.agents/skills/master-content-workbook/SKILL.md` was named in CR-025 but **not implemented**; until it exists, build the workbook by hand from the artifacts each gate already produces, using the `xlsx` skill for the spreadsheet mechanics:
+
+- **SG5 (skeleton):** one sheet each for Overview, Content Plan (one row per sitemap page, from the SG4 Sitemap), Keyword Map (from the SG5 Keyword-to-Page Map), Local SEO Keyword Bank, and Compliance Checklist (seeded from the active Industry Module's Regulatory & Compliance Landscape).
+- **SG8 (enriched):** populate word-count targets, SEO Title, Meta Description, and Hero Copy columns from the per-page content specs.
+- **SG9 (finalized):** lock all copy columns; add a Blog Posts sheet; add Vlog Scripts and YouTube SEO & Publishing sheets only if the client has a video budget. Reopen the file once to confirm Excel Tables and dropdowns survived (per the `xlsx` skill convention).
+
+Implementing the skill is tracked as outstanding (see CR-027).
 
 Before this skill existed, the workbook was produced in only 1 of 3 audited engagements — every other engagement completed SG5/SG8/SG9 without it, because it was never a documented Required Document. It now is (see 03-SEO-Architecture.md Sec. 5, 06-Development.md Sec. 5 at SG8 and SG9) specifically so it stops being silently skippable.
 
@@ -717,6 +725,8 @@ This worksheet is designed to be sent to a prospective or newly-signed client di
 
 **Field-type tags** (`[Short text]`, `[Paragraph]`, `[Multiple choice]`, `[Checkboxes]`, `[Dropdown]`, `[File upload]`) are included so this can be copied directly into a form-building tool without redesigning the field structure. Required fields are marked **(Required)**; everything else may be answered "Not sure yet" or left blank without blocking intake — unanswered fields become Open Questions or Project Backlog items (Governance, Sec. 4.4/7), never guessed.
 
+**Rendering the worksheet for a client.** Sec. 16.2 is the single source of truth for the intake question set. The `intake` skill (`.agents/skills/intake/`) renders it into whatever form a given client needs — a plain-text email-reply script, a sendable document, or an online form's field list — and ingests the answers back into the engagement's `01-research/01-WEF-Intake.md` (an edit-surface artifact SG1 then reconciles against, per Research Sec. 3). Do not maintain a second hand-edited copy of the question set; if a question changes, it changes here and every rendering follows. `assets/New-Website-Intake-Worksheet.md` is a plain, sendable mirror of Sec. 16.2 kept for convenience — if the two ever diverge, Sec. 16.2 wins.
+
 ### 16.2 Client Intake Worksheet — Full Content
 
 ```markdown
@@ -761,93 +771,100 @@ here, so please be specific rather than general.*
    [metro area]" communicates what you mean. If you serve some areas for one
    service and a wider area for another — e.g., local for one product line,
    nationwide for another — say which is which.)*
-9. Are there any nearby areas people might assume you serve that you
-   **do not** actually serve? — [Paragraph] *(This prevents us from
-   accidentally researching or building content for a market you don't
-   actually cover.)*
-10. What professional licenses, registrations, or certifications does your
+9. If your business serves a geographic area, which specific cities or
+   locations are your highest priority to be found in online? — [Paragraph]
+   *(List your top 10–25 target locations, ranked roughly by importance if
+   you can. This is separate from the question above: that one is everywhere
+   you're willing to serve; this is where you most want to win business. Skip
+   this if you're not tied to specific geographies — e.g., a fully remote or
+   nationwide business.)*
+10. Are there any nearby areas people might assume you serve that you
+    **do not** actually serve? — [Paragraph] *(This prevents us from
+    accidentally researching or building content for a market you don't
+    actually cover.)*
+11. What professional licenses, registrations, or certifications does your
     business or its principals hold? **(Required)** — [Paragraph] *(Include
     license numbers and issuing body/state if you have them handy — e.g., a
     real estate license number and state, an NMLS ID, a bar number, a medical
     board registration. If you're not sure of the exact number right now,
     say "will provide" rather than guessing.)*
-11. Is your business a DBA, subsidiary, or otherwise operating under a
+12. Is your business a DBA, subsidiary, or otherwise operating under a
     different legal entity name than the brand name customers see? —
     [Short text] *(If yes, name both.)*
 
 ## Section 3 — Goals for This Website
 
-12. Is this a brand-new website, a redesign of an existing site, or a full
+13. Is this a brand-new website, a redesign of an existing site, or a full
     rebuild/replatform? **(Required)** — [Multiple choice]
-13. What's the single most important outcome you want this website to
+14. What's the single most important outcome you want this website to
     produce? **(Required)** — [Paragraph] *(e.g., more qualified phone
     calls, more form submissions, more listing appointments, more investor
     referrals — be specific about the action, not just "more traffic.")*
-14. Do you have any target numbers in mind (e.g., leads per month), or is
+15. Do you have any target numbers in mind (e.g., leads per month), or is
     this the first time you'll have a real baseline to measure against? —
     [Paragraph]
-15. Is there a deadline or timing consideration we should know about
+16. Is there a deadline or timing consideration we should know about
     (a launch event, a licensing date, a seasonal push)? — [Short text]
 
 ## Section 4 — Current Digital Presence
 
-16. Do you currently have a website? — [Multiple choice: Yes / No]
-17. If yes, what's the URL? — [Short text]
-18. If yes, do you have (or can you get us) access to Google Analytics
+17. Do you currently have a website? — [Multiple choice: Yes / No]
+18. If yes, what's the URL? — [Short text]
+19. If yes, do you have (or can you get us) access to Google Analytics
     and/or Google Search Console for the current site? — [Multiple choice:
     Yes, I have access / Yes, but I'll need to find/reset it / No / Not
     applicable]
-19. What do you like about your current site, if anything? — [Paragraph]
-20. What frustrates you about your current site, or what's it missing? —
+20. What do you like about your current site, if anything? — [Paragraph]
+21. What frustrates you about your current site, or what's it missing? —
     [Paragraph]
 
 ## Section 5 — Brand & Design
 
-21. Do you have existing brand guidelines, a logo file, or a color
+22. Do you have existing brand guidelines, a logo file, or a color
     palette we should use? — [Multiple choice: Yes, I'll upload/send them /
     I have a logo but no formal guidelines / No, we're starting fresh]
-22. Logo and brand asset upload (if available) — [File upload]
-23. Are there any websites — in your industry or outside it — whose design
+23. Logo and brand asset upload (if available) — [File upload]
+24. Are there any websites — in your industry or outside it — whose design
     or feel you like? Link them if you can. — [Paragraph]
-24. Are there any websites whose design you specifically **don't** want to
+25. Are there any websites whose design you specifically **don't** want to
     resemble, or any style/tone you want to avoid? — [Paragraph]
-25. In a few words, how do you want your site to feel to a visitor? —
+26. In a few words, how do you want your site to feel to a visitor? —
     [Short text] *(e.g., "premium and calm," "friendly and approachable,"
     "no-nonsense and fast")*
 
 ## Section 6 — Competitors
 
-26. Name at least 2-3 businesses you consider your direct competitors —
+27. Name at least 2-3 businesses you consider your direct competitors —
     ideally ones you actually compete against for the same customers, not
     just the biggest national names in your industry. **(Required)** —
     [Paragraph, one per line, with a URL if you know it]
-27. Is there anything specific you know a competitor does well (or poorly)
+28. Is there anything specific you know a competitor does well (or poorly)
     that we should know about? — [Paragraph]
 
 ## Section 7 — Team & Decision-Making
 
-28. Who is the main point of contact for this project? **(Required)** —
+29. Who is the main point of contact for this project? **(Required)** —
     [Short text] + email/phone
-29. Who has final sign-off authority on the site's strategy and design? —
+30. Who has final sign-off authority on the site's strategy and design? —
     [Short text] *(If more than one person, or if a compliance/licensing
     officer holds separate mandatory sign-off on regulated content
     independent of the business-strategy decision-maker, name both roles
     separately — this is common and expected in regulated industries.)*
-30. Is there a compliance officer, broker of record, attorney, or other
+31. Is there a compliance officer, broker of record, attorney, or other
     professional-standards contact who needs to review site content before
     it's published? — [Short text] *(If yes, name and contact info.)*
-31. Are there other staff or practitioners (e.g., agents, loan officers,
+32. Are there other staff or practitioners (e.g., agents, loan officers,
     physicians) who should be featured on the site or interviewed for
     content? — [Paragraph]
 
 ## Section 8 — Compliance & Advertising Notes
 
-32. Are you aware of any advertising rules, professional-conduct
+33. Are you aware of any advertising rules, professional-conduct
     restrictions, or required disclosures that apply to your business? —
     [Paragraph] *(You don't need to know the exact legal language — just
     flag anything you're aware of, like "we can't guarantee outcomes" or
     "we have to display our license number.")*
-33. Is there any claim, statistic, or statement you've been told NOT to use
+34. Is there any claim, statistic, or statement you've been told NOT to use
     in your marketing, or that a past marketer got wrong? — [Paragraph]
 
 ## Section 9 — Technology
@@ -855,11 +872,11 @@ here, so please be specific rather than general.*
 *You don't need to know anything technical to answer this section — just
 tell us what you already have, if anything.*
 
-34. Do you have an existing hosting provider for your site? — [Multiple
+35. Do you have an existing hosting provider for your site? — [Multiple
     choice: Yes (please name it) / No / Not sure]
-35. Do you already own a domain name, or does one need to be
+36. Do you already own a domain name, or does one need to be
     purchased/transferred? — [Short text]
-36. Do you use any existing business software you'd want the new site to
+37. Do you use any existing business software you'd want the new site to
     connect to (a CRM, a scheduling tool, an application/intake system, an
     IDX/MLS feed, etc.)? — [Paragraph]
 
@@ -877,9 +894,9 @@ scope and fee rather than our default included approach.*
 
 ## Section 10 — Anything Else
 
-37. Is there anything else about your business, your customers, or this
+38. Is there anything else about your business, your customers, or this
     project that would help us understand what you need? — [Paragraph]
-38. Do you have a specific request for a non-standard technology choice
+39. Do you have a specific request for a non-standard technology choice
     (see the note above)? If so, what and why? — [Paragraph]
 ```
 
@@ -906,9 +923,10 @@ breadth or persuasive writing.
   [Industry Module name] methodology
 - Physical/licensed business address: [from Worksheet Q7]
 - Confirmed service area (cities/counties/states): [from Worksheet Q8]
-- Explicitly NOT served (if any): [from Worksheet Q9]
-- Licenses/registrations held: [from Worksheet Q10]
-- Legal entity/DBA structure: [from Worksheet Q11]
+- Ranked priority locations (where the client most wants to win business): [from Worksheet Q9, if given]
+- Explicitly NOT served (if any): [from Worksheet Q10]
+- Licenses/registrations held: [from Worksheet Q11]
+- Legal entity/DBA structure: [from Worksheet Q12]
 
 Every one of the above facts is confirmed by the client directly. Do not
 propose expanding, narrowing, or substituting the service area, and do not
@@ -919,10 +937,10 @@ listed above, note it separately as a suggestion for the team to confirm
 with the client, clearly separated from the confirmed facts.
 
 ## Business context
-[Paste Worksheet Q3, Q5, Q6, Q12-15]
+[Paste Worksheet Q3, Q5, Q6, Q13-16]
 
 ## Named competitors (client-supplied, treat as mandatory research targets)
-[Paste Worksheet Q26-27]
+[Paste Worksheet Q27-28]
 
 ## Active Industry Module context
 [Paste the selected Industry Module's Competitive Landscape Notes and SEO &
@@ -946,7 +964,10 @@ Keyword Strategy sections in full, from the WEF Industry-Modules file]
    area only (Section 2's fixed facts), and supporting guide/article topics.
    Every location page proposed must map to a city or county explicitly
    listed in the confirmed service area — flag, don't silently include, any
-   location you believe should be added beyond what was confirmed.
+   location you believe should be added beyond what was confirmed. Where the
+   client gave a ranked priority-locations list (Q9), build and sequence the
+   location pages in that order; treat unranked confirmed areas as lower
+   priority than any ranked one.
 4. **SEO content priorities** — a keyword/topic priority model specific to
    this business's actual offerings and confirmed geography, citing the
    reasoning (search intent categories, not just a volume guess).
@@ -1203,9 +1224,9 @@ One per active Stage Gate folder. A trimmed, engagement-specific instance of tha
 
 Applies alongside the Documentation Standard (Governance Sec. 8.3). Choose one consistent pattern per engagement and state it in the root `CLAUDE.md`; the specific format matters less than consistency, since it's what lets an AI model find and name files correctly without a database.
 
-**Actual pattern in use (canonical as of this revision):** `Title-Case-No-Version.md`, saved inside each stage folder's `output/` subdirectory — e.g. `04-architecture/output/Sitemap.md`, `05-seo-blueprint/output/Keyword-to-Page-Map.md`, `08-content-spec/output/Per-Page-Content-Specifications.md`, `_config/Compliance-Constraints-Log.md`. Every audited engagement (Discover the Alamo, So Cal Realty Investment Group, Itzel Gonzalez) independently converged on this pattern rather than the one below, so it is now the documented default. This document's own Required Documents lines (Sec. 4-10 above, and the SG4/5/8/9 chapters in 03-SEO-Architecture.md/06-Development.md) have been updated to match.
+**Actual pattern in use (canonical as of this revision):** `Title-Case-No-Version.md`, saved inside each stage folder's `output/` subdirectory — e.g. `04-architecture/output/Sitemap.md`, `05-seo-blueprint/output/Keyword-to-Page-Map.md`, `08-content-spec/output/Per-Page-Content-Specifications.md`, `_config/Compliance-Constraints-Log.md`. Every audited engagement (Discover the Alamo, So Cal Realty Investment Group, Itzel Gonzalez) independently converged on this pattern rather than the one below, so it is now the documented default. As of CR-027, every Required-Document line in every Core Methodology chapter (Governance, Research, SEO & Architecture, UX & Conversion, Design, Development, QA & Optimization, AI Agent Services) has been reconciled to this convention, and Governance Sec. 8.3 now defers to this section as the single home for the rule.
 
-**Superseded pattern, do not use for new files:** `descriptive-name-v{N}.md` (e.g. `discovery-report-v1.md`). Still appears in older chapters that haven't been reconciled yet (Governance, Design, QA & Optimization) — treat any remaining `-v1.md` Required Document name in those chapters as needing the same real-name substitution the moment that chapter is next touched, not as a live instruction to create a literal `-v1.md` file.
+**Superseded pattern, do not use for new files:** `descriptive-name-v{N}.md` (e.g. `discovery-report-v1.md`). No Core Methodology chapter still carries a `-v{N}.md` Required-Document name; if one resurfaces (e.g. in an Industry Module or a new draft), substitute the real Title-Case name — it is never a live instruction to create a literal `-v{N}.md` file.
 
 **Alternative status-suffix pattern**, useful for content mid-review: `descriptive-name_draft.md` → `descriptive-name_final.md`. Do not mix multiple patterns within one engagement's KB.
 
