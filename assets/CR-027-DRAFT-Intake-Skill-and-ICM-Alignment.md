@@ -2,7 +2,7 @@
 
 **Submitted By:** `icm-architect` review pass (see [`WEF-ICM-Architecture-Review-2026-09-07.md`](WEF-ICM-Architecture-Review-2026-09-07.md))
 **Date:** 2026-09-07
-**Implementation:** branch `wef-cr-027-intake-and-icm-alignment` → PR. The canon edits below are applied on that branch as the concrete artifact the Governance Board reviews; **not merged to `main`** until approved (Governance Sec. 13.2–13.3). Findings **F-4** and **F-8** from the companion review are deliberately *not* in this branch — they are staged as [`CR-028-DRAFT-Revision-Log-Migration.md`](CR-028-DRAFT-Revision-Log-Migration.md) and [`CR-029-DRAFT-Governance-Chapter-Split.md`](CR-029-DRAFT-Governance-Chapter-Split.md).
+**Implementation:** branch `wef-cr-027-intake-and-icm-alignment` → PR [#13](https://github.com/coastal-marketing-solutions/website-excellence-framework/pull/13). The canon edits below are applied on that branch as the concrete artifact the Governance Board reviews; **not merged to `main`** until approved (Governance Sec. 13.2–13.3). Findings **F-4** and **F-8** from the companion review are deliberately *not* in this branch — they are staged as [`CR-028-DRAFT-Revision-Log-Migration.md`](CR-028-DRAFT-Revision-Log-Migration.md) and [`CR-029-DRAFT-Governance-Chapter-Split.md`](CR-029-DRAFT-Governance-Chapter-Split.md).
 **Scope:** Core Methodology + Front Matter + `.agents/skills/` + new repo-root file
 **Section/Artifact Affected:** `00-Front-Matter.md` (Revision Log); `01-Governance.md` Sec. 8.3, Sec. 1.2/1.3; `02-Research.md` SG1 Sec. 3 + Sec. 10; `09-Reusable-Templates.md` Sec. 8.4, Sec. 16.1, Sec. 16.2; `.agents/skills/new-engagement/SKILL.md` Step 1; new `AGENTS.md` + `CLAUDE.md` at repo root
 **Governance Board / Engagement Lead Decision:** _Pending_
