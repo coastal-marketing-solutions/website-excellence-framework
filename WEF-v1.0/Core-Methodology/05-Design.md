@@ -38,7 +38,7 @@ Sitemap & Navigation Model (SG4), UX Pattern Library & Conversion Flows (SG6), P
 
 ## 5. Required Documents
 
-`/07-design-system/design-system-spec-v1.md`, `/07-design-system/component-library-v1.md`, `/07-design-system/page-templates-v1.md`, `/07-design-system/generatepress-generateblocks-notes-v1.md` (or platform-equivalent), `/07-design-system/design-constraints-package-v1.md`
+`07-design-system/output/Design-System-Spec.md`, `07-design-system/output/Component-Library.md`, `07-design-system/output/Page-Templates.md`, `07-design-system/output/GeneratePress-GenerateBlocks-Notes.md` (or platform-equivalent), `07-design-system/output/Design-Constraints-Package.md`
 
 ## 6. Responsible Roles
 
@@ -219,7 +219,7 @@ Design System Specification, Component Library, Page Template Designs (all from 
 
 ## 5. Required Documents
 
-`/07.5-prototype-validation/design-tournament-scorecard-v1.md`, `/07.5-prototype-validation/benchmark-validation-report-v1.md`, `/07.5-prototype-validation/future-proofing-review-v1.md`, `/07.5-prototype-validation/executive-approval-record-v1.md`
+`07.5-prototype-validation/output/Design-Tournament-Scorecard.md`, `07.5-prototype-validation/output/Benchmark-Validation-Report.md`, `07.5-prototype-validation/output/Future-Proofing-Review.md`, `07.5-prototype-validation/output/Executive-Approval-Record.md`
 
 ## 6. Responsible Roles
 

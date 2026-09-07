@@ -75,7 +75,7 @@ Establish a factual, evidence-based understanding of the client organization's b
 ## 3. Inputs
 
 - Signed Project Charter (naming the active Industry Module)
-- Client intake questionnaire (Reusable Templates — Client Intake Templates)
+- Completed client intake at `01-research/01-WEF-Intake.md` — preferably produced by the `intake` skill (`.agents/skills/intake/`), or any equivalent completed Client Intake Worksheet (Reusable Templates, Sec. 16.2). If intake was run only as live Q&A during initialization, the same answers must still be written to `01-research/01-WEF-Intake.md` before this gate starts — SG1 reconciles *against* that file, it does not re-collect the facts.
 - Access (read-only where possible) to client's current website, GA4/analytics, and Search Console, if available
 - Active Industry Module's Persona Library and Regulatory & Compliance Landscape (seed version)
 
@@ -89,7 +89,7 @@ Establish a factual, evidence-based understanding of the client organization's b
 
 ## 5. Required Documents
 
-`/01-research/discovery-report-v1.md`, `/01-research/client-personas-v1.md`, `/01-research/current-state-audit-v1.md`, `/01-research/digital-estate-map-v1.md`, `/01-research/compliance-constraints-v1.md`
+`01-research/output/Discovery-Report.md`, `01-research/output/Client-Personas.md`, `01-research/output/Current-State-Digital-Audit.md`, `01-research/output/Digital-Estate-and-Access-Map.md`, `_config/Compliance-Constraints-Log.md` (seeded here, maintained cross-stage per Governance Sec. 5.2)
 
 ## 6. Responsible Roles
 
@@ -110,7 +110,10 @@ Engagement Lead approves the Discovery Report as sufficient to proceed; no clien
 ## 10. Workflow
 
 ```
-[1] Client Intake Questionnaire returned
+[1] Completed intake present at 01-research/01-WEF-Intake.md
+    (generated + ingested by the `intake` skill, or written there from
+    live Q&A). Section 2 (Service Area & Licensing) fields are filled
+    or explicitly marked "not sure" — never blank, never guessed.
         │
         ▼
 [2] Load active Industry Module's Persona Library and Regulatory
@@ -292,7 +295,7 @@ Build a rigorous, evidence-based picture of how the client's direct competitors 
 
 ## 5. Required Documents
 
-`/02-competitive/competitive-intelligence-report-v1.md`, `/02-competitive/competitor-scoring-matrix-v1.md`, `/02-competitive/white-space-map-v1.md`
+`02-competitive/output/Competitive-Intelligence-Report.md`, `02-competitive/output/Competitor-Scoring-Matrix.md`, `02-competitive/output/White-Space-Map.md`
 
 ## 6. Responsible Roles
 
@@ -452,7 +455,7 @@ Discovery Report, Client Personas, Competitive Intelligence Report, White Space 
 
 ## 5. Required Documents
 
-`/03-strategy/strategic-direction-brief-v1.md`, `/03-strategy/positioning-statement-v1.md`, `/03-strategy/messaging-pillars-v1.md`
+`03-strategy/output/Strategic-Direction-Brief.md`, `03-strategy/output/Positioning-Statement.md`, `03-strategy/output/Messaging-Pillars.md`
 
 ## 6. Responsible Roles
 

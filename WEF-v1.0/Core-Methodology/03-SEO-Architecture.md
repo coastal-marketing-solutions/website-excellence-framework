@@ -209,7 +209,7 @@ Sitemap & Content Taxonomy (Stage Gate 4), Competitive Intelligence Report (Stag
 - Schema Markup Plan
 - Entity SEO & AI Search Optimization Brief
 - Search Visibility Operations Plan (measurement baseline, opportunity model, rank-tracking portfolio, link-audit protocol, and review cadence)
-- Master Content Workbook — skeleton state (Overview, Content Plan row-per-sitemap-page, Keyword Map, Local SEO Keyword Bank, Compliance Checklist; see `master-content-workbook` skill, Sec. 9.1)
+- Master Content Workbook — skeleton state (Overview, Content Plan row-per-sitemap-page, Keyword Map, Local SEO Keyword Bank, Compliance Checklist; build procedure in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 

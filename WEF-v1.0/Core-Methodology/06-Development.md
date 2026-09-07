@@ -31,7 +31,7 @@ Sitemap (SG4), Keyword-to-Page Map & Schema Plan (SG5), UX Pattern Library & Cal
 - Page-by-Page Content Specification (one brief per sitemap page)
 - Content Depth Standard (minimum word count/structural requirements by page type)
 - Compliance Content Checklist (per page type)
-- Master Content Workbook — enriched (Content Plan word-count targets now real; per-category detail sheets' SEO Title/Meta Description/Hero Copy columns populated; see `master-content-workbook` skill, Sec. 9.2)
+- Master Content Workbook — enriched (Content Plan word-count targets now real; per-category detail sheets' SEO Title/Meta Description/Hero Copy columns populated; extend procedure in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 
@@ -192,7 +192,7 @@ Page-by-Page Content Specifications (SG8), Positioning & Messaging Pillars (SG3)
 - Final Approved Copy (per page, in Knowledge Base)
 - Voice & Tone Guide
 - Compliance Clearance Log (per page)
-- Master Content Workbook — finalized (all copy columns locked; Blog Posts sheet populated; Vlog Scripts and YouTube SEO & Publishing modules added if the client has a video budget — see `master-content-workbook` skill, Sec. 9.3)
+- Master Content Workbook — finalized (all copy columns locked; Blog Posts sheet populated; Vlog Scripts and YouTube SEO & Publishing modules added if the client has a video budget — finalize procedure in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 
@@ -355,7 +355,7 @@ Approved Design System & Component Library (SG7.5), Final Copy (SG9), Schema Mar
 
 ## 5. Required Documents
 
-`/10-ai-build-package/build-package-v1.md`, `/10-ai-build-package/build-manifest-v1.md`, `/10-ai-build-package/component-pattern-mapping-v1.md`, `/10-ai-build-package/integration-requirements-v1.md`
+`10-ai-build-package/output/Build-Package.md`, `10-ai-build-package/output/Build-Manifest.md`, `10-ai-build-package/output/Component-Pattern-Mapping.md`, `10-ai-build-package/output/Integration-Requirements.md`
 
 ## 6. Responsible Roles
 
@@ -503,7 +503,7 @@ AI Build Package, Build Manifest, Component-to-Pattern Mapping, Integration Requ
 
 ## 5. Required Documents
 
-`/10.5-wp-implementation/server-config-record-v1.md`, `/10.5-wp-implementation/plugin-config-record-v1.md`, `/10.5-wp-implementation/performance-config-record-v1.md`, `/10.5-wp-implementation/content-release-record-v1.md`, staging site URL logged in Project Memory
+`10.5-wp-implementation/output/Server-Config-Record.md`, `10.5-wp-implementation/output/Plugin-Config-Record.md`, `10.5-wp-implementation/output/Performance-Config-Record.md`, `10.5-wp-implementation/output/Content-Release-Record.md`, staging site URL logged in Project Memory
 
 ## 6. Responsible Roles
 

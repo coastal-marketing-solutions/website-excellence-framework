@@ -24,23 +24,27 @@ it's already this client (`{Client Name} Website Blueprint` or similar). If one 
 `AGENTS.md` already in it, stop and tell the user — offer to resume from that KB's `AGENTS.md`
 instead of running intake again. This skill is for engagements that don't exist yet.
 
-## Step 1 — Intake: check for a completed Worksheet before running live Q&A
+## Step 1 — Intake: prefer the `intake` skill; fall back to live Q&A
 
-Ask the user first whether a completed Client Intake Worksheet (Reusable Templates Sec. 16.2)
-already exists for this client — an emailed response, a Google Forms/Typeform export, or any
-file with the client's own answers. **If one exists, use it as the source of truth and skip the
-live conversational Q&A below** — read the file directly, and only ask follow-up questions for
-anything genuinely missing or ambiguous in it. This is the preferred path: the Worksheet is
-designed so a client can fill it out asynchronously, and re-asking everything live when a
-completed Worksheet already exists is exactly the duplicated-effort this skill exists to avoid.
+The strongly-preferred first step is the **`intake` skill** (`.agents/skills/intake/`). It
+produces `01-research/01-WEF-Intake.md` — the templated, human-reviewed intake artifact this
+step consumes. Check whether it has already been run for this client:
 
-If no completed Worksheet exists yet, either (a) send the user the Worksheet template
-(Reusable Templates Sec. 16.2) to forward to the client and pause here until it comes back, or
-(b) if the user wants to proceed immediately without waiting on the client, run the same
-questions as a live conversation instead — batch by section below, let the user answer in
-whatever order is natural, don't form-dump all of it at once. Either path, anything not yet
-known gets marked **PENDING**, not guessed or invented — per the Documentation Standard,
-fabricated facts (license numbers, metrics, competitor data) are a hard no.
+- **`01-research/01-WEF-Intake.md` exists** (or any equivalent completed Client Intake
+  Worksheet — an emailed response, a Google Forms/Typeform export, any file with the client's
+  own answers) → use it as the source of truth. Skip the live Q&A below; only ask follow-ups
+  for fields it marks "not sure" or leaves blank.
+- **It does not exist** → recommend running `intake` now (it takes the same answers, in the
+  same order, and writes the artifact this step needs). This is encouraged, not mandatory — if
+  the user wants to proceed immediately, run the section-by-section Q&A below as a live
+  conversation, batching by section, letting the user answer in whatever order is natural
+  (don't form-dump all of it at once), and **write the answers into
+  `01-research/01-WEF-Intake.md` as you go** so the artifact still exists for Stage Gate 1 and
+  is never re-collected later.
+
+Either path: anything not yet known gets marked **PENDING** / "not sure", never guessed or
+invented — per the Documentation Standard, fabricated facts (license numbers, metrics,
+competitor data) are a hard no.
 
 **Worksheet Section 2 (Service Area & Licensing) is load-bearing — don't proceed past this step
 with those fields still blank if it's at all avoidable.** They're the fixed facts Step 3.5's
@@ -167,8 +171,14 @@ means yes.
 
 ## Step 6 — Scaffold the Knowledge Base
 
-Create **only** the following (per Governance Sec. 5.2.1 Rule 2 — do not scaffold every Stage
-Gate folder in advance; only Stage Gate 1's folder exists at initialization):
+**Copy the skeleton, then fill it in.** This repo ships a literal starter at
+`assets/templates/engagement-KB/` — the exact structure below, with placeholder-filled files.
+Copy that folder to `../{Client Name} Website Blueprint/` and edit the placeholders; do not
+re-derive the structure by hand. If `01-research/01-WEF-Intake.md` already exists from the
+`intake` skill (Step 1), keep it — the skeleton's `01-research/` is additive to it.
+
+Per Governance Sec. 5.2.1 Rule 2, the skeleton contains **only Stage Gate 1's folder** — do not
+add `02-competitive/` … `11.5-post-launch/` until each stage actually begins.
 
 ```
 {Client Name} Website Blueprint/
@@ -176,7 +186,8 @@ Gate folder in advance; only Stage Gate 1's folder exists at initialization):
 ├── CONTEXT.md
 ├── 01-research/
 │   ├── CONTEXT.md
-│   └── output/            (empty, .gitkeep or first Discovery doc once SG1 starts)
+│   ├── 01-WEF-Intake.md    (from the `intake` skill, if run; else created here)
+│   └── output/            (empty .gitkeep, or first Discovery doc once SG1 starts)
 ├── _config/
 │   ├── Project-Charter.md
 │   ├── Decision-Register.md
@@ -191,9 +202,10 @@ Gate folder in advance; only Stage Gate 1's folder exists at initialization):
     └── Master-Website-Blueprint.md
 ```
 
-Populate each file from the templates in `09-Reusable-Templates.md` Sec. 16.2 (Charter) and
-Sec. 21.1–21.3 (`AGENTS.md`/`CONTEXT.md`/stage `CONTEXT.md`), filled with the real answers from
-Steps 1–4 — not left as bracketed placeholders where an answer exists. Where an answer is
+Fill each copied file from the canonical templates it mirrors — `09-Reusable-Templates.md`
+Sec. 16.4 (Charter), Sec. 21.1–21.3 (`AGENTS.md`/`CONTEXT.md`/stage `CONTEXT.md`), Sec. 23.1
+(`WEF-Candidate-Findings.md`) — using the real answers from Steps 1–4, not left as bracketed
+placeholders where an answer exists. Where an answer is
 genuinely unknown, write **PENDING** and add a matching `Project-Backlog.md` line, exactly as
 the Charter template expects (see any existing `*Website Blueprint/_config/Project-Charter.md`
 for tone/format).

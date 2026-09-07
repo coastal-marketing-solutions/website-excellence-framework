@@ -36,7 +36,7 @@ Sitemap & Navigation Model (Stage Gate 4), Keyword-to-Page Map (Stage Gate 5), C
 
 ## 5. Required Documents
 
-`/06-ux-conversion/conversion-flows-v1.md`, `/06-ux-conversion/calculator-specs-v1.md`, `/06-ux-conversion/ux-pattern-library-v1.md`, `/06-ux-conversion/trust-signal-plan-v1.md`, `/06-ux-conversion/conversion-measurement-contract-v1.md`
+`06-ux-conversion/output/Conversion-Flows.md`, `06-ux-conversion/output/Calculator-Specs.md`, `06-ux-conversion/output/UX-Pattern-Library.md`, `06-ux-conversion/output/Trust-Signal-Plan.md`, `06-ux-conversion/output/Conversion-Measurement-Contract.md`
 
 ## 6. Responsible Roles
 

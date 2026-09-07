@@ -50,6 +50,7 @@ Project Initialization converts a signed Statement of Work (SOW) into a running 
 ### 1.3 Initialization Checklist
 
 - [ ] SOW reviewed by Engagement Lead against WEF standard scope boundaries
+- [ ] Client intake captured as `01-research/01-WEF-Intake.md` — strongly preferred via the `intake` skill (`.agents/skills/intake/`), or from any equivalent completed Client Intake Worksheet (Reusable Templates, Sec. 16.2); encouraged, not a hard gate — if intake was run only as live Q&A, the answers are still written to that file before Stage Gate 1
 - [ ] Client industry classified and the corresponding Industry Module selected (or a documented two-module blend agreed — see Sec. 1.5)
 - [ ] Client primary contact and decision authority (Section 3.4) confirmed in writing
 - [ ] Core team assigned and calendars blocked for Stage Gates 1–3 at minimum
@@ -380,9 +381,11 @@ Consistent documentation is what allows deliverables to move between human consu
 
 ### 8.3 File Naming Convention
 
-`{stage-gate-number}-{deliverable-short-name}-v{version}.md`
+The canonical convention is defined in **Reusable Templates, Sec. 21.4** and is `Title-Case-No-Version.md`, saved inside each Stage Gate folder's `output/` subdirectory — e.g. `04-architecture/output/Sitemap.md`, `05-seo-blueprint/output/Keyword-to-Page-Map.md`. Client-supplied source inputs (a returned intake, a research brief) sit at the stage-folder root rather than in `output/` — e.g. `01-research/01-WEF-Intake.md`.
 
-Example: `05-seo-topical-map-v1.md`, `07-design-system-spec-v2.md`
+The earlier `{stage-gate-number}-{deliverable-short-name}-v{version}.md` pattern is **superseded** — all three audited engagements independently converged on the convention above (see Sec. 21.4). As of CR-027, every Required-Document name in the Core Methodology chapters has been reconciled to it; there is no longer a live instruction anywhere to create a literal `-v{N}.md` file.
+
+In-document version tracking (v0.x → v1.0 → …) continues per Sec. 8.4 and Sec. 11 — versions live in the document's metadata block, not the filename.
 
 ### 8.4 Versioning Within Documents
 

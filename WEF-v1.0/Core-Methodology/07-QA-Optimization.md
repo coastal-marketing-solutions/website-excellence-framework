@@ -35,7 +35,7 @@ Staging site (SG10.5), all prior Stage Gate approved specifications (used as the
 
 ## 5. Required Documents
 
-`/11-qa/qa-test-report-v1.md`, `/11-qa/compliance-signoff-record-v1.md`, `/11-qa/issue-log-v1.md`, `/11-qa/go-live-recommendation-v1.md`
+`11-qa/output/QA-Test-Report.md`, `11-qa/output/Compliance-Signoff-Record.md`, `11-qa/output/Issue-Log.md`, `11-qa/output/Go-Live-Recommendation.md`
 
 ## 6. Responsible Roles
 
@@ -222,7 +222,7 @@ Live production site, GA4/Search Console/Clarity data (accumulating from launch)
 
 ## 5. Required Documents
 
-`/11.5-post-launch/growth-program-plan-v1.md`, `/11.5-post-launch/kpi-dashboard-spec-v1.md`, `/11.5-post-launch/experiment-log-v1.md`, `/11.5-post-launch/retrospective-learnings-v1.md`
+`11.5-post-launch/output/Growth-Program-Plan.md`, `11.5-post-launch/output/KPI-Dashboard-Spec.md`, `11.5-post-launch/output/Experiment-Log.md`, `11.5-post-launch/output/Retrospective-Learnings.md`
 
 ## 6. Responsible Roles
 
