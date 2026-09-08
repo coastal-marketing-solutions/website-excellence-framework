@@ -90,7 +90,7 @@
 
 **Module Injection Point** — The explicit callout in a Core Methodology Stage Gate marking exactly where the active Industry Module's content must be substituted in (Governance, Sec. 9.2).
 
-**MWEF** — *Mortgage Website Excellence Framework*, the original single-industry manual preserved intact at `/MWEF-v1.0/`, superseded in scope (but not deleted) by WEF v1.0's Core + Modules architecture. Its content lives on as the Mortgage Lending Industry Module.
+**MWEF** — *Mortgage Website Excellence Framework*, the original single-industry manual preserved intact in the firm's internal Knowledge Base (not included in this public repository), superseded in scope (but not deleted) by WEF v1.0's Core + Modules architecture. Its content lives on as the Mortgage Lending Industry Module.
 
 **Positioning Statement** — The single, client-approved sentence defining how the client is distinctly positioned relative to its competitive set (Stage Gate 3).
 
@@ -158,7 +158,7 @@ Consult the relevant Industry Module for the full citation list applicable to th
 
 **Internal Firm Resources**
 - Firm Knowledge Base: `/methodology/wef/v1.0/`
-- Predecessor manual (preserved, mortgage-only): `/MWEF-v1.0/`
+- Predecessor manual (preserved, mortgage-only): MWEF v1.0 — held in the firm's internal Knowledge Base, not included in this public repository
 - Methodology Governance Board meeting minutes and Change Request archive
 
 ---
@@ -270,7 +270,7 @@ To propose a change to the **Core Methodology**, submit a Change Request (Reusab
 
 ### Appendix F — Relationship to the Predecessor Manual
 
-*Mortgage Website Excellence Framework (MWEF) v1.0*, the original single-industry manual, remains intact and unmodified at `/MWEF-v1.0/`. It is not a draft or a deprecated artifact — it is a complete, standalone reference that happens to also be the source material for this framework's Mortgage Lending Industry Module. Firms already running engagements under MWEF v1.0 may continue to reference it directly; new engagements, in any industry including mortgage lending, should be run under WEF v1.0's Core Methodology plus the relevant Industry Module.
+*Mortgage Website Excellence Framework (MWEF) v1.0*, the original single-industry manual, remains intact and unmodified in the firm's internal Knowledge Base (it is not included in this public repository). It is not a draft or a deprecated artifact — it is a complete, standalone reference that happens to also be the source material for this framework's Mortgage Lending Industry Module. Firms already running engagements under MWEF v1.0 may continue to reference it directly; new engagements, in any industry including mortgage lending, should be run under WEF v1.0's Core Methodology plus the relevant Industry Module.
 
 ---
 

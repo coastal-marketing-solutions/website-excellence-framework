@@ -6,7 +6,7 @@
 
 ## 1. Module Overview & Applicability
 
-This Module applies to retail mortgage lenders, mortgage brokers, wholesale lenders with a consumer-facing arm, and credit unions with a significant mortgage origination business. It is the source Module for what was originally published as the standalone *Mortgage Website Excellence Framework (MWEF) v1.0* (preserved intact at `/MWEF-v1.0/`); this Module is that manual's vertical-specific content, re-expressed against the Core Methodology's fixed template.
+This Module applies to retail mortgage lenders, mortgage brokers, wholesale lenders with a consumer-facing arm, and credit unions with a significant mortgage origination business. It is the source Module for what was originally published as the standalone *Mortgage Website Excellence Framework (MWEF) v1.0* (preserved intact in the firm's internal Knowledge Base, not included in this public repository); this Module is that manual's vertical-specific content, re-expressed against the Core Methodology's fixed template.
 
 **Blend commonly with:** Real Estate Module (for brokerages with an in-house lending arm — Real Estate as primary, this Module as secondary, governing the lending sub-section of the site).
 

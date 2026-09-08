@@ -2,7 +2,9 @@
 
 **Date:** 2026-09-07
 **Method:** `icm-architect` skill, Restructure/audit mode, run against `main` after CR-027–CR-030 merged.
-**Scope:** a second sweep for cleanup items *not already tracked* in `HANDOFF.md`. This is an identify-only pass — nothing here is implemented.
+**Scope:** a second sweep for cleanup items *not already tracked* in `HANDOFF.md`.
+
+**Progress:** **C-1, C-2, C-3 implemented in CR-031** (`_change-requests/CR-031.md`, branch `chore-cr027-31-handoff-cleanup`, pending Board). C-4–C-8 remain — proposed batching below.
 
 ---
 
@@ -84,10 +86,8 @@ They differ only by case + `.md`. `git` and case-insensitive filesystems cope (t
 
 ## Suggested batching
 
-| PR | Contents | Findings |
-|---|---|---|
-| **CR-031** | Retroactive record + full cataloguing of the Luxury Agent module; fix all stale counts in `README.md` and `00-Front-Matter.md` | C-1, C-2 |
-| **CR-032** | `assets/` housekeeping: `assets/README.md`, `assets/_archive/`, move superseded DRAFTs + historical docs, stub headers, update the ICM review status; delete `HANDOFF.md` if the CR-029 sweep is also done | C-4, C-5, C-6 |
-| **fold into the next content PR** | `/MWEF-v1.0/` reference wording; `CONTRIBUTING.md` Change-Request subsection; `01-governance/CONTEXT.md` adjacency note | C-3, C-7, C-8 |
-
-C-3 could also ride in CR-031 since it touches the same two entry documents.
+| PR | Contents | Findings | Status |
+|---|---|---|---|
+| **CR-031** | Retroactive record + full cataloguing of the Luxury Agent module; stale counts in `README.md` / `00-Front-Matter.md`; `/MWEF-v1.0/` reference wording | C-1, C-2, C-3 | **implemented — pending Board** |
+| **CR-032** | `assets/` housekeeping: `assets/README.md`, `assets/_archive/`, move superseded DRAFTs + historical docs, stub headers, update the ICM review status; delete `HANDOFF.md` if the CR-029 sweep is also done | C-4, C-5, C-6 | open |
+| **fold into the next content PR** | `CONTRIBUTING.md` Change-Request subsection; `01-governance/CONTEXT.md` adjacency note | C-7, C-8 | open |
