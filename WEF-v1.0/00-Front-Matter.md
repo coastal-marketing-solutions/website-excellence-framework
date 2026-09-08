@@ -102,7 +102,7 @@ changes are also logged in the affected Module's own front matter.
 | CR-027 | 2026-09-07 | Governance, Research, UX, Design, Development, QA, AI Agent Services, Reusable Templates, skills, repo-root `AGENTS.md` | Systematised client intake (`intake` skill); ICM alignment F-1–F-7; file-naming sweep | Adopted | [CR-027](_change-requests/CR-027.md) |
 | CR-028 | 2026-09-07 | Front Matter, new `_change-requests/`, Governance Sec. 15.6, `wef-sync`, Multi-Context Protocol, `AGENTS.md` | Migrated CR bodies to `_change-requests/CR-0NN.md`; thinned this log to an index (F-4) | Adopted | [CR-028](_change-requests/CR-028.md) |
 | CR-029 | 2026-09-07 | `01-Governance.md` → `01-governance/` (15 section files + `CONTEXT.md` router); stub kept; `README.md`, `AGENTS.md`, skills | Split the Governance chapter for selective loading (F-8, Board Option C); reference sweep deferred | Adopted | [CR-029](_change-requests/CR-029.md) |
-| CR-030 | 2026-09-07 | new `master-content-workbook` skill; Reusable Templates Sec. 8.4; SEO & Architecture Sec. 5, Development Sec. 5; `AGENTS.md` | Implemented the Master Content Workbook skill (SG5/SG8/SG9); closed the "skill outstanding" thread from CR-025/CR-027 | Working Draft — pending Board | [CR-030](_change-requests/CR-030.md) |
+| CR-030 | 2026-09-07 | new `master-content-workbook` skill; Reusable Templates Sec. 8.4; SEO & Architecture Sec. 5, Development Sec. 5; `AGENTS.md` | Implemented the Master Content Workbook skill (SG5/SG8/SG9); closed the "skill outstanding" thread from CR-025/CR-027 | Adopted | [CR-030](_change-requests/CR-030.md) |
 
 All future changes to this manual must be logged in this table and versioned per the Governance discipline's Change Control policy.
 
