@@ -1,3 +1,7 @@
+> **ARCHIVED (CR-032, 2026-09-07).** Original proposal draft. Adopted, canonical record:
+> [`WEF-v1.0/_change-requests/CR-029.md`](../../WEF-v1.0/_change-requests/CR-029.md)
+> (Board chose Option C). Kept for provenance; internal links below may be stale.
+
 # Change Request — CR-029 *(WORKING DRAFT — NOT ADOPTED)*
 
 **Submitted By:** `icm-architect` review pass ([`WEF-ICM-Architecture-Review-2026-09-07.md`](WEF-ICM-Architecture-Review-2026-09-07.md), finding **F-8**)

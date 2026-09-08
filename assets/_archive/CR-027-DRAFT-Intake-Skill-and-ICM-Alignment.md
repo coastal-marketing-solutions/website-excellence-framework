@@ -1,3 +1,7 @@
+> **ARCHIVED (CR-032, 2026-09-07).** This is the original proposal draft. The adopted,
+> canonical record is [`WEF-v1.0/_change-requests/CR-027.md`](../../WEF-v1.0/_change-requests/CR-027.md).
+> Kept for provenance; internal links below may be stale.
+
 # Change Request — CR-027 *(IMPLEMENTED ON BRANCH — PENDING GOVERNANCE BOARD APPROVAL)*
 
 **Submitted By:** `icm-architect` review pass (see [`WEF-ICM-Architecture-Review-2026-09-07.md`](WEF-ICM-Architecture-Review-2026-09-07.md))

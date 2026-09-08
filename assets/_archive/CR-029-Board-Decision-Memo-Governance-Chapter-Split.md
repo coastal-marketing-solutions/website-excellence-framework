@@ -1,3 +1,7 @@
+> **ARCHIVED (CR-032, 2026-09-07).** Point-in-time record of the Board's Option-C decision.
+> The decision and its rationale are carried forward in
+> [`WEF-v1.0/_change-requests/CR-029.md`](../../WEF-v1.0/_change-requests/CR-029.md).
+
 # Board Decision Memo — CR-029: Governance Chapter Navigability
 
 **For:** Methodology Governance Board

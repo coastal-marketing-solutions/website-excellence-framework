@@ -4,7 +4,7 @@
 **Method:** `icm-architect` skill, Restructure/audit mode, run against `main` after CR-027–CR-030 merged.
 **Scope:** a second sweep for cleanup items *not already tracked* in `HANDOFF.md`.
 
-**Progress:** **C-1, C-2, C-3 implemented in CR-031** (`_change-requests/CR-031.md`, branch `chore-cr027-31-handoff-cleanup`, pending Board). C-4–C-8 remain — proposed batching below.
+**Progress:** **C-1, C-2, C-3 → CR-031**; **C-4, C-5 → CR-032** (both on branch `chore-cr027-31-handoff-cleanup`, pending Board). **C-6, C-7, C-8 remain** — see batching below.
 
 ---
 
@@ -52,7 +52,7 @@ So a module claims Board approval via a pointer that resolves to nothing, and tw
 
 **Fix:** decide the intent. The Document Control table says the storage of record is the private "Firm Knowledge Base" — if MWEF is deliberately private, reword every reference to "preserved in the firm Knowledge Base; not included in this public repository." If it should be public, add it. Don't leave assertions of a path that isn't there.
 
-### C-4 — `assets/` mixes live reference, historical process records, and a live tracker with nothing distinguishing them *(Medium — invariant 4, "structure is documentation")*
+### C-4 — `assets/` mixes live reference, historical process records, and a live tracker with nothing distinguishing them *(Medium — invariant 4, "structure is documentation")* — **DONE (CR-032)**
 
 | File | Actually is |
 |---|---|
@@ -66,9 +66,9 @@ So a module claims Board approval via a pointer that resolves to nothing, and tw
 
 **Fix:** add `assets/README.md` classifying every file (live / historical / tracker). Move the superseded and historical docs to `assets/_archive/` (propose, don't silently delete — reconciliation protocol + ICM restructure rule); give each `CR-0NN-DRAFT` a one-line header pointing at its canonical `_change-requests/CR-0NN.md`. Consider relocating `CR-029-Reference-Sweep-Checklist.md` to `_change-requests/CR-029-reference-sweep.md`, beside `CR-029.md`.
 
-### C-5 — `WEF-ICM-Architecture-Review-2026-09-07.md` §5 status table is stale *(Low)*
+### C-5 — `WEF-ICM-Architecture-Review-2026-09-07.md` §5 status table is stale *(Low)* — **DONE (CR-032)**
 
-It still shows F-4/F-8 as "staged" and CR-028/CR-029 as "(draft)". All four CRs (027–030) are merged. Add a dated banner at the top ("All eight findings resolved — CR-027…CR-030, merged 2026-09-07") and mark the §5 rows done, then it's ready to archive per C-4.
+Was showing F-4/F-8 as "staged" and CR-028/CR-029 as "(draft)". CR-032 replaced the Status paragraph with a dated **RESOLVED** banner and refreshed the §5 table. The doc stays in `assets/` as the audit of record (not archived) because `AGENTS.md` points at it for "why the repo is shaped this way"; the superseded DRAFTs it used to link went to `assets/_archive/`.
 
 ### C-6 — `HANDOFF.md` lives in the repo entry surface *(Low — accept for now)*
 
@@ -89,5 +89,6 @@ They differ only by case + `.md`. `git` and case-insensitive filesystems cope (t
 | PR | Contents | Findings | Status |
 |---|---|---|---|
 | **CR-031** | Retroactive record + full cataloguing of the Luxury Agent module; stale counts in `README.md` / `00-Front-Matter.md`; `/MWEF-v1.0/` reference wording | C-1, C-2, C-3 | **implemented — pending Board** |
-| **CR-032** | `assets/` housekeeping: `assets/README.md`, `assets/_archive/`, move superseded DRAFTs + historical docs, stub headers, update the ICM review status; delete `HANDOFF.md` if the CR-029 sweep is also done | C-4, C-5, C-6 | open |
+| **CR-032** | `assets/` housekeeping: `assets/README.md`, `assets/_archive/` (5 files moved with banners), ICM review status refreshed to RESOLVED, link fixes | C-4, C-5 | **implemented — pending Board** |
+| **fold into the CR-029 sweep PR or a later content PR** | `CONTRIBUTING.md` Change-Request subsection; `01-governance/CONTEXT.md` adjacency note; delete `HANDOFF.md` once the CR-029 reference sweep is done | C-7, C-8, C-6 | open |
 | **fold into the next content PR** | `CONTRIBUTING.md` Change-Request subsection; `01-governance/CONTEXT.md` adjacency note | C-7, C-8 | open |
