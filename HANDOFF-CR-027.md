@@ -32,7 +32,7 @@ An `icm-architect` audit of the framework produced `assets/WEF-ICM-Architecture-
 
 3. **F-8 → CR-029** — **IMPLEMENTED** on branch `wef-cr-029-governance-chapter-split`. Board chose **Option C** (`assets/CR-029-Board-Decision-Memo-Governance-Chapter-Split.md`): `01-Governance.md` split into `01-governance/` (15 section files + `CONTEXT.md` router), `01-Governance.md` kept as a pointer stub. The ~185-reference sweep from `Governance, Sec. N` → `Governance — <file>.md, Sec. N` is **deferred and tracked** in `assets/CR-029-Reference-Sweep-Checklist.md` — do it opportunistically as each listed file is next touched. Canonical write-up: `WEF-v1.0/_change-requests/CR-029.md`. Pending PR + Board sign-off on the implementation.
 
-4. **`master-content-workbook` skill** (surfaced by F-3): still doesn't exist. Either build `.agents/skills/master-content-workbook/SKILL.md` from the procedure now inlined in Reusable Templates Sec. 8.4, or leave Sec. 8.4's inline version as the permanent home and drop the "skill outstanding" language.
+4. **`master-content-workbook` skill** (surfaced by F-3): **BUILT** as CR-030 on branch `wef-cr-030-master-content-workbook-skill`. New `.agents/skills/master-content-workbook/SKILL.md` (SKELETON/ENRICH/FINALISE modes for SG5/SG8/SG9, calls the `xlsx` skill for mechanics); Reusable Templates Sec. 8.4 rewritten to point at it; the three dangling `Sec. 9.x` refs in SEO & Architecture / Development corrected to Sec. 8.4. Canonical write-up: `WEF-v1.0/_change-requests/CR-030.md`. Pending PR + Board sign-off.
 
 ---
 
