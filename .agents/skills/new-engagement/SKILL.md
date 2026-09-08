@@ -10,8 +10,9 @@ selection → tech stack confirmation → Knowledge Base scaffold → Project Ch
 Decision Register entries. Goal: the user answers questions once, in order, and walks away
 with a real KB folder ready for Stage Gate 1 — not a checklist they have to operate by hand.
 
-Read as needed, don't front-load: `../WEF-v1.0/Core-Methodology/01-Governance.md` Sec. 1
-(workflow), Sec. 5 (KB structure/nav layer), Sec. 13.4/13.4.1 (stack); `09-Reusable-Templates.md`
+Read as needed, don't front-load: `../WEF-v1.0/Core-Methodology/01-governance/` — `01-initialization.md`
+Sec. 1 (workflow), `05-knowledge-base.md` Sec. 5 (KB structure/nav layer), `13-policies.md`
+Sec. 13.4/13.4.1 (stack); `09-Reusable-Templates.md`
 Sec. 16.2 (Intake Worksheet), Sec. 16.3 (Perplexity Research Prompt), Sec. 16.4 (Charter),
 Sec. 17.1 (Kickoff Agenda), Sec. 21 (AGENTS.md/CONTEXT.md templates).
 The best worked example of the target end state is any sibling `*Website Blueprint/` folder

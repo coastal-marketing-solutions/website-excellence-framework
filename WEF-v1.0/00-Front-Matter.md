@@ -100,7 +100,8 @@ changes are also logged in the affected Module's own front matter.
 | CR-025 | 2026-08-20 | SEO & Architecture, Reusable Templates | Master Content Workbook (Sec. 8.4); SG4/SG5 file-naming reconciled to `Title-Case-No-Version.md` in `output/` | Adopted | [CR-025](_change-requests/CR-025.md) |
 | CR-026 | 2026-08-20 | Governance, Development | Design Fidelity Reviewer standing role with remediation authority; RETRO-021 | Adopted | [CR-026](_change-requests/CR-026.md) |
 | CR-027 | 2026-09-07 | Governance, Research, UX, Design, Development, QA, AI Agent Services, Reusable Templates, skills, repo-root `AGENTS.md` | Systematised client intake (`intake` skill); ICM alignment F-1–F-7; file-naming sweep | Adopted | [CR-027](_change-requests/CR-027.md) |
-| CR-028 | 2026-09-07 | Front Matter, new `_change-requests/`, Governance Sec. 15.6, `wef-sync`, Multi-Context Protocol, `AGENTS.md` | Migrated CR bodies to `_change-requests/CR-0NN.md`; thinned this log to an index (F-4) | Working Draft — pending Board | [CR-028](_change-requests/CR-028.md) |
+| CR-028 | 2026-09-07 | Front Matter, new `_change-requests/`, Governance Sec. 15.6, `wef-sync`, Multi-Context Protocol, `AGENTS.md` | Migrated CR bodies to `_change-requests/CR-0NN.md`; thinned this log to an index (F-4) | Adopted | [CR-028](_change-requests/CR-028.md) |
+| CR-029 | 2026-09-07 | `01-Governance.md` → `01-governance/` (15 section files + `CONTEXT.md` router); stub kept; `README.md`, `AGENTS.md`, skills | Split the Governance chapter for selective loading (F-8, Board Option C); reference sweep deferred | Working Draft — pending Board | [CR-029](_change-requests/CR-029.md) |
 
 All future changes to this manual must be logged in this table and versioned per the Governance discipline's Change Control policy.
 

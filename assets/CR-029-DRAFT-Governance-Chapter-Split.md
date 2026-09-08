@@ -3,7 +3,7 @@
 **Submitted By:** `icm-architect` review pass ([`WEF-ICM-Architecture-Review-2026-09-07.md`](WEF-ICM-Architecture-Review-2026-09-07.md), finding **F-8**)
 **Date:** 2026-09-07
 **Scope:** `WEF-v1.0/Core-Methodology/01-Governance.md` → a `01-governance/` sub-folder; every cross-reference to `Governance, Sec. X` across the manual
-**Governance Board Decision:** _Pending — this one genuinely needs Board discussion, not just sign-off_
+**Governance Board Decision:** **Option C adopted (2026-09-07)** — split + pointer stub + deferred opportunistic reference sweep. See [`CR-029-Board-Decision-Memo-Governance-Chapter-Split.md`](CR-029-Board-Decision-Memo-Governance-Chapter-Split.md) for the options weighed, and `WEF-v1.0/_change-requests/CR-029.md` for the canonical write-up. This draft is retained as the original proposal.
 
 ## Problem
 
