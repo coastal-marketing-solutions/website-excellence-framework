@@ -209,11 +209,11 @@ Sitemap & Content Taxonomy (Stage Gate 4), Competitive Intelligence Report (Stag
 - Schema Markup Plan
 - Entity SEO & AI Search Optimization Brief
 - Search Visibility Operations Plan (measurement baseline, opportunity model, rank-tracking portfolio, link-audit protocol, and review cadence)
-- Master Content Workbook — skeleton state (Overview, Content Plan row-per-sitemap-page, Keyword Map, Local SEO Keyword Bank, Compliance Checklist; build procedure in Reusable Templates Sec. 8.4)
+- Master Content Workbook — skeleton state (Overview, Content Plan row-per-sitemap-page, Keyword Map, Local SEO Keyword Bank, Compliance Checklist; build with the `master-content-workbook` skill, SKELETON mode — canonical definition in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 
-`/05-seo-blueprint/output/Keyword-to-Page-Map.md`, `/05-seo-blueprint/output/Topical-Cluster-Model.md`, `/05-seo-blueprint/output/Technical-SEO-Requirements.md`, `/05-seo-blueprint/output/Schema-Markup-Plan.md`, `/05-seo-blueprint/output/Entity-AI-Search-Brief.md`, `/05-seo-blueprint/output/Search-Visibility-Operations-Plan.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (skeleton state — see Sec. 9.1)
+`/05-seo-blueprint/output/Keyword-to-Page-Map.md`, `/05-seo-blueprint/output/Topical-Cluster-Model.md`, `/05-seo-blueprint/output/Technical-SEO-Requirements.md`, `/05-seo-blueprint/output/Schema-Markup-Plan.md`, `/05-seo-blueprint/output/Entity-AI-Search-Brief.md`, `/05-seo-blueprint/output/Search-Visibility-Operations-Plan.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (skeleton state — see Sec. 8.4 / the `master-content-workbook` skill)
 
 *(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 

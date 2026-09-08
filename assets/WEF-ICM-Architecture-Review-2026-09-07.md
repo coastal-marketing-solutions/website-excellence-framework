@@ -115,7 +115,7 @@ Initialization, roles, charter, decision register, KB structure, blueprint, back
 | Numbering encodes order | PASS (Core chapters). Modules unnumbered — correct, it's a library. |
 | Any routing file carrying content payload | **FAIL** — Revision Log (F-4). |
 | Any fact stored in two places | **FAIL** — worksheet ×4 (F-6); naming schema stated two incompatible ways (F-2). |
-| Every reference resolves | **FAIL** — `master-content-workbook` pointer (F-3). |
+| Every reference resolves | **FAIL** at audit time — `master-content-workbook` pointer (F-3); resolved in CR-030 (skill built). |
 
 **Engagement Knowledge Base** (any `*Website Blueprint/`):
 
@@ -137,7 +137,7 @@ The engagement KB passes. The repository that publishes the methodology does not
 |---|---|---|---|---|
 | 1 | Add root `AGENTS.md` routing file (+ `CLAUDE.md` pointer) | F-1 | CR-027 §7 | **done (branch)** |
 | 2 | Reconcile Sec. 8.3 → Sec. 21.4 as the one naming convention; sweep every `-v{N}.md` Required-Document name out of Research / UX / Design / Development / QA / AI-Agent-Services | F-2 | CR-027 §3, §4 | **done (branch)** |
-| 3 | Mark the never-built `master-content-workbook` skill outstanding; move its procedure inline to Reusable Templates Sec. 8.4; redirect the three dangling `Sec. 9.x` skill refs | F-3 | CR-027 §9 | **done (branch)** |
+| 3 | Move the workbook procedure inline to Reusable Templates Sec. 8.4 (CR-027); then **build the `master-content-workbook` skill** and correct the three dangling `Sec. 9.x` refs to Sec. 8.4 (CR-030) | F-3 | CR-027 §9 + CR-030 | **done** (skill built in CR-030) |
 | 4 | Ship the `intake` skill; rewire `new-engagement` Step 1 to prefer it (not require it); wire the artifact into Governance init checklist + Research SG1 Inputs/Workflow | F-5 | `intake/` + CR-027 §4, §8 | **done (branch)** |
 | 5 | Declare Sec. 16.2 the single worksheet source; add the ranked priority-locations question as Q9 (renumber Q10–Q39); wire it into the Sec. 16.3 research brief; make `assets/New-Website-Intake-Worksheet.md` a labelled mirror | F-6 | CR-027 §5, §6 | **done (branch)** |
 | 6 | Add `assets/templates/engagement-KB/` skeleton; simplify `new-engagement` Step 6 to "copy + fill" | F-7 | CR-027 §6 (item table) | **done (branch)** |

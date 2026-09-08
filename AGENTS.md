@@ -27,6 +27,7 @@ routes; it holds no methodology content.
 | Generate / process a client's intake answers | `.agents/skills/intake/SKILL.md` |
 | Initialise the engagement Knowledge Base after intake | `.agents/skills/new-engagement/SKILL.md` |
 | Run a Stage Gate | `WEF-v1.0/Core-Methodology/` — the chapter for that gate, with the active Industry Module open alongside |
+| Build / extend the Master Content Workbook (SG5 / SG8 / SG9) | `.agents/skills/master-content-workbook/SKILL.md` |
 | Add or fix an Industry Module | `WEF-v1.0/Industry-Modules/00-Module-Template-and-Index.md` |
 | Roll one engagement's findings back into the framework | `.agents/skills/wef-sync/SKILL.md` |
 | Reconcile changes from several engagements / contexts at once | `assets/WEF-Multi-Context-Reconciliation-Protocol.md` |

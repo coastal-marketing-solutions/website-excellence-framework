@@ -31,11 +31,11 @@ Sitemap (SG4), Keyword-to-Page Map & Schema Plan (SG5), UX Pattern Library & Cal
 - Page-by-Page Content Specification (one brief per sitemap page)
 - Content Depth Standard (minimum word count/structural requirements by page type)
 - Compliance Content Checklist (per page type)
-- Master Content Workbook — enriched (Content Plan word-count targets now real; per-category detail sheets' SEO Title/Meta Description/Hero Copy columns populated; extend procedure in Reusable Templates Sec. 8.4)
+- Master Content Workbook — enriched (Content Plan word-count targets now real; Page Detail sheet's SEO Title/Meta Description/Hero Copy columns populated; extend with the `master-content-workbook` skill, ENRICH mode — canonical definition in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 
-`/08-content-spec/output/Per-Page-Content-Specifications.md`, `/08-content-spec/output/Content-Depth-Standard.md`, `/08-content-spec/output/Compliance-Content-Checklist.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (enriched — extend in place, see Sec. 9.2)
+`/08-content-spec/output/Per-Page-Content-Specifications.md`, `/08-content-spec/output/Content-Depth-Standard.md`, `/08-content-spec/output/Compliance-Content-Checklist.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (enriched — extend in place, see Sec. 8.4 / the `master-content-workbook` skill)
 
 *(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 
@@ -192,11 +192,11 @@ Page-by-Page Content Specifications (SG8), Positioning & Messaging Pillars (SG3)
 - Final Approved Copy (per page, in Knowledge Base)
 - Voice & Tone Guide
 - Compliance Clearance Log (per page)
-- Master Content Workbook — finalized (all copy columns locked; Blog Posts sheet populated; Vlog Scripts and YouTube SEO & Publishing modules added if the client has a video budget — finalize procedure in Reusable Templates Sec. 8.4)
+- Master Content Workbook — finalized (all copy columns locked; Blog Posts sheet populated; Vlog Scripts and YouTube SEO & Publishing sheets added if the Charter records a video budget — finalize with the `master-content-workbook` skill, FINALISE mode — canonical definition in Reusable Templates Sec. 8.4)
 
 ## 5. Required Documents
 
-`/09-copywriting/output/final-copy/{page-slug}.md` (one file per page), `/09-copywriting/output/Voice-Tone-Guide.md`, `/09-copywriting/output/Compliance-Clearance-Log.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (finalized — extend in place, see Sec. 9.3)
+`/09-copywriting/output/final-copy/{page-slug}.md` (one file per page), `/09-copywriting/output/Voice-Tone-Guide.md`, `/09-copywriting/output/Compliance-Clearance-Log.md`, `/{ClientName}_Master_Content_Workbook.xlsx` (finalized — extend in place, see Sec. 8.4 / the `master-content-workbook` skill)
 
 *(Filenames above use the naming convention every real engagement has actually converged on — see 09-Reusable-Templates.md Sec. 21.4 — not the unused `-v1.md` suffix pattern this document previously specified.)*
 

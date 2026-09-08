@@ -403,13 +403,18 @@ A translated video is a separate governed artifact and does not inherit source-l
 
 A single `{ClientName}_Master_Content_Workbook.xlsx`, built and extended (never regenerated from scratch) across three gates, that consolidates the Content Plan, per-category page detail, Keyword Map, Local SEO Keyword Bank, and Compliance Checklist into one spreadsheet a non-technical stakeholder can review without opening the Knowledge Base's markdown files.
 
-A dedicated `.agents/skills/master-content-workbook/SKILL.md` was named in CR-025 but **not implemented**; until it exists, build the workbook by hand from the artifacts each gate already produces, using the `xlsx` skill for the spreadsheet mechanics:
+Build and extend it with the **`master-content-workbook` skill**
+(`.agents/skills/master-content-workbook/SKILL.md`, added in CR-030), which runs in three modes
+matched to the gate and calls the `xlsx` skill for the spreadsheet mechanics. The skill decides
+*what goes in and from which artifact*; this section is its canonical definition. Summary of the
+three passes:
 
-- **SG5 (skeleton):** one sheet each for Overview, Content Plan (one row per sitemap page, from the SG4 Sitemap), Keyword Map (from the SG5 Keyword-to-Page Map), Local SEO Keyword Bank, and Compliance Checklist (seeded from the active Industry Module's Regulatory & Compliance Landscape).
-- **SG8 (enriched):** populate word-count targets, SEO Title, Meta Description, and Hero Copy columns from the per-page content specs.
-- **SG9 (finalized):** lock all copy columns; add a Blog Posts sheet; add Vlog Scripts and YouTube SEO & Publishing sheets only if the client has a video budget. Reopen the file once to confirm Excel Tables and dropdowns survived (per the `xlsx` skill convention).
+- **SG5 (SKELETON):** one sheet each for Overview, Content Plan (one row per sitemap page, from the SG4 Sitemap), Keyword Map (from the SG5 Keyword-to-Page Map), Local SEO Keyword Bank, and Compliance Checklist (seeded from the active Industry Module's Regulatory & Compliance Landscape).
+- **SG8 (ENRICH):** populate word-count targets, and add a Page Detail sheet with SEO Title, Meta Description, and Hero Copy columns, from the per-page content specs.
+- **SG9 (FINALISE):** lock all copy columns; add a Blog Posts sheet; add Vlog Scripts and YouTube SEO & Publishing sheets only if the Charter records a video budget. Reopen the file once to confirm Excel Tables and dropdowns survived (per the `xlsx` skill convention).
 
-Implementing the skill is tracked as outstanding (see CR-027).
+The workbook is built once at SG5 and extended in place — never regenerated (a rebuild drops any
+hand-correction a stakeholder made in the sheet).
 
 Before this skill existed, the workbook was produced in only 1 of 3 audited engagements — every other engagement completed SG5/SG8/SG9 without it, because it was never a documented Required Document. It now is (see 03-SEO-Architecture.md Sec. 5, 06-Development.md Sec. 5 at SG8 and SG9) specifically so it stops being silently skippable.
 
