@@ -31,7 +31,7 @@ WEF-v1.0/
 ├── 00-Front-Matter.md          Title page, purpose, architecture overview, how to use this
 ├── 99-Back-Matter.md           Glossary, references, index, appendices
 ├── Core-Methodology/           Industry-agnostic: the same stages apply to every engagement
-│   ├── 01-Governance.md
+│   ├── 01-governance/            Split into 15 section files + CONTEXT.md router (01-Governance.md is a stub)
 │   ├── 02-Research.md
 │   ├── 03-SEO-Architecture.md
 │   ├── 04-UX-Conversion.md

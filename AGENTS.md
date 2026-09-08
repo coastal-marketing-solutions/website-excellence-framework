@@ -11,7 +11,7 @@ routes; it holds no methodology content.
 |---|---|
 | `WEF-v1.0/00-Front-Matter.md` | Intro, Core + Modules architecture, Version History, thin Revision Log index. Read once. |
 | `WEF-v1.0/_change-requests/` | One `CR-0NN.md` per Change Request (full prose + frontmatter); source of the next free CR number. `CONTEXT.md` first. |
-| `WEF-v1.0/Core-Methodology/01…10` | The Stage Gate spine, in order (Governance → … → AI Agent Services). |
+| `WEF-v1.0/Core-Methodology/01…10` | The Stage Gate spine, in order (Governance → … → AI Agent Services). Chapter 01 is a folder — `01-governance/CONTEXT.md` routes its 15 sections. |
 | `WEF-v1.0/Industry-Modules/` | Vertical packs; start at `00-Module-Template-and-Index.md`. |
 | `WEF-v1.0/Component-Library/` | Cross-industry registry of reusable UI components; `00-Component-Library-Index.md` first. |
 | `WEF-v1.0/99-Back-Matter.md` | Glossary, references, index, appendices. |

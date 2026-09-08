@@ -20,7 +20,7 @@ Two modes, picked in Step 0:
 Read as needed, don't front-load: `../../WEF-v1.0/Core-Methodology/09-Reusable-Templates.md`
 Sec. 16.1–16.2 (the canonical question set — **single source of truth**), Sec. 16.3
 (the Perplexity brief this feeds, downstream), Sec. 21.4 (naming convention);
-`01-Governance.md` Sec. 1 (what `new-engagement` does next). The best worked example of
+`01-governance/01-initialization.md` Sec. 1 (what `new-engagement` does next). The best worked example of
 the target artifact is any existing sibling `*Website Blueprint/01-research/01-WEF-Intake.md`.
 
 ## Step 0 — Pick the mode and the client

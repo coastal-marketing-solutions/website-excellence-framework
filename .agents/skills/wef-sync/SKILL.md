@@ -14,8 +14,8 @@ second collision — this pipeline's own CR/RETRO numbers collided with a concur
 and had to be renumbered on discovery — because nothing checked whether the target was already
 claimed before staging against it.
 
-Read as needed, don't front-load: `../WEF-v1.0/Core-Methodology/01-Governance.md` Sec. 15.4
-(RETRO-017), Sec. 15.6 (the pipeline this skill automates); `09-Reusable-Templates.md` Sec. 23.1
+Read as needed, don't front-load: `../WEF-v1.0/Core-Methodology/01-governance/15-retrospectives.md`
+Sec. 15.4 (RETRO-017), Sec. 15.6 (the pipeline this skill automates); `09-Reusable-Templates.md` Sec. 23.1
 (the `WEF-Candidate-Findings.md` template/status schema); `WEF-v1.0/_change-requests/` (one
 `CR-0NN.md` per Change Request — the source of truth for existing/reserved CR numbers; its
 `CONTEXT.md` has the frontmatter schema). `00-Front-Matter.md`'s Revision Log is now only a thin
