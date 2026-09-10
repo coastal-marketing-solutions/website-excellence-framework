@@ -1,3 +1,7 @@
+> **ARCHIVED (CR-032, 2026-09-07).** Historical working artifact, pre-dates the CR-027–CR-031
+> ICM cleanup arc. Retained for provenance; not a live reference. The live reconciliation
+> procedure is [`assets/WEF-Multi-Context-Reconciliation-Protocol.md`](../WEF-Multi-Context-Reconciliation-Protocol.md).
+
 # WEF Three-Engagement Reconciliation Crosswalk — 2026-08-13
 
 ## Scope

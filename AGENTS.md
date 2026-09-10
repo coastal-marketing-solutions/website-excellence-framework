@@ -16,7 +16,7 @@ routes; it holds no methodology content.
 | `WEF-v1.0/Component-Library/` | Cross-industry registry of reusable UI components; `00-Component-Library-Index.md` first. |
 | `WEF-v1.0/99-Back-Matter.md` | Glossary, references, index, appendices. |
 | `.agents/skills/` | Runnable skills — see routing table below. |
-| `assets/` | Protocols, worksheets, templates, and review docs that support the method but are not canon. |
+| `assets/` | Protocols, worksheets, templates, and review docs that support the method but are not canon — see `assets/README.md` for what's live vs archived. |
 | `assets/templates/engagement-KB/` | Literal starter an engagement KB is copied from (per `new-engagement` Step 6). |
 
 ## Route by task

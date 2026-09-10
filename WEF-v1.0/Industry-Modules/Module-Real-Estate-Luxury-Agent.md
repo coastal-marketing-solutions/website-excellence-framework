@@ -13,7 +13,7 @@ Per Governance, Section 13.6:
 1. **Closest existing Module identified as structural starting point:** the **Real Estate Module** — the client is a licensed agent/team, and the base Module's regulatory landscape, persona shapes, and IA patterns hold. What the base Module does not capture is the specific competitive and structural posture of the **luxury/move-up single-agent or small-team segment**, which competes less on IDX search coverage (table stakes for every generalist) and more on editorial visual authority, owned hyperlocal content depth, and press/credibility signaling — the pattern a portal-dependent generalist site typically does not build.
 2. **Research conducted** against four reference sites the client explicitly named as structural models: **Trillion Real Estate** (owned blog/content engine publishing original hyperlocal market and investment articles under its own domain, e.g. its "Temecula Communities" page and rental-investment guides, rather than depending on third-party portal visibility); **Jade Mills Estates** (authority-driven homepage structure anchored by a local/national press credibility strip); **Carolwood Estates** (minimalist, editorial, photography-forward visual language with brand-story-led agent profiles); and **Ginger Martin + Co** (per-city/per-neighborhood blog-style community pages, e.g. its "Petaluma" page, and worldwide-segmented property listings by status).
 3. This Module is authored generically enough to apply to any luxury or move-up-focused individual agent or small team in any metro, but its defaults, examples, and Content Model are weighted toward the **owned-content, editorial-design competitive posture** evidenced by the four reference sites, rather than the portal-search-first posture the base Real Estate Module treats as the default competitive pattern.
-4. Submitted to the Methodology Governance Board as a Change Request (see Front Matter Revision Log) and approved for addition to the permanent Industry Modules library at v1.0.
+4. Submitted to the Methodology Governance Board and approved for addition to the permanent Industry Modules library at v1.0. Retroactively recorded in the Front Matter Revision Log as **CR-031** (the module was authored 2026-07-30 but the Revision Log row was missed at the time; see `_change-requests/CR-031.md`).
 
 ---
 
@@ -156,7 +156,7 @@ CTA. Route the completed draft through Prompt LUX.1 before publication.
 
 | Version | Date | Change |
 |---|---|---|
-| 1.0 | 2026-07-30 | Initial module authored via the New Module Development Process (Governance, Sec. 13.6), using the Real Estate Module as the structural starting point, re-weighted for the luxury/move-up individual agent and small-team segment. Grounded in research against four client-supplied reference sites: Trillion Real Estate, Jade Mills Estates, Carolwood Estates, and Ginger Martin + Co. |
+| 1.0 | 2026-07-30 | Initial module authored via the New Module Development Process (Governance, Sec. 13.6), using the Real Estate Module as the structural starting point, re-weighted for the luxury/move-up individual agent and small-team segment. Grounded in research against four client-supplied reference sites: Trillion Real Estate, Jade Mills Estates, Carolwood Estates, and Ginger Martin + Co. Recorded in the Revision Log as CR-031 (2026-09-07). |
 
 ---
 

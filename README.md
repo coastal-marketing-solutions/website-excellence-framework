@@ -20,7 +20,7 @@ This repository publishes the full framework so working practitioners — consul
 | | |
 |---|---|
 | **9** Core Stage Gates | Governance → Research → SEO Architecture → UX/Conversion → Design → Development → QA → AI Workflows → Templates |
-| **13** Industry Modules | Mortgage, Real Estate, Law Firm, Healthcare, Home Services, Financial Advisor, SaaS, and 6 more |
+| **14** Industry Modules | Mortgage, Real Estate, Law Firm, Healthcare, Home Services, Financial Advisor, SaaS, and 7 more |
 | **1** Component Library | Cross-engagement UI registry (Core, Feedback, Forms, Marketing & Trust, Surfaces) |
 | **∞** Module Injection Points | The fixed seams where vertical knowledge plugs into the universal process |
 
@@ -62,7 +62,8 @@ WEF-v1.0/
     ├── Module-Cash-Home-Buyer.md
     ├── Module-Distressed-Property-Advocate.md
     ├── Module-Expired-Listings-Commercial.md
-    └── Module-Probate-Real-Estate-Investor.md
+    ├── Module-Probate-Real-Estate-Investor.md
+    └── Module-Real-Estate-Luxury-Agent.md
 ```
 
 **Start here:** [`WEF-v1.0/00-Front-Matter.md`](WEF-v1.0/00-Front-Matter.md) — it explains the Core + Modules architecture, the consulting philosophy, and how the two parts fit together.
