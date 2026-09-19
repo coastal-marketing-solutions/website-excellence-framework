@@ -34,6 +34,16 @@ Every Stage Gate in the Core Methodology follows the same 19-part structure, def
 
 Each Stage Gate additionally names any **Future Enhancements** — where its output is revisited later in the engagement — inline in its Workflow or Exit Criteria discussion rather than as a rigid 20th section, since this varies more naturally by gate.
 
+### Universal Exit Criteria (apply to every Stage Gate)
+
+These apply in addition to each gate's own Exit Criteria (part 18) and are stated once here so no chapter can omit them. They implement Governance Sec. 5.3 rules 6–9 (`RETRO-022`).
+
+- [ ] **Entry check done.** Before this gate's work started, every Input (part 3) and every predecessor Required Document existed as a file, verified by listing the folder. A missing input was treated as a stop, or a `GOVERNANCE-EXCEPTION` Decision Register entry was logged first.
+- [ ] **Every Required Document exists.** Each file named in part 5 exists at its stated path in the KB, verified by listing the folder — not recalled, and not satisfied by a differently named or "equivalent" file or by content inside another deliverable.
+- [ ] **Exit Criteria are recorded.** Each Exit Criterion in part 18 is entered in `_config/Stage-Ledger.md` as Met, Open, or Waived, with evidence, approver, and date. A criterion that names another person or process (Compliance/Standards Liaison, a client pushback window, a signed record) is Met only when that person or process has acted.
+- [ ] **Approvals are logged, not substituted.** Any client or milestone-gate approval is a Decision Register entry and does not waive a Required Document or Exit Criterion.
+- [ ] **Navigation is current.** The root `CONTEXT.md` Stage Map and the stage's own `CONTEXT.md` state the true status, with no unlogged deviation described in prose.
+
 ### Research Evidence, Provenance, and Freshness Standard
 
 Research is reusable only when a later consultant can tell **what was observed, when it was observed, and how much confidence to place in it**. For every material external fact, statistic, competitor observation, regulatory reference, market statement, or recommendation, preserve an Evidence & Source Register entry with:

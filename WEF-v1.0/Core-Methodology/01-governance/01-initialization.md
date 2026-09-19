@@ -54,6 +54,8 @@ Project Initialization converts a signed Statement of Work (SOW) into a running 
 - [ ] Compliance/regulatory contact identified, if the active Industry Module flags the client's vertical as regulated
 - [ ] Technology stack confirmed or default stack (Governance, Sec. 13.4) accepted
 - [ ] Digital Estate & Access Map identifies the owner, operational custodian, access tier, recovery path, and environment boundary for every production system; no secret values are stored in the Knowledge Base
+- [ ] `_config/Stage-Ledger.md` created from the engagement-KB template, with every stage's Required Documents (chapter Sec. 5) listed as Not started — so a stage that is later skipped is visible, not silent (Sec. 5.3 rule 7)
+- [ ] Any project-specific gate, initiation prompt, or "definition of done" mapped to the WEF Stage Gates it follows in the root `CONTEXT.md` (Sec. 1.8)
 - [ ] Billing/scope guardrails communicated to full team
 
 ### 1.4 Industry Module Selection
@@ -76,6 +78,9 @@ Some clients span two verticals (e.g., a real estate brokerage that also origina
 - Selecting an Industry Module casually or defaulting to whichever module the team last used, rather than verifying it actually matches the client's regulatory and business model.
 - Failing to identify a compliance contact at initialization for a regulated vertical — this routinely causes rework in Development (Copywriting) and QA & Optimization.
 - Force-fitting a client into the nearest existing module instead of triggering the New Module Development Process when the fit is genuinely poor.
+- Treating a project-specific milestone gate, a delivered package, or a client approval as completion of the Stage Gates beneath it, and moving on without checking each stage's Required Documents and Exit Criteria (`RETRO-022`).
+- Writing a departure from the stage spine into `CONTEXT.md` or `AGENTS.md` prose ("stage X is folded into stage Y") instead of logging a `GOVERNANCE-EXCEPTION` — the navigation file then becomes the plan every later session follows.
+- Skipping an initialization-checklist item (for example the Digital Estate & Access Map) with no step that would notice.
 
 ### 1.7 Service Add-On Modules (Optional, Orthogonal to Industry Modules)
 
@@ -87,3 +92,20 @@ The current Service Add-On library lives in AI Agent Services (Core Methodology,
 - **Stage Gate 12B — Voice AI Agent-as-a-Service**: an AI voice agent operating over telephony, delivered independent of the website.
 
 Unlike Industry Modules, Service Add-On Modules do not gate or get gated by the mandatory Stage Gate spine (SG1–SG11.5) — an engagement can complete its website Stage Gates and launch with a Service Add-On still in progress, not yet scoped, or never scoped at all. Name active Service Add-On(s) explicitly in the Project Charter (Sec. 3.2) the same way an Industry Module is named — an add-on delivered without a Charter entry is scope no one formally agreed to.
+
+### 1.8 Project-Specific Gates, Prompts, and the Stage Spine
+
+Engagements are often started from a project-specific playbook: an initiation prompt, statement of work, or milestone plan that defines its own gates (for example a "strategy gate" before design), its own deliverable list, and its own "definition of done". These are useful, and they are **additive** to the Stage Gate spine, never a replacement for it (`RETRO-022`).
+
+- **Map every project gate.** In the root `CONTEXT.md`, state for each project-specific gate which WEF Stage Gate(s) it follows and which of those stages' Required Documents (chapter Sec. 5) must exist before the gate is presented. Record the same in `_config/Stage-Ledger.md`.
+- **Add, never remove.** A project gate may add requirements. It may not remove, rename, merge, or replace a WEF stage's Required Documents or Exit Criteria. Content produced for the gate is an *input* to those documents, not a substitute for them.
+- **Assumptions cover facts, not documents.** An instruction to "proceed on documented working assumptions" applies to unknown client facts (mark them `PENDING`, Sec. 4.4). It does not permit proceeding past a missing WEF document or a missing stage Input; that is a stop (Sec. 5.3 rule 6).
+- **Two checks, not one.** A prompt's own "definition of done" is checked in addition to the Stage Ledger, never instead of it.
+- **Approvals are decisions.** A client's approval at a project gate is a Decision Register entry (Sec. 5.3 rule 8); it does not close the stages beneath it.
+
+*Example mapping (root `CONTEXT.md`):*
+
+| Project gate | Follows WEF stage(s) | Required Documents that must exist before the gate is presented |
+|---|---|---|
+| "Gate A — strategy decision" | SG1–SG5 | Every Required Document in the SG1–SG5 chapters, including SG2 Competitive Intelligence, SG3 Strategic Direction, SG4 Information Architecture, and the SG5 SEO Blueprint |
+| "Gate B — visual and content approval" | SG7, SG7.5 (and SG6 as input) | SG7 and SG7.5 Required Documents plus rendered directions; SG7.5 Executive Approval Record |

@@ -44,7 +44,8 @@ The Knowledge Base (KB) is the single persistent store of every artifact, resear
 │   ├── compliance-constraints-log.md
 │   ├── open-questions.md
 │   ├── assumptions-log.md
-│   └── project-backlog.md
+│   ├── project-backlog.md
+│   └── stage-ledger.md               (per-stage Required Documents and Exit Criteria status — Sec. 5.3 rules 6–9)
 ├── _references/                  (L3 — domain reference, shared across engagements)
 │   └── README.md                     (pointers to the WEF framework + active Industry Module(s))
 └── blueprint/
@@ -82,6 +83,10 @@ The folder structure in Sec. 5.2 organizes *where* things live. It does not, on 
 3. The Knowledge Base is read-access for the full team and client sponsor; write-access is role-gated per the RACI in Section 2.3.
 4. No deliverable is considered final until it exists in the Knowledge Base in its approved form — a Slack message or verbal approval is not sufficient.
 5. The root `CLAUDE.md` and `CONTEXT.md` are living documents (Sec. 5.2.1) — update them at every Stage Gate transition, not just at KB creation. A navigation layer that describes a stale state is worse than no navigation layer, because it actively misdirects.
+6. **Stage Transition Check.** Before any work begins in a stage — creating its folder, drafting its outputs, or reporting the previous stage complete — open the previous stage's chapter and list, file by file, (a) its Required Documents (chapter Sec. 5) and (b) its Exit Criteria (chapter Sec. 18). Verify each Required Document exists at the stated path by listing the folder. A similarly named, "equivalent", or differently located file does not count, and neither does content that lives inside another deliverable. A missing predecessor document, or an Input (chapter Sec. 3) that does not exist, is a **stop** — not a deviation to log and work around (RETRO-022).
+7. **Stage Ledger.** Every engagement KB carries `_config/Stage-Ledger.md`: one row per stage per Required Document (path, present Y/N, version) and one row per Exit Criterion (Met / Open / Waived, evidence, approver, date). It is updated at every stage transition and every session close and is the source of truth for stage status. The absence of a stage folder is not evidence about that stage: an unopened stage and a skipped stage look identical without the ledger.
+8. **Approvals do not close stages.** A client approval — including one at a milestone gate defined outside WEF (Sec. 1.8) — is recorded as a Decision Register entry. It does not produce, replace, or waive any Required Document, and it does not satisfy an Exit Criterion that names someone else (a Compliance/Standards Liaison, a client pushback window, a signed record).
+9. **Deviation only by exception.** The only permitted departure from the stage spine is a `GOVERNANCE-EXCEPTION` Decision Register entry (Sec. 13.3) naming each missing or deferred artifact, the reason, the approver, and the date it will exist. A deviation recorded in `CLAUDE.md`, `AGENTS.md`, or `CONTEXT.md` prose — for example, "stage X is folded into stage Y" — is not an exception. Those files are read as the plan, so an unlogged deviation there becomes the plan.
 
 ### 5.4 AI Access Pattern
 

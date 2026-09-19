@@ -196,6 +196,7 @@ add `02-competitive/` … `11.5-post-launch/` until each stage actually begins.
 │   ├── Open-Questions.md
 │   ├── Assumptions-Log.md
 │   ├── Project-Backlog.md
+│   ├── Stage-Ledger.md
 │   └── WEF-Candidate-Findings.md
 ├── _references/
 │   └── README.md
@@ -227,6 +228,7 @@ Specifics:
   something discovered live on this engagement looks like a reusable Core Methodology or
   Industry Module improvement, so a periodic `wef-sync` pass picks it up alongside whatever
   other engagements are running concurrently.
+- **`Stage-Ledger.md`**: copy from the template. Every stage's Required Documents are pre-listed as "Not started" even though only SG1's folder exists, so a stage that is later skipped is visible rather than silent (Governance Sec. 5.3 rules 6–9, `RETRO-022`). If the engagement is driven by a project-specific prompt or gate, map that gate to the WEF stages it follows in the root `CONTEXT.md` and in the ledger's mapping table (Sec. 1.8); the prompt's definition of done adds to the ledger, never replaces it. Do **not** describe a stage as "folded into" another in `CONTEXT.md` prose — a departure from the spine is a `GOVERNANCE-EXCEPTION` Decision Register entry.
 - **`blueprint/Master-Website-Blueprint.md`**: a skeleton only (section headers from Governance
   Sec. 6) — this fills in as Stage Gates complete, not at initialization.
 - **`01-research/CONTEXT.md`**: the Stage 1 contract (Reusable Templates Sec. 21.3), linking
@@ -245,3 +247,9 @@ concrete next actions — schedule the Kickoff Meeting (Reusable Templates Sec. 
 begin Stage Gate 1 (Discovery & Market Research) inside the new `01-research/` folder. Do not
 start Stage Gate 1 work itself in this same pass unless the user asks — initialization and
 Discovery are separate steps (Governance Sec. 1.2, steps 5–8).
+
+**At every later stage transition** (and before reporting any stage or gate as complete or ready),
+run the Stage Transition Check (Governance Sec. 5.3 rule 6): list the finished stage's Required
+Documents (chapter Sec. 5) and Exit Criteria (Sec. 18), verify each file exists by listing its
+folder, and record the result in `_config/Stage-Ledger.md`. A missing document or stage Input is
+a stop, not a deviation to log and continue past.
