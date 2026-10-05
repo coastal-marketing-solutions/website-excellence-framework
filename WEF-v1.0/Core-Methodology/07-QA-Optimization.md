@@ -211,7 +211,7 @@ Establish the structured, data-driven optimization program for the first 90 days
 
 ## 3. Inputs
 
-Live production site, GA4/Search Console/Clarity data (accumulating from launch), Success Metrics defined in Project Charter, Master Website Blueprint (full, as of launch), active Industry Module's Persona Library and Content Model (for expansion)
+Live production site, GA4/Search Console/Clarity data (accumulating from launch), Bing Webmaster Tools data and the launch backlink baseline from Moz (where connected per Governance Sec. 13.4, CR-034), Success Metrics defined in Project Charter, Master Website Blueprint (full, as of launch), active Industry Module's Persona Library and Content Model (for expansion)
 
 ## 4. Outputs
 
@@ -279,6 +279,7 @@ Engagement Lead approves the Growth Program Plan; ongoing experiment decisions f
 - [ ] Any new content follows Stage Gate 8/9 discipline (brief → compliance-cleared copy), not ad hoc publishing
 - [ ] Compliance clearance for new or changed content is bound to the exact artifact/revision/language; later content does not inherit an earlier site or batch approval unless its scope explicitly says so
 - [ ] Content Freshness Register reviewed on its assigned cadence; event-bound and volatile content has no overdue unhandled entries
+- [ ] Quarterly backlink & authority review (Prompt 11.5.3) compared against the launch baseline: new genuine referring domains, spam acquired (recorded, not disavowed unless a manual action exists), and Bing indexation/crawl issues. Results feed the experiment roadmap.
 - [ ] Retrospective Memo completed and submitted to the firm's Knowledge Base for cross-engagement reuse, with any Module refinement proposed via Change Request
 
 ## 12. Prompt(s)
@@ -310,6 +311,22 @@ any Industry Module refinement recommendation — new persona, corrected
 compliance detail, better keyword pattern, additional trust signal — to
 submit as a Module-level Change Request so future engagements in this
 vertical benefit.
+```
+
+**Prompt 11.5.3 — Quarterly Backlink & Authority Review**
+
+```
+Using the Moz API and Bing Webmaster Tools data already connected for
+[Client Name]'s site [domain.com] (Governance Sec. 13.4), compare this
+quarter to the dated backlink baseline in the engagement KB. Report:
+(1) Domain Authority and linking-root-domain change, followed vs.
+nofollow; (2) every new referring domain, classified genuine or spam,
+with the genuine ones tied to the outreach or content that likely earned
+them; (3) any Bing crawl or indexation issues; (4) 3-5 specific link
+opportunities that fit the active Industry Module (directories,
+associations, partner pages, citation sources). Do not recommend a
+disavow unless Search Console shows a manual action. Never print or
+store API keys in the report.
 ```
 
 ## 13. Examples

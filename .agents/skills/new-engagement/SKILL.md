@@ -117,6 +117,8 @@ is valid but must be **selected**, not assumed by omission:
 | CDN / Edge Security | Cloudflare |
 | Analytics | Google Analytics 4 |
 | Search Monitoring | Google Search Console |
+| Secondary Search Monitoring & Indexing | Bing Webmaster Tools + IndexNow *(highly recommended — CR-034)* |
+| Backlink & Authority Tracking | Moz Link Explorer API, free tier *(highly recommended — CR-034)* |
 | Tag Management | Google Tag Manager |
 | Behavioral Analytics | Microsoft Clarity |
 

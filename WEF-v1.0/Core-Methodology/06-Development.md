@@ -552,7 +552,9 @@ None — this gate is purely platform-implementation and does not vary by Indust
         ▼
 [8] Configure Google Analytics 4, Google Search Console, Google Tag
     Manager, Microsoft Clarity, and WPConsent (cookie banner + consent
-    management) per Integration Requirements Spec
+    management) per Integration Requirements Spec; queue Bing Webmaster
+    Tools + IndexNow and Moz backlink tracking for the production domain
+    at launch (Governance Sec. 13.4; Prompt 10.5.4)
         │
         ▼
 [9] Record content-release scope, validation evidence, and rollback path;
@@ -576,6 +578,7 @@ None — this gate is purely platform-implementation and does not vary by Indust
 - [ ] LiteSpeed Cache configured; Core Web Vitals targets tested on staging
 - [ ] Cloudflare DNS, CDN, and security rules configured
 - [ ] GA4, Search Console, GTM, and Clarity all verified firing correctly on staging
+- [ ] **Highly recommended (CR-034), on the production domain at launch:** Bing Webmaster Tools property added and verified (import from Search Console), with the XML sitemap listed. IndexNow submits on publish from exactly one tool (the SEO Plugin's instant-indexing feature), recorded in the Capability Ownership Matrix. Moz API connected and a dated backlink baseline saved (Domain Authority, linking root domains, every referring domain classified genuine/spam). Keys were pasted by the client into local tool config, not into the KB or repo (Governance Sec. 13.4.5). Opt-outs are recorded in the Charter.
 - [ ] WPConsent installed, activated, and configured (cookie scanner run, banner published) before any analytics/tag script fires on a fresh, uncached visit — consent-gating order verified, not just plugin presence
 - [ ] Staging environment access provided to QA Analyst
 - [ ] Content-as-Files Sync Pipeline (Sec. 10.5-Sync below) set up and tested end-to-end before this gate exits
@@ -694,6 +697,48 @@ Sec. 13.4.1]. Using that tier's mechanism:
 4. Re-export the live page and diff it against the file you just pushed;
    report the diff (should be empty) as confirmation, not just "done"
 Do not proceed past step 4 without showing the verification diff.
+```
+
+**Prompt 10.5.4 — Search & Authority Tracking Setup (Bing Webmaster Tools + IndexNow + Moz)**
+
+```
+Set up secondary search monitoring and backlink/authority tracking for
+[Client Name]'s live site, [https://domain.com]. Follow Governance
+Sec. 13.4 (default stack) and Sec. 13.4.5 (credentials).
+
+Ground rules:
+- I (the site owner) create every account and generate every API key.
+  You never create accounts, enter passwords, or type API keys anywhere.
+  When a key is needed, tell me exactly which file and field to paste it
+  into, then verify it works without printing the key.
+- Never write a key into the project repo, KB, page content, or chat.
+- Do not enable a second CDN, change DNS, or file a disavow as part of
+  this task.
+
+Steps:
+1. Bing Webmaster Tools: walk me through adding the site at
+   bing.com/webmasters, preferring "Import from Google Search Console".
+   Then confirm the XML sitemap ([sitemap URL]) is listed.
+2. IndexNow: check whether the site's SEO plugin (e.g. Rank Math Instant
+   Indexing) already has an IndexNow key and which post types it submits.
+   Make it the ONLY IndexNow submitter, and record it in the Capability
+   Ownership Matrix.
+3. Credentials file: create (or reuse) the local key file your SEO tools
+   read, with empty slots for the Moz and Bing keys plus the site URL in
+   both "https://domain.com/" and bare "domain.com" forms. Give me a
+   one-line way to open exactly that file.
+4. Moz: after I paste the Moz API token, verify it with a live call and
+   record a baseline: Domain Authority, home Page Authority, linking root
+   domains (followed/nofollow), and every referring domain classified as
+   genuine or spam. Spam links are recorded, not disavowed, unless Search
+   Console shows a manual action.
+5. Bing API: after I paste the Bing Webmaster API key (Settings → API
+   Access → Generate API Key), verify it with a live link-count call.
+6. Save the baseline as a dated report in the engagement KB (no keys in
+   it), log a Decision Register entry, and add a quarterly backlink review
+   to the Post-Launch Growth Program (SG11.5).
+Report each step as done or blocked, with the evidence (a status, count
+or screenshot).
 ```
 
 ## 13. Examples
