@@ -5,6 +5,19 @@ order, on every engagement) plus a library of pluggable **Industry Modules** (on
 selected per engagement, two blended where a client spans verticals). This file
 routes; it holds no methodology content.
 
+## ⚠ Applying WEF to a website? Do intake FIRST
+
+Before any research, scaffolding, or Stage Gate 1 work on a new website, check for the
+client's intake at `{Client} Website Blueprint/01-research/01-WEF-Intake.md`.
+
+- **It exists** → read it; it is the client's own answers. Don't re-ask.
+- **It's missing** → stop and run intake. Read `.agents/skills/intake/SKILL.md` and follow it
+  (read the file directly — `.agents/skills/` is not auto-registered as Claude Code skills).
+  Fastest path: publish `assets/templates/intake-form/intake-form.html` as a Claude Artifact,
+  share it with the client, then ingest the answers.
+- Intake is strongly encouraged, not required. To skip it, log a Decision Register entry
+  saying why. Then run `.agents/skills/new-engagement/SKILL.md`.
+
 ## Where things live
 
 | Path | What it is |

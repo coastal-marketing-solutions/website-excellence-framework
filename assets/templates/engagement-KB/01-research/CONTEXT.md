@@ -2,6 +2,9 @@
 
 **Status:** Active
 
+> **⚠ Gate zero:** this stage starts from `01-WEF-Intake.md`. If it is missing, run the `intake`
+> skill first (`{WEF repo}/.agents/skills/intake/SKILL.md`) — do not begin the steps below.
+
 ## Purpose
 Establish a factual, evidence-based understanding of the client's business, audience, market footprint, and current digital position before any strategic or design decision is made. Full detail: `../_references/` → WEF `Core-Methodology/02-Research.md`, Stage Gate 1.
 

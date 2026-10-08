@@ -183,6 +183,7 @@ add `02-competitive/` … `11.5-post-launch/` until each stage actually begins.
 
 ```
 {Client Name} Website Blueprint/
+├── CLAUDE.md              (carries the intake START-HERE block; points at AGENTS.md)
 ├── AGENTS.md
 ├── CONTEXT.md
 ├── 01-research/

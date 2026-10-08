@@ -1,5 +1,13 @@
 # {Client Name} Website Blueprint
 
+> ## ⚠ START HERE — is `01-research/01-WEF-Intake.md` present?
+> - **Yes** → read it. It is the client's own answers; do not re-ask them.
+> - **No** → STOP before any Stage Gate 1 work and run intake: read
+>   `{WEF repo}/.agents/skills/intake/SKILL.md` (path in `_references/README.md`) and follow it.
+>   Fastest path: publish `{WEF repo}/assets/templates/intake-form/intake-form.html` as a
+>   Claude Artifact, share it with the client, then ingest the answers into that file.
+> - Strongly encouraged, not required. To skip, log a Decision Register entry saying why.
+
 ## What This Is
 {One to two sentences: who the client is, what this engagement is, which WEF Industry Module(s) govern it (Governance Sec. 1.4/1.5).}
 

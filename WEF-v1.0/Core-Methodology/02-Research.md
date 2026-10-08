@@ -61,6 +61,11 @@ Each entry names the factual dependency, source, owner, last-verified date, next
 
 # STAGE GATE 1 — DISCOVERY & MARKET RESEARCH
 
+> **⚠ Gate zero — intake.** Do not begin this gate until `01-research/01-WEF-Intake.md` exists.
+> If it does not, run the `intake` skill first (`.agents/skills/intake/SKILL.md`; fastest path is
+> the fillable web form at `assets/templates/intake-form/intake-form.html`). Strongly encouraged,
+> not required: skipping needs a Decision Register entry stating why.
+
 ## 1. Purpose
 
 Establish a factual, evidence-based understanding of the client organization's business, target audience, market footprint, and current digital position before any strategic or design decision is made.
