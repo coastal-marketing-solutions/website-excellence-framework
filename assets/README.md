@@ -8,6 +8,7 @@ Everything here is one of three kinds: **live reference** (use it), **tracker** 
 |---|---|---|
 | `WEF-Multi-Context-Reconciliation-Protocol.md` | **live reference** | How to reconcile framework changes proposed by several engagements / AI contexts at once — one canonical integrator, read-only packets from the rest. Referenced from `CONTRIBUTING.md` and `AGENTS.md`. |
 | `New-Website-Intake-Worksheet.md` | **live reference** | Plain, sendable mirror of the canonical intake question set (`WEF-v1.0/Core-Methodology/09-Reusable-Templates.md` Sec. 16.2). The `intake` skill renders/ingests from Sec. 16.2; if the two diverge, Sec. 16.2 wins. |
+| `templates/intake-form/intake-form.html` | **live reference** | The fillable web intake form (Claude Artifact source). Publish a copy per client; the `intake` skill reads the answers back from the artifact database. |
 | `templates/engagement-KB/` | **live reference** | Literal skeleton a new engagement Knowledge Base is copied from (`new-engagement` skill, Step 6). |
 | `banner.svg` | **live reference** | README banner image. |
 | `WEF-ICM-Architecture-Review-2026-09-07.md` | **audit of record** | The `icm-architect` audit (findings F-1 … F-8) that CR-027 – CR-031 trace to. Status: all findings resolved. Kept as the audit of record; `AGENTS.md` points here for "why the repo is shaped this way." |

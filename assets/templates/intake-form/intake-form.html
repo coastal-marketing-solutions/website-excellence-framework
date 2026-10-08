@@ -1,0 +1,244 @@
+<title>WEF Website Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: sticky section rail with per-section counts beside a single column of question cards; the rail becomes a scrolling chip row on phones. Petrol ink on cool paper, copper only for "required". */
+:root{
+  --bg:#EDF1F0; --panel:#FAFCFB; --ink:#15232A; --muted:#566871; --rule:#D0DAD8;
+  --brand:#1B4655; --brand-ink:#FFFFFF; --accent:#A8631F; --focus:#1B6F8A;
+  --warn:#8A4B00; --warn-bg:#FBEFD9; --ok:#2F6B3F; --ok-bg:#E3F0E6; --field:#FFFFFF;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --r:6px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1A1F; --panel:#172329; --ink:#E7EFEE; --muted:#9DB0B7; --rule:#2B3B43;
+  --brand:#8CC4D6; --brand-ink:#0F1A1F; --accent:#E3A260; --focus:#7CC3DA;
+  --warn:#F2BE73; --warn-bg:#2E2414; --ok:#8FD0A0; --ok-bg:#1B2D21; --field:#0F1A1F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1A1F; --panel:#172329; --ink:#E7EFEE; --muted:#9DB0B7; --rule:#2B3B43;
+  --brand:#8CC4D6; --brand-ink:#0F1A1F; --accent:#E3A260; --focus:#7CC3DA;
+  --warn:#F2BE73; --warn-bg:#2E2414; --ok:#8FD0A0; --ok-bg:#1B2D21; --field:#0F1A1F; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--body);margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:28px 64px;display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
+@media (min-width:900px){.wrap{grid-template-columns:250px minmax(0,1fr);gap:28px}}
+header.top{grid-column:1/-1;display:grid;gap:12px}
+.eyebrow{font:500 12px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(30px,4.6vw,44px)/1.08 var(--display);margin:0;color:var(--brand);text-wrap:balance}
+.lede{max-width:65ch;margin:0;color:var(--muted)}
+.privacy{max-width:65ch;margin:0;font-size:15px;background:var(--warn-bg);color:var(--ink);border-radius:var(--r);padding:10px 14px}
+.privacy b{color:var(--warn)}
+.status{font:500 13px/1.4 var(--mono);color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center}
+.status b{color:var(--ink);font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted);display:inline-block;margin-right:6px;vertical-align:1px}
+.dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)}
+.bar{height:6px;border-radius:99px;background:var(--rule);overflow:hidden;max-width:420px}
+.bar > i{display:block;height:100%;width:0;background:var(--brand);transition:width .25s ease}
+nav.rail{align-self:start;display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;min-width:0}
+nav.rail a{flex:none;display:grid;gap:2px;padding:8px 12px;border:1px solid var(--rule);border-radius:var(--r);background:var(--panel);color:var(--ink);text-decoration:none;font:600 14px/1.3 var(--body);min-height:44px}
+nav.rail a:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+nav.rail .n{font:500 12px/1.3 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+nav.rail .n.done{color:var(--ok)}
+@media (min-width:900px){
+  nav.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);flex-direction:column;overflow:visible;gap:2px}
+  nav.rail a{grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;border-color:transparent;background:transparent}
+  nav.rail a:hover{background:var(--panel)}
+}
+main{display:grid;gap:22px;min-width:0}
+section.grp{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);padding:22px clamp(16px,3vw,28px);display:grid;gap:18px;scroll-margin-top:16px;min-width:0}
+.grp-head{display:grid;gap:8px}
+.grp-head h2{font:700 24px/1.2 var(--display);margin:0;color:var(--brand);text-wrap:balance}
+.snum{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.note{font-size:15px;color:var(--muted);max-width:65ch;margin:0}
+.q{display:grid;gap:8px;border-top:1px solid var(--rule);padding-top:16px;min-width:0}
+.q label.ql{font:700 17px/1.35 var(--body)}
+.q .ref{font:500 11px/1 var(--mono);color:var(--muted);letter-spacing:.06em;margin-right:8px;white-space:nowrap}
+.req{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-left:8px;white-space:nowrap}
+.q .help{font-size:15px;color:var(--muted);margin:0;max-width:65ch}
+.flag{font-size:14px;background:var(--warn-bg);border-radius:var(--r);padding:6px 10px;max-width:65ch;color:var(--ink)}
+textarea,input[type=text]{width:100%;font:400 16px/1.5 var(--body);color:var(--ink);background:var(--field);border:1px solid var(--rule);border-radius:var(--r);padding:10px 12px}
+textarea{min-height:88px;resize:vertical}
+textarea:focus,input:focus{outline:2px solid var(--focus);outline-offset:1px;border-color:transparent}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:var(--r);padding:8px 12px;cursor:pointer;font-size:15px;background:var(--field);min-height:44px;max-width:100%}
+.opts input{accent-color:var(--brand);flex:none}
+.opts label:has(input:checked){border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.opts label:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.editlab{font-size:14px;color:var(--muted)}
+.skip{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px;min-height:32px}
+.skip input{accent-color:var(--brand)}
+.finish{background:var(--panel);border:1px solid var(--rule);border-radius:var(--r);padding:22px clamp(16px,3vw,28px);display:grid;gap:12px;justify-items:start}
+.finish h2{font:700 24px/1.2 var(--display);margin:0;color:var(--brand)}
+.finish p{margin:0;color:var(--muted);max-width:65ch;font-size:15px}
+button.go{font:700 16px/1 var(--body);background:var(--brand);color:var(--brand-ink);border:0;border-radius:var(--r);padding:14px 22px;min-height:48px;cursor:pointer}
+button.go:disabled{opacity:.45;cursor:not-allowed}
+button.go:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.sent{font-size:15px;background:var(--ok-bg);border-radius:var(--r);padding:10px 14px;max-width:65ch}
+footer.end{grid-column:1/-1;color:var(--muted);font-size:15px;max-width:65ch}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">Website Excellence Framework · New Website Intake</div>
+    <h1>Tell us about your business</h1>
+    <p class="lede">Before we start research and planning, we want a clear picture of your business straight from you, so the site is built around your actual answers rather than assumptions. Your answers save as you type, and you can close this page and come back to finish.</p>
+    <p class="lede">If you don't know an answer yet, tick <b>I'm not sure yet</b> instead of guessing. We'll follow up on it. Skip anything not marked Required if it doesn't apply.</p>
+    <p class="privacy"><b>Privacy:</b> please don't enter passwords, Social Security numbers, payment-card details, medical records, or other highly sensitive information. If you have logo or brand files, email them to your contact rather than pasting them here.</p>
+    <div class="status"><span><span class="dot" id="sdot"></span><b id="stext">Connecting…</b></span><span id="count"></span></div>
+    <div class="bar" aria-hidden="true"><i id="barfill"></i></div>
+  </header>
+
+  <nav class="rail" id="rail" aria-label="Sections"></nav>
+  <main id="main"><p>Loading…</p></main>
+
+  <footer class="end">Your answers are saved for the team building your website and their AI assistant. Questions? Reply to the message that sent you this link.</footer>
+</div>
+
+<script>
+// Question ids q01..q39 match the numbering of Reusable Templates Sec. 16.2 so an ingest step can map them 1:1.
+const S = [
+ {id:"s1", title:"About Your Business", qs:[
+  {id:"q01", label:"Business or company name", type:"text", req:true},
+  {id:"q02", label:"What industry or type of business is this?", type:"text", req:true, help:"For example: mortgage lending, real estate brokerage, law firm, medical practice, home services, financial advisory, SaaS, real estate investing, real estate development. If none fit, just describe it."},
+  {id:"q03", label:"In one or two sentences, what does your business actually do for a customer?", type:"long", req:true},
+  {id:"q04", label:"What's your business model?", type:"choice", opts:["Direct-to-consumer service","B2B service","Product sales","Referral or brokerage","Investment or acquisition","Other"]},
+  {id:"q05", label:"What specific offerings, products, programs, or service lines should the site cover?", type:"long", req:true},
+  {id:"q06", label:"Do you have a niche specialization or focus that sets you apart within your industry?", type:"long"}]},
+ {id:"s2", title:"Service Area & Licensing", note:"This section matters more than it looks. All of our competitor and market research is built around exactly what you write here, so please be specific rather than general.", qs:[
+  {id:"q07", label:"What is your actual, physical business address?", type:"text", req:true, help:"Or the address your license or registration is tied to, if different from where you work day to day."},
+  {id:"q08", label:"What cities, counties, states, or regions do you actually serve?", type:"long", req:true, help:"List every one. Don't assume “greater [metro area]” communicates what you mean. If you serve some areas for one service and a wider area for another, say which is which."},
+  {id:"q09", label:"Which specific cities or locations are your highest priority to be found in online?", type:"long", help:"List your top 10–25 target locations, ranked roughly by importance if you can. This is separate from the question above: that one is everywhere you're willing to serve; this is where you most want to win business. Skip this if you're not tied to specific geographies, such as a fully remote or nationwide business."},
+  {id:"q10", label:"Are there nearby areas people might assume you serve that you do not actually serve?", type:"long"},
+  {id:"q11", label:"What professional licenses, registrations, or certifications does your business or its principals hold?", type:"long", req:true, help:"Include license numbers and the issuing body or state if you have them handy. If you're not sure of the exact number right now, write “will provide” rather than guessing."},
+  {id:"q12", label:"Does your business operate under a different legal entity name than the brand name customers see (a DBA or subsidiary)?", type:"text", help:"If yes, name both."}]},
+ {id:"s3", title:"Goals for This Website", qs:[
+  {id:"q13", label:"Is this a brand-new website, a redesign of an existing site, or a full rebuild?", type:"choice", req:true, opts:["Brand-new website","Redesign of an existing site","Full rebuild / replatform"]},
+  {id:"q14", label:"What's the single most important outcome you want this website to produce?", type:"long", req:true, help:"For example: more qualified phone calls, more form submissions, more listing appointments, more investor referrals. Be specific about the action, not just “more traffic.”"},
+  {id:"q15", label:"Do you have any target numbers in mind (such as leads per month), or is this the first time you'll have a baseline to measure against?", type:"long"},
+  {id:"q16", label:"Is there a deadline or timing consideration we should know about?", type:"text", help:"A launch event, a licensing date, a seasonal push."}]},
+ {id:"s4", title:"Current Digital Presence", qs:[
+  {id:"q17", label:"Do you currently have a website?", type:"choice", opts:["Yes","No"]},
+  {id:"q18", label:"If yes, what's the URL?", type:"text"},
+  {id:"q19", label:"Do you have (or can you get us) access to Google Analytics and/or Google Search Console for the current site?", type:"choice", opts:["Yes, I have access","Yes, but I'll need to find or reset it","No","Not applicable"]},
+  {id:"q20", label:"What do you like about your current site, if anything?", type:"long"},
+  {id:"q21", label:"What frustrates you about your current site, or what's it missing?", type:"long"}]},
+ {id:"s5", title:"Brand & Design", qs:[
+  {id:"q22", label:"Do you have existing brand guidelines, a logo file, or a color palette we should use?", type:"choice", opts:["Yes, I'll send them","I have a logo but no formal guidelines","No, we're starting fresh"]},
+  {id:"q23", label:"Logo and brand assets: how will you send them?", type:"text", help:"Please email the files to your contact, or paste a shared-folder link here. Don't paste file contents."},
+  {id:"q24", label:"Are there any websites, in your industry or outside it, whose design or feel you like?", type:"long", help:"Link them if you can."},
+  {id:"q25", label:"Are there any websites whose design you specifically don't want to resemble, or any style or tone you want to avoid?", type:"long"},
+  {id:"q26", label:"In a few words, how do you want your site to feel to a visitor?", type:"text", help:"For example: “premium and calm,” “friendly and approachable,” “no-nonsense and fast.”"}]},
+ {id:"s6", title:"Competitors", qs:[
+  {id:"q27", label:"Name at least two or three businesses you consider your direct competitors.", type:"long", req:true, help:"Ideally ones you actually compete against for the same customers, not just the biggest national names in your industry. One per line, with a URL if you know it."},
+  {id:"q28", label:"Is there anything specific you know a competitor does well (or poorly) that we should know about?", type:"long"}]},
+ {id:"s7", title:"Team & Decision-Making", qs:[
+  {id:"q29", label:"Who is the main point of contact for this project?", type:"text", req:true, help:"Name plus email or phone."},
+  {id:"q30", label:"Who has final sign-off authority on the site's strategy and design?", type:"text", help:"If more than one person, or if a compliance officer holds separate mandatory sign-off on regulated content, name both roles separately. That is common and expected in regulated industries."},
+  {id:"q31", label:"Is there a compliance officer, broker of record, attorney, or other professional-standards contact who needs to review site content before it's published?", type:"text", help:"If yes, name and contact info."},
+  {id:"q32", label:"Are there other staff or practitioners who should be featured on the site or interviewed for content?", type:"long", help:"For example: agents, loan officers, physicians."}]},
+ {id:"s8", title:"Compliance & Advertising Notes", qs:[
+  {id:"q33", label:"Are you aware of any advertising rules, professional-conduct restrictions, or required disclosures that apply to your business?", type:"long", help:"You don't need the exact legal language. Flag anything you know of, like “we can't guarantee outcomes” or “we have to display our license number.”"},
+  {id:"q34", label:"Is there any claim, statistic, or statement you've been told NOT to use in your marketing, or that a past marketer got wrong?", type:"long"}]},
+ {id:"s9", title:"Technology", note:"You don't need to know anything technical here. Just tell us what you already have, if anything. Unless you have a specific reason to need something different, we build on our standard technology stack. If you have a hosting provider or software you need to keep, that's fine; tell us and we'll work with it.", qs:[
+  {id:"q35", label:"Do you have an existing hosting provider for your site?", type:"choice", opts:["Yes","No","Not sure"], help:"If yes, name it in the notes."},
+  {id:"q36", label:"Do you already own a domain name, or does one need to be purchased or transferred?", type:"text"},
+  {id:"q37", label:"Do you use any existing business software you'd want the new site to connect to?", type:"long", help:"A CRM, a scheduling tool, an application or intake system, an IDX/MLS feed, and so on."}]},
+ {id:"s10", title:"Anything Else", qs:[
+  {id:"q38", label:"Is there anything else about your business, your customers, or this project that would help us understand what you need?", type:"long"},
+  {id:"q39", label:"Do you have a specific request for a non-standard technology choice? If so, what and why?", type:"long", help:"A different platform is a real option; it's treated as a custom request with its own scope and fee rather than our default approach."}]}
+];
+
+const DOC = "answers/intake", LS = "wef-intake-draft";
+const ST = {ans:{}, status:"draft", submittedAt:null, ref:null, timer:null, saving:false, dirty:false, readOnly:false};
+const ALL = S.flatMap(s => s.qs);
+const REQ = ALL.filter(q => q.req);
+
+function el(tag, props = {}, ...kids){ const e = document.createElement(tag); Object.assign(e, props); for (const k of kids) if (k != null) e.append(k); return e; }
+function setStatus(kind, text){ document.getElementById("sdot").className = "dot " + (kind||""); document.getElementById("stext").textContent = text; }
+function done(q){ const A = ST.ans; if (A[q.id + "__unsure"]) return true; const v = A[q.id]; return typeof v === "string" && v.trim() !== ""; }
+function sensitive(v){ return typeof v === "string" && (/\b\d{3}-\d{2}-\d{4}\b/.test(v) || /\b(?:\d[ -]?){13,16}\b/.test(v) || /\bpassword\b/i.test(v)); }
+
+function renderRail(){
+  const r = document.getElementById("rail"); r.textContent = "";
+  for (const s of S){ const n = s.qs.filter(done).length;
+    r.append(el("a", {href:"#" + s.id}, el("span", {textContent:s.title}), el("span", {className:"n" + (n === s.qs.length ? " done" : ""), textContent:n + "/" + s.qs.length}))); }
+  const total = ALL.filter(done).length, reqLeft = REQ.filter(q => !done(q)).length;
+  document.getElementById("count").textContent = total + " of " + ALL.length + " answered" + (reqLeft ? " · " + reqLeft + " required left" : " · all required answered");
+  document.getElementById("barfill").style.width = Math.round(total / ALL.length * 100) + "%";
+  const b = document.getElementById("submit"); if (b){ b.disabled = reqLeft > 0 || ST.readOnly;
+    document.getElementById("finhint").textContent = reqLeft ? reqLeft + " required question" + (reqLeft === 1 ? "" : "s") + " still need an answer (or “I'm not sure yet”)." : "All required questions are covered. Anything marked not sure becomes a follow-up."; } }
+
+function renderQ(q, n){
+  const can = !ST.readOnly, A = ST.ans, fid = "f_" + q.id;
+  const w = el("div", {className:"q"});
+  const lab = el("label", {className:"ql", htmlFor:fid}, el("span", {className:"ref", textContent:String(n).padStart(2, "0")}), q.label);
+  if (q.req) lab.append(el("span", {className:"req", textContent:"Required"}));
+  w.append(lab);
+  if (q.help) w.append(el("p", {className:"help", textContent:q.help}));
+  const flag = el("div", {className:"flag", hidden:true, textContent:"This looks like it may contain a password, Social Security number, or card number. Please remove it; we don't need it here."});
+  const check = v => { flag.hidden = !sensitive(v); };
+  if (q.type === "text" || q.type === "long"){
+    const i = q.type === "text" ? el("input", {type:"text", id:fid, autocomplete:"off"}) : el("textarea", {id:fid});
+    i.value = A[q.id] || ""; i.disabled = !can; check(i.value);
+    i.addEventListener("input", () => { A[q.id] = i.value; check(i.value); changed(); }); w.append(i, flag);
+  } else {
+    const o = el("div", {className:"opts", role:"radiogroup", id:fid});
+    q.opts.forEach((opt, k) => { const r = el("input", {type:"radio", name:fid, id:fid + "_" + k, value:opt, checked:A[q.id] === opt, disabled:!can});
+      r.addEventListener("change", () => { A[q.id] = opt; changed(); }); o.append(el("label", {htmlFor:r.id}, r, opt)); });
+    const t = el("textarea", {id:fid + "_notes", placeholder:"Details or notes (optional)"}); t.style.minHeight = "56px";
+    t.value = A[q.id + "_notes"] || ""; t.disabled = !can; t.addEventListener("input", () => { A[q.id + "_notes"] = t.value; check(t.value); changed(); });
+    w.append(o, el("label", {className:"editlab", htmlFor:t.id, textContent:"Details"}), t, flag); check(t.value);
+  }
+  const sk = el("input", {type:"checkbox", id:fid + "_unsure", checked:!!A[q.id + "__unsure"], disabled:!can});
+  sk.addEventListener("change", () => { A[q.id + "__unsure"] = sk.checked; changed(); });
+  w.append(el("label", {className:"skip", htmlFor:sk.id}, sk, "I'm not sure yet"));
+  return w;
+}
+
+function renderForm(){
+  const m = document.getElementById("main"); m.textContent = ""; let n = 0;
+  S.forEach((s, i) => { const sec = el("section", {className:"grp", id:s.id});
+    const head = el("div", {className:"grp-head"}, el("span", {className:"snum", textContent:"Section " + (i + 1) + " of " + S.length}), el("h2", {textContent:s.title}));
+    if (s.note) head.append(el("p", {className:"note", textContent:s.note}));
+    sec.append(head); for (const q of s.qs) sec.append(renderQ(q, ++n)); m.append(sec); });
+  const fin = el("section", {className:"finish", id:"finish"}, el("h2", {textContent:"All done?"}),
+    el("p", {id:"finhint"}), el("button", {className:"go", id:"submit", type:"button", textContent:ST.submittedAt ? "Send again" : "Send to the team"}));
+  fin.querySelector("#submit").addEventListener("click", submit);
+  if (ST.submittedAt) fin.append(el("div", {className:"sent", id:"sent", textContent:"Sent " + new Date(ST.submittedAt).toLocaleString() + ". You can keep editing; changes are saved and the team sees the latest version."}));
+  m.append(fin);
+}
+
+function changed(){ renderRail(); try { localStorage.setItem(LS, JSON.stringify(ST.ans)); } catch(e){}
+  if (!ST.ref){ setStatus("warn", "Saved in this browser only"); return; }
+  ST.dirty = true; setStatus("", "Saving…"); clearTimeout(ST.timer); ST.timer = setTimeout(flush, 900); }
+function payload(){ return {answers:JSON.parse(JSON.stringify(ST.ans)), status:ST.submittedAt ? "submitted" : "draft", submittedAt:ST.submittedAt, updatedAt:new Date().toISOString(), version:1}; }
+async function flush(){ if (ST.saving || !ST.dirty || !ST.ref) return; ST.saving = true; ST.dirty = false;
+  try { await ST.ref.set(payload()); setStatus("ok", "All answers saved"); }
+  catch(e){ if (e && (e.code === "invalid_argument" || e.code === "not_granted")){ ST.readOnly = true; setStatus("warn", "You can read this page but not change it"); renderForm(); renderRail(); }
+    else { setStatus("warn", "Couldn't save just now. Your answers are kept in this browser; keep typing to retry."); ST.dirty = true; } }
+  finally { ST.saving = false; if (ST.dirty && !ST.readOnly) ST.timer = setTimeout(flush, 1500); } }
+async function submit(){
+  if (!ST.ref){ setStatus("warn", "Open this page signed in so your answers can reach the team."); return; }
+  ST.submittedAt = new Date().toISOString(); ST.dirty = true; clearTimeout(ST.timer); await flush();
+  if (ST.dirty){ ST.submittedAt = null; return; }
+  renderForm(); renderRail(); document.getElementById("sent")?.scrollIntoView({block:"center"}); }
+
+(async () => {
+  try { Object.assign(ST.ans, JSON.parse(localStorage.getItem(LS) || "{}")); } catch(e){}
+  const db = window.claude?.use ? await claude.use("db") : null;
+  if (!db){ renderForm(); renderRail(); setStatus("warn", "Saved in this browser only. Open the link signed in so your answers reach the team."); return; }
+  try {
+    ST.ref = db.doc(DOC);
+    const snap = await ST.ref.get(); const d = snap.exists ? (snap.data() || {}) : {};
+    const saved = d.answers || {}; let extra = false;
+    const local = Object.assign({}, ST.ans); Object.keys(ST.ans).forEach(k => delete ST.ans[k]); Object.assign(ST.ans, saved);
+    for (const k in local) if (!(k in saved)) { ST.ans[k] = local[k]; extra = true; }
+    ST.submittedAt = d.submittedAt || null;
+    renderForm(); renderRail();
+    if (extra){ ST.dirty = true; flush(); } else setStatus("ok", Object.keys(ST.ans).length ? "All answers saved" : "Ready. Answers save as you type");
+  } catch(e){ ST.ref = null; renderForm(); renderRail(); setStatus("warn", "Couldn't load saved answers. New answers are kept in this browser."); }
+})();
+</script>
