@@ -185,10 +185,14 @@ add `02-competitive/` … `11.5-post-launch/` until each stage actually begins.
 {Client Name} Website Blueprint/
 ├── AGENTS.md
 ├── CONTEXT.md
+├── HANDOFF.md            (starter; refreshed per AI Workflows Sec. 2.6)
 ├── 01-research/
 │   ├── CONTEXT.md
 │   ├── 01-WEF-Intake.md    (from the `intake` skill, if run; else created here)
 │   └── output/            (empty .gitkeep, or first Discovery doc once SG1 starts)
+├── 90-audits/            (README.md only; not a Stage Gate)
+├── 91-addenda/           (README.md only; not a Stage Gate)
+├── 92-handoffs/          (README.md only; not a Stage Gate)
 ├── _config/
 │   ├── Project-Charter.md
 │   ├── Decision-Register.md

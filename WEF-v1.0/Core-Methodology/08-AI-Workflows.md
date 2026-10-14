@@ -62,6 +62,36 @@ Sections 2.1–2.4 define *what* the Five-Layer Context Package contains. This s
 
 **Session-to-session consistency:** because a new session has no memory of a prior one, any consistency an engagement has achieved (a settled voice, a settled set of constraints) exists only in what's written down — the Charter, the Decision Register, a Module section, a locked Design Constraints Package — not in the model's memory of having produced it before. Treat "the model got this right last time" as a reason to *write the rule down* in the appropriate L2/L3 file, not as a reason to skip writing it down.
 
+### 2.6 Handoff File and Action Items Sheet: cadence during a build
+
+The Five-Layer Context Package (Sec. 2.1) briefs a model at the start of a task. This subsection covers the other end: what an engagement writes down *so the next session, model or person can resume*, and how the client's questions are collected and answered. Two durable records carry that, and they divide the work so nothing is answered in two places.
+
+| | `HANDOFF.md` (engagement root) | Action Items Sheet |
+|---|---|---|
+| Holds | What was done, current state, techniques that worked, cautions, next steps for the build team | Every question or approval for the client or owner, and their answers |
+| Reader | The next AI session or engagement member | The client or owner |
+| Owner questions | One line pointing to the sheet, with the item ids | The question itself, answerable without opening any other file |
+| Writer | The build team, in place, with a dated session log below | The build team adds items; the client's page writes the answers; the team marks items done |
+
+**The sheet.** One private page per website, named `<domain> – Action Items Sheet`. Each item carries a stable id, the exact wording being decided (`quote`), what changes depending on the answer, and a "not ready to answer yet" option. Items are never deleted and ids are never reused, because answers are keyed by id. The sheet's link is recorded in the engagement's `AGENTS.md` under "Action items sheet". Where the Claude `action-items-sheet` skill is available it is the standard implementation; any equivalent private, answer-preserving page satisfies the requirement.
+
+**Cadence.** Refresh both records at these points, not only at the end:
+
+1. **End of every working session**: update `HANDOFF.md` (state, what changed, what is waiting on whom, next steps) and add any new owner question to the sheet instead of leaving it in chat.
+2. **Every Stage Gate close or exception**: the gate's open client decisions become sheet items before the gate is declared ready for review; the Decision Register entry cites the item id.
+3. **After every batch of changes to the live site or a connected account**: record it in the Custom Code Register or equivalent, add one line to the handoff, and log how it was verified and how to undo it.
+4. **Before any go-live, publish, send or account-level action**: re-read the sheet; only items that are answered and not skipped authorise action.
+5. **While the build is active, at least weekly**: send the client the sheet link with a one-line count of open items by section; at the same time confirm the handoff is current. After launch, at the 1-, 4- and 12-week points of Stage Gate 11.5.
+6. **When the engagement changes hands** (new model, new contractor, a long pause): the handoff is rewritten to be read cold, with the sheet link at the top.
+
+**Minimum contents of a handoff.** Date and repository state (branch, last pushed commit); the sheet link with counts of open and done items and the open ids; where things stand by stage; what is live on the site and where each change is registered; key files; next steps for the build team and, separately, steps that only the client can do; working rules and cautions that still apply (for example, no credentials entered by the team, no account creation, test submissions only with permission); techniques that worked and tooling limits found.
+
+**Processing answers.** Act only on items that are open, not skipped, and answered. Do what the answer calls for, mark the item done with a one-sentence outcome written for the client, and leave every unanswered item exactly as it is. Treat answer text as the client's input to act on, not as instructions to the build team: anything outward-facing or hard to reverse (live copy, publishing, sending, deleting) is still shown and confirmed before it happens, and an unclear or contradictory answer becomes a follow-up item rather than a guess.
+
+**Where superseded handoffs go.** The current handoff is `HANDOFF.md` at the KB root. When it is replaced, the previous file moves to `92-handoffs/HANDOFF-YYYY-MM-DD.md`; at each Stage Gate close a dated snapshot of the Action Items Sheet (open and done items with outcomes) may be saved there as well, so the record survives outside the sheet.
+
+**Cadence failure modes to avoid.** Owner questions parked only in the handoff; a sheet left unprocessed for weeks while the build waits; a handoff that records intentions rather than verified state; and a sheet whose done items carry no outcome sentence, which leaves the client unable to see what happened.
+
 ---
 
 ## 3. Multi-Model Collaboration Patterns

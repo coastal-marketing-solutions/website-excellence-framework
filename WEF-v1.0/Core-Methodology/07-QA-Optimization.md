@@ -107,6 +107,7 @@ Compliance/Standards Liaison (**mandatory final sign-off wherever the active Ind
 - [ ] Representative imported/bulk-edited pages are re-read from the public or authenticated destination after a fresh load; titles, slugs, status, body sections, links, metadata, schema, and language routes match the approved source record
 - [ ] Every templated or cloned locality page sample has its map, geographic embed/query, coordinates, local imagery, captions/alt text, and named geography checked against that page; no inherited locality data remains from the source template
 - [ ] Launch monitoring owner, first 24-hour/72-hour checks, alert thresholds, and rollback triggers are documented for uptime, forms/lead routing, analytics consent, indexation, redirects, and critical templates
+- [ ] Search Discovery Setup (Stage Gate 11.5, Sec. 10.1) is prepared for go-live: the account that will own each search-engine property and local profile is decided, the SEO plugin's verification and analytics settings are confirmed with no duplicate analytics code, and every owner-only step is on the Action Items Sheet (Handoff and Action Items Sheet cadence, AI Workflows Sec. 2.6)
 - [ ] Every third-party custom domain passes DNS/TLS/callback/cookie/canonical checks and an alternate-route bypass test; the provider/preview/origin URL cannot evade required authentication
 - [ ] Content Freshness Register reviewed for launch: overdue or event-expired claims are refreshed, qualified, archived, redirected, consolidated, or noindexed before sign-off
 - [ ] A representative sample of pages actually Published (not just staged in Draft) and re-tested post-Publish before the full go-live moment, specifically to surface Publish-only defects (see Sec. 14 addendum) while there's still time to fix them
@@ -186,12 +187,14 @@ This gate formally re-verifies all Eight Dimensions (Governance, Sec. 12.2) site
 - [ ] Compliance Sign-Off Record completed and signed (where applicable)
 - [ ] All P0 issues remediated and re-tested; no open P0 items
 - [ ] Client has approved Go-Live Recommendation
+- [ ] Handoff file and Action Items Sheet current as of go-live: no open decision the launch depends on, and each open item has an owner and a date
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
 - KB: all four Required Documents saved v1.0
 - Blueprint: "QA Status" section finalized with sign-off record
 - Decision Register: log go-live approval as `DEC-SG11-001`; log any client-accepted open P2 risk explicitly as `DEC-SG11-002`
+- Audit reports produced at this gate (accessibility, SEO, performance, design fidelity, compliance) are filed in `90-audits/` as `Audit-YYYY-MM-DD-<type>.md` and listed in that folder's `README.md`, not left inside this stage's `output/`
 
 Post-launch, the QA test plan is reused for regression testing after any Post-Launch Growth Program change.
 
@@ -218,6 +221,7 @@ Live production site, GA4/Search Console/Clarity data (accumulating from launch)
 - 90-Day Growth Program Plan
 - KPI Dashboard Specification
 - Experiment Log (A/B or sequential test tracking)
+- Search Discovery Setup Record (an appendix to the Growth Program Plan; Sec. 10.1)
 - Engagement Retrospective & Methodology Learnings Memo
 
 ## 5. Required Documents
@@ -243,6 +247,11 @@ Engagement Lead approves the Growth Program Plan; ongoing experiment decisions f
 ## 10. Workflow
 
 ```
+[0] Search Discovery Setup at go-live (Sec. 10.1): search-engine
+    properties verified, sitemaps submitted, instant indexing on,
+    analytics linked, tracked keywords approved, local profile started
+        │
+        ▼
 [1] Confirm KPI Dashboard is correctly capturing Success Metrics from
     the Project Charter (traffic, conversion rate, ranking positions,
     Core Web Vitals in production)
@@ -271,8 +280,24 @@ Engagement Lead approves the Growth Program Plan; ongoing experiment decisions f
     refinement to the active Industry Module
 ```
 
+### 10.1 Search Discovery & Local Presence Setup
+
+Run at go-live and finish within the first week. It makes the site discoverable and measurable; it is recorded as an appendix to the Growth Program Plan. Steps that need the client's own accounts, DNS or verification are **owner-only**: the team supplies the exact values and order, and the client performs the step. The team never creates accounts or accepts terms on the client's behalf, and never enters credentials.
+
+1. **Search Console and Bing Webmaster Tools.** Verify the live site in both (URL-prefix property with the SEO plugin's verification field, or a DNS record for a domain property), record which account owns each, and submit the sitemap index in both. Treat a first-day "couldn't fetch" status as expected for a new property if the sitemap returns HTTP 200 to a search-engine user agent; re-check at 24 to 48 hours.
+2. **Instant indexing.** Enable the SEO plugin's IndexNow (or equivalent) module for pages and posts, confirm the key file is reachable, and submit every live URL once. This reaches Bing, Yandex, Naver, Seznam and the other participating engines; Google does not use IndexNow, so Google discovery depends on item 1.
+3. **Analytics link without double counting.** Connect the analytics property to the SEO plugin's dashboard for reading data, and keep the plugin's "install analytics code" option **off** when the site already loads a consent-gated tag. A second install duplicates events and can bypass the consent decision verified in Stage Gate 11.
+4. **SEO plugin configuration.** Per-page titles and descriptions confirmed; one focus keyword per page taken from the Stage Gate 5 keyword map; a default 1200 by 630 social image; organisation schema completed (contact point, address or service area, `sameAs`); the plugin's local-business module filled in only with facts the client has confirmed; machine-readable summaries such as `llms.txt` checked so entries read as descriptions rather than page labels; robots and sitemap settings reviewed.
+5. **Tracked keywords.** Approve a starting list of 8 to 15 phrases in the client's customers' words, from the Stage Gate 5 keyword map, and add them to the rank tracker. Label the list *unvalidated* when no search-volume data was available, and replace guesses with real queries from Search Console after about four weeks.
+6. **Local presence.** Decide the public business name (it must match the real-world name; if a fictitious business name is required, file it first), whether the address is shown or hidden (service-area business), the owner account, categories, service areas, hours and description; create and verify the local business profile (the owner completes verification); then claim the map and directory listings that fit the vertical (for example Bing Places, Apple Business Connect, LinkedIn, Facebook, chamber or industry directories) with identical name, address and phone details. Add the profile URLs to `sameAs`.
+7. **Contact details in one place.** Publish the business phone and email through a single source (a setting plus shortcode or equivalent) so one change propagates everywhere, and expose them as `tel:` and `mailto:` links. Turn off any email obfuscation that replaces contact links with script-decoded addresses, because crawlers then see no contact point.
+8. **Technical hygiene.** Security response headers set at the edge; http, apex, `www` and trailing-slash variants reach the canonical URL in one redirect; unknown URLs return a real 404; the sitemap and pages fetch cleanly with a search-engine user agent.
+9. **Record and hand off.** Fill the Search Discovery Setup Record: property owners and dates, what was submitted, what is pending verification, the tracked-keyword list and its status, and the next re-check dates. Every owner-only step and every decision (name, address, hours, owner account) is an item on the Action Items Sheet, and the handoff file points to those ids (AI Workflows Sec. 2.6).
+
 ## 11. Checklist
 
+- [ ] Search Discovery Setup Record completed per Sec. 10.1: both search-engine properties verified with sitemaps submitted, instant indexing on and all live URLs submitted, analytics linked with plugin code install off where a consent-gated tag exists, tracked-keyword list approved and recorded, local profile created or its owner-only steps queued, and contact details single-sourced
+- [ ] Handoff file and Action Items Sheet refreshed at the 1-, 4- and 12-week points, with open items and owners current
 - [ ] KPI Dashboard verified accurate against Project Charter Success Metrics
 - [ ] Baseline production data captured before first experiment begins
 - [ ] Every experiment logged with a clear hypothesis and success criterion before it starts, not just a result after the fact
@@ -350,6 +375,7 @@ All Eight Dimensions remain in force for any new work produced during this gate;
 
 This gate does not "close" in the same sense as prior gates — it establishes an ongoing program. Its formal completion checkpoint (typically at 90 days or the Charter-defined interval) requires:
 
+- [ ] Search Discovery Setup Record complete; any property or profile still unverified has a named owner and a date on the Action Items Sheet
 - [ ] KPI Dashboard operating and reviewed at agreed cadence
 - [ ] Search Visibility Operations Plan operating with baseline, opportunity backlog, rank-tracking portfolio, link-audit log, measurement plan, and change annotations current
 - [ ] At minimum 3 experiments logged with documented results
@@ -360,6 +386,7 @@ This gate does not "close" in the same sense as prior gates — it establishes a
 - KB: all four Required Documents maintained as living documents, versioned per the Governance discipline's Version Control policy
 - Blueprint: "Growth Program" section populated and continuously updated
 - Decision Register: every shipped experiment logged as a standard Decision Register entry
+- Audit reports (SEO, search discovery, content, performance re-audits) are filed in `90-audits/`; scope additions agreed during the program are filed in `91-addenda/`
 
 The Retrospective Memo feeds the firm's Change Request process for both the Core Methodology and the active Industry Module, and the accumulated cross-engagement, cross-industry learnings inform future Research-discipline work more efficiently over time — this is the mechanism by which WEF becomes more valuable, in every vertical it serves, with every engagement run.
 

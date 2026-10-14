@@ -351,7 +351,7 @@ Approved Design System & Component Library (SG7.5), Final Copy (SG9), Schema Mar
 - AI Build Package (consolidated implementation spec)
 - Page-by-Page Build Manifest
 - Component-to-Pattern Mapping
-- Integration Requirements Spec (forms, calculators, analytics, and any Module-specific system integrations)
+- Integration Requirements Spec (forms, calculators, analytics, and any Module-specific system integrations), including a **Search Discovery & Local Presence Setup plan** (Stage Gate 11.5, Sec. 10.1): which search-engine properties, sitemap and instant-indexing settings, analytics link, tracked-keyword list source, local profile and listings, and single-sourced contact details the live site will need, and which steps only the client can perform
 
 ## 5. Required Documents
 
@@ -390,7 +390,8 @@ Engagement Lead approves the package as complete and unambiguous before build be
         │
         ▼
 [4] Produce Integration Requirements Spec: forms, calculators, analytics
-    tags (GA4, GTM, Clarity), any Module-typical third-party integrations
+    tags (GA4, GTM, Clarity), any Module-typical third-party integrations,
+    and the Search Discovery & Local Presence Setup plan (SG11.5 Sec. 10.1)
         │
         ▼
 [5] Internal completeness review → Exit Criteria → Stage Gate 10.5
@@ -402,6 +403,7 @@ Engagement Lead approves the package as complete and unambiguous before build be
 - [ ] Every sitemap page appears in the Build Manifest with its template, copy, schema, and URL — **verified by re-deriving the sitemap's total page count as an enumerated breakdown at this stage, not by trusting a total cited in an earlier document** (Governance, Sec. 15.4, RETRO-013). This is the last stage before build begins; a page-count or category-coverage gap caught here is cheap, the same gap caught after 10.5 is not.
 - [ ] Every component in the Stage Gate 7 library has a corresponding entry in the Component-to-Pattern Mapping
 - [ ] Integration Requirements Spec covers all calculators, forms, analytics, and any Module-flagged third-party touchpoints in scope
+- [ ] Search Discovery & Local Presence Setup is planned in the Integration Requirements Spec (SG11.5 Sec. 10.1): webmaster-tool properties and their owner accounts, sitemap and instant-indexing settings, analytics linked without a second tag where a consent-gated tag exists, the tracked-keyword source, the local business profile name/address/owner decision, and the contact-details single source; each owner-only step is queued on the Action Items Sheet (AI Workflows Sec. 2.6)
 - [ ] Package is structured so an AI build model, given this document plus the LLM Handoff Protocol context package, could implement a page correctly without additional clarification
 
 ## 12. Prompt(s)
@@ -466,6 +468,7 @@ Primary Eight-Dimension focus: **AI Implementation Readiness**, **Maintainabilit
 - [ ] All Required Documents complete and internally reviewed
 - [ ] No incomplete inputs remain unflagged
 - [ ] Developer confirms the package is sufficient to begin build without further clarification requests
+- [ ] Stage Gate 11 (QA) and Stage Gate 11.5 (Search Discovery Setup, then Post-Launch Growth) are scheduled in the Stage Ledger. A build that is implemented directly from this package, without a separate Stage Gate 10.5 or 11 folder, is not complete until they are started (use the `start-stage` skill)
 
 ## 19. Knowledge Base / Blueprint / Decision Register Updates
 
@@ -474,6 +477,8 @@ Primary Eight-Dimension focus: **AI Implementation Readiness**, **Maintainabilit
 - Decision Register: log any build-sequencing decisions (e.g., phased launch order) as `DEC-SG10-00x`
 
 The Build Package is the direct input to Stage Gate 10.5, where it is executed into an actual WordPress/GeneratePress/GenerateBlocks build.
+
+**Engagements that stop at this gate.** Some engagements implement the site straight from the Build Package and never open `10.5-`, `11-` or `11.5-` folders. The site is then live (or staged) with no QA record, no search-engine properties and no local presence, because those steps belong to later gates. Starting those gates is a deliberate act, not an automatic one: run the `start-stage` skill (sweep mode lists every engagement and its real position; start mode runs the Stage Transition Check, creates the stage folder, records it in the Stage Ledger and queues the client-owned steps on the Action Items Sheet). Missing earlier documents are recorded as exceptions; they do not block starting QA on a live site.
 
 ---
 

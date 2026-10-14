@@ -38,6 +38,9 @@ The Knowledge Base (KB) is the single persistent store of every artifact, resear
 │                                   CONTEXT.md + output/ pattern shown for 01/02;
 │                                   create a stage's folder only when that stage
 │                                   actually begins — do not scaffold ahead, Sec. 5.2.1)
+├── 90-audits/                    (not a Stage Gate — dated audit reports of any kind; index in README.md)
+├── 91-addenda/                   (not a Stage Gate — scope addenda, one sub-folder each, with a Decision Register id)
+├── 92-handoffs/                  (not a Stage Gate — superseded dated handoffs; the current HANDOFF.md sits at the KB root)
 ├── _config/                      (L3 — engagement-specific, stable across every stage)
 │   ├── project-charter.md            (names active Industry Module(s))
 │   ├── decision-register.md
@@ -71,7 +74,8 @@ The folder structure in Sec. 5.2 organizes *where* things live. It does not, on 
 2. A stage folder (and its `CONTEXT.md` + `output/`) is created **only when that Stage Gate actually begins** — per Sec. 5.2's inline note. Scaffolding all 14 stage folders in advance defeats the purpose of the layer (nothing to route to yet) and clutters the KB root.
 3. `_config/` holds what's stable **across every stage** of this specific engagement (Charter, Decision Register, Compliance Constraints Log, Open Questions, Assumptions Log, Project Backlog). `_references/` holds what's stable **across engagements** (pointers into the framework-level `/Industry-Modules/` and Core Methodology, not copies of them). Do not duplicate framework content into `_references/` — link to it.
 4. Every stage's `CONTEXT.md` is a trimmed, engagement-specific instance of that Stage Gate's 19-part Core Methodology template (Research Sec. "The Fixed Stage Gate Template"), not a restatement of the whole chapter — link back to the chapter for full detail rather than copying it.
-5. When a stage completes, its `CONTEXT.md` status updates to reflect completion (see the template in Reusable Templates, Sec. 21.3) and the root `CONTEXT.md`'s Stage Map table updates to name the new active stage — this is a Knowledge Base Governance Rule (Sec. 5.3), not optional housekeeping.
+5. **The `90-`, `91-` and `92-` folders are containers, not Stage Gates.** They are numbered outside the gate sequence so they never collide with a gate (including Stage Gate 12A/12B), they exist from initialization with a `README.md` index, and the scaffold-ahead prohibition in rule 2 does not apply to them. Audits of any kind are filed in `90-audits/`; scope addenda in `91-addenda/`; superseded handoffs in `92-handoffs/`.
+6. When a stage completes, its `CONTEXT.md` status updates to reflect completion (see the template in Reusable Templates, Sec. 21.3) and the root `CONTEXT.md`'s Stage Map table updates to name the new active stage — this is a Knowledge Base Governance Rule (Sec. 5.3), not optional housekeeping.
 
 **Rationale for adoption:** the same context-window-degradation failure mode this layer prevents — a model given too much undifferentiated context blending reference material with source material, or re-deriving decisions already settled — is exactly what AI Workflows Sec. 5 (Verification Standards) and Sec. 3.3 (Common Mistakes) already warn against from the opposite direction (verifying bad output after the fact, rather than structuring the KB to make bad output less likely in the first place). This is a structural, not incremental, complement to that existing discipline.
 
