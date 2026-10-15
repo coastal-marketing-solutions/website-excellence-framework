@@ -37,6 +37,8 @@ Unless the Project Charter specifies an alternative, this stack applies regardle
 | CDN / Edge Security | Cloudflare |
 | Analytics | Google Analytics 4 |
 | Search Monitoring | Google Search Console |
+| Secondary Search Monitoring & Indexing | Bing Webmaster Tools + IndexNow (submitted by the SEO Plugin's instant-indexing feature) |
+| Backlink & Authority Tracking | Moz Link Explorer API (free tier), with Bing Webmaster link data as a second source |
 | Tag Management | Google Tag Manager |
 | Behavioral Analytics | Microsoft Clarity |
 | Cookie Consent / Privacy Compliance | WPConsent (Cookie Banner & Consent Management) |
@@ -44,6 +46,13 @@ Unless the Project Charter specifies an alternative, this stack applies regardle
 Any deviation must be documented in the Project Charter with rationale and logged as a Decision Register entry at initialization.
 
 Cloudflare, Microsoft Clarity, and WPConsent are standing default-stack layers as of this revision — every engagement provisions all three unless the Charter documents an explicit exception (Sec. 13.4.1). This is not contingent on the active Industry Module flagging the vertical as regulated: WPConsent applies uniformly because any site collecting lead-form data may reach visitors in jurisdictions with cookie/consent requirements (GDPR, CCPA/CPRA, and similar), and Cloudflare/Clarity are baseline edge-security and behavioral-analytics layers independent of vertical.
+
+**Bing Webmaster Tools + IndexNow and Moz backlink tracking are highly recommended default-stack layers** (CR-034). Both are free, take under an hour to connect, and close two measurement gaps that Google-only monitoring leaves open:
+
+- **Bing / IndexNow.** Bing's index feeds Microsoft Copilot, DuckDuckGo, Yahoo and other engines and AI answer surfaces, and IndexNow pushes new or changed URLs to them on publish instead of waiting for a crawl. Add the property in Bing Webmaster Tools (the "Import from Google Search Console" path verifies the site and imports sitemaps in one step), confirm the sitemap is listed, and turn on IndexNow submission in exactly one tool: the SEO Plugin's instant-indexing feature by default. That tool is the single IndexNow writer in the Capability Ownership Matrix (Sec. 13.4.4).
+- **Moz backlink and authority tracking.** Record a Domain Authority / linking-root-domain baseline at launch so later link-building and authority work is measured against a dated starting point rather than reconstructed. Classify every referring domain as genuine or spam. New domains routinely attract automated spam links, and those are recorded, not disavowed, unless a manual action exists.
+
+**Credentials:** the client (or the client's delegate) creates the Bing Webmaster and Moz accounts, generates the API keys, and pastes them directly into the operator's local tool configuration, never into the engagement KB, repo, page content, or chat (Sec. 13.4.5). AI agents do not create these accounts or type the keys. Where an engagement opts out, record the reason in the Charter's Technology Stack section like any other layer.
 
 ### 13.4.1 Active Intake Confirmation (not a silent default)
 
