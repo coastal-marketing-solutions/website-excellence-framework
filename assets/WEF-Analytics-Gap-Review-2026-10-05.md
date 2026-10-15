@@ -1,7 +1,7 @@
 # WEF Analytics Gap Review — 2026-10-05
 
 **Status:** Review / proposal input. **Not canon.** Each gap below is a candidate for a follow-on Change
-Request (suggested bundle: **CR-035 — Measurement Configuration & Lead Attribution**) once CR-034
+Request (suggested bundle: **CR-036 — Measurement Configuration & Lead Attribution**) once CR-034
 (Bing/IndexNow + Moz) is decided.
 **Method:**
 1. Searched `WEF-v1.0/` and `.agents/` for each topic in a complete web-measurement program.
@@ -167,9 +167,9 @@ Reusable Templates Sec. 6's weekly cadence.
 
 | CR | Contents | Core or Module |
 |---|---|---|
-| CR-035 Measurement Configuration & Verification | G-1, G-5, G-6, G-7, G-13 | Core (Development SG10.5, Reusable Templates Sec. 3/6, Governance 13.4.4) |
-| CR-036 Lead Attribution & Closed-Loop Reporting | G-2, G-3, G-4, G-10, G-12 | Core (SG10 Integration Requirements Spec, SG11.5) |
-| CR-037 Channel Measurement | G-8, G-9, G-11 | Core hook + Industry Module injection points (call tracking, GBP) |
+| CR-036 Measurement Configuration & Verification | G-1, G-5, G-6, G-7, G-13 | Core (Development SG10.5, Reusable Templates Sec. 3/6, Governance 13.4.4) |
+| CR-037 Lead Attribution & Closed-Loop Reporting | G-2, G-3, G-4, G-10, G-12 | Core (SG10 Integration Requirements Spec, SG11.5) |
+| CR-038 Channel Measurement | G-8, G-9, G-11 | Core hook + Industry Module injection points (call tracking, GBP) |
 
 ## Apply-now list for the originating engagement (not framework changes)
 1. **Link Search Console to GA4.** GA4 is showing that exact recommendation.
