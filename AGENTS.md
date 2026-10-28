@@ -30,6 +30,7 @@ routes; it holds no methodology content.
 | Build / extend the Master Content Workbook (SG5 / SG8 / SG9) | `.agents/skills/master-content-workbook/SKILL.md` |
 | Add or fix an Industry Module | `WEF-v1.0/Industry-Modules/00-Module-Template-and-Index.md` |
 | Roll one engagement's findings back into the framework | `.agents/skills/wef-sync/SKILL.md` |
+| Track where a client's build lives and who holds each account | `.agents/skills/website-build-registry/SKILL.md` |
 | Reconcile changes from several engagements / contexts at once | `assets/WEF-Multi-Context-Reconciliation-Protocol.md` |
 | Propose a methodology change | `WEF-v1.0/Core-Methodology/09-Reusable-Templates.md` Sec. 3 (Change Request template) |
 | Understand the ICM structure this repo is built on | `assets/WEF-ICM-Architecture-Review-2026-09-07.md` |
